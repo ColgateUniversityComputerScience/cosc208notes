@@ -1,4 +1,3 @@
 # COSC 208: Introduction to Computer Systems
 
-* [Section A](notesA/)
-* [Section B](notesB/)
+* [Fall 2022](notesA/)

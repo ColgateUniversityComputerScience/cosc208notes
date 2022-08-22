@@ -1,7 +1,8 @@
-# COSC 208A, Introduction to Computer Systems
+# COSC 208, Introduction to Computer Systems
 
-* Hello (2022-01-24) [[Notes]](2022-01-24_notes) [[Worksheet]](2022-01-24_worksheet)
+* Hello (2022-08-25) [[Notes]](2022-08-25_notes) [[Worksheet]](2022-08-25_worksheet)
 
+<!--
 ## C
 * Compilation; types; operators; output (2022-01-26) [[Notes]](2022-01-26_notes) [[Worksheet]](2022-01-26_worksheet)
 * Control structures; functions (2022-01-28) [[Notes]](2022-01-28_notes) [[Worksheet]](2022-01-28_worksheet)
@@ -52,6 +53,7 @@
 * Virtual machines (2022-05-02) [[Notes]](2022-05-02_notes) [[Worksheet]](2022-05-02_worksheet)
 * Containers; data centers; cloud computing (2022-05-04) [[Notes]](2022-05-04_notes) [[Worksheet]](2022-05-04_worksheet)
 * Exam 3 (Final) review (2022-05-06) [[Notes]](2022-05-06_notes) [[Worksheet]](2022-05-06_worksheet)
+-->
 
 <!--
 ## Networking

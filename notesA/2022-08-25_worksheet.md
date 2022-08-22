@@ -1,5 +1,5 @@
 # Getting to know you
-_COSC 208, Introduction to Computer Systems, 2022-01-24_
+_COSC 208, Introduction to Computer Systems, 2022-08-25_
 
 *I want to learn more about you, so I can help ensure you get the most out of this class and your time at Colgate. Please respond to the following prompts. (I will not share your responses with anyone else.)*
 
@@ -18,7 +18,7 @@ My personal pronouns are...
 
 ```
 
-My favorite thing I did over winter break was...
+Something I did over summer break that I enjoyed was...
 ```
 
 
