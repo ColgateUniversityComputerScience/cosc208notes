@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="syntax.css">
+    <base target="_blank">
+  </html>
+  <body>
+      <h1 id="assembly-functions">Assembly: functions</h1>
+<p><em>COSC 208, Introduction to Computer Systems, 2021-10-18</em></p>
+
+<h2 id="announcements">Announcements</h2>
+<ul>
+  <li>Project 2 Part 1 due this Thursday at 11pm</li>
+</ul>
+
+<h2 id="warm-up">Warm-up</h2>
+<ul>
+  <li>
+    <p>Q1: <em>The following C code was compiled into assembly. Label each line of assembly code with the 
+line number of the line of C code from which the assembly instruction was derived.</em></p>
+
+    <pre><code class="language-C">  1  int multiply(int a, int b) {
+  2      int c = a * b;
+  3      return c;
+  4  }
+  5  int volume(int x, int y, int z) {
+  6      int w = multiply(x, y);
+  7      w = multiply(w, z);
+  8      return w;
+  9  }
+</code></pre>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  000000000000071c &lt;multiply&gt;:
+      71c:	d10083ff 	sub	sp, sp, #0x20           
+      720:	b9000fe0 	str	w0, [sp, #12]           
+      724:	b9000be1 	str	w1, [sp, #8]            
+      728:	b9400fe1 	ldr	w1, [sp, #12]           
+      72c:	b9400be0 	ldr	w0, [sp, #8]            
+      730:	1b007c20 	mul	w0, w1, w0              
+      734:	b9001fe0 	str	w0, [sp, #28]           
+      738:	b9401fe0 	ldr	w0, [sp, #28]           
+      73c:	910083ff 	add	sp, sp, #0x20           
+      740:	d65f03c0 	ret                         
+  0000000000000744 &lt;volume&gt;:
+      744:	a9bd7bfd 	stp	x29, x30, [sp, #-48]!   
+      748:	910003fd 	mov	x29, sp                 
+      74c:	b9001fe0 	str	w0, [sp, #28]           
+      750:	b9001be1 	str	w1, [sp, #24]           
+      754:	b90017e2 	str	w2, [sp, #20]           
+      758:	b9401be1 	ldr	w1, [sp, #24]           
+      75c:	b9401fe0 	ldr	w0, [sp, #28]           
+      760:	97ffffef 	bl	71c &lt;multiply&gt;          
+      764:	b9002fe0 	str	w0, [sp, #44]           
+      768:	b94017e1 	ldr	w1, [sp, #20]           
+      76c:	b9402fe0 	ldr	w0, [sp, #44]           
+      770:	97ffffeb 	bl	71c &lt;multiply&gt;          
+      774:	b9002fe0 	str	w0, [sp, #44]           
+      778:	b9402fe0 	ldr	w0, [sp, #44]           
+      77c:	a8c37bfd 	ldp	x29, x30, [sp], #48     
+      780:	d65f03c0 	ret                         
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<div style="page-break-after: always;"></div>
+
+<h2 id="functions">Functions</h2>
+<ul>
+  <li>Noteworthy instructions
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">stp</code> — update <code class="language-plaintext highlighter-rouge">sp</code>, then store values at <code class="language-plaintext highlighter-rouge">sp</code> and <code class="language-plaintext highlighter-rouge">sp+8</code></li>
+      <li><code class="language-plaintext highlighter-rouge">ldp</code> — load values at <code class="language-plaintext highlighter-rouge">sp</code> and <code class="language-plaintext highlighter-rouge">sp+8</code>, then update <code class="language-plaintext highlighter-rouge">sp</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bl</code> — “branch with link”; store <code class="language-plaintext highlighter-rouge">pc+4</code> in <code class="language-plaintext highlighter-rouge">x30</code>, then update <code class="language-plaintext highlighter-rouge">pc</code> to specified code address</li>
+    </ul>
+  </li>
+  <li>Q2: <em>Translate each assembly instruction into semantically equivalent C code. For example <code class="language-plaintext highlighter-rouge">stp x29, x30, [sp, #-48]!</code> translates to:</em>
+    <pre><code class="language-C">  sp = sp - 48;
+  *sp = x29;
+  *(sp + 8) = x30;
+</code></pre>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0000000000000744 &lt;volume&gt;:                          
+  744:	a9bd7bfd 	stp	x29, x30, [sp, #-48]!   
+
+  748:	910003fd 	mov	x29, sp                 
+  74c:	b9001fe0 	str	w0, [sp, #28]           
+  750:	b9001be1 	str	w1, [sp, #24]           
+  754:	b90017e2 	str	w2, [sp, #20]           
+  758:	b9401be1 	ldr	w1, [sp, #24]           
+  75c:	b9401fe0 	ldr	w0, [sp, #28]           
+  760:	97ffffef 	bl	71c &lt;multiply&gt;          
+  764:	b9002fe0 	str	w0, [sp, #44]           
+  768:	b94017e1 	ldr	w1, [sp, #20]           
+  76c:	b9402fe0 	ldr	w0, [sp, #44]           
+  770:	97ffffeb 	bl	71c &lt;multiply&gt;          
+  774:	b9002fe0 	str	w0, [sp, #44]           
+  778:	b9402fe0 	ldr	w0, [sp, #44]           
+  77c:	a8c37bfd 	ldp	x29, x30, [sp], #48     
+                                                    
+  780:	d65f03c0 	ret                         
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="calling-conventions">Calling conventions</h2>
+
+<ul>
+  <li>By convention the following is respected when functions are called and executed
+    <ul>
+      <li><em>In which registers are parameters stored?</em> — <code class="language-plaintext highlighter-rouge">x0</code>/<code class="language-plaintext highlighter-rouge">w0</code>, <code class="language-plaintext highlighter-rouge">x1</code>/<code class="language-plaintext highlighter-rouge">w1</code>, <code class="language-plaintext highlighter-rouge">x2</code>/<code class="language-plaintext highlighter-rouge">w2</code>, …</li>
+      <li><em>In which register is the return value stored?</em> — <code class="language-plaintext highlighter-rouge">x0</code>/<code class="language-plaintext highlighter-rouge">w0</code></li>
+      <li>Return address stored in <code class="language-plaintext highlighter-rouge">x30</code></li>
+      <li>Caller’s stack pointer stored in <code class="language-plaintext highlighter-rouge">x29</code></li>
+      <li>Caller’s stack pointer stored at the top of callee’s stack frame</li>
+      <li>Caller’s return address stored 8 bytes below the top of callee’s stack frame</li>
+    </ul>
+  </li>
+  <li>Q3: <em>Trace the assembly code above to relate it to its C counterpart.</em></li>
+</ul>
+
+<div style="page-break-after: always;"></div>
+
+<h2 id="extra-practice">Extra practice</h2>
+<ul>
+  <li>Q4: <em>The following C code was compiled into assembly. Label each line of assembly code with the line number of the line of C code from which the assembly instruction was derived.</em>
+    <pre><code class="language-C">  1 int three(int x) {
+  2     return x + 3;
+  3 }
+  4 int two(int y) {
+  5     return three(y) + 2;
+  6 }
+  7 int one(int z) {
+  8     return two(z) + 1;
+  9 }
+</code></pre>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  000000000000071c &lt;three&gt;:
+      71c:	d10043ff 	sub	sp, sp, #0x10           
+      720:	b9000fe0 	str	w0, [sp, #12]           
+      724:	b9400fe0 	ldr	w0, [sp, #12]           
+      728:	11000c00 	add	w0, w0, #0x3            
+      72c:	910043ff 	add	sp, sp, #0x10           
+      730:	d65f03c0 	ret                         
+  0000000000000734 &lt;two&gt;:
+      734:	a9be7bfd 	stp	x29, x30, [sp, #-32]!   
+      738:	910003fd 	mov	x29, sp                 
+      73c:	b9001fe0 	str	w0, [sp, #28]           
+      740:	b9401fe0 	ldr	w0, [sp, #28]           
+      744:	97fffff6 	bl	71c &lt;three&gt;             
+      748:	11000800 	add	w0, w0, #0x2            
+      74c:	a8c27bfd 	ldp	x29, x30, [sp], #32     
+      750:	d65f03c0 	ret                         
+  0000000000000754 &lt;one&gt;:
+      754:	a9be7bfd 	stp	x29, x30, [sp, #-32]!   
+      758:	910003fd 	mov	x29, sp                 
+      75c:	b9001fe0 	str	w0, [sp, #28]           
+      760:	b9401fe0 	ldr	w0, [sp, #28]           
+      764:	97fffff4 	bl	734 &lt;two&gt;               
+      768:	11000400 	add	w0, w0, #0x1            
+      76c:	a8c27bfd 	ldp	x29, x30, [sp], #32     
+      770:	d65f03c0 	ret                         
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<div style="page-break-after: always;"></div>
+
+<ul>
+  <li>Q5: <em>Translate each assembly instruction into semantically equivalent C code.</em>
+```
+000000000000071c <three>:
+  71c:	d10043ff 	sub	sp, sp, #0x10           
+  720:	b9000fe0 	str	w0, [sp, #12]           
+  724:	b9400fe0 	ldr	w0, [sp, #12]           
+  728:	11000c00 	add	w0, w0, #0x3            
+  72c:	910043ff 	add	sp, sp, #0x10           
+  730:	d65f03c0 	ret</three></li>
+</ul>
+
+<p>0000000000000734 <two>:
+    734:	a9be7bfd 	stp	x29, x30, [sp, #-32]!</two></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>738:	910003fd 	mov	x29, sp                 
+73c:	b9001fe0 	str	w0, [sp, #28]           
+740:	b9401fe0 	ldr	w0, [sp, #28]           
+744:	97fffff6 	bl	71c &lt;three&gt;             
+748:	11000800 	add	w0, w0, #0x2            
+74c:	a8c27bfd 	ldp	x29, x30, [sp], #32     
+                                                
+750:	d65f03c0 	ret            
+</code></pre></div></div>
+
+<p>0000000000000754 <one>:
+    754:	a9be7bfd 	stp	x29, x30, [sp, #-32]!</one></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>758:	910003fd 	mov	x29, sp                 
+75c:	b9001fe0 	str	w0, [sp, #28]           
+760:	b9401fe0 	ldr	w0, [sp, #28]           
+764:	97fffff4 	bl	734 &lt;two&gt;               
+768:	11000400 	add	w0, w0, #0x1            
+76c:	a8c27bfd 	ldp	x29, x30, [sp], #32     
+                                                
+770:	d65f03c0 	ret                          ```
+</code></pre></div></div>
+
+<ul>
+  <li>Q6: <em>Draw the contents of the registers and stack immediately before executing the instruction at address <code class="language-plaintext highlighter-rouge">72c</code>. Assume registers have the following initial values: <code class="language-plaintext highlighter-rouge">sp=0xFD0</code>, <code class="language-plaintext highlighter-rouge">pc=0x754</code>, <code class="language-plaintext highlighter-rouge">w0=0</code>, <code class="language-plaintext highlighter-rouge">x29=0xFF0</code>, <code class="language-plaintext highlighter-rouge">x30=0x784</code></em></li>
+</ul>
+
+  </body>
+</html>

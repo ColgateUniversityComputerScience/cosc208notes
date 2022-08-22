@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="syntax.css">
+    <base target="_blank">
+  </html>
+  <body>
+      <h1 id="architecture-circuits">Architecture: circuits</h1>
+<p><em>COSC 208, Introduction to Computer Systems, 2021-10-04</em></p>
+
+<h2 id="announcements">Announcements</h2>
+<ul>
+  <li>First DEI reflection due Thursday at 11pm</li>
+</ul>
+
+<h2 id="outline">Outline</h2>
+<ul>
+  <li>Warm-up</li>
+  <li>1-bit circuits</li>
+  <li>n-bit circuits</li>
+</ul>
+
+<h2 id="warm-up">Warm-up</h2>
+<p>Q1: <em>Fill-in the truth tables for the following logical operations</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>A</th>
+      <th>B</th>
+      <th>(A != B)</th>
+      <th>(A &gt; B)</th>
+      <th>(A &gt;= B)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="1-bit-circuits">1-bit circuits</h2>
+
+<h3 id="steps">Steps</h3>
+<ul>
+  <li><em>Design the truth table: e.g., A != B</em></li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>A</th>
+      <th>B</th>
+      <th>A != B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>For each row where the output value is 1:
+    <ul>
+      <li>Determine how to make each input 1 — e.g., either <code class="language-plaintext highlighter-rouge">A</code> or <code class="language-plaintext highlighter-rouge">NOT(A)</code></li>
+      <li>Conjunct the two subexpressions — e.g., <code class="language-plaintext highlighter-rouge">NOT(A) AND B</code></li>
+    </ul>
+  </li>
+  <li>Create the disjunction of the expressions for each row — e.g., <code class="language-plaintext highlighter-rouge">(NOT(A) AND B) OR (A AND NOT(B))</code></li>
+  <li>
+    <p>Create a circuit from left to right, starting with the inner-most subexpressions</p>
+
+    <p><img src="/cosc208/images/circuits/gate_xor5.png" alt="" /></p>
+  </li>
+  <li><em>Can we build a circuit that uses fewer gates?</em>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">A XOR B</code></li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">(A OR B) AND (NOT (A AND B))</code></p>
+
+        <p><img src="/cosc208/images/circuits/gate_xor.png" alt="" /></p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="practice">Practice</h3>
+<p>Q2: <em>Create a circuit for <code class="language-plaintext highlighter-rouge">A &gt; B</code> using <code class="language-plaintext highlighter-rouge">AND</code>, <code class="language-plaintext highlighter-rouge">OR</code>, <code class="language-plaintext highlighter-rouge">NOT</code> gates</em></p>
+
+<p><code class="language-plaintext highlighter-rouge">A AND NOT(B)</code></p>
+
+<p><img src="/cosc208/images/circuits/a_gt_b.png" alt="" /></p>
+
+<p>Q3: <em>Create a circuit for <code class="language-plaintext highlighter-rouge">A &gt;= B</code> using <code class="language-plaintext highlighter-rouge">AND</code>, <code class="language-plaintext highlighter-rouge">OR</code>, <code class="language-plaintext highlighter-rouge">NOT</code> gates</em></p>
+
+<p><code class="language-plaintext highlighter-rouge">(NOT(A) AND NOT(B)) OR (A AND NOT(B)) OR (A AND B)</code></p>
+
+<p><img src="/cosc208/images/circuits/a_ge_b.png" alt="" /></p>
+
+<ul>
+  <li>Alternatives
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">(NOT(A OR B)) OR (A AND NOT(B)) OR (A AND B)</code></li>
+      <li><code class="language-plaintext highlighter-rouge">(NOT(A) AND NOT(B)) OR A</code></li>
+      <li><code class="language-plaintext highlighter-rouge">(NOT(A OR B)) OR A</code></li>
+      <li><code class="language-plaintext highlighter-rouge">NOT(NOT(A) AND B)</code></li>
+      <li><code class="language-plaintext highlighter-rouge">A OR NOT(B)</code></li>
+    </ul>
+  </li>
+</ul>
+
+<p>Q4: <em>Your goal is to create a 1-bit circuit to perform addition. The circuit will take 3 input bits (<code class="language-plaintext highlighter-rouge">A</code>, <code class="language-plaintext highlighter-rouge">B</code>, and <code class="language-plaintext highlighter-rouge">carry_in</code>) and produce 2 output bits (<code class="language-plaintext highlighter-rouge">sum</code> and <code class="language-plaintext highlighter-rouge">carry_out</code>).</em></p>
+
+<p>Q4a: <em>Complete the truth table for this operation</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th><code class="language-plaintext highlighter-rouge">A</code></th>
+      <th><code class="language-plaintext highlighter-rouge">B</code></th>
+      <th><code class="language-plaintext highlighter-rouge">carry_in</code></th>
+      <th><code class="language-plaintext highlighter-rouge">sum</code></th>
+      <th><code class="language-plaintext highlighter-rouge">carry_out</code></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Q4b: <em>What is the boolean expression for <code class="language-plaintext highlighter-rouge">sum</code>?</em></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(NOT(A) AND NOT(B) AND carry_in)
+OR (NOT(A) AND B AND NOT(carry_in))
+OR (A AND NOT(B) AND NOT(carry_in))
+OR (A AND B AND carry_in) 
+</code></pre></div></div>
+
+<p>Q4c: <em>Draw the circuit for <code class="language-plaintext highlighter-rouge">sum</code></em></p>
+
+<p>Q4d: <em>What is the boolean expression for <code class="language-plaintext highlighter-rouge">carry_out</code>?</em></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(NOT(A) AND B AND carry_in)
+OR (A AND NOT(B) AND carry_in)
+OR (A AND B AND NOT(carry_in))
+OR (A AND B AND carry_in)
+</code></pre></div></div>
+
+<p>Q4e: <em>Draw the circuit for <code class="language-plaintext highlighter-rouge">carry_out</code></em></p>
+
+<h2 id="n-bit-circuits">N-bit circuits</h2>
+<ul>
+  <li>Q5: <em>Fill-in the truth-table for <code class="language-plaintext highlighter-rouge">A &gt; B</code> when A and B are two bits</em></li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>A1 A2</th>
+      <th>B1 B2</th>
+      <th>A &gt; B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0   0</td>
+      <td>0   0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>0   1</td>
+      <td>0   0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>1   0</td>
+      <td>0   0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>1   1</td>
+      <td>0   0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>0   0</td>
+      <td>0   1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>0   1</td>
+      <td>0   1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>1   0</td>
+      <td>0   1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>1   1</td>
+      <td>0   1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>0   0</td>
+      <td>1   0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>0   1</td>
+      <td>1   0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>1   0</td>
+      <td>1   0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>1   1</td>
+      <td>1   0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>0   0</td>
+      <td>1   1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>0   1</td>
+      <td>1   1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>1   0</td>
+      <td>1   1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>1   1</td>
+      <td>1   1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li><em>How did you determine this?</em>
+    <ul>
+      <li>Convert to decimal — not an option for hardware</li>
+      <li>Compare 1st bits, then, if necessary, compare 2nd bits — <code class="language-plaintext highlighter-rouge">(A1 &gt; B1) OR ((A1 == B1) AND (A2 &gt; B2))</code></li>
+    </ul>
+  </li>
+  <li><em>What if there were 3 bits?</em> — compare 1st bits, then, if necessary, 2nd bits, then, if necessary, 3rd bits; <code class="language-plaintext highlighter-rouge">(A1 &gt; B1) OR ((A1 == B1) AND (A2 &gt; B2)) OR ((A1 == B1) AND (A2 == B2) AND (A3 &gt; B3))</code></li>
+  <li><em>What do you need to know about previous bits?</em>
+    <ul>
+      <li>Is some previous bit greater?</li>
+      <li>Are all previous bits equal?</li>
+    </ul>
+  </li>
+  <li>N-bit greater-than circuit
+    <ul>
+      <li>Inputs
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">An</code></li>
+          <li><code class="language-plaintext highlighter-rouge">Bn</code></li>
+          <li><code class="language-plaintext highlighter-rouge">GtIn</code></li>
+          <li><code class="language-plaintext highlighter-rouge">EqIn</code></li>
+        </ul>
+      </li>
+      <li>Outputs — <em>What are the formulas for these?</em>
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">GtOut</code>: <code class="language-plaintext highlighter-rouge">GtIn OR (EqIn AND (An &gt; Bn))</code></li>
+          <li><code class="language-plaintext highlighter-rouge">EqOut</code>: <code class="language-plaintext highlighter-rouge">EqIn AND (An == Bn)</code></li>
+        </ul>
+      </li>
+    </ul>
+
+    <p><img src="/cosc208/images/circuits/a_gt_b_n-bit.png" alt="" /></p>
+  </li>
+</ul>
+
+  </body>
+</html>

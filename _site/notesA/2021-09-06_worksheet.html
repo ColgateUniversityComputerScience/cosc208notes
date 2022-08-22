@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="syntax.css">
+    <base target="_blank">
+  </html>
+  <body>
+      <h1 id="c-arrays-strings-input">C: arrays; strings; input</h1>
+<p><em>COSC 208, Introduction to Computer Systems, 2021-09-06</em></p>
+
+<h2 id="warm-up-arrays">Warm-up: Arrays</h2>
+<p>Q1: <em>What is the output of this program?</em></p>
+<pre><code class="language-C">int main() {
+    int sum = 0;
+    int nums[] = { 1, 3, 5, 7 };
+    for (int i = 0; i &lt; 3; i++) {
+        nums[i+1] -= 1;
+        sum += nums[i];
+    }
+    printf("%d\n", sum);
+}
+</code></pre>
+
+<p>Q2: <em>What is the output of this program?</em></p>
+<pre><code class="language-C">int main() {
+    int sum = 0;
+    int zeros[10];
+    for (int i = 0; i &lt; 10; i++) {
+        sum += zeros[i];
+    }
+    printf("%d\n", sum);
+}
+</code></pre>
+
+<p>Q3: <em>What is the output of this program?</em></p>
+<pre><code class="language-C">int main() {
+    int sum = 0;
+    int nums[] = { 1, 2, 3 };
+    for (int i = 0; i &lt;= 3; i++) {
+        sum += nums[i];
+    }
+    printf("%d\n", sum);
+}
+</code></pre>
+
+<p>🛑 Stop here after completing the warm-up; if you have extra time please <strong>skip ahead</strong> to the extra practice.</p>
+
+<h2 id="strings">Strings</h2>
+<p>Q4: <em>What is the output of this program?</em></p>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+int main() {
+    char first[] = "Colgate";
+    char second[10] = "Univ";
+    printf("%lu\n", strlen(first));
+    printf("%lu\n", strlen(second));
+    first[strlen(first)] = '-';
+    second[strlen(second)-1] = '.';
+    printf("%s%s\n", first, second);
+    first[3] = '.';
+    first[4] = '\0';
+    printf("%s %s\n", first, second);
+}
+</code></pre>
+
+<p>Q5: <em>What is the output of this program?</em></p>
+<pre><code class="language-C">int main() {
+    char first[] = "Systems is fun!";
+    char second[] = "Systems is fun!";
+    if (first == second) {
+        printf("1st == 2nd\n");
+    }
+    if (strcmp(first, second) == 0) {
+        printf("1st cmp 2nd\n");
+    }
+    if (first == first) {
+        printf("1st == 1st\n");
+    }
+    if (strcmp(first, first) == 0) {
+        printf("1st cmp 1st\n");
+    }
+}
+</code></pre>
+
+<p>Q6: <em>Write a program that asks the user for a string and prints the string backwards.</em></p>
+<pre><code class="language-C">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</code></pre>
+
+<h2 id="extra-practice">Extra practice</h2>
+<p>Q7: <em>Write a function called <code class="language-plaintext highlighter-rouge">avg</code> that takes an array of integers and the length of the array and returns the average of those integers.</em></p>
+
+<p>Q8: <em>Write a function called <code class="language-plaintext highlighter-rouge">count</code> that takes an array of integers,  the length of the array, and an integer to search for and returns the number of times the specified integer appears in the array.</em></p>
+
+<p>Q9: <em>Write a program that asks the user for a string and converts all lowercase letters to uppercase and all uppercase letters to lowercase; numbers and punctuation should be left unchanged.</em></p>
+
+<p>Q10: <em>Write a program that asks the user for a string and checks if the string is a palindrome (i.e., reads the same forwards and backwards).</em></p>
+
+
+  </body>
+</html>

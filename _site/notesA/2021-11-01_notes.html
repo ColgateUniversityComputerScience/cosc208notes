@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="syntax.css">
+    <base target="_blank">
+  </html>
+  <body>
+      <h1 id="efficiency-caching">Efficiency: caching</h1>
+<p><em>COSC 208, Introduction to Computer Systems, 2021-11-01</em></p>
+
+<h2 id="announcements">Announcements</h2>
+<ul>
+  <li>Project 2 Part B due date extended to Tues, Nov 9</li>
+</ul>
+
+<h2 id="outline">Outline</h2>
+<ul>
+  <li>Warm-up</li>
+  <li>Instances of caching</li>
+</ul>
+
+<h2 id="warm-up">Warm-up</h2>
+<ul>
+  <li>Q1: <em>Where are caches used in computer systems?</em>
+    <ul>
+      <li>Operating systems</li>
+      <li>Web browsers</li>
+      <li>Web servers</li>
+      <li>Domain Name System (DNS)</li>
+      <li>Databases</li>
+      <li>Central Processing Units (CPUs)</li>
+      <li>Graphics Processing Units (GPUs)</li>
+      <li>Hard Disk Drives (HDDs)</li>
+      <li>Solid State Drives (SSDs)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="instances-of-caching">Instances of caching</h2>
+<ul>
+  <li>CPU caches
+    <ul>
+      <li><em>Why do we have caches on the CPU?</em> — accessing main memory is ~100x slower than accessing a register</li>
+      <li>Store instructions and data (stack, heap, etc.) from main memory</li>
+      <li>Three levels — L1, L2, and L3</li>
+      <li>Range in size from a few KB to a few MB</li>
+      <li>Cache line (i.e., cache entry) is typically larger than a word — e.g., 128 bytes
+        <ul>
+          <li><em>Why?</em> — spatial locality</li>
+        </ul>
+      </li>
+      <li>What happens when we write to memory?
+        <ul>
+          <li>Write through cache — write to the cache and main memory</li>
+          <li>Write back cache — initially write to the cache; write to main memory when the entry is evicted from the cache</li>
+          <li>What are the advantages of each approach?
+            <ul>
+              <li>Write through cache ensures consistency between CPU cores</li>
+              <li>Write back cache only incurs the overhead of accessing main memory when absolutely necessary</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Web browser caches
+    <ul>
+      <li><em>Why do web browsers have caches?</em>
+        <ul>
+          <li>Accessing remote network storage is &gt;50x slower than accessing a solid state drive (SSD)</li>
+          <li>Spatial locality — many aspects of a web page are also used with other pages on the same site: e.g., images, Cascading Style Sheets (CSS), JavaScript (JS)</li>
+          <li>Temporal locality — users often visit the same web page repeatedly: e.g., Google</li>
+          <li>Internet Service Provider (ISP) may limit amount of data downloaded/uploaded per month</li>
+        </ul>
+      </li>
+      <li>Store static content (e.g., images, CSS, JS)</li>
+      <li>Web browser caches are read-only</li>
+    </ul>
+  </li>
+  <li>Domain Name System (DNS) caches
+    <ul>
+      <li>DNS is used to translate domain names (e.g., <code class="language-plaintext highlighter-rouge">portal.colgate.edu</code>) into Internet Protocol (IP) addresses (e.g., <code class="language-plaintext highlighter-rouge">149.43.134.29</code>)</li>
+      <li>DNS entries—i.e., mappings from domain names to IP addresses—can be cached by a web browser, an operating system, and a recursive resolver
+        <ul>
+          <li>A recursive resolver is a DNS server within a network that receives DNS queries from clients and queries other DNS servers on the client’s behalf in order to locate the desired DNS entry</li>
+        </ul>
+      </li>
+      <li>Why are DNS entries cached?
+        <ul>
+          <li>Contacting a recursive resolver (and other DNS servers) is much slower than access a solid state drive (SSD)</li>
+          <li>Spatial locality — users often visit subdomains of a domain, e.g., <code class="language-plaintext highlighter-rouge">portal.colgate.edu</code>, <code class="language-plaintext highlighter-rouge">moodle.colgate.edu</code>, and <code class="language-plaintext highlighter-rouge">cs.colgate.edu</code> are subdomains of <code class="language-plaintext highlighter-rouge">colgate.edu</code></li>
+          <li>Temporal locality — users often visit the same domain repeatedly</li>
+          <li>Mappings from domain names to IP addresses change infrequently —&gt; DNS entries can be cached for hours or days</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Content distribution networks (CDNs)
+    <ul>
+      <li>Collection of geographically distributed servers that delivery content (e.g., streaming videos) to users</li>
+      <li>User’s computers contact a server that is “nearby”
+        <ul>
+          <li>Ideally measured in terms of latency, which is a function of geographic distance, network routes, and network load</li>
+          <li>Analogy: time it takes to drive somewhere is a function of geographic distance, the route you take, and the amount of traffic on the road</li>
+        </ul>
+      </li>
+      <li>CDN servers fetch and cache content from origin servers</li>
+      <li>Popular content (e.g., image from the front page of the NY Times) is more likely to already be cached</li>
+    </ul>
+  </li>
+</ul>
+
+  </body>
+</html>

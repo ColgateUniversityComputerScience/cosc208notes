@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="syntax.css">
+    <base target="_blank">
+  </html>
+  <body>
+      <h2 id="warm-up-q1">Warm-up (Q1)</h2>
+<p><em>What are all possible outputs produced by this program?</em></p>
+<pre><code class="language-C">void *thread1_main(void *arg) {
+    int *x = (int *)arg;
+    *x += 1;
+    printf("x is %d\n", *x);
+    return NULL;
+}
+void *thread2_main(void *arg) {
+    int *y = (int *)arg;
+    *y -= 1;
+    printf("y is %d\n", *y);
+    return NULL;
+}
+int main() {
+    int *z = malloc;
+    *z = 0;
+    // Start thread running thread1_main(z)
+    // Start thread running thread2_main(z)
+    // Wait for threads to finish
+    printf("z is %d\n", *z);
+}
+</code></pre>
+
+<div style="page-break-after:always;"></div>
+
+<h2 id="q2">Q2</h2>
+<pre><code class="language-C">#include &lt;pthread.h&gt;
+void *printer(void *arg) {
+    char *ch = (char*)arg;
+    printf("I am %c\n", *ch);
+    return NULL;
+}
+int main() {
+    pthread_t thread1, thread2;
+    char *ch1 = malloc(sizeof(char));
+    *ch1 = 'X';
+    char *ch2 = malloc(sizeof(char));
+    *ch2 = 'Y';
+    pthread_create(&amp;thread1, NULL, &amp;printer, ch1);
+    pthread_create(&amp;thread2, NULL, &amp;printer, ch2);
+    pthread_join(thread1, NULL);
+    pthread_join(thread2, NULL);
+}
+</code></pre>
+
+<div style="page-break-after:always;"></div>
+
+<h2 id="q3">Q3</h2>
+<pre><code class="language-C">#include &lt;pthread.h&gt;
+void *printer(void *arg) {
+    char *ch = (char*)arg;
+    printf("I am %c\n", *ch);
+    return NULL;
+}
+int main() {
+    pthread_t thread1, thread2;
+    char *ch = malloc(sizeof(char));
+    *ch = 'A';
+    pthread_create(&amp;thread1, NULL, &amp;printer, ch);
+    *ch = 'B';
+    pthread_create(&amp;thread2, NULL, &amp;printer, ch);
+    pthread_join(thread1, NULL);
+    pthread_join(thread2, NULL);
+}
+</code></pre>
+
+<div style="page-break-after:always;"></div>
+
+<h2 id="q4">Q4</h2>
+<pre><code class="language-C">#include &lt;pthread.h&gt;
+void *printer(void *arg) {
+    char *ch = (char*)arg;
+    printf("I am %c\n", *ch);
+    return NULL;
+}
+int main() {
+    pthread_t thread1, thread2;
+    char *ch = malloc(sizeof(char));
+    *ch = 'P';
+    pthread_create(&amp;thread1, NULL, &amp;printer, ch);
+    pthread_join(thread1, NULL);
+    *ch = 'Q';
+    pthread_create(&amp;thread2, NULL, &amp;printer, ch);
+    pthread_join(thread2, NULL);
+}
+</code></pre>
+
+<div style="page-break-after:always;"></div>
+
+<h2 id="race-conditions">Race conditions</h2>
+<pre><code class="language-C">#include &lt;pthread.h&gt;
+#include &lt;stdio.h&gt;
+void *deposit(void *arg) {
+    int *balance = (int *arg)
+    int tmp = *balance
+    tmp += 100;
+    *balance = tmp;
+    return NULL;
+}
+void *withdraw(void *arg) {
+    int *balance = (int *arg)
+    int tmp = *(int *)balance
+    tmp -= 50;
+    *balance = tmp;
+    return NULL;
+}
+int main() {
+    pthread_t thrA, thrB;
+    int *balance = malloc(sizeof(int));
+    *balance = 250;
+    pthread_create(&amp;thrA, NULL, &amp;deposit, balance);
+    pthread_create(&amp;thrB, NULL, &amp;withdraw, balance);
+    pthread_join(thrB, NULL);
+    pthread_join(thrA, NULL);
+    printf("Balance: $%d\n", *balance);
+}
+</code></pre>
+
+<div style="page-break-after:always;"></div>
+
+<h2 id="extra-practice-q5">Extra practice (Q5)</h2>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+#include &lt;pthread.h&gt;
+void *printer2(void *arg) {
+    char *ch = (char*)arg;
+    printf("Start %c\n", *ch);
+    printf("End %c\n", *ch);
+    return NULL;
+}
+int main() {
+    pthread_t thread1, thread2;
+    char ch1='X', ch2='Y';
+    pthread_create(&amp;thread1, NULL, &amp;printer2, &amp;ch1);
+    pthread_create(&amp;thread2, NULL, &amp;printer2, &amp;ch2);
+    pthread_join(thread1, NULL);
+    pthread_join(thread2, NULL);
+}
+</code></pre>
+
+  </body>
+</html>

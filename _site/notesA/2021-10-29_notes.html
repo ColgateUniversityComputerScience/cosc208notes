@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="syntax.css">
+    <base target="_blank">
+  </html>
+  <body>
+      <h1 id="efficiency-memory-hierarchy-locality">Efficiency: memory hierarchy; locality</h1>
+<p><em>COSC 208, Introduction to Computer Systems, 2021-03-22</em></p>
+
+<h2 id="announcements">Announcements</h2>
+<ul>
+  <li>Project 2 Part B due Thursday at 11pm</li>
+</ul>
+
+<h2 id="outline">Outline</h2>
+<ul>
+  <li>Memory hierarchy</li>
+  <li>Locality</li>
+  <li>Optimizing for locality</li>
+</ul>
+
+<h2 id="no-warm-up--happy-friday">No warm-up — Happy Friday!</h2>
+
+<h2 id="memory-hierarchy">Memory hierarchy</h2>
+<ul>
+  <li>Compares various forms of storage in terms of
+    <ul>
+      <li>Access latency</li>
+      <li>Capacity</li>
+      <li>Cost</li>
+      <li>Volatility</li>
+    </ul>
+  </li>
+  <li>Access latency
+    <ul>
+      <li>Let’s consider a 1hz CPU, which means 1 cycle = 1 second</li>
+      <li>Registers — 1 cycle = 1 second</li>
+      <li>Caches — ~10 cycles = ~10 seconds</li>
+      <li>Main memory — ~100 cycles = ~2 minutes</li>
+      <li>Solid-state drive — ~1 million cycles = ~11.5 days</li>
+      <li>Hard (i.e., traditional) disk drive — ~10 million cycles = ~115 days</li>
+      <li>Remote (i.e., network) storage — ~20ms = ~2 years</li>
+    </ul>
+  </li>
+  <li>Storage capacity
+    <ul>
+      <li>Let’s assume 1 byte = 1mL</li>
+      <li>Registers — 30 * 8B = ~250mL = ~1 cup</li>
+      <li>Caches (Core i7 in MacBook Pro)
+        <ul>
+          <li>L1 — 32KB + 32KB = 64L = ~1 tank of gas</li>
+          <li>L2 — 512KB * 4 cores = 2048L = ~7 bathtubs</li>
+        </ul>
+      </li>
+      <li>Main memory = 32GB (in MacBook Pro) = ~13 olympic swimming pools</li>
+      <li>SSD = 1TB (in MacBook Pro) = ~Lake Moraine</li>
+    </ul>
+  </li>
+  <li>Cost
+    <ul>
+      <li>2 x 16GB DRAM = ~$100 = $3.12 per GB</li>
+      <li>1TB SSD = $80 = $0.08 per GB</li>
+      <li>2TB HDD = $60 = $0.03 per GB</li>
+    </ul>
+  </li>
+  <li>Volatility
+    <ul>
+      <li>Primary storage (registers, caches, and main memory) — volatile (i.e., data is lost if power is lost)</li>
+      <li>Secondary storage (SSD, HDD, network storage) — non-volatile (i.e., data is preserved if power is lost)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="data-movement">Data movement</h2>
+<ul>
+  <li>Recall: <em>How does data move between the CPU, main memory, and secondary storage in the von Neumann Architecture?</em> — bus</li>
+  <li><em>Why does data move to/from secondary storage?</em> — data stored in primary storage is lost when a machine looses power</li>
+  <li><em>Why does data move between registers and main memory?</em> — not enough room in registers to store all values used by a program at runtime</li>
+  <li><em>How can we move less data?</em>
+    <ul>
+      <li>Make better use of registers — i.e., eliminate unnecessary loads/stores</li>
+      <li>Add additional memory to the CPU — i.e., a cache</li>
+    </ul>
+  </li>
+  <li><em>How do we decide what/when to move data between the registers, cache, and CPU?</em> — based on locality</li>
+</ul>
+
+<h2 id="temporal-vs-spatial-locality">Temporal vs. spatial locality</h2>
+<ul>
+  <li><em>What is temporal locality?</em>
+    <ul>
+      <li>Access the same data repeatedly</li>
+      <li>E.g., for loop variable</li>
+    </ul>
+  </li>
+  <li><em>What is spatial locality?</em>
+    <ul>
+      <li>Access data with a similar scope</li>
+      <li>E.g., next item in array</li>
+      <li>E.g., local variables/parameters, which are stored in the same stack frame</li>
+    </ul>
+  </li>
+  <li>Analogies for temporal and spatial locality
+    <ul>
+      <li>Book storage (Dive Into Systems Section 11.3.2)
+        <ul>
+          <li>Temporal locality — store most frequently used books at your desk, less frequently used books on your bookshelf, and least frequently used books at the library</li>
+          <li>Spatial locality — checkout books on the same/nearby subjects when you go to the library</li>
+        </ul>
+      </li>
+      <li>Groceries (pre-class questions 3 &amp; 4)
+        <ul>
+          <li>Temporal locality — you store food you eat frequently in the front of the refridgerator, while you store food you eat infrequently in the back of the refrigerator</li>
+          <li>Spatial locality — you organize the items on your grocery list based on the aisle in which they are located</li>
+        </ul>
+      </li>
+      <li>Breakout groups: <em>Develop your own analogy for temporal and spatial locality</em></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="optimizing-assembly-code-for-locality">Optimizing assembly code for locality</h2>
+<ul>
+  <li>Q1: <em>Cross-out redundant loads and stores from the assembly code</em>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  000000000000088c &lt;interest_due&gt;:
+      88c:	sub	sp, sp, #0x20
+      890:	str	w0, [sp, #12]           XXXXX
+      894:	str	w1, [sp, #8]            XXXXX
+      898:	ldr	w0, [sp, #12]           XXXXX
+      89c:	ldr	w1, [sp, #8]            XXXXX
+      8a0:	mul	w0, w1, w0
+      8a4:	str	w0, [sp, #20]
+      8a8:	mov	w0, #0x4b0
+      8ac:	str	w0, [sp, #24]           XXXXX
+      8b0:	ldr	w1, [sp, #20]
+      8b4:	ldr	w0, [sp, #24]           XXXXX
+      8b8:	sdiv	w0, w1, w0
+      8bc:	str	w0, [sp, #28]           XXXXX
+      8c0:	ldr	w0, [sp, #28]           XXXXX
+      8c4:	add	sp, sp, #0x20
+      8c8:	ret
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+  </body>
+</html>

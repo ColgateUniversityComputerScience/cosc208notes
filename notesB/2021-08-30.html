@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>2021-08-30.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="hello-systems-hello-c">Hello, systems; Hello, C</h1>
+<p><em>COSC 208, Introduction to Computer Systems, 2021-08-30</em></p>
+<h2 id="announcements">Announcements</h2>
+<ul>
+<li>Before next class: read DiS sections and answer pre-class questions</li>
+<li>Pre-questions are to be done individually, not in team. We care about trust.</li>
+<li>Is there any volunteer to switch from 208LC to LB?</li>
+</ul>
+<h2 id="outline">Outline</h2>
+<ul>
+<li>Syllabus</li>
+<li>Warm-up: Hello, system</li>
+<li>Hello, C</li>
+</ul>
+<h2 id="syllabus">Syllabus</h2>
+<ul>
+<li><em>Questions</em></li>
+<li>Remarks
+<ul>
+<li>advantage 2D layout: facilitate skimming</li>
+<li>pre-questions: You need to earn ≥ 80% of the available points to get full credit</li>
+<li>project: in pair by default</li>
+<li>participation also includes <em>listening</em>, we share a space</li>
+</ul>
+</li>
+<li>Q0, DiS 0</li>
+</ul>
+<h2 id="warm-up">Warm-up</h2>
+<ul>
+<li>
+<p>Q0: <em>What do you think of when you hear the term “Computer Systems”?</em></p>
+<ul>
+<li>C</li>
+<li>Number representation</li>
+<li>Program memory</li>
+<li>Architecture</li>
+<li>Assembly</li>
+<li>Efficiency</li>
+<li>Multiprocessing</li>
+<li>Networking</li>
+</ul>
+</li>
+<li>
+<p>Q1: <em>What are the main components of a computer system?</em></p>
+<ul>
+<li>Operating system (OS)</li>
+<li>Central processing unit (CPU)</li>
+<li>Random access memory (RAM)</li>
+<li>Secondary storage devices — e.g., hard disk drive, solid state drive</li>
+<li>Input/output (I/O) ports</li>
+</ul>
+</li>
+<li>
+<p><em>What is the role of each of the components?</em></p>
+<ul>
+<li>OS — manages hardware resources</li>
+<li>CPU — executes assembly instructions</li>
+<li>RAM — stores program data (code, variables, etc.) at runtime</li>
+<li>Secondary storage — stores program data (code, documents, etc.) persistently</li>
+<li>I/O ports — receives user input (e.g., keyboard, mouse, audio); provides output to users (e.g., text, graphics, audio)</li>
+</ul>
+</li>
+<li>
+<p><em>Why is it important to learn about computer systems?</em></p>
+<ul>
+<li>To write more efficient programs</li>
+<li>To leverage parallelism</li>
+</ul>
+</li>
+</ul>
+<h2 id="hello-c">Hello, C</h2>
+<ul>
+<li>Hello, C
+<ul>
+<li>Write a C program that prints &quot;Hello, C!&quot;<pre class="hljs"><code><div><span class="hljs-comment">// Visual Studio Code demo</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Hello, C!\n"</span>);
+    <span class="hljs-keyword">return</span> EXIT_SUCCESS;
+}
+</div></code></pre>
+</li>
+</ul>
+</li>
+<li><em>How do you compile the program?</em><pre class="hljs"><code><div>$ clang -g -Wall -o hello hello.c
+</div></code></pre>
+</li>
+<li><em>How do you run the program?</em><pre class="hljs"><code><div>$ ./hello
+</div></code></pre>
+</li>
+</ul>
+<h2 id="primitive-types">Primitive types</h2>
+<ul>
+<li>Most common types
+<ul>
+<li><code>char</code> — 1 byte (8-bits); integers -128...127; integers 0...127 correspond to ASCII characters</li>
+<li><code>int</code> — usually 4 bytes (32-bits); integers -2 billion...2 billion</li>
+<li><code>long </code>— usually 8 bytes (64-bits); integers -9 quintillion...9 quintillion</li>
+</ul>
+</li>
+<li>Add <code>unsigned</code> in front of these types for a range from 0 to 255, 4 billion, or 18 quintillion, respectively</li>
+</ul>
+<h2 id="operators">Operators</h2>
+<ul>
+<li><em>How would I increment the number stored in a variable <code>x</code> by <code>1</code>?</em>
+<ul>
+<li><code>x = x + 1</code></li>
+<li><code>x += 1</code></li>
+<li><code>x++</code></li>
+<li><code>++x</code></li>
+</ul>
+</li>
+<li>Q2: <em>What is the output of this program?</em><pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">int</span> x = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">int</span> y = <span class="hljs-number">2</span>;
+    x = x+<span class="hljs-number">5</span>;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d "</span>, x);
+    x = y*<span class="hljs-number">2</span>;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d "</span>, x);
+    x *= <span class="hljs-number">5</span>;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d "</span>, x);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d "</span>, x--);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d "</span>, x);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d "</span>, --x);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d"</span>, x);
+}
+</div></code></pre>
+<pre class="hljs"><code><div>6 4 20 20 19 18 18
+</div></code></pre>
+</li>
+<li>Q3: <em>What is the output of this program?</em><pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">int</span> x = <span class="hljs-number">5</span>;
+    <span class="hljs-keyword">int</span> y = x/<span class="hljs-number">2</span>;
+    <span class="hljs-keyword">int</span> z = x%<span class="hljs-number">2</span>;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d %d\n"</span>, y, z);
+}
+</div></code></pre>
+<pre class="hljs"><code><div>2 1
+</div></code></pre>
+</li>
+<li>Q4: <em>What is the output of this program?</em><pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">int</span> x = <span class="hljs-number">5</span>;
+    <span class="hljs-keyword">char</span> y = <span class="hljs-string">'A'</span>;
+    y = y + <span class="hljs-number">5</span>;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%c %d\n"</span>, y, y);
+}
+</div></code></pre>
+<pre class="hljs"><code><div>F 70
+</div></code></pre>
+</li>
+</ul>
+<h2 id="output">Output</h2>
+<ul>
+<li>What is the syntax for <code>printf</code>?
+<ul>
+<li><code>printf(FORMAT_STRING, VALUES, ...);</code></li>
+<li><code>FORMAT_STRING</code> is a string constant (sequence of characters surrounded by double quotes) that may optionally include format specifiers</li>
+<li>Format specifiers define how to convert a value to a string
+<ul>
+<li><code>%d</code> decimal (i.e., base 10) number</li>
+<li><code>%c</code> character</li>
+<li><code>%x</code> hexadecimal (i.e., base 16) number</li>
+<li><code>%s</code> string — more on this next week</li>
+</ul>
+</li>
+<li>After the format string, include a value for each format specifier
+<ul>
+<li>A compile error will occur if the number of format specifiers does not match the number of values</li>
+<li>A compile warning will occur if the value type does not match the format specifier</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Next week we'll talk about reading input using <code>fgets</code>
+<ul>
+<li><em>Dive into Systems</em> uses <code>scanf</code>, which has several disadvantage</li>
+</ul>
+</li>
+</ul>
+<h2 id="extra-practice">Extra practice</h2>
+<ul>
+<li>Q5: <em>Write a program that computes and displays the number of minutes in a year.</em><pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">int</span> minutes = <span class="hljs-number">365</span> * <span class="hljs-number">24</span> * <span class="hljs-number">60</span>;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d minutes\n"</span>, minutes);
+    <span class="hljs-keyword">return</span> EXIT_SUCCESS;
+}
+</div></code></pre>
+</li>
+</ul>
+
+</body>
+</html>

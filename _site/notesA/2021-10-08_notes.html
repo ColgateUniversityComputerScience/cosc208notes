@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="syntax.css">
+    <base target="_blank">
+  </html>
+  <body>
+      <h1 id="assembly-tracing-assembly-operations">Assembly: Tracing assembly; operations</h1>
+<p><em>COSC 208, Introduction to Computer Systems, 2021-10-08</em></p>
+
+<h2 id="announcements">Announcements</h2>
+<ul>
+  <li>Project 2 Part A due Thursday, Oct 21</li>
+</ul>
+
+<h2 id="outline">Outline</h2>
+<ul>
+  <li>Warm-up</li>
+  <li>Tracing assembly code</li>
+  <li>Arithmetic operations</li>
+</ul>
+
+<h2 id="warm-up">Warm-up</h2>
+<ul>
+  <li>Q0: <em>Write the C code equivalent for each line of assembly, treating registers as if they were variable names.</em>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  000000000000083c &lt;deref&gt;:
+          83c:   d10083ff        sub     sp, sp, #0x20    // sp = sp - 0x20
+          840:   f90007e0        str     x0, [sp, #8]     // *(sp + 8) = x0
+          844:   f94007e0        ldr     x0, [sp, #8]     // x0 = *(sp + 8)
+          848:   f9400000        ldr     x0, [x0]         // x0 = *x0
+          84c:   f9000fe0        str     x0, [sp, #24]    // *(sp + 24) = w0
+          850:   f9400fe0        ldr     x0, [sp, #24]    // w0 = *(sp + 24)
+          854:   910083ff        add     sp, sp, #0x20    // sp = sp + 0x20
+          858:   d65f03c0        ret                      // return
+</code></pre></div>    </div>
+  </li>
+  <li>Q1: <em>Write the C code equivalent for each line of assembly, treating registers as if they were variable names. For example, the C code equivalent for <code class="language-plaintext highlighter-rouge">sub sp, sp, #0x20</code> is <code class="language-plaintext highlighter-rouge">sp = sp - 0x20</code>.</em>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  00000000000007ec &lt;sum&gt;:
+      7ec:	d10083ff 	sub	sp, sp, #0x20   // sp = sp - 0x20
+      7f0:	b9000fe0 	str	w0, [sp, #12]   // *(sp + 12) = w0
+      7f4:	f90003e1 	str	x1, [sp]        // *sp = x1
+      7f8:	f94003e0 	ldr	x0, [sp]        // x0 = *sp
+      7fc:	b9400000 	ldr	w0, [x0]        // w0 = *x0
+      800:	b9001be0 	str	w0, [sp, #24]   // *(sp + 24) = w0
+      804:	b9400fe1 	ldr	w1, [sp, #12]   // w1 = *(sp + 12)
+      808:	b9401be0 	ldr	w0, [sp, #24]   // w0 = *(sp + 24)
+      80c:	0b000020 	add	w0, w1, w0      // w0 = w1 + w0
+      810:	b9001fe0 	str	w0, [sp, #28]   // *(sp + 28) = w0
+      814:	b9401fe0 	ldr	w0, [sp, #28]   // w0 = *(sp + 28)
+      818:	910083ff 	add	sp, sp, #0x20   // sp = sp + 0x20
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="tracing-assembly-code">Tracing assembly code</h2>
+<ul>
+  <li>C code
+    <pre><code class="language-C">  1  int sum(int a, int *b) {
+  2     int c = *b;
+  3     int d = a + c;
+  4     return d;
+  5  }
+</code></pre>
+  </li>
+  <li>Assembly code
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  00000000000007ec &lt;sum&gt;:
+      7ec:	d10083ff 	sub	sp, sp, #0x20   // Line 1
+      7f0:	b9000fe0 	str	w0, [sp, #12]   //   |
+      7f4:	f90003e1 	str	x1, [sp]        //   V
+      7f8:	f94003e0 	ldr	x0, [sp]        // Line 2
+      7fc:	b9400000 	ldr	w0, [x0]        //   |
+      800:	b9001be0 	str	w0, [sp, #24]   //   V
+      804:	b9400fe1 	ldr	w1, [sp, #12]   // Line 3
+      808:	b9401be0 	ldr	w0, [sp, #24]   //   |
+      80c:	0b000020 	add	w0, w1, w0      //   |
+      810:	b9001fe0 	str	w0, [sp, #28]   //   V
+      814:	b9401fe0 	ldr	w0, [sp, #28]   // Line 4
+      818:	910083ff 	add	sp, sp, #0x20   // Line 5
+      81c:	d65f03c0 	ret	                //   V
+</code></pre></div>    </div>
+  </li>
+  <li>Stack (before executing second-to-last assembly instruction; assume <code class="language-plaintext highlighter-rouge">sp = 0xF0</code> initially)
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>         0  1  2  3  4  5  6  7  8
+   sp -&gt; +--+--+--+--+--+--+--+--+
+   0xD0  |           b           |
+         +--+--+--+--+--+--+--+--+
+   0xD8  |           |     a     |
+         +--+--+--+--+--+--+--+--+`
+   0xE0  |                       |
+         +--+--+--+--+--+--+--+--+
+   0xE8  |     c     |     d     |
+         +--+--+--+--+--+--+--+--+
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="arithmetic-operations">Arithmetic operations</h2>
+<p><em>Write the C code equivalent for each line of assembly, treating registers as if they were variable names.</em></p>
+<ul>
+  <li>Q2: <code class="language-plaintext highlighter-rouge">lsl w9, w9, w10</code>
+    <pre><code class="language-C">  w9 = w9 &lt;&lt; w10
+</code></pre>
+  </li>
+  <li>Q3: <code class="language-plaintext highlighter-rouge">and w9, w9, w10</code>
+    <pre><code class="language-C">  w9 = w9 &amp; w10
+</code></pre>
+  </li>
+  <li>Q4: <code class="language-plaintext highlighter-rouge">mul w9, w9, w10</code>
+    <pre><code class="language-C">  w9 = w9 * w10
+</code></pre>
+  </li>
+  <li>Q5: <code class="language-plaintext highlighter-rouge">sdiv w9, w9, w10</code>
+    <pre><code class="language-C">  w9 = w9 / w10
+</code></pre>
+  </li>
+</ul>
+
+<h2 id="practice-tracing-assembly-code">Practice tracing assembly code</h2>
+<ul>
+  <li>Q6: <em>The following is the assembly code for a C function with the following prototype: <code class="language-plaintext highlighter-rouge">int seasons_of_love()</code>. Write the C code equivalent for each line of assembly, treating registers as if they were variable names.</em>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  0000000000400584 &lt;seasons_of_love&gt;:
+      400584:	d10083ff 	sub	sp, sp, #0x20   // sp = sp - 0x20
+      400588:	52802da8 	mov	w8, #0x16d      // w8 = 0x16 
+      40058c:	52800309 	mov	w9, #0x18       // w9 = 0x18
+      400590:	5280078a 	mov	w10, #0x3c      // w10 = 0x3c
+      400594:	b9001fe8 	str	w8, [sp, #28]   // *(sp + 28) = w8
+      400598:	b9001be9 	str	w9, [sp, #24]   // *(sp + 24) = w9
+      40059c:	b90017ea 	str	w10, [sp, #20]  // *(sp + 20) = w10
+      4005a0:	b9401fe8 	ldr	w8, [sp, #28]   // w8 = *(sp + 28)
+      4005a4:	b9401be9 	ldr	w9, [sp, #24]   // w9 = *(sp + 24)
+      4005a8:	1b097d08 	mul	w8, w8, w9      // w8 = w8 * w9
+      4005ac:	b90013e8 	str	w8, [sp, #16]   // *(sp + 16) = w8
+      4005b0:	b94013e8 	ldr	w8, [sp, #16]   // w8 = *(sp + 16)
+      4005b4:	b94017e9 	ldr	w9, [sp, #20]   // w9 = *(sp + 20)
+      4005b8:	1b097d08 	mul	w8, w8, w9      // w8 = w8 * w9
+      4005bc:	b9000fe8 	str	w8, [sp, #12]   // *(sp + 12) = w8
+      4005c0:	b9400fe0 	ldr	w0, [sp, #12]   // w0 = *(sp + 12)
+      4005c4:	910083ff 	add	sp, sp, #0x20   // sp = sp + 0x20
+      4005c8:	d65f03c0 	ret	                // return
+</code></pre></div>    </div>
+  </li>
+  <li>Q7: <em>Draw the contents of the stack and registers just prior to the execution of the second-to-last instruction. Assume the initial value of <code class="language-plaintext highlighter-rouge">sp</code> is <code class="language-plaintext highlighter-rouge">0x7FE0</code>.</em>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>          0  1  2  3  4  5  6  7  8          
+   sp -&gt;  +--+--+--+--+--+--+--+--+
+  0x7FC0  |           |           |
+          +--+--+--+--+--+--+--+--+
+  0x7FC8  |           |  0x80520  |
+          +--+--+--+--+--+--+--+--+
+  0x7FD0  |  0x2238   |   0x3c    |
+          +--+--+--+--+--+--+--+--+
+  0x7FD8  |    0x18   |   0x16d   |
+          +--+--+--+--+--+--+--+--+
+</code></pre></div>    </div>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  sp = 0x7FC0
+  w0 = 0x80520
+  w8 = 0x80520
+  w9 = 0x3c
+  w10 = 0x3c
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+  </body>
+</html>

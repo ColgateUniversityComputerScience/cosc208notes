@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="syntax.css">
+    <base target="_blank">
+  </html>
+  <body>
+      <h1 id="multiprocessing-wait-exec">Multiprocessing: wait; exec</h1>
+<p><em>COSC 208, Introduction to Computer Systems, 2021-11-08</em></p>
+
+<h2 id="announcements">Announcements</h2>
+<ul>
+  <li>Project 2 Part B due tomorrow at 11pm</li>
+</ul>
+
+<h2 id="outline">Outline</h2>
+<ul>
+  <li>Warm-up</li>
+  <li>Waiting for processes</li>
+  <li>Running a different program</li>
+</ul>
+
+<h2 id="warm-up">Warm-up</h2>
+<ul>
+  <li>Q1: <em>What does the following code output?</em>
+    <pre><code class="language-C">  int main(int argc, char **argv) {
+      int value = 100;
+      int pid = fork();
+      if (pid == 0) {
+          value -= 50;
+      } else {
+          value += 50;
+      }
+      printf("My value is %d\n", value);
+      return 0;
+  }
+</code></pre>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  My value is 50
+  My value is 150
+</code></pre></div>    </div>
+    <p>OR</p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  My value is 150
+  My value is 50
+</code></pre></div>    </div>
+  </li>
+  <li>Q2: <em>What does the following code output?</em>
+    <pre><code class="language-C">  int main(int argc, char **argv) {
+      printf("Begin\n");
+      int pid = fork();
+      if (pid == 0) {
+          printf("Child\n");
+          return 0;
+      } else {
+          printf("Parent\n");
+      }
+      printf("End\n");
+  }
+</code></pre>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  Begin
+  Child
+  Parent
+  End 
+</code></pre></div>    </div>
+    <p>OR</p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  Begin
+  Parent
+  Child
+  End 
+</code></pre></div>    </div>
+    <p>OR</p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  Begin
+  Parent
+  End 
+  Child
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="waiting-for-processes">Waiting for processes</h2>
+<ul>
+  <li>Wait for any child to finish — <code class="language-plaintext highlighter-rouge">int wait(int *status)</code>
+    <ul>
+      <li>Returns PID of the child process that finished</li>
+      <li><code class="language-plaintext highlighter-rouge">status</code> parameter is optional
+        <ul>
+          <li>if passed a valid integer pointer, <code class="language-plaintext highlighter-rouge">wait</code> will store the return value of the child process’s <code class="language-plaintext highlighter-rouge">main</code> function at the referenced memory location</li>
+          <li>if return value of child process’s main function is not needed, then pass <code class="language-plaintext highlighter-rouge">NULL</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Wait for a specific process to finish — <code class="language-plaintext highlighter-rouge">int waitpid(pid_t pid, int *status, int options)</code>
+    <ul>
+      <li>Returns PID of the process that finished</li>
+      <li><code class="language-plaintext highlighter-rouge">pid</code> is PID if process to wait for — need not be a child process</li>
+      <li><code class="language-plaintext highlighter-rouge">status</code> is the same as <code class="language-plaintext highlighter-rouge">wait</code></li>
+      <li><code class="language-plaintext highlighter-rouge">options</code> is typically <code class="language-plaintext highlighter-rouge">0</code>, except in special circumstances</li>
+    </ul>
+  </li>
+  <li>Wait functions do not return until child or specific process, respectively, finishes</li>
+  <li>Q3: <em>What are all possible outputs of this program?</em>
+    <pre><code class="language-C">  int main() {
+      int pid = fork();
+      if (pid == 0) {
+          printf("Child\n");
+      } else {
+          wait(NULL);
+          printf("Parent\n");
+      }
+      return 0;
+  }
+</code></pre>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  Child
+  Parent
+</code></pre></div>    </div>
+  </li>
+  <li>Q4: <em>What are all possible outputs of this program (assuming the new process has PID 13346)?</em>
+    <pre><code class="language-C">  int main() {
+      int pid = fork();
+      printf("A %d\n", pid);
+      if (pid == 0) {
+          printf("B\n");
+      } else {
+          wait(NULL);
+          printf("C\n");
+      }
+  }
+</code></pre>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  A 0
+  A 13346
+  B
+  C
+</code></pre></div>    </div>
+    <p>OR</p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  A 13346
+  A 0
+  B
+  C
+</code></pre></div>    </div>
+    <p>OR</p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  A 0
+  B
+  A 13346
+  C
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="running-a-different-program">Running a different program</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">int exec(const char *path, const char *argv[])</code>
+    <ul>
+      <li>Used to switch which program is running in a process — replaces current code with code for a new program and starts executing that program from main</li>
+      <li><code class="language-plaintext highlighter-rouge">path</code> == full path to program</li>
+      <li><code class="language-plaintext highlighter-rouge">argv</code> == array of strings containing the full path to the program, any command line arguments, and <code class="language-plaintext highlighter-rouge">NULL</code></li>
+    </ul>
+  </li>
+  <li>Example program
+    <pre><code class="language-C">  int main(int argc, char **argv) {
+      printf("Begin\n");
+      int pid = fork();
+      if (pid == 0) {
+          printf("Child\n");
+          char *cmd[] = { "/usr/bin/date", NULL };
+          execv(cmd[0], cmd);
+      } else {
+          printf("Parent\n");
+      }
+      printf("End\n");
+      return 0;
+  }
+</code></pre>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  Begin
+  Parent
+  End 
+  Child
+  Mov Nov 8 13:20:00 UTC 2021
+</code></pre></div>    </div>
+  </li>
+  <li>Q5: <em>What is the output produced by running <code class="language-plaintext highlighter-rouge">./progA</code>, assuming no errors occur?</em>
+  <strong>progA:</strong>
+    <pre><code class="language-C">  int main() {
+      pid_t a = fork();
+      if (a == 0) {
+          execv("./progB", NULL);
+          printf("A 2nd gen\n");
+          return 0;
+      } else {
+          wait(NULL);
+          printf("A 1st gen\n");
+          return 0;
+      }
+  }
+</code></pre>
+    <p><strong>progB:</strong></p>
+    <pre><code class="language-C">  int main() {
+      pid_t b = fork();
+      if (b == 0) {
+          printf("B 2nd gen\n");
+          return 0;
+      } else {
+          wait(NULL);
+          printf("B 1st gen\n");
+          return 0;
+      }
+  }
+</code></pre>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  B 2nd gen
+  B 1st gen
+  A 1st gen
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+  </body>
+</html>

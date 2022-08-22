@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="syntax.css">
+    <base target="_blank">
+  </html>
+  <body>
+      <h1 id="number-representation-bitwise-operators-real-numbers">Number representation: bitwise operators; real numbers</h1>
+<p><em>COSC 208, Introduction to Computer Systems, 2021-09-15</em></p>
+
+<h2 id="announcements">Announcements</h2>
+<ul>
+  <li>Project 1 Part A due tomorrow at 11pm</li>
+  <li>Exam 1
+    <ul>
+      <li>Study guide posted on Moodle</li>
+      <li>Take-home portion: released Friday at the end of class; due Monday at the start of class</li>
+      <li>In-class portion: during class on Monday</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="outline">Outline</h2>
+<ul>
+  <li>Warm-up</li>
+  <li>Bitwise operators</li>
+  <li>Real numbers</li>
+</ul>
+
+<h2 id="warm-up">Warm-up</h2>
+<p><em>Perform the following computations with 8-bit signed integers</em></p>
+<ul>
+  <li>Q1: <code class="language-plaintext highlighter-rouge">0b10100011 + 7 = 0b10100011 + 0b00000111 = 0b10101010 = -86</code></li>
+  <li>Q2: <code class="language-plaintext highlighter-rouge">48 - 0b01100001 = 0b00110000 + 0b10011111 = 0b11001111 = -49</code></li>
+  <li>Q3: <code class="language-plaintext highlighter-rouge">0b00100000 + 0b01100000 = 0b10000000 = -128</code> (overflow occurred)</li>
+</ul>
+
+<h2 id="bitwise-operators">Bitwise operators</h2>
+<ul>
+  <li>Apply an operation to a single bit (not) or a pair of bits (and, or, xor)</li>
+  <li><code class="language-plaintext highlighter-rouge">~</code> (not)
+    <ul>
+      <li>Flips bits: if bit is 0, then result is 1; otherwise, result is 0</li>
+      <li>Example: <code class="language-plaintext highlighter-rouge">~0b101</code> = <code class="language-plaintext highlighter-rouge">0b010</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">&amp;</code> (and)
+    <ul>
+      <li>If both bits are 1, then result is 1; otherwise, result is 0</li>
+      <li>Example: <code class="language-plaintext highlighter-rouge">0b0101 &amp; 0b0011</code> = <code class="language-plaintext highlighter-rouge">0b0001</code></li>
+      <li>This is different than logical and (<code class="language-plaintext highlighter-rouge">&amp;&amp;</code>) which checks whether both operands are non-zero</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">|</code> (or)
+    <ul>
+      <li>If either or both bits are 1, then result is 1; otherwise, result is 0</li>
+      <li>Example: <code class="language-plaintext highlighter-rouge">0b0101 | 0b0011</code> = <code class="language-plaintext highlighter-rouge">0b0111</code></li>
+      <li>This is different than logical or (<code class="language-plaintext highlighter-rouge">||</code>) which checks whether at least one operand is non-zero</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">^</code> (xor)
+    <ul>
+      <li>If either, but not both, bits are 1, then result is 1; otherwise, result is 0</li>
+      <li>Example: <code class="language-plaintext highlighter-rouge">0b0101 | 0b0011</code> = <code class="language-plaintext highlighter-rouge">0b0110</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;&lt;</code> (left shift), <code class="language-plaintext highlighter-rouge">&gt;&gt;</code> (right shift)
+    <ul>
+      <li>Move bits to the left or the right and append or prepend zeros to keep the same number of bits</li>
+      <li>Example: <code class="language-plaintext highlighter-rouge">0b1111 &lt;&lt; 0b0010</code> = <code class="language-plaintext highlighter-rouge">0b1100</code></li>
+      <li>Example: <code class="language-plaintext highlighter-rouge">0b1111 &gt;&gt; 0b0001</code> = <code class="language-plaintext highlighter-rouge">0b0111</code></li>
+      <li>Can use bit shifting to multiply or divide by powers of two</li>
+    </ul>
+  </li>
+  <li>Practice
+    <ul>
+      <li>Q4: <code class="language-plaintext highlighter-rouge">0b1010 | 0b0101</code> = <code class="language-plaintext highlighter-rouge">0b1111</code></li>
+      <li>Q5: <code class="language-plaintext highlighter-rouge">0b1010 &amp; 0b0101</code> = <code class="language-plaintext highlighter-rouge">0b0000</code></li>
+      <li>Q6: <code class="language-plaintext highlighter-rouge">~(0b1100 &amp; 0b0110)</code> = <code class="language-plaintext highlighter-rouge">~0b0100</code> = <code class="language-plaintext highlighter-rouge">0b1011</code></li>
+      <li>Q7: <code class="language-plaintext highlighter-rouge">0b1000 &gt;&gt; 0b011</code> = <code class="language-plaintext highlighter-rouge">0b0001</code> (divide by 2^3)</li>
+      <li>Q8: <code class="language-plaintext highlighter-rouge">0b0001 &lt;&lt; 0b0010</code> = <code class="language-plaintext highlighter-rouge">0b0100</code> (multiply by 2^2)</li>
+      <li>Q9: <code class="language-plaintext highlighter-rouge">0b1111 &amp; (~0b0010)</code> = <code class="language-plaintext highlighter-rouge">0b1111 &amp; 0b1101</code> = <code class="language-plaintext highlighter-rouge">0b1101</code> (clear a bit)</li>
+      <li>Q10: <code class="language-plaintext highlighter-rouge">0b0000 | 0b0010</code> = <code class="language-plaintext highlighter-rouge">0b0010</code> (set a bit)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="real-numbers">Real numbers</h2>
+<ul>
+  <li>Real numbers may have fractional parts – e.g., <code class="language-plaintext highlighter-rouge">3.14</code></li>
+  <li><em>How can we encode real numbers?</em></li>
+  <li>Fixed-point representation
+    <ul>
+      <li>Location of decimal point is fixed — some bits encode whole numbers, and some bits encode fractional numbers</li>
+      <li>Example: 8-bit fixed point with 3 bits for the fractional part: <code class="language-plaintext highlighter-rouge">0b01011010</code> = 0 * 2^4 + 1 * 2^3 + 0 * 2^2 + 1 * 2^1 + 1 * 2^0 + 0 * 2^-1 + 1 * 2^-2 + 0 * 2^-3 = 8 + 2 + 1 + 0.25 = 11.25</li>
+      <li><em>What is an advantage of fixed-point representation?</em>
+        <ul>
+          <li>Easy to compute</li>
+        </ul>
+      </li>
+      <li><em>What is a disadvantage of fixed-point representation?</em>
+        <ul>
+          <li>Range of real numbers is fixed — cannot represent large whole numbers or small fractional numbers</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Float-point representation
+    <ul>
+      <li>Uses a “scaling factor” to multiply (or divide) fractional part</li>
+      <li>Bits in the significand represent (from left to right) 2^-1, 2^2, … 2^-23</li>
+      <li>Bits in the exponent represent an unsigned integer 0 - 255</li>
+      <li>Multiple significand by 2^(exponent - 127) to get final result</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="extra-practice">Extra practice</h2>
+<p><em>How many bytes of memory are reserved for each of the following variables?</em></p>
+<ul>
+  <li>Q11: <code class="language-plaintext highlighter-rouge">int a;</code> = 4</li>
+  <li>Q12: <code class="language-plaintext highlighter-rouge">unsigned int b;</code> = 4</li>
+  <li>Q13: <code class="language-plaintext highlighter-rouge">char c;</code> = 1</li>
+  <li>Q14: <code class="language-plaintext highlighter-rouge">long long d;</code> = 8</li>
+  <li>Q15: <code class="language-plaintext highlighter-rouge">int e[5];</code> = 20</li>
+  <li>Q16: <code class="language-plaintext highlighter-rouge">char f[30];</code> = 30</li>
+</ul>
+
+<p><em>Compute the following powers of two</em></p>
+<ul>
+  <li>Q17: <code class="language-plaintext highlighter-rouge">2^4</code> = 16</li>
+  <li>Q18: <code class="language-plaintext highlighter-rouge">2^6</code> = 64</li>
+  <li>Q19: <code class="language-plaintext highlighter-rouge">2^8</code> = 256</li>
+  <li>Q20: <code class="language-plaintext highlighter-rouge">2^10</code> = 1024</li>
+  <li>Q21: <code class="language-plaintext highlighter-rouge">2^12</code> = 4096</li>
+  <li>Q22: <code class="language-plaintext highlighter-rouge">2^16</code> = 65536</li>
+</ul>
+
+<p>Q23: <em>Write a function called <code class="language-plaintext highlighter-rouge">sign</code> that takes a number expressed in binary using two’s complement and returns <code class="language-plaintext highlighter-rouge">-1</code> if the number is negative, <code class="language-plaintext highlighter-rouge">0</code> if the number is zero, or <code class="language-plaintext highlighter-rouge">1</code> if the number is positive. The binary is stored as a character array that starts with <code class="language-plaintext highlighter-rouge">0b</code> and contains an arbitrary number of <code class="language-plaintext highlighter-rouge">'0'</code> and <code class="language-plaintext highlighter-rouge">'1'</code> characters.</em></p>
+<pre><code class="language-C">int sign(char binary[]) {
+    if (binary[2] == '1') {
+        return -1;
+    } else {
+        for (int i = 3; i &lt; strlen(binary); i++) {
+            if (binary[i] == '1') {
+                return 1;
+            }
+        }
+        return 0;
+    }
+}
+</code></pre>
+
+  </body>
+</html>

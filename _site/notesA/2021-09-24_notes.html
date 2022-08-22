@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="syntax.css">
+    <base target="_blank">
+  </html>
+  <body>
+      <h1 id="program-memory-arrays--pointers">Program memory: arrays &amp; pointers</h1>
+<p><em>COSC 208, Introduction to Computer Systems, 2021-02-24</em></p>
+
+<h2 id="announcements">Announcements</h2>
+<ul>
+  <li>Project 1 Part B due Thursday</li>
+</ul>
+
+<h2 id="outline">Outline</h2>
+<ul>
+  <li>Warm-up</li>
+  <li>Arrays &amp; pointers</li>
+</ul>
+
+<h2 id="warm-up">Warm-up</h2>
+<p>Q1: <em>What is the output of this program?</em></p>
+<pre><code class="language-C">void copy1(int a, int b) {
+    a = b;
+}
+void copy2(int *c, int *d) {
+    c = d;
+}
+void copy3(int *e, int *f) {
+    *e = *f;
+}
+int main() {
+    int q = 1;
+    int r = 2;
+    copy1(q, r);
+    int s = 3;
+    int t = 4;
+    copy2(&amp;s, &amp;t);
+    int u = 5;
+    int v = 6;
+    copy3(&amp;u, &amp;v);
+    printf("%d %d %d %d %d %d\n", q, r, s, t, u, v);
+}
+</code></pre>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1 2 3 4 6 6
+</code></pre></div></div>
+
+<h2 id="arrays--pointers">Arrays &amp; pointers</h2>
+<ul>
+  <li>An array variable is a pointer to a region of memory where the items in the array are stored
+    <ul>
+      <li>Example
+        <pre><code class="language-C">  int main() {
+      char word[] = "hat";
+      printf("word = %s\n", word);
+      char *ptr = word;
+      printf("ptr = %s\n", ptr);
+      if (ptr == word) {
+          printf("ptr == word\n");
+      }
+      else {
+          printf("ptr != word\n");
+      }
+      word[1] = 'i';
+      printf("word = %s\n", word);
+      *ptr = 's';
+      printf("word = %s\n", word);
+      ptr[1] = 'a';
+      printf("word = %s\n", word);
+  } 
+</code></pre>
+      </li>
+    </ul>
+  </li>
+  <li>This explains why there is no out-of-bounds checks for arrays: the memory addresses in pointers are never checked to see if they are valid</li>
+  <li>This also explains why you can change an array within a function and have those changes reflected outside of the function
+    <pre><code class="language-C">  int update(char str[]) {
+      str[0] = 'p';
+  }
+  int main() {
+      char word[] = "mat";
+      update(word);
+      printf("%s\n", word);
+  }
+</code></pre>
+  </li>
+  <li>Q2: <em>What is the output of this program?</em>
+    <pre><code class="language-C">  int main() {
+      int nums[4] = {1,2,3,4};
+      printf("%d %d\n", *nums, nums[1]);
+      int *ptr = &amp;nums[1];
+      nums[1] += 4;
+      printf("%d %d\n", *ptr, nums[0]);
+      ptr = (nums + 2);
+      printf("%d\n", *ptr);
+      ptr++; // num++ is illegal
+      printf("%d\n", *ptr);
+  }
+</code></pre>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  1 2
+  6 1
+  3
+  4
+</code></pre></div>    </div>
+  </li>
+  <li>Q3: <em>What is the output of this program?</em>
+    <pre><code class="language-C">  int main() {
+      char *first = "Colgate";
+      char second[10] = "Univ";
+      char *f = &amp;first[3];
+      printf("%d\n", strlen(f));
+      char *s = second;
+      *s = 'K';
+      s++;
+      *(s+2) = 't';
+      printf("%s %s\n", second, s);
+  }
+</code></pre>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  4
+  Knit nit
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="extra-practice">Extra practice</h2>
+<ul>
+  <li>Q4: <em>What is the output of this program?</em>
+    <pre><code class="language-C">  void increment1(int a) {
+      a = a + 1;
+  }
+  void increment2(int *b) {
+      *b = *b + 1;
+  }
+  int main() {
+      int x = 1;
+      int *y = &amp;x;
+      increment1(x);
+      printf("%d %d\n", x, *y);
+      increment2(y);
+      printf("%d %d\n", x, *y);
+  }
+</code></pre>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  1 1
+  2 2
+</code></pre></div>    </div>
+  </li>
+  <li>Q5: <em>What do the following two functions do? How are they different?</em>
+    <pre><code class="language-C">  void swap1(int *m, int *n) {
+      int tmp = *n;
+      *n = *m;
+      *m = tmp;
+  }   
+  void swap2(int **x, int **y) {
+      int *tmp = *y;
+      *y = *x;
+      *x = tmp;
+  }
+</code></pre>
+  </li>
+  <li>Q6: <em>What is the output of this program?</em>
+    <pre><code class="language-C">  int main() {
+      int a = 1;
+      int b = 2;
+      int *ptrA = &amp;a;
+      int *ptrB = &amp;b;
+      swap1(ptrA, ptrB);
+      printf("%d %d\n", a, b);
+      swap2(&amp;ptrA, &amp;ptrB);
+      printf("%d %d %d %d\n", a, b, *ptrA, *ptrB);
+  }
+</code></pre>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  2 1
+  2 1 1 2
+</code></pre></div>    </div>
+  </li>
+  <li>Q7: <em>Draw a memory diagram that displays the program’s variables and their values when the program reaches the comment <code class="language-plaintext highlighter-rouge">STOP HERE</code>.</em>
+    <pre><code class="language-C">  char *split(char *str, char delim) {
+      for (int i = 0; i &lt; strlen(str); i++) {
+          if (str[i] == delim) {
+              str[i] = '\0';
+              return &amp;str[i+1];
+          }
+      }
+      return NULL;
+  }
+
+  void parse(char *url) {
+      char separator = '/';
+      char *path = split(url, separator);
+      int domainlen = strlen(url);
+      int pathlen = strlen(path);
+      // STOP HERE
+      printf("Domain (%d chars): %s\n", domainlen, url);
+      printf("Path (%d chars): %s\n", pathlen, path);
+  }
+
+  int main() {
+      char input[] = "colgate.edu/lgbtq"
+      parse(input);
+  }
+</code></pre>
+  </li>
+</ul>
+
+  </body>
+</html>

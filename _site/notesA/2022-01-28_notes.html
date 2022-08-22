@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="syntax.css">
+    <base target="_blank">
+  </html>
+  <body>
+      <h1 id="c-control-structures-functions">C: control structures; functions</h1>
+<p><em>COSC 208, Introduction to Computer Systems, 2022-01-28</em></p>
+
+<h2 id="announcements">Announcements</h2>
+<ul>
+  <li>Before next class: read <em>Dive Into Systems</em> 1.4.1, 2.9.5 and answer pre-class questions</li>
+</ul>
+
+<h2 id="outline">Outline</h2>
+<ul>
+  <li>Warm-up</li>
+  <li>Control structures</li>
+  <li>Defining functions</li>
+</ul>
+
+<h2 id="warm-up">Warm-up</h2>
+<p>Q1: <em>Write a program that prints the number of days, hours, and minutes in a week.</em></p>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+int main() {
+    int days = 7;
+    int hours = days * 24;
+    int minutes = hours * 60;
+	printf("1 week = %d days = %d hours = %d minutes\n", days, hours, minutes);
+}
+</code></pre>
+
+<h2 id="control-structures">Control structures</h2>
+<ul>
+  <li>Control structures in C have the same syntax as control structures in Java.
+    <ul>
+      <li>Conditionals
+        <pre><code class="language-C">  if (/* BOOLEAN EXPRESSION */) { // Exactly one
+      /* STATEMENTS */
+  }
+  else if (/* BOOLEAN EXPRESSION */) { // Zero or more
+      /* STATEMENTS */   
+  }
+  else { // Zero or one
+      /* STATEMENTS */   
+  }
+</code></pre>
+      </li>
+      <li>For loops
+        <pre><code class="language-C">  for (/* INTITIALIZER */; /* CONTINUATION CONDITION */; /* INCREMENT */) {
+      /* STATEMENTS */
+  }
+</code></pre>
+      </li>
+      <li>While loops
+        <pre><code class="language-C">  while (/* CONTINUATION CONDITION */) {
+      /* STATEMENTS */
+  }
+</code></pre>
+      </li>
+    </ul>
+  </li>
+  <li>Curly braces are optional if the body of a conditional, for loop, or while loop is only one line
+    <ul>
+      <li>But, you should <strong>always</strong> include them to make the code easier to read and reduce the likelihood of future errors</li>
+    </ul>
+  </li>
+</ul>
+
+<div style="page-break-after:always;"></div>
+
+<h2 id="practice">Practice</h2>
+<ul>
+  <li>Q2: <em>Write a program that flips a coin: call <code class="language-plaintext highlighter-rouge">random()</code> to generate a random number, and print <code class="language-plaintext highlighter-rouge">heads</code> if the number is even and <code class="language-plaintext highlighter-rouge">tails</code> if the number is odd.</em>
+    <pre><code class="language-C">  #include &lt;stdio.h&gt;
+  #include &lt;stdlib.h&gt;
+  int main() {
+      int num = random();
+      if (num % 2 == 0) {
+          printf("heads\n");
+      } else {
+          printf("tails\n");
+      }
+  }
+</code></pre>
+  </li>
+  <li>Q3: <em>Write a program that prints all even numbers from 1 to 100 using a for loop.</em>
+    <pre><code class="language-C">  #include &lt;stdio.h&gt;
+  int main() {
+      for (int i = 2; i &lt;= 100; i+=2) {
+          printf("%d\n", i);
+      }
+  }
+</code></pre>
+    <p>~ OR ~</p>
+    <pre><code class="language-C">  #include &lt;stdio.h&gt;
+  int main() {
+      for (int i = 0; i &lt;= 100; i++) {
+          if (0 == i % 2) {
+              printf("%d\n", i);
+          }
+      }
+  }
+</code></pre>
+  </li>
+  <li>Q4: <em>Write the same program using a while loop.</em>
+    <pre><code class="language-C">  #include &lt;stdio.h&gt;
+  int main() {
+      int i = 2;
+      while (i &lt;= 100) {
+          printf("%d\n", i);
+          i+=2;
+      }
+  }
+</code></pre>
+  </li>
+</ul>
+
+<div style="page-break-after:always;"></div>
+
+<h2 id="defining-functions">Defining functions</h2>
+<ul>
+  <li><em>What is the syntax for defining a function?</em>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  return-type function-name(parameter-type parameter-name, ...) {
+      /* STATEMENTS */
+      return value;
+  }
+</code></pre></div>    </div>
+  </li>
+  <li>Function prototypes
+    <ul>
+      <li>C compiler must know a function’s return type and the number and type of its parameters before it encounters any calls to that function
+        <pre><code class="language-C">  int main() {
+      int result = add(1,2); // Compiler doesn't know if this call is valid 
+      printf("%d\n", result);
+  }
+  int add(int x, int y) {
+      return x+y;
+  }
+</code></pre>
+      </li>
+      <li>Function prototype provides a function’s return type, name, and number and type of its parameters, but not its body
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  return-type function-name(parameter-types);
+</code></pre></div>        </div>
+        <pre><code class="language-C">  int add(int, int);
+</code></pre>
+      </li>
+      <li>Include function prototype before any calls to the function — usually at the top of a file</li>
+      <li>Standard header files (e.g., <code class="language-plaintext highlighter-rouge">stdio.h</code>) include such prototypes</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="practice-1">Practice</h2>
+<ul>
+  <li>Q5: <em>Write a function called <code class="language-plaintext highlighter-rouge">isletter</code> that takes a character and returns <code class="language-plaintext highlighter-rouge">1</code> if the character is a letter, or <code class="language-plaintext highlighter-rouge">0</code> otherwise.</em>
+    <pre><code class="language-C">  int isletter(char ch) {
+      if (ch &gt;= 'A' &amp;&amp; ch &lt;= 'Z') { // Uppercase letter
+          return 1;
+      } else if (ch &gt;= 'a' &amp;&amp; ch &lt;= 'z') { // Lowercase letter
+          return 1;
+      } else { // Not a letter
+          return 0;
+      }
+  }
+</code></pre>
+  </li>
+  <li>Q6: <em>Write a function called <code class="language-plaintext highlighter-rouge">flipcase</code> that takes a letter and returns the letter in the opposite case. If the character is not a letter, then return the character unchanged.</em>
+    <pre><code class="language-C">  char flipcase(char ch) {
+      if (ch &gt;= 'A' &amp;&amp; ch &lt;= 'Z') { // Uppercase to lowercase
+          return ch - 'A' + 'a';
+      } elseif (ch &gt;= 'a' &amp;&amp; ch &lt;= 'z') { // Lowercase to uppercase
+          return ch - 'a' + 'A';
+      } else { // Not a letter
+          return ch;
+      }
+  }
+</code></pre>
+  </li>
+</ul>
+
+<h2 id="extra-practice">Extra practice</h2>
+<ul>
+  <li>Q7: <em>Write a program that prints out the powers of 2 from 2 through 2048.</em>
+    <pre><code class="language-C">  #include &lt;stdio.h&gt;
+  #define MAX 2048
+  int main() {
+      int i = 2;
+      while (i &lt;= MAX) {
+          printf("%d ", i);
+          i *= 2;
+      }
+      printf("\n");
+  }
+</code></pre>
+  </li>
+  <li>Q8: <em>Write a program that prints all numbers from 1 to 100, except:</em>
+    <ul>
+      <li><em>If the number is divisible by 3 then print <code class="language-plaintext highlighter-rouge">Three</code></em></li>
+      <li><em>If the number is divisible by 5 then print <code class="language-plaintext highlighter-rouge">Five</code></em></li>
+      <li><em>If the number is divisible by 3 and 5, print <code class="language-plaintext highlighter-rouge">Both</code></em>
+        <pre><code class="language-C">  #include &lt;stdio.h&gt;
+  int main() {
+  for (int i = 1; i &lt;= 100; i++) {
+      if (i % 3 == 0 &amp;&amp; i % 5 == 0) {
+          printf("Both\n");
+      }
+      else if (i % 5 == 0) {
+          printf("Five\n");
+      }
+      else if (i % 3 == 0) {
+          printf("Three\n");
+      }
+      else {
+          printf("%d\n", i);
+      }
+  }
+  }
+</code></pre>
+      </li>
+    </ul>
+  </li>
+  <li>Q9: <em>Write a program that prints every letter of the alphabet in upper and lower case: <code class="language-plaintext highlighter-rouge">AaBbCcDd...YyZz</code></em>
+    <pre><code class="language-C">  #include &lt;stdio.h&gt;
+  int main() {
+      for (char upper='A'; upper &lt;= 'Z'; upper++) {
+          char lower = upper - 'A' + 'a';
+          printf("%c%c", upper, lower);
+      }
+      printf("\n");
+  }
+</code></pre>
+  </li>
+  <li>Q10: <em>Write a function called <code class="language-plaintext highlighter-rouge">floorm</code> that takes two integers and rounds down the first integer to the closest multiple of the second integer.</em>
+    <pre><code class="language-C">  int floorm(int num, int multiple) {
+      return num - (num % multiple);
+  }
+</code></pre>
+  </li>
+</ul>
+
+  </body>
+</html>

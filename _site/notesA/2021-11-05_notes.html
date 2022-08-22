@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="syntax.css">
+    <base target="_blank">
+  </html>
+  <body>
+      <h1 id="multiprocessing-limited-direct-execution-system-calls-processes">Multiprocessing: limited direct execution; system calls; processes</h1>
+<p><em>COSC 208, Introduction to Computer Systems, 2021-11-05</em></p>
+
+<h2 id="announcements">Announcements</h2>
+<ul>
+  <li>Project 2 Part B due Tuesday</li>
+</ul>
+
+<h2 id="outline">Outline</h2>
+<ul>
+  <li>Limited direct execution</li>
+  <li>System calls</li>
+  <li>Process abstraction</li>
+  <li>Creating processes</li>
+</ul>
+
+<h2 id="no-warm-up-happy-friday">No warm-up: Happy Friday!</h2>
+
+<h2 id="accessing-hardware">Accessing hardware</h2>
+<ul>
+  <li>Recall: OS is responsible for allocating/managing the hardware
+    <ul>
+      <li>⇒ applications should <strong>not have unfettered access to hardware</strong></li>
+    </ul>
+  </li>
+  <li>Example: execute an instruction on the CPU
+    <ul>
+      <li>Allow the application to execute instructions in a “supervised” manner</li>
+    </ul>
+  </li>
+  <li>Example: accessing the solid state drive (SSD)
+    <ul>
+      <li>Ask the OS to access the SSD on the application’s behalf—latency of accessing SSD (~1 million CPU cycles) far outweighs the extra instructions required for OS to perform the access on the application’s behalf</li>
+    </ul>
+  </li>
+  <li>Mechanisms
+    <ul>
+      <li>Limited Direct Execution</li>
+      <li>System calls</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="limited-direct-execution">Limited Direct Execution</h2>
+<ul>
+  <li>CPU has two modes of execution: user mode &amp; kernel mode</li>
+  <li><em>When does a CPU run in user mode?</em> — when executing application code</li>
+  <li><em>When does a CPU run in kernel mode?</em> — when executing OS code</li>
+  <li>Allowable operations in user mode are restricted
+    <ul>
+      <li>Applications can…
+        <ul>
+          <li>Perform arithmetic/logic operations</li>
+          <li>Load/store values in its stack/heap</li>
+        </ul>
+      </li>
+      <li>Applications must ask the OS to…
+        <ul>
+          <li>Start/terminate applications</li>
+          <li>Create/delete files</li>
+          <li>Display output on screen</li>
+          <li>Read input from user</li>
+        </ul>
+      </li>
+      <li>Must transfer control to the OS to perform these operations — How?</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="system-calls">System calls</h2>
+<ul>
+  <li>Invoked via a special assembly instruction: trap (generic) or <code class="language-plaintext highlighter-rouge">svc</code> (on ARM)
+    <ul>
+      <li>Example program
+        <pre><code class="language-C">  #include &lt;stdio.h&gt;
+  #include &lt;unistd.h&gt;
+  int user() {
+      int uid = getuid();
+      return uid;
+  }
+  int main() {
+      int u = user();
+      printf("User %d is running this process\n", u);
+  }
+</code></pre>
+      </li>
+      <li>Assembly code
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  00000000004006ac &lt;user&gt;:
+      4006ac:	d10083ff 	sub	sp, sp, #0x20
+      4006b0:	f9000bfe 	str	x30, [sp, #16]
+      4006b4:	94007713 	bl	41e300 &lt;__getuid&gt;
+      4006b8:	b9000fe0 	str	w0, [sp, #12]
+      4006bc:	b9400fe0 	ldr	w0, [sp, #12]
+      4006c0:	f9400bfe 	ldr	x30, [sp, #16]
+      4006c4:	910083ff 	add	sp, sp, #0x20
+      4006c8:	d65f03c0 	ret
+  000000000041e300 &lt;__getuid&gt;:
+      41e300:	d28015c8 	mov	x8, #0xae
+      41e304:	d4000001 	svc	#0x0
+      41e308:	d65f03c0 	ret
+</code></pre></div>        </div>
+      </li>
+      <li>Functions in the C standard library that involve a privileged operation (e.g., <code class="language-plaintext highlighter-rouge">printf</code>) put the system call number in a register and invoke a trap instruction — programmer doesn’t have to worry about these details; they can just call the appropriate function in the C standard library</li>
+    </ul>
+  </li>
+  <li>When <code class="language-plaintext highlighter-rouge">svc</code> is executed
+    <ol>
+      <li>CPU saves registers to the kernel stack — kernel stack is at a fixed location in memory
+        <ul>
+          <li><em>Why do we need to save the registers?</em> — so we can return to <code class="language-plaintext highlighter-rouge">user</code> when <code class="language-plaintext highlighter-rouge">__getuid</code> is done</li>
+        </ul>
+      </li>
+      <li>CPU switches to kernel mode</li>
+      <li>CPU uses system call number to index into table of trap handlers
+        <ul>
+          <li>At boot, initialize table of trap handlers with pointers into OS code for handling each type of syscall</li>
+        </ul>
+      </li>
+      <li>Branch and link to trap handler code</li>
+      <li>CPU restores registers from the kernel stack</li>
+      <li>CPU switches to user mode</li>
+      <li>Resume execution after <code class="language-plaintext highlighter-rouge">svc</code></li>
+    </ol>
+  </li>
+  <li><em>What should we do if a process tries to perform a privileged operation without making a system call?</em>
+    <ul>
+      <li>Let the code keep running — code may assume privileged operation was successful</li>
+      <li>Kill the process</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="process-abstraction">Process abstraction</h2>
+<ul>
+  <li>Process — running program and its corresponding machine state (code, memory, and register values)
+    <ul>
+      <li>Program is static code and static data; process is dynamic instance of code and data</li>
+      <li>Cooking analogy
+        <ul>
+          <li>Recipe == program</li>
+          <li>Following a recipe == process</li>
+          <li>Ingredients == program inputs</li>
+          <li>Prepared food == program outputs</li>
+          <li>Cabinets, fridge, etc. == persistent storage</li>
+          <li>Prep area (e.g., counter) == registers &amp; main memory</li>
+          <li>Contents and status of the prep area; current step of recipe == machine state</li>
+          <li>Chef == CPU</li>
+        </ul>
+      </li>
+      <li>Can have multiple processes all running different instances of the same program
+        <ul>
+          <li>Cooking analogy — chef may be making multiple batches of the same recipe</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>OS is responsible for…
+    <ul>
+      <li>Creating processes — when a user or another application requests it</li>
+      <li>Scheduling processes — i.e., deciding when/which process should be allowed to use the CPU</li>
+      <li>Switching processes — i.e., saving the machine state of one process and restoring the machine state of another process; called context switching</li>
+      <li>Cleaning-up processes — i.e., releasing any resources they are using when the process is done</li>
+      <li>Interacting with I/O devices (e.g., disks, NICs, graphics card) on behalf of processes</li>
+    </ul>
+  </li>
+  <li>Q1: <em>Consider building a Lego kit as an analogy for operating systems’ process abstraction. Match each component of the analogy with the corresponding component of a real computer system.</em>
+    <ul>
+      <li>Instruction booklet == program</li>
+      <li>Following the assembly instructions == process</li>
+      <li>Lego bricks == program inputs</li>
+      <li>Completed kit == program outputs</li>
+      <li>Cabinet/drawers for storing Legos == persistent storage</li>
+      <li>Building area (e.g., tabletop) == registers and main memory</li>
+      <li>Current step for the instruction booklet == program counter</li>
+      <li>You == CPU</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="creating-processes">Creating processes</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">int fork()</code>
+    <ul>
+      <li>Creates an exact copy of the running process, except for the return value from <code class="language-plaintext highlighter-rouge">fork</code> — return <code class="language-plaintext highlighter-rouge">0</code> to child (i.e., new) process; return child’s process ID to parent process (i.e., process that called fork)</li>
+      <li>Both child and parent resume execution from place where <code class="language-plaintext highlighter-rouge">fork</code> was called</li>
+    </ul>
+  </li>
+  <li>Q2: <em>What does the following code output?</em>
+    <pre><code class="language-C">  int main(int argc, char **argv) {
+      printf("Before fork\n");
+      int pid = fork();
+      printf("After fork\n");
+      return 0;
+  }
+</code></pre>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  Before fork
+  After fork
+  After fork
+</code></pre></div>    </div>
+  </li>
+  <li>Q3: <em>What does the following code output (assuming the new process has PID 1819)?</em>
+    <pre><code class="language-C">  int main(int argc, char **argv) {
+      printf("Before fork");
+      int pid = fork();
+      if (pid == 0) {
+          printf("Child gets %d\n", pid);
+      } else {
+          printf("Parent gets %d\n", pid);
+      }
+      return 0;
+  }
+</code></pre>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  Before fork
+  Child gets 0
+  Parent gets 1819
+</code></pre></div>    </div>
+    <p>OR</p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  Before fork
+  Parent gets 1819
+  Child gets 0
+</code></pre></div>    </div>
+  </li>
+  <li>Creating an exponentially increasing number of processes (known as a <em>fork bomb</em>)
+  ```C
+  int main() {
+      while(1) {
+          fork();
+      }
+  }</li>
+</ul>
+
+  </body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="syntax.css">
+    <base target="_blank">
+  </html>
+  <body>
+      <h1 id="exam-1-review">Exam 1 Review</h1>
+<p><em>COSC 208, Introduction to Computer Systems, 2021-09-17</em></p>
+
+<h2 id="announcements">Announcements</h2>
+<ul>
+  <li>Exam 1
+    <ul>
+      <li>Study guide posted on Moodle</li>
+      <li>Take-home portion: due at the beginning of class on Monday</li>
+      <li>In-class portion: during class on Monday</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="binary-arithmetic">Binary arithmetic</h2>
+<p><em>Perform the following calculations. Operands are encoded using two’s complement encoding with 6 bits. For each calculation, express the result in binary and decimal, and indicate whether the result overflows, underflows, or neither.</em></p>
+
+<p>Q1: <code class="language-plaintext highlighter-rouge">0b110000 + 0b111111</code></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+
+
+</code></pre></div></div>
+
+<p>Q2: <code class="language-plaintext highlighter-rouge">0b001111 + 0b000001</code></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+
+
+</code></pre></div></div>
+
+<p>Q3: <code class="language-plaintext highlighter-rouge">0b101010 + 0b100100</code></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+
+
+</code></pre></div></div>
+
+<p>Q4: <code class="language-plaintext highlighter-rouge">0b001000 + 0b011000</code></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+
+
+</code></pre></div></div>
+
+<p>Q5: <code class="language-plaintext highlighter-rouge">0b110000 + 0b010000</code></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+
+
+</code></pre></div></div>
+
+<div style="page-break-after:always;"></div>
+
+<h2 id="logical--bitwise-operators">Logical &amp; bitwise operators</h2>
+<p><em>For each of the following expressions, select all operators that make the expression evaluate to true. Operands are encoded using two’s complement.</em></p>
+
+<p>Q6: <code class="language-plaintext highlighter-rouge">0b110000 __ 0b111111</code></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&amp;   &amp;&amp;   |   ||   ^   &lt;
+</code></pre></div></div>
+
+<p>Q7: <code class="language-plaintext highlighter-rouge">0b011110 __ 0b000001</code></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&amp;   &amp;&amp;   |   ||   ^   &lt;
+</code></pre></div></div>
+
+<p>Q8: <code class="language-plaintext highlighter-rouge">0b000000 __ 0b000000</code></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&amp;   &amp;&amp;   |   ||   ^   &lt;
+</code></pre></div></div>
+
+<p>Q9: <code class="language-plaintext highlighter-rouge">0b000111 __ 0b000111</code></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&amp;   &amp;&amp;   |   ||   ^   &lt;
+</code></pre></div></div>
+
+<h2 id="strings">Strings</h2>
+<p>Q10: <em>The following program should ask the user to enter a word, then print the word’s length and whether it is a palindrome (i.e., reads the same backward as forward). For example, if the user enters <code class="language-plaintext highlighter-rouge">"kayak"</code> the program should print <code class="language-plaintext highlighter-rouge">"The word is 5 characters long and is a palindrome."</code> However, the program contains several errors. Modify the program to correct the errors.</em></p>
+
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+
+void palindrome(char word[]) {
+    int i = 0;
+    int j = strlen(word);
+    while (i &lt; j) {
+        if (word[i] != word[j]) {
+            return -1;
+        }
+        i++;
+        j--;
+    }
+    return 1;
+}
+
+int main() {
+    printf("Enter a word: ");
+    char word[50];
+    fgets(word, 50, stdin);
+    word[strlen(word)-1] = '\0'; // Remove newline
+    int len = strlen(word);
+    printf("The word is %c characters long and is ", len);
+    if (palindrome(word)) {
+        printf("a palindrome.\n");
+    } else {
+        printf("not a palindrome.\n");
+    }
+}
+</code></pre>
+
+<div style="page-break-after:always;"></div>
+
+<p>Q11: <em>Write a function called <code class="language-plaintext highlighter-rouge">molecular_formula</code> that takes a string containing the constituent atoms of a molecule and updates the string to contain the molecular formula. For example, the string <code class="language-plaintext highlighter-rouge">"HHO"</code> should be changed to <code class="language-plaintext highlighter-rouge">"H20"</code>, and the string <code class="language-plaintext highlighter-rouge">"HHSOOOO"</code> should be changed to <code class="language-plaintext highlighter-rouge">"H2SO4"</code>. You can assume:</em></p>
+<ul>
+  <li><em>Molecules will only contain elements that are represented by a single letter — e.g., a molecule may contain <code class="language-plaintext highlighter-rouge">'H'</code> but not <code class="language-plaintext highlighter-rouge">"Na"</code></em></li>
+  <li><em>All atoms of the same element are listed consecutively — e.g., the constituent atoms may be provided as <code class="language-plaintext highlighter-rouge">"HHO"</code> but not <code class="language-plaintext highlighter-rouge">"HOH"</code></em></li>
+  <li><em>The elements are listed in the order they should appear in the molecular formula — e.g., the constituent atoms <code class="language-plaintext highlighter-rouge">"HHO"</code> are changed to the molecular formula <code class="language-plaintext highlighter-rouge">"H2O"</code>, whereas the constituent atoms <code class="language-plaintext highlighter-rouge">"OHH"</code> are changed to the molecular formula <code class="language-plaintext highlighter-rouge">"OH2"</code></em></li>
+  <li><em>There will be at most 9 atoms of each element — e.g., <code class="language-plaintext highlighter-rouge">"H9C9"</code> may occur, but <code class="language-plaintext highlighter-rouge">"H10C11"</code> will not occur</em></li>
+</ul>
+
+<div style="page-break-after:always;"></div>
+
+<h2 id="number-base-conversions">Number base conversions</h2>
+<p><em>Perform the following conversions</em></p>
+
+<p>Q12: <code class="language-plaintext highlighter-rouge">97</code> to 8-bit unsigned binary</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+</code></pre></div></div>
+
+<p>Q13: <code class="language-plaintext highlighter-rouge">-42</code> to 8-bit two’s complement</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+</code></pre></div></div>
+
+<p>Q14: <code class="language-plaintext highlighter-rouge">0b11001100</code> to unsigned decimal</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+</code></pre></div></div>
+
+<p>Q15: <code class="language-plaintext highlighter-rouge">0b11001100</code> to signed decimal</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+</code></pre></div></div>
+
+<p>Q16: <code class="language-plaintext highlighter-rouge">0x27</code> to unsigned decimal</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+</code></pre></div></div>
+
+<p>Q17: <code class="language-plaintext highlighter-rouge">0xDEAD</code> to 16-bit binary</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+</code></pre></div></div>
+
+<h2 id="structs">Structs</h2>
+
+<p>Q18: <em>Define a struct for representing a chemical element, which includes the element’s:</em></p>
+<ul>
+  <li><em>Name</em></li>
+  <li><em>Chemical symbol</em></li>
+  <li><em>Atomic number</em></li>
+  <li><em>State (solid, liquid, or gas) at room temperature</em></li>
+</ul>
+
+<pre><code class="language-C">
+
+
+
+
+
+
+
+
+</code></pre>
+
+<p>Q19: <em>Write a function called <code class="language-plaintext highlighter-rouge">lookup</code> that takes a chemical symbol and an array containing a struct for each of the 118 elements in the periodic table. The function should return the specified element’s atomic number. If the provided symbol does not correspond to a known element, the function should return -1.</em></p>
+
+  </body>
+</html>

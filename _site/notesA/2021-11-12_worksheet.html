@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="syntax.css">
+    <base target="_blank">
+  </html>
+  <body>
+      <h1 id="multiprocessing-threads">Multiprocessing: threads</h1>
+<p><em>COSC 208, Introduction to Computer Systems, 2021-11-12</em></p>
+
+<h2 id="announcements">Announcements</h2>
+<ul>
+  <li>Exam 3
+    <ul>
+      <li>Study guide posted on Moodle</li>
+      <li>In-class portion: during class next Friday</li>
+      <li>Take-home portion: due at 11pm on Monday, November 22</li>
+    </ul>
+  </li>
+  <li>Project 3 due Thursday, December 2</li>
+</ul>
+
+<h2 id="outline">Outline</h2>
+<ul>
+  <li>Warm-up</li>
+  <li>Threads</li>
+</ul>
+
+<h2 id="warm-up">Warm-up</h2>
+<p>Q1: <em>Consider the following processes:</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Process</th>
+      <th>Arrival time</th>
+      <th>Duration</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A</td>
+      <td>Just before 0</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <td>B</td>
+      <td>Just before 5</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>C</td>
+      <td>Just before 10</td>
+      <td>15</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>Determine the schedule for the above processes using a Round Robin (RR) scheduler a time quantum of 10.</em></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+
+
+
+
+</code></pre></div></div>
+
+<p>🛑 <strong>STOP HERE</strong> after completing the warm-up; if you have extra time, please <strong>skip ahead</strong> to the extra practice.</p>
+
+<h2 id="threads">Threads</h2>
+
+<h3 id="example">Example</h3>
+<pre><code class="language-C">void *thread1_main(void *arg) {
+    int *x = (int *)arg;
+    *x += 1;
+    return NULL;
+}
+void *thread2_main(void *arg) {
+    int *y = (int *)arg;
+    *y += 2;
+    return NULL;
+}
+int main() {
+    int *z = malloc(sizeof(int));
+    *z = 0;
+    // Start thread running thread1_main(z)
+    // Start thread running thread2_main(z)
+    // Wait for threads to finish
+    printf("z is %d\n", *z);
+}
+</code></pre>
+
+<div style="page-break-after:always;"></div>
+
+<h3 id="practice">Practice</h3>
+<p>Q2: <em>What are all possible outputs produced by this program?</em></p>
+<pre><code class="language-C">void *thread_main(void *arg) {
+    char *id = (char *)arg;
+    printf("I am thread %c\n", *id);
+    return NULL;
+}
+int main() {
+    char a = 'A';
+    char b = 'B';
+    // Start thread running thread_main(&amp;a)
+    // Start thread running thread_main(&amp;b)
+    // Wait for threads to finish
+}
+</code></pre>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+
+
+
+</code></pre></div></div>
+
+<p>Q3: <em>What are all possible outputs produced by this program?</em></p>
+<pre><code class="language-C">void *proc1_main(void *arg) {
+    int *x = (int *)arg;
+    *x += 1;
+    return NULL;
+}
+void *proc2_main(void *arg) {
+    int *y = (int *)arg;
+    *y += 2;
+    return NULL;
+}
+int main() {
+    int z = 0;
+    int pid = fork();
+    if (pid == 0) {
+        proc1_main(&amp;z);
+    } else {
+        proc2_main(&amp;z);
+        wait(NULL);
+    }
+    printf("z is %d\n", z);
+}
+</code></pre>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+
+
+
+</code></pre></div></div>
+
+<div style="page-break-after:always;"></div>
+
+<h2 id="extra-practice">Extra practice</h2>
+<p>Q5: <em>What are all possible outputs produced by this program?</em></p>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;sys/wait.h&gt;
+int main() {
+    int pid = fork();
+    if (pid == 0) {
+        printf("Child\n");
+        exit(22);
+    } else {
+        int status = 0;
+        wait(&amp;status);
+        printf("Status %d\n", WEXITSTATUS(status));
+        exit(44);
+    }
+}
+</code></pre>
+
+  </body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="syntax.css">
+    <base target="_blank">
+  </html>
+  <body>
+      <h1 id="number-representation-binary-arithmetic-overflow">Number representation: binary arithmetic; overflow</h1>
+<p><em>COSC 208, Introduction to Computer Systems, 2021-09-13</em></p>
+
+<h2 id="announcements">Announcements</h2>
+<ul>
+  <li>Project 1 Part 1 due Thursday (two days mercy Saturday night)</li>
+  <li>Exam 1 this Friday</li>
+</ul>
+
+<h2 id="warm-up">Warm-up</h2>
+<p><em>Express these decimal numbers using 8-bit two’s complement:</em></p>
+
+<p>Q1: -49</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+</code></pre></div></div>
+
+<p>Q2: -11</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+</code></pre></div></div>
+<p>🛑 <strong>STOP HERE</strong> after completing the warm-up; if you have extra time please <strong>skip ahead</strong> to the extra practice.</p>
+
+<h2 id="binary-arithmetic">Binary arithmetic</h2>
+<p><em>Use 8-bit signed integers</em></p>
+
+<p>Q3: 10 + 5</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+
+</code></pre></div></div>
+
+<p>Q4: 7 + 15</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+
+</code></pre></div></div>
+
+<p>Q5: -10 + 5</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+
+</code></pre></div></div>
+
+<p>Q6: 10 - 5</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+
+</code></pre></div></div>
+
+<p>Q7: 64 + 64</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+
+</code></pre></div></div>
+<p>🛑 <strong>STOP HERE</strong> after completing the above questions; if you have extra time please <strong>skip ahead</strong> to the extra practice.</p>
+
+<h2 id="overflow">Overflow</h2>
+<p><em>For each of the following computations, determine whether the computation overflows, underflows, or neither. Assume we are using 8-bit signed integers.</em></p>
+
+<p>Q8: <code class="language-plaintext highlighter-rouge">0b10000000</code> + <code class="language-plaintext highlighter-rouge">0b01111111</code></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+</code></pre></div></div>
+
+<p>Q9: <code class="language-plaintext highlighter-rouge">0b10000001</code> + <code class="language-plaintext highlighter-rouge">0b01111111</code></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+</code></pre></div></div>
+
+<div style="page-break-after:always;"></div>
+
+<p>Q10: <code class="language-plaintext highlighter-rouge">0b10000000</code> + <code class="language-plaintext highlighter-rouge">0b10000001</code></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+</code></pre></div></div>
+
+<p>Q11: <code class="language-plaintext highlighter-rouge">0b11000000</code> + <code class="language-plaintext highlighter-rouge">0b11000000</code></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+</code></pre></div></div>
+
+<p>Q12: <code class="language-plaintext highlighter-rouge">0b01111111</code> + <code class="language-plaintext highlighter-rouge">0b00000001</code></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+</code></pre></div></div>
+
+<h2 id="extra-practice">Extra practice</h2>
+<p>Q13: <em>Convert <code class="language-plaintext highlighter-rouge">512</code> to unsigned binary.</em></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+</code></pre></div></div>
+
+<p>Q14: <em>Convert <code class="language-plaintext highlighter-rouge">-42</code> to 8-bit signed binary.</em></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+</code></pre></div></div>
+
+<p>Q15: <em>Convert <code class="language-plaintext highlighter-rouge">0xFAB</code> to unsigned binary.</em></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+</code></pre></div></div>
+
+<p>Turn page</p>
+<div style="page-break-after:always;"></div>
+
+<p>Q16: <em>Write a function called <code class="language-plaintext highlighter-rouge">valid_hex</code> that takes a string and returns 1 if it is a valid hexadecimal number; otherwise return 0. A valid hexadecimal number must start with <code class="language-plaintext highlighter-rouge">0x</code> and only contain the digits <code class="language-plaintext highlighter-rouge">0</code>-<code class="language-plaintext highlighter-rouge">9</code> and letters <code class="language-plaintext highlighter-rouge">A</code>-<code class="language-plaintext highlighter-rouge">F</code> (in upper or lower case).</em></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</code></pre></div></div>
+
+<p><em>Worksheet created by Professor Aaron Gember-Jacobson</em></p>
+
+  </body>
+</html>

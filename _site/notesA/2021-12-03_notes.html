@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="syntax.css">
+    <base target="_blank">
+  </html>
+  <body>
+      <h1 id="networking-packet-switching-addressing">Networking: Packet switching; Addressing</h1>
+<p><em>COSC 208, Introduction to Computer Systems, 2021-12-03</em></p>
+
+<h2 id="announcements">Announcements</h2>
+<ul>
+  <li>Project 3 due Tuesday</li>
+  <li>2nd DEI reflection due Tuesday</li>
+  <li>Attend faculty candidate research talks
+    <ul>
+      <li>11:20am Tues, Dec 7; Wed, Dec 15</li>
+      <li>Earn 2 points of extra credit on final exam for each talk you attend (earnings capped at 4 points)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="outline">Outline</h2>
+<ul>
+  <li>Warm-up</li>
+  <li>Packet switching</li>
+  <li>Transport layer</li>
+  <li>Addressing system requirements</li>
+</ul>
+
+<h2 id="warm-up">Warm-up</h2>
+<p>Q1: <em>What are the four layers of abstraction in computer networks?</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Layer</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Application</td>
+      <td>Application-to-application</td>
+    </tr>
+    <tr>
+      <td>Transport</td>
+      <td>Process-to-process</td>
+    </tr>
+    <tr>
+      <td>Network</td>
+      <td>Host-to-host</td>
+    </tr>
+    <tr>
+      <td>Link</td>
+      <td>Node-to-node</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="packet-switching">Packet switching</h2>
+<ul>
+  <li>Before we discuss the transport layer: How does a message get from one machine to another?</li>
+  <li>Early computers communicated using a dedicated connection (i.e., a circuit)
+    <ul>
+      <li>Similar to hiring a courier to take a package directly from the original house to its destination</li>
+      <li><em>Why is this a bad approach?</em>
+        <ul>
+          <li>Need a connection to every computer you want to communicate with — does not scale</li>
+          <li>Cannot communicate if a connection fails — not fault tolerant</li>
+          <li>Connection is idle when computers have nothing to send — wastes resources</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><em>How were these issues addressed?</em> — allow computers to communicate via other computers (i.e., store-and-forward networking)
+    <ul>
+      <li>Basic idea
+        <ul>
+          <li>Computer is directly connected to one or a few other computers</li>
+          <li>Send a message to a neighboring computer that is closer to the destination host</li>
+          <li>Computer stores the message in a queue until the connection to the next computer is available</li>
+        </ul>
+      </li>
+      <li>Similar to a postal system</li>
+      <li>Can replace intermediate computer with a device dedicated solely to forwarding messages — called a router or switch</li>
+      <li><em>Does this system scale?</em> — yes, because you add more links and routers as necessary</li>
+      <li><em>Is this system fault tolerant?</em> — yes if you have connections to multiple neighbors (i.e., multi-homed), because you can send via a different neighbor</li>
+      <li><em>Does this system waste resources?</em> — no, because connections are shared (i.e., multiplexing)</li>
+      <li><em>Is there anything else wrong with this approach?</em>
+        <ul>
+          <li>Small messages can get stuck behind large messages (i.e., head-of-line-blocking)</li>
+          <li>Neighbor may not be able to store full message</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><em>How were these issues addressed?</em> — break messages into small fragments called packets
+    <ul>
+      <li>Packet-switched network — store-and-forward networking with packets
+        <ul>
+          <li>Introduces new issues
+            <ul>
+              <li>Parts of a message may be reordered</li>
+              <li>Parts of a message may be lost</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="transport-layer">Transport layer</h2>
+<ul>
+  <li>Responsibilities
+    <ul>
+      <li>Break messages into packets</li>
+      <li>Put packets in the proper order upon arrival</li>
+      <li>Retransmit missing packets</li>
+    </ul>
+  </li>
+  <li><em>Why is the transport layer implemented by the operating system instead of by applications?</em> — many applications need the same functionality</li>
+  <li>Also provides flow control (to avoid overloading the receiving host) and congestion control (to avoid overloading the intermediate routers)</li>
+</ul>
+
+<h2 id="addressing-system-requirements">Addressing system requirements</h2>
+<p>Q2: <em>How are destinations specified in the real world? For example, if you wanted a taxi driver to take you to a particular restaurant, how would you specify your destination? What are the advantages/disadvantages of different approaches?</em></p>
+<ul>
+  <li>Restaurant name
+    <ul>
+      <li>Easy for humans to remember</li>
+      <li>Imprecise — could be multiple restaurants with the same name</li>
+    </ul>
+  </li>
+  <li>Landmark
+    <ul>
+      <li>Easy for humans to remember</li>
+      <li>Imprecise — not actually the final destination</li>
+    </ul>
+  </li>
+  <li>Street address — number, street, city, state, zip
+    <ul>
+      <li>Precise</li>
+      <li>No overlap — although there could be multiple restaurants in the same building, so we need an additional identifier (e.g., suite number)</li>
+      <li>Harder for humans to remember — e.g., What is Flour &amp; Salt’s street address?</li>
+    </ul>
+  </li>
+  <li>Latitude/longitude
+    <ul>
+      <li>Precise</li>
+      <li>Hard for humans to remember — e.g., What is Colgate’s latitude/longitude?</li>
+    </ul>
+  </li>
+</ul>
+
+  </body>
+</html>

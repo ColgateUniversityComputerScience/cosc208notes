@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="syntax.css">
+    <base target="_blank">
+  </html>
+  <body>
+      <h1 id="networking-application-to-application-communication-sockets">Networking: Application-to-application communication; Sockets</h1>
+<p><em>COSC 208, Introduction to Computer Systems, 2021-11-29</em></p>
+
+<h2 id="announcements">Announcements</h2>
+<ul>
+  <li>Project 3 due Thursday at 11pm</li>
+  <li>2nd DEI reflection due next Tuesday at 11pm</li>
+  <li>Attend faculty candidate research talks
+    <ul>
+      <li>11:20am Tues, Nov 30; Thurs, Dec 2; Tues, Dec 7; Wed, Dec 15</li>
+      <li>Earn 2 points of extra credit on final exam for each talk you attend (earnings capped at 4 points)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="outline">Outline</h2>
+<ul>
+  <li>Warm-up</li>
+  <li>Application-to-application communication</li>
+  <li>HyperText Transfer Protocol (HTTP)</li>
+  <li>Sockets</li>
+  <li>Client application</li>
+</ul>
+
+<h2 id="warm-up">Warm-up</h2>
+<p>Q1: <em>List at least five types of applications that communicate over a network</em></p>
+<ul>
+  <li>Web browser</li>
+  <li>Video conferencing  (e.g., Zoom)</li>
+  <li>Games</li>
+  <li>Video streaming (e.g., Netflix)</li>
+  <li>Audio streaming (e.g., Spotify)</li>
+  <li>Smart assistant (e.g., Siri, Alexa, Cortana, Google Assistant)</li>
+  <li>Cloud storage (e.g., Dropbox, iCloud)</li>
+  <li>Email</li>
+  <li>Maps</li>
+</ul>
+
+<h2 id="trajectory">Trajectory</h2>
+<ul>
+  <li>Individual applications — C, assembly language, program optimization</li>
+  <li>Running multiple applications concurrently on the same hardware — enabled by operating systems, especially the process abstraction</li>
+  <li>Running multiple applications concurrently on different machines — enabled by networking</li>
+</ul>
+
+<h2 id="application-to-application-communication">Application-to-application communication</h2>
+<ul>
+  <li><em>Assume you are running such applications on your device. Who/what are the applications communicating with?</em>
+    <ul>
+      <li>Servers — web server, video/audio streaming servers, email server, etc.</li>
+      <li>Other users’ devices — possibly in the case of gaming or video conferencing</li>
+    </ul>
+  </li>
+  <li>Models
+    <ul>
+      <li>Client/server
+        <ul>
+          <li>Client: Application that initiates communication; typically sends “requests”; e.g., web browser asks for web page</li>
+          <li>Server: Application that waits for communication; typically sends “replies”; e.g., web server provides web page</li>
+        </ul>
+      </li>
+      <li>Peer-to-peer
+        <ul>
+          <li>Peer: Application that both initiates and waits for communication; e.g., gaming application sends updates to peers and receives updates from peers</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Client/server communication with humans
+    <ul>
+      <li><em>I’m going to say something and you should respond with whatever seems natural. I’m also going to display what I expected you would say; we’ll see how close my prediction was.</em></li>
+      <li>Greeting
+        <ul>
+          <li>Hi, I’m Aaron.</li>
+          <li>Hi, I’m NAME.</li>
+          <li>Where are you from?</li>
+          <li>I’m from LOCATION.</li>
+          <li>Were you born there?</li>
+          <li>Yes. ~OR~ No, I was born in LOCATION.</li>
+        </ul>
+      </li>
+      <li>Joke
+        <ul>
+          <li>Knock knock.</li>
+          <li>Who’s there?</li>
+          <li>Spell.</li>
+          <li>Spell who?</li>
+          <li>Okay, fine. W-H-O.</li>
+          <li>[Laughs or Groans]</li>
+        </ul>
+      </li>
+      <li>Greeting 2
+        <ul>
+          <li>Hi, I’m Aaron.</li>
+          <li>Hi, I’m NAME.</li>
+          <li>Are you taking a computer science course next semester?</li>
+          <li>Yes. ~OR~ No.</li>
+          <li>Which course?</li>
+          <li>COURSE NAME ~OR~ COURSE NUMBER ~OR~ ???</li>
+        </ul>
+      </li>
+      <li>Strange greeting
+        <ul>
+          <li>Goodbye, I’m Aaron.</li>
+          <li>???</li>
+        </ul>
+      </li>
+      <li><em>What did you observe?</em>
+        <ul>
+          <li>Predictions were mostly correct</li>
+          <li>Not sure how to respond to unexpected message</li>
+        </ul>
+      </li>
+      <li><em>How does this relate to applications?</em> — applications need to agree on how they are going to communicate</li>
+    </ul>
+  </li>
+  <li>Protocol: a set of rules that govern how applications communicate
+    <ul>
+      <li>Client and server must follow the same protocol</li>
+      <li>Widely used protocols are standardized — RFCs (Requests for Comment) published by the Internet Engineering Task Force (IETF)
+        <ul>
+          <li>HyperText Transfer Protocol (HTTP)</li>
+          <li>Simple Mail Transfer Protocol (SMTP)</li>
+          <li>Secure SHell (SSH)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Aside: networking is acronym soup!</li>
+</ul>
+
+<h2 id="hypertext-transfer-protocol-http">HyperText Transfer Protocol (HTTP)</h2>
+<ul>
+  <li>Widely used application protocol — why?
+    <ul>
+      <li>Simple — only a few pieces of information must be included in requests/responses</li>
+      <li>Flexible — any type of data can be put in a response (e.g., HyperText Markup Language (HTML), image, video, Portable Document Format (PDF), etc.)</li>
+      <li>Plain-text protocol — contains “human-readable” words instead of numeric codes</li>
+    </ul>
+  </li>
+  <li><a href="https://tools.ietf.org/html/rfc2616">RFC 2616</a></li>
+  <li>HTTP request
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  GET / HTTP/1.1\r\n
+  Host: www.example.com\r\n
+  \r\n
+</code></pre></div>    </div>
+    <ul>
+      <li>First line
+        <ul>
+          <li>Method — <code class="language-plaintext highlighter-rouge">GET</code>, <code class="language-plaintext highlighter-rouge">POST</code>, etc.</li>
+          <li>Uniform resource locator (URL), excluding domain name</li>
+          <li>Version — <code class="language-plaintext highlighter-rouge">HTTP/1.1</code></li>
+        </ul>
+      </li>
+      <li>Metdata
+        <ul>
+          <li>Host — domain name portion of url</li>
+          <li>User-Agent — web browser (or client application) name/version</li>
+          <li>Cookie — information used to identify a specific user</li>
+          <li>…</li>
+        </ul>
+      </li>
+      <li>Blank line</li>
+    </ul>
+  </li>
+  <li>HTTP reply
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  HTTP/1.1 200 OK\r\n
+  Content-Type: text/html\r\n
+  \r\n
+  &lt;html&gt;
+  ...
+  &lt;/html&gt;
+</code></pre></div>    </div>
+    <ul>
+      <li>First line
+        <ul>
+          <li>Version — <code class="language-plaintext highlighter-rouge">HTTP/1.1</code></li>
+          <li>Status — <code class="language-plaintext highlighter-rouge">200 OK</code>, <code class="language-plaintext highlighter-rouge">403 Forbidden</code>, <code class="language-plaintext highlighter-rouge">404 Not found</code>, <code class="language-plaintext highlighter-rouge">301 Moved permanently</code>, <code class="language-plaintext highlighter-rouge">418 I'm a teapot</code>, etc.</li>
+        </ul>
+      </li>
+      <li>Metdata
+        <ul>
+          <li>Content-Type — type of data</li>
+          <li>Content-Length — size of data</li>
+          <li>…</li>
+        </ul>
+      </li>
+      <li>Blank line</li>
+      <li>Data</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="sockets">Sockets</h2>
+<ul>
+  <li>Application programming interface (API) exposed by the operating system</li>
+  <li>Similar to file API
+    <ul>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td><code class="language-plaintext highlighter-rouge">open</code> ~ <code class="language-plaintext highlighter-rouge">socket</code> &amp;&amp; (<code class="language-plaintext highlighter-rouge">listen</code></td>
+              <td> </td>
+              <td><code class="language-plaintext highlighter-rouge">connect</code>)</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li><code class="language-plaintext highlighter-rouge">read</code> ~ <code class="language-plaintext highlighter-rouge">recv</code></li>
+      <li><code class="language-plaintext highlighter-rouge">write</code> ~ <code class="language-plaintext highlighter-rouge">send</code></li>
+      <li><code class="language-plaintext highlighter-rouge">close</code> ~ <code class="language-plaintext highlighter-rouge">close</code></li>
+    </ul>
+  </li>
+  <li>Abstraction — low-level details are hidden from the application
+    <ul>
+      <li>Some is handled by the operating system — network stack</li>
+      <li>Some is handled by the network interface card (NIC) — hardware</li>
+      <li>Some is handled by wireless access points and routers</li>
+    </ul>
+  </li>
+  <li>Makes it easier to write an application — application developer only needs to know how the API works (to interact with the operating system)</li>
+</ul>
+
+<h2 id="client-application-live-coding">Client application (live coding)</h2>
+<ol>
+  <li>Create a socket
+    <pre><code class="language-C">                                                  ↱ 0
+ int sock = socket(int domain, int type, int protocol);
+                 AF_INET ↲           ↳ SOCK_STREAM
+</code></pre>
+    <ul>
+      <li>Check for return values that indicate an error has occurred — usually <code class="language-plaintext highlighter-rouge">-1</code>
+        <ul>
+          <li>See the <code class="language-plaintext highlighter-rouge">RETURN VALUES</code> section of the man page</li>
+          <li>Use <code class="language-plaintext highlighter-rouge">perror</code> to print the error — e.g., <code class="language-plaintext highlighter-rouge">perror("socket failed");</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Establish a communication channel (i.e., connect) to the server
+    <pre><code class="language-C"> int connect(int socket, struct sockaddr *address, int addr_len);
+               sock ↲           &amp;server_addr ↲             ↳ sizeof(serveraddr)
+</code></pre>
+    <ul>
+      <li>Address has two parts
+        <ul>
+          <li>Internet Protocol (IP) address ~ street address
+            <ul>
+              <li>IPv4 addresses consist of four decimal numbers, each in the range 0 to 255, separated by periods</li>
+              <li>E.g., <code class="language-plaintext highlighter-rouge">75.101.200.152</code> is <code class="language-plaintext highlighter-rouge">cosc208.cs.colgate.edu</code>’s IP address</li>
+              <li><code class="language-plaintext highlighter-rouge">127.0.0.1</code> is a special address a machine uses to refer to itself</li>
+            </ul>
+          </li>
+          <li>Port number ~ apartment number
+            <ul>
+              <li>Range 1 to 65536 — 16-bits, short</li>
+              <li>E.g., <code class="language-plaintext highlighter-rouge">80</code> is HyperText Transfer Protocol (HTTP)</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Address encoded in a <code class="language-plaintext highlighter-rouge">struct sockaddr_in</code>
+        <pre><code class="language-C">  struct sockaddr_in server_addr;
+  server_addr.sin_family = AF_INET:
+                             ↳ meaning: Internet Protocol (IP) version 4 
+  server_addr.sin_port = htons(80);
+                                ↳ meaning: HyperText Transfer Protocol (HTTP)
+  server_addr.sin_addr.s_addr = htonl(0x7F000001);
+                                          ↳ meaning: 127.0.0.1 (localhost)
+</code></pre>
+        <ul>
+          <li>Numbers must be expressed in network byte order (i.e., big endian)
+            <ul>
+              <li>Convert from host (little endian for ARM) to network byte order using <code class="language-plaintext highlighter-rouge">htons</code> for <code class="language-plaintext highlighter-rouge">short</code> and <code class="language-plaintext highlighter-rouge">htonl</code> for <code class="language-plaintext highlighter-rouge">int</code> or <code class="language-plaintext highlighter-rouge">long</code></li>
+              <li>Convert from network to host byte order using <code class="language-plaintext highlighter-rouge">ntohs</code> for <code class="language-plaintext highlighter-rouge">short</code> and <code class="language-plaintext highlighter-rouge">ntohl</code> for <code class="language-plaintext highlighter-rouge">int</code> or <code class="language-plaintext highlighter-rouge">long</code></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Send/receive messages
+    <pre><code class="language-C"> int send(int socket, void *buffer, int buf_len, int flags);
+ int recv(int socket, void *buffer, int buf_len, int flags);
+           sock ↲                                       ↳ 0 
+</code></pre>
+  </li>
+  <li>Close communication channel
+    <pre><code class="language-C"> int close(int socket);
+            sock ↲ 
+</code></pre>
+  </li>
+</ol>
+
+<p>Full program</p>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+#include &lt;sys/types.h&gt;
+#include &lt;sys/socket.h&gt;
+#include &lt;string.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;arpa/inet.h&gt;
+
+#define HTTP_PORT 80
+#define WWW_EXAMPLE_COM 0x5DB8D822 // 93.184.216.34
+
+int main() {
+    int sock = socket(AF_INET, SOCK_STREAM, 0);
+    if (sock &lt; 0) {
+        perror("socket failed");
+        return 1;
+    }
+
+    struct sockaddr_in server_addr;
+    server_addr.sin_family = AF_INET;
+    server_addr.sin_port = htons(HTTP_PORT);
+    server_addr.sin_addr.s_addr = htonl(WWW_EXAMPLE_COM);
+
+    int conn = connect(sock, (const struct sockaddr *) &amp;server_addr, sizeof(server_addr));
+    if (conn &lt; 0) {
+        perror("connect failed");
+        return 1;
+    }
+
+    char buf[1024];
+    snprintf(buf, 1024, "GET / HTTP/1.1\r\nHost: www.example.com\r\n\r\n");
+    int sent = send(sock, buf, strlen(buf), 0);
+    if (sent &lt; 0) {
+        perror("send failed");
+        return 1;
+    }
+
+    int received = recv(sock, buf, 1024, 0);
+    if (received &lt; 0) {
+        perror("recv failed");
+        return 1;
+    }
+
+    printf("%s\n", buf);
+
+    close(sock);
+}
+</code></pre>
+
+  </body>
+</html>

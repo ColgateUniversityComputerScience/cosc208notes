@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="syntax.css">
+    <base target="_blank">
+  </html>
+  <body>
+      <h1 id="networking-addressingcontinued-routing">Networking: Addressing(continued); Routing</h1>
+<p><em>COSC 208, Introduction to Computer Systems, 2021-12-06</em></p>
+
+<h2 id="announcements">Announcements</h2>
+<ul>
+  <li>Project 3 due tomorrow at 11pm</li>
+  <li>2nd DEI reflection due tomorrow at 11pm</li>
+  <li>Attend faculty candidate research talks
+    <ul>
+      <li>11:20am tomorrow and Wed, Dec 15</li>
+      <li>Earn 2 points of extra credit on final exam for each talk you attend (earnings capped at 4 points)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="outline">Outline</h2>
+<ul>
+  <li>Internet Protocol (IP) addresses</li>
+  <li>Subnetting</li>
+  <li>Routing unplugged</li>
+</ul>
+
+<h2 id="no-warmup-happy-monday">No-warmup: Happy Monday!</h2>
+
+<h2 id="internet-protocol-ip-addresses">Internet Protocol (IP) addresses</h2>
+<ul>
+  <li>Every device connected to the Internet has its own unique IP address
+    <ul>
+      <li>Analogy: every building has its own unique street address</li>
+    </ul>
+  </li>
+  <li>When a device connects to a network, it leases an IP address from the network using the Dynamic Host Configuration Protocol (DHCP)</li>
+  <li>Versions
+    <ul>
+      <li>IPv4
+        <ul>
+          <li>Addresses are 32-bits long → 4 billion unique addresses</li>
+          <li>Written as a sequence of four numbers, separated by periods — called dot-notation; e.g., <code class="language-plaintext highlighter-rouge">149.43.80.12</code></li>
+          <li>Range of possible addresses is <code class="language-plaintext highlighter-rouge">0.0.0.0</code> to <code class="language-plaintext highlighter-rouge">255.255.255.255</code></li>
+        </ul>
+      </li>
+      <li>IPv6
+        <ul>
+          <li>Addresses are 128-bits long → 340 trillion trillion trillion unique addresses — enough for every star in the universe to have its own set of IPv4 addresses</li>
+          <li>Written as a sequence of eight 4-digit hexadecimal numbers, separated by colons
+  e.g., <code class="language-plaintext highlighter-rouge">2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Network Address Translation (NAT) allows multiple devices in a private network (e.g., a home network) to share a single unique IPv4 address on the Internet</li>
+</ul>
+
+<h2 id="subnetting">Subnetting</h2>
+<ul>
+  <li>Divide an address into two parts: network and host
+    <ul>
+      <li>The network part is the <strong>same</strong> for every device (laptop, server, smartphone, etc.) in a network</li>
+      <li>The host part is <strong>different</strong> for every device in a network</li>
+      <li>E.g.,
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     149.43.80.90
+     └----┘ └---┘
+ Network   Host
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>How to split depends on the size of the network
+    <ul>
+      <li>Network is first 3 numbers and host is last → up to 256 devices in network</li>
+      <li>Network is first 2 numbers and host is rest → up to ~65K devices in network</li>
+      <li>Network is first number and host is reset → up to ~16 million devices in network</li>
+    </ul>
+  </li>
+  <li>How to split also depends on what you mean by “network”
+    <ul>
+      <li>Internet’s perspective — network portion is unique for each organization
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      149.43.80.90
+      └----┘ └---┘
+  Network   Host
+</code></pre></div>        </div>
+      </li>
+      <li>Colgate’s perspective — network portion is unique for each “group” (students, faculty, staff, servers, computer science department, etc.) within Colgate
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      149.43.80.90
+      └-------┘ └┘
+      Network   Host
+</code></pre></div>        </div>
+      </li>
+      <li>Network portion really identifies the <strong>subnetwork</strong>
+        <ul>
+          <li>Colgate is a subnetwork of the Internet</li>
+          <li>Computer science department is a subnetwork of Colgate</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><em>Why is this hierarchy important?</em> — scalability!
+    <ul>
+      <li>Routers in the Internet know every IP address that starts with <code class="language-plaintext highlighter-rouge">149.43</code> refers to a device in Colgate’s network → router only needs to store this information, rather than an address for each of the ~65K devices that may be in Colgate’s network</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="routing-unplugged">Routing unplugged</h2>
+<p>During this activity, each person will play the role of a network router. You will be “connected” to one or more neighboring routers (i.e., group members). In total, the network will have 5 or 6 routers.</p>
+
+<p>Your goal is to be able to forward packets from one router to another until a packet reaches its intended destination. A packet will be represented by a piece of paper, which includes:</p>
+<ul>
+  <li>the source router’s name</li>
+  <li>the destination router’s name</li>
+  <li>a secret message</li>
+</ul>
+
+<p>For example:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Src = Vint, Dst = Radia, Secret = Go 'gate!
+</code></pre></div></div>
+
+<p>In your group, you may use your <strong>voice</strong> to talk with your group members about:</p>
+<ul>
+  <li>The instructions for the activity</li>
+  <li>Ideas for how to solve the problem</li>
+  <li>How well your approach worked</li>
+</ul>
+
+<p>You must use <strong>notes</strong> (written on pieces of paper) to:</p>
+<ul>
+  <li>Send a packet to another router</li>
+  <li>Share the names of your neighboring routers or the contents of packets you have received</li>
+  <li>Share information you learned from neighboring routers</li>
+</ul>
+
+<p>You may only pass notes to your neighboring routers. You may not pass a note to a router who is not your neighbor.</p>
+
+<p>Now complete the following steps:</p>
+<ol>
+  <li>Discuss (with your voices) how each router should behave to ensure packets reach their destination. During the discussion, <strong>do not share any information that can only be shared by passing notes</strong> (see the list above).</li>
+  <li>Everyone should behave as you agreed upon. You should only use your voice to clarify the instructions and how you should behave. <strong>All other information must be shared by passing notes to neighboring routers.</strong></li>
+  <li>When the group is ready to forward packets (you can use your voices to check if everyone is ready), the person whose first name comes first in the alphabet should create a packet with:
+    <ol>
+      <li>Their name as the source</li>
+      <li>A destination router (i.e., person) of their choosing — choose a router that is part of your group, but is not one of your neighbors</li>
+      <li>A secret message of their choosing</li>
+    </ol>
+
+    <p><strong>The packet and all other information must be sent by passing notes to neighboring routers.</strong> You should only use your voice to clarify the instructions and how you should behave.</p>
+
+    <p>The destination router should verbally announce when they receive the packet.</p>
+  </li>
+  <li>Discuss (with your voices) whether your approach worked. If not, what went wrong? How would you change your behavior?</li>
+  <li>If time allows, try your modified approach.</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>R1 --- R4 --- R6
+|      |      |
+R5 --- R2 --- R3
+ \____________/
+</code></pre></div></div>
+
+  </body>
+</html>

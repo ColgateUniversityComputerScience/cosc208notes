@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="syntax.css">
+    <base target="_blank">
+  </html>
+  <body>
+      <h2 id="warm-up">Warm-up</h2>
+<p>Q1: <em>Create a 1-bit circuit for <code class="language-plaintext highlighter-rouge">A &lt;= B</code> using <code class="language-plaintext highlighter-rouge">AND</code>, <code class="language-plaintext highlighter-rouge">OR</code>, <code class="language-plaintext highlighter-rouge">NOT</code> gates</em></p>
+
+<div style="page-break-after: always;"></div>
+
+<h2 id="assembly">Assembly</h2>
+<pre><code class="language-C">1  #include &lt;stdio.h&gt;
+2  int deref(int *p) {
+3      int v = *p;
+4      return v;
+5  }
+6  int main() {
+7      int x = 2;
+8      int *y = &amp;x;
+9      int z = deref(y);
+10     printf("deref(y) = %d\n", z);
+11     return 0;
+12 }
+</code></pre>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>000000000000083c &lt;deref&gt;:
+    83c:   d10083ff        sub     sp, sp, #0x20
+    840:   f90007e0        str     x0, [sp, #8]
+    844:   f94007e0        ldr     x0, [sp, #8]
+    848:   f9400000        ldr     x0, [x0]
+    84c:   f9000fe0        str     x0, [sp, #24]
+    850:   f9400fe0        ldr     x0, [sp, #24]
+    854:   910083ff        add     sp, sp, #0x20
+    858:   d65f03c0        re
+</code></pre></div></div>
+
+<div style="page-break-after: always;"></div>
+
+<h2 id="practice">Practice</h2>
+<pre><code class="language-C">int operandsA(int a) {
+    return a;
+}
+
+long operandsB(long b) {
+    return b;
+}
+
+int operandsC(int *c) {
+    return *c;
+}
+
+long operandsD(long *d) {
+    return *d;
+}
+
+int main() {
+    operandsA(5);
+    operandsB(5);
+    int x = 5;
+    operandsC(&amp;x);
+    long y = 5;
+    operandsD(&amp;y);
+}
+</code></pre>
+
+<div style="page-break-after: always;"></div>
+
+<h2 id="practice-1">Practice</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>00000000000007ec &lt;operandsA&gt;:
+    7ec:	d10043ff 	sub	sp, sp, #0x10   // sp = sp - 0x10
+    7f0:	b9000fe0 	str	w0, [sp, #12]   // *(sp + 12) = w0
+    7f4:	b9400fe0 	ldr	w0, [sp, #12]   // w0 = *(sp + 12)
+    7f8:	910043ff 	add	sp, sp, #0x10   // sp = sp + 0x10
+    7fc:	d65f03c0 	ret	                // return
+
+0000000000000800 &lt;operandsB&gt;:
+    800:	d10043ff 	sub	sp, sp, #0x10   //
+    804:	f90007e0 	str	x0, [sp, #8]    //
+    808:	f94007e0 	ldr	x0, [sp, #8]    //
+    80c:	910043ff 	add	sp, sp, #0x10   //
+    810:	d65f03c0 	ret	                //
+
+0000000000000814 &lt;operandsC&gt;:
+    814:	d10043ff 	sub	sp, sp, #0x10   //
+    818:	f90007e0 	str	x0, [sp, #8]    //
+    81c:	f94007e0 	ldr	x0, [sp, #8]    //
+    820:	b9400000 	ldr	w0, [x0]        //
+    824:	910043ff 	add	sp, sp, #0x10   //
+    828:	d65f03c0 	ret	                //
+
+000000000000082c &lt;operandsD&gt;:
+    82c:	d10043ff 	sub	sp, sp, #0x10   //
+    830:	f90007e0 	str	x0, [sp, #8]    //
+    834:	f94007e0 	ldr	x0, [sp, #8]    //
+    838:	f9400000 	ldr	x0, [x0]        //
+    83c:	910043ff 	add	sp, sp, #0x10   //
+    840:	d65f03c0 	ret	                //
+</code></pre></div></div>
+
+<div style="page-break-after: always;"></div>
+
+<h2 id="practice-2">Practice</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>000000000000083c &lt;deref&gt;:
+    83c:   d10083ff        sub     sp, sp, #0x20
+    840:   f90007e0        str     x0, [sp, #8]
+    844:   f94007e0        ldr     x0, [sp, #8]
+    848:   f9400000        ldr     x0, [x0]
+    84c:   f9000fe0        str     x0, [sp, #24]
+    850:   f9400fe0        ldr     x0, [sp, #24]
+    854:   910083ff        add     sp, sp, #0x20
+    858:   d65f03c0        re
+</code></pre></div></div>
+
+  </body>
+</html>

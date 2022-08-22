@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="syntax.css">
+    <base target="_blank">
+  </html>
+  <body>
+      <h2 id="warm-up">Warm-up</h2>
+<p>Q1: <em>What is the output of this program?</em></p>
+<pre><code class="language-C">void copy1(int a, int b) {
+    a = b;
+}
+void copy2(int *c, int *d) {
+    c = d;
+}
+void copy3(int *e, int *f) {
+    *e = *f;
+}
+int main() {
+    int q = 1;
+    int r = 2;
+    copy1(q, r);
+    int s = 3;
+    int t = 4;
+    copy2(&amp;s, &amp;t);
+    int u = 5;
+    int v = 6;
+    copy3(&amp;u, &amp;v);
+    printf("%d %d %d %d %d %d\n", q, r, s, t, u, v);
+}
+</code></pre>
+
+<div style="page-break-after: always;"></div>
+
+<h2 id="arrays--pointers">Arrays &amp; pointers</h2>
+<pre><code class="language-C">int main() {
+    char word[] = "hat";
+    printf("word = %s\n", word);
+    char *ptr = word;
+    printf("ptr = %s\n", ptr);
+    if (ptr == word) {
+        printf("ptr == word\n");
+    }
+    else {
+        printf("ptr != word\n");
+    }
+    word[1] = 'i';
+    printf("word = %s\n", word);
+    *ptr = 's';
+    printf("word = %s\n", word);
+    ptr[1] = 'a';
+    printf("word = %s\n", word);
+} 
+</code></pre>
+
+<div style="page-break-after: always;"></div>
+
+<h2 id="arrays--pointers-1">Arrays &amp; pointers</h2>
+<pre><code class="language-C">int update(char str[]) {
+    str[0] = 'p';
+}
+int main() {
+    char word[] = "mat";
+    update(word);
+    printf("%s\n", word);
+}
+</code></pre>
+
+<div style="page-break-after: always;"></div>
+
+<h2 id="q2">Q2:</h2>
+<pre><code class="language-C">int main() {
+    int nums[4] = {1,2,3,4};
+    printf("%d %d\n", *nums, nums[1]);
+    int *ptr = &amp;nums[1];
+    nums[1] += 4;
+    printf("%d %d\n", *ptr, nums[0]);
+    ptr = (nums + 2);
+    printf("%d\n", *ptr);
+    ptr++; // num++ is illegal
+    printf("%d\n", *ptr);
+}
+</code></pre>
+
+<div style="page-break-after: always;"></div>
+
+<h2 id="q3">Q3:</h2>
+<pre><code class="language-C">int main() {
+    char *first = "Colgate";
+    char second[10] = "Univ";
+    char *f = &amp;first[3];
+    printf("%d\n", strlen(f));
+    char *s = second;
+    *s = 'K';
+    s++;
+    *(s+2) = 't';
+    printf("%s %s\n", second, s);
+}
+</code></pre>
+
+<div style="page-break-after: always;"></div>
+
+<h2 id="q4">Q4:</h2>
+<pre><code class="language-C">void increment1(int a) {
+    a = a + 1;
+}
+void increment2(int *b) {
+    *b = *b + 1;
+}
+int main() {
+    int x = 1;
+    int *y = &amp;x;
+    increment1(x);
+    printf("%d %d\n", x, *y);
+    increment2(y);
+    printf("%d %d\n", x, *y);
+}
+</code></pre>
+
+<div style="page-break-after: always;"></div>
+
+<h2 id="q5--q6">Q5 &amp; Q6</h2>
+<pre><code class="language-C">void swap1(int *m, int *n) {
+    int tmp = *n;
+    *n = *m;
+    *m = tmp;
+}
+void swap2(int **x, int **y) {
+    int *tmp = *y;
+    *y = *x;
+    *x = tmp;
+}
+int main() {
+    int a = 1;
+    int b = 2;
+    int *ptrA = &amp;a;
+    int *ptrB = &amp;b;
+    swap1(ptrA, ptrB);
+    printf("%d %d\n", a, b);
+    swap2(&amp;ptrA, &amp;ptrB);
+    printf("%d %d %d %d\n", a, b, *ptrA, *ptrB);
+}
+</code></pre>
+<div style="page-break-after: always;"></div>
+
+<h2 id="q7">Q7</h2>
+<pre><code class="language-C">char *split(char *str, char delim) {
+    for (int i = 0; i &lt; strlen(str); i++) {
+        if (str[i] == delim) {
+            str[i] = '\0';
+            return &amp;str[i+1];
+        }
+    }
+    return NULL;
+}
+
+void parse(char *url) {
+    char separator = '/';
+    char *path = split(url, separator);
+    int domainlen = strlen(url);
+    int pathlen = strlen(path);
+    // STOP HERE
+    printf("Domain (%d chars): %s\n", domainlen, url);
+    printf("Path (%d chars): %s\n", pathlen, path);
+}
+
+int main() {
+    char input[] = "colgate.edu/lgbtq"
+    parse(input);
+}
+</code></pre>
+
+  </body>
+</html>

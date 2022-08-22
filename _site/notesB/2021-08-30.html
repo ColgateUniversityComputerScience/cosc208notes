@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="syntax.css">
+    <base target="_blank">
+  </html>
+  <body>
+      <h1 id="hello-systems-hello-c">Hello, systems; Hello, C</h1>
+<p><em>COSC 208, Introduction to Computer Systems, 2021-08-30</em></p>
+
+<h2 id="announcements">Announcements</h2>
+<ul>
+  <li>
+    <p>Before next class: read DiS sections and answer <strong>individually</strong> pre-class questions</p>
+  </li>
+  <li>
+    <p>Is there any volunteer to switch from 208LC to LB?</p>
+  </li>
+</ul>
+
+<h2 id="outline">Outline</h2>
+<ul>
+  <li>Syllabus</li>
+  <li>Warm-up: Hello, system</li>
+  <li>Hello, C</li>
+</ul>
+
+<h2 id="syllabus">Syllabus</h2>
+
+<ul>
+  <li><em>Questions</em></li>
+  <li>Remarks
+    <ul>
+      <li>advantage 2D layout: facilitate skimming</li>
+      <li>pre-questions: You need to earn ≥ 80% of the available points to get full credit. Trust you are doing right thing to learn.</li>
+      <li>project: in pair by default</li>
+      <li>participation also includes <em>listening</em>, we share a space</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="warm-up">Warm-up</h2>
+
+<ul>
+  <li>Q1: <em>What are the main components of a computer system?</em>
+    <ul>
+      <li>Operating system (OS)</li>
+      <li>Central processing unit (CPU)</li>
+      <li>Random access memory (RAM)</li>
+      <li>Secondary storage devices — e.g., hard disk drive, solid state drive</li>
+      <li>Input/output (I/O) ports</li>
+    </ul>
+  </li>
+  <li>Q1b: <em>What is the role of each of the components?</em>
+    <ul>
+      <li>OS — manages hardware resources</li>
+      <li>CPU — executes assembly instructions</li>
+      <li>RAM — stores program data (code, variables, etc.) at runtime</li>
+      <li>Secondary storage — stores program data (code, documents, etc.) persistently</li>
+      <li>I/O ports — receives user input (e.g., keyboard, mouse, audio); provides output to users (e.g., text, graphics, audio)</li>
+    </ul>
+    <div style="page-break-after: always;"></div>
+  </li>
+  <li>Q2: <em>What do you think of when you hear the term “Computer Systems”?</em>
+    <ul>
+      <li>C</li>
+      <li>Number representation</li>
+      <li>Program memory</li>
+      <li>Architecture</li>
+      <li>Assembly</li>
+      <li>Efficiency</li>
+      <li>Multiprocessing</li>
+      <li>Networking</li>
+    </ul>
+  </li>
+  <li>Q3: <em>Why is it important to learn about computer systems?</em>
+    <ul>
+      <li>To write more efficient programs</li>
+      <li>To leverage parallelism</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="hello-c">Hello, C</h2>
+
+<h2 id="primitive-types">Primitive types</h2>
+<ul>
+  <li>Most common types
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">char</code> — 1 byte (8-bits); integers -128…127; integers 0…127 correspond to ASCII characters</li>
+      <li><code class="language-plaintext highlighter-rouge">int</code> — usually 4 bytes (32-bits); integers -2 billion…2 billion</li>
+      <li><code class="language-plaintext highlighter-rouge">long </code>— usually 8 bytes (64-bits); integers -9 quintillion…9 quintillion</li>
+    </ul>
+  </li>
+  <li>Add <code class="language-plaintext highlighter-rouge">unsigned</code> in front of these types for a range from 0 to 255, 4 billion, or 18 quintillion, respectively</li>
+</ul>
+
+<h2 id="operators">Operators</h2>
+<ul>
+  <li><em>How would I increment the number stored in a variable <code class="language-plaintext highlighter-rouge">x</code> by <code class="language-plaintext highlighter-rouge">1</code>?</em>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">x = x + 1</code></li>
+      <li><code class="language-plaintext highlighter-rouge">x += 1</code></li>
+      <li><code class="language-plaintext highlighter-rouge">x++</code></li>
+      <li><code class="language-plaintext highlighter-rouge">++x</code></li>
+    </ul>
+  </li>
+  <li>Q4: <em>What is the output of this program?</em>
+    <pre><code class="language-C">  int main() {
+      int x = 1;
+      int y = 2;
+      x = x+5;
+      printf("%d ", x);        
+      x = y*2;
+      printf("%d ", x);
+      x *= 5;
+      printf("%d ", x);
+      printf("%d ", x--);
+      printf("%d ", x);
+      printf("%d ", --x);
+      printf("%d", x);
+  }
+</code></pre>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  6 4 20 20 19 18 18
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="demo">Demo</h2>
+
+<ul>
+  <li>
+    <p>Write a C program that prints “Hello, C!”</p>
+
+    <pre><code class="language-C">  // Visual Studio Code demo
+  #include &lt;stdio.h&gt;
+  #include &lt;stdlib.h&gt;
+  int main() {
+      printf("Hello, C!\n");
+      return EXIT_SUCCESS;
+  }
+</code></pre>
+  </li>
+  <li><em>How do you compile the program?</em>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>clang <span class="nt">-g</span> <span class="nt">-Wall</span> <span class="nt">-o</span> hello hello.c
+</code></pre></div>    </div>
+  </li>
+  <li><em>How do you run the program?</em>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>./hello
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="more-practice">More practice</h2>
+
+<ul>
+  <li>Q5: <em>What is the output of this program?</em>
+    <pre><code class="language-C">  int main() {
+      int x = 5;
+      int y = x/2;
+      int z = x%2;
+      printf("%d %d\n", y, z);
+  }
+</code></pre>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  2 1
+</code></pre></div>    </div>
+  </li>
+  <li>Q6: <em>What is the output of this program?</em>
+    <pre><code class="language-C">  int main() {
+      int x = 5;
+      char y = 'F';
+      y = y - x;
+      printf("%c %d\n", y, y);
+  }
+</code></pre>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  A 65
+</code></pre></div>    </div>
+    <h2 id="output-if-time">Output (if time)</h2>
+  </li>
+  <li>What is the syntax for <code class="language-plaintext highlighter-rouge">printf</code>?
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">printf(FORMAT_STRING, VALUES, ...);</code></li>
+      <li><code class="language-plaintext highlighter-rouge">FORMAT_STRING</code> is a string constant (sequence of characters surrounded by double quotes) that may optionally include format specifiers</li>
+      <li>Format specifiers define how to convert a value to a string
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">%d</code> decimal (i.e., base 10) number</li>
+          <li><code class="language-plaintext highlighter-rouge">%c</code> character</li>
+          <li><code class="language-plaintext highlighter-rouge">%x</code> hexadecimal (i.e., base 16) number</li>
+          <li><code class="language-plaintext highlighter-rouge">%s</code> string — more on this next week</li>
+        </ul>
+      </li>
+      <li>After the format string, include a value for each format specifier
+        <ul>
+          <li>A compile error will occur if the number of format specifiers does not match the number of values</li>
+          <li>A compile warning will occur if the value type does not match the format specifier</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Next week we’ll talk about reading input using <code class="language-plaintext highlighter-rouge">fgets</code>
+    <ul>
+      <li><em>Dive into Systems</em> uses <code class="language-plaintext highlighter-rouge">scanf</code>, which has several disadvantage</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="extra-practice">Extra practice</h2>
+<ul>
+  <li>Q5: <em>Write a program that computes and displays the number of minutes in a year.</em>
+    <pre><code class="language-C">  int main() {
+      int minutes = 365 * 24 * 60;
+      printf("%d minutes\n", minutes);
+      return EXIT_SUCCESS;
+  }
+</code></pre>
+  </li>
+</ul>
+
+  </body>
+</html>

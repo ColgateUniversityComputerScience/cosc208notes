@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="syntax.css">
+    <base target="_blank">
+  </html>
+  <body>
+      <h1 id="assembly-instruction-formats-loadstore">Assembly: instruction formats; load/store</h1>
+<p><em>COSC 208, Introduction to Computer Systems, 2021-10-06</em></p>
+
+<h2 id="announcements">Announcements</h2>
+<ul>
+  <li>Exam1 Q5</li>
+</ul>
+
+<h2 id="outline">Outline</h2>
+<ul>
+  <li>Assembly</li>
+  <li>Operands</li>
+  <li>Load/store</li>
+</ul>
+
+<h2 id="assembly">Assembly</h2>
+<pre><code class="language-C">1  #include &lt;stdio.h&gt;
+2  int deref(int *p) {
+3      int v = *p;
+4      return v;
+5  }
+6  int main() {
+7      int x = 2;
+8      int *y = &amp;x;
+9      int z = deref(y);
+10     printf("deref(y) = %d\n", z);
+11     return 0;
+12 }
+</code></pre>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+0000000000400584 &lt;deref&gt;:
+
+    400584:	d10043ff 	sub	sp, sp, #0x10
+
+    400588:	f90007e0 	str	x0, [sp, #8]
+
+    40058c:	f94007e8 	ldr	x8, [sp, #8]
+
+    400590:	b9400109 	ldr	w9, [x8]
+
+    400594:	b90007e9 	str	w9, [sp, #4]
+
+    400598:	b94007e0 	ldr	w0, [sp, #4]
+
+    40059c:	910043ff 	add	sp, sp, #0x10
+
+    4005a0:	d65f03c0 	ret
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>Q1: <em>What do each of the columns contain?</em></p>
+  </li>
+  <li>
+    <p>Mapping between assembly and C code</p>
+  </li>
+</ul>
+
+<div style="page-break-after: always;"></div>
+
+<h2 id="loadstore">Load/store</h2>
+<ul>
+  <li>Q2: <em>What is the C code equivalent for <code class="language-plaintext highlighter-rouge">str x0, [x1]</code>, treating registers as if they were variable names?</em></li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+</code></pre></div></div>
+
+<ul>
+  <li>Q3: <em>What is the C code equivalent for <code class="language-plaintext highlighter-rouge">ldr x2, [x3]</code>, treating registers as if they were variable names?</em></li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+</code></pre></div></div>
+<ul>
+  <li>Q4: <em>Write the C code equivalent for each line of assembly, treating registers as if they were variable names. For example, the C code equivalent for <code class="language-plaintext highlighter-rouge">sub sp, sp, #0x20</code> is <code class="language-plaintext highlighter-rouge">sp = sp - 0x20</code></em></li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+0000000000400584 &lt;deref&gt;:
+
+    400584:	d10043ff 	sub	sp, sp, #0x10
+
+    400588:	f90007e0 	str	x0, [sp, #8]
+
+    40058c:	f94007e8 	ldr	x8, [sp, #8]
+
+    400590:	b9400109 	ldr	w9, [x8]
+
+    400594:	b90007e9 	str	w9, [sp, #4]
+
+    400598:	b94007e0 	ldr	w0, [sp, #4]
+
+    40059c:	910043ff 	add	sp, sp, #0x10
+
+    4005a0:	d65f03c0 	ret
+</code></pre></div></div>
+
+<p><img src="diagrams/load_store.png" width="400" /></p>
+
+  </body>
+</html>

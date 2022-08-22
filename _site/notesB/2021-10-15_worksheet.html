@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="syntax.css">
+    <base target="_blank">
+  </html>
+  <body>
+      <h1 id="assembly-conditionals-goto">Assembly: conditionals; <code class="language-plaintext highlighter-rouge">goto</code></h1>
+<p><em>COSC 208, Introduction to Computer Systems, 2021-10-15</em></p>
+
+<h2 id="announcements">Announcements</h2>
+
+<h2 id="outline">Outline</h2>
+<ul>
+  <li>Warm-up</li>
+  <li>Conditionals</li>
+  <li><code class="language-plaintext highlighter-rouge">goto</code></li>
+</ul>
+
+<h2 id="warm-up">Warm-up</h2>
+
+<ul>
+  <li>Q1: <em>Assume the registers currently hold the following values:</em>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  sp = 0xA980
+  w/x0 = 0
+  w/x1 = 1
+  w/x2 = 2
+  w/x3 = 3
+  w/x4 = 4
+  w/x5 = 5
+</code></pre></div>    </div>
+    <p><em>Draw the contents of the stack after the following instructions have been executed:</em></p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  sub sp, sp, #0x30
+  str w0, [sp, #16]
+  str x1, [sp]
+  str w2, [sp, #20]
+  str x3, [sp, #32]
+  str w4, [sp, #28]
+  str w5, [sp, #8]
+</code></pre></div>    </div>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>          0  1  2  3  4  5  6  7  8          
+      -&gt;  +--+--+--+--+--+--+--+--+
+  0xA9__  |                       |
+          +--+--+--+--+--+--+--+--+
+  ...
+
+
+
+
+
+
+
+
+
+
+
+
+  0xA980
+</code></pre></div>    </div>
+
+    <div style="page-break-after: always;"></div>
+  </li>
+</ul>
+
+<h2 id="goto-example-from-last-class">goto example from last class</h2>
+
+<h2 id="more-practice">More practice</h2>
+
+<pre><code class="language-C">    1  int flip(int bit) {
+    2     int result = -1;
+    3     if (bit == 0) {
+    4          result = 1; 
+    5      } 
+    6      else {
+    7          result = 0;
+    8      }
+    9      return result;
+    10 }
+</code></pre>
+
+<ul>
+  <li>Q2: <em>The above C code was compiled into assembly. Label each line of assembly code with the line number of the line of C code from which the assembly instruction was derived.</em>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0000000000400544 &lt;flip&gt;:
+  400544:	d10043ff 	sub	sp, sp, #0x10               
+  400548:	12800008 	mov	w8, #0xffffffff             
+  40054c:	b9000fe0 	str	w0, [sp, #12]               
+  400550:	b9000be8 	str	w8, [sp, #8]                
+  400554:	b9400fe8 	ldr	w8, [sp, #12]               
+  400558:	35000088 	cbnz	w8, 400568 &lt;flip+0x24&gt;  
+  40055c:	52800028 	mov	w8, #0x1                    
+  400560:	b9000be8 	str	w8, [sp, #8]                
+  400564:	14000002 	b	40056c &lt;flip+0x28&gt;          
+  400568:	b9000bff 	str	wzr, [sp, #8]               
+  40056c:	b9400be0 	ldr	w0, [sp, #8]                
+  400570:	910043ff 	add	sp, sp, #0x10               
+  400574:	d65f03c0 	ret                             
+</code></pre></div>    </div>
+  </li>
+  <li>Q3: <em>How does the C code and its assembly differ in terms of the conditional
+execution? i.e. compare and contrast the <code class="language-plaintext highlighter-rouge">else</code> and the two branches.</em></li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+</code></pre></div></div>
+
+<ul>
+  <li>Q4: <em>Write a function called <code class="language-plaintext highlighter-rouge">flip_goto</code> that behaves the same as <code class="language-plaintext highlighter-rouge">flip</code> but matches the structure of the assembly code that will be generated for <code class="language-plaintext highlighter-rouge">flip</code>. (Hint: you’ll need two <code class="language-plaintext highlighter-rouge">goto</code> statements.)</em></li>
+</ul>
+
+<div style="page-break-after: always;"></div>
+
+<div style="page-break-after: always;"></div>
+
+<h2 id="practice-with-conditionals">Practice with conditionals</h2>
+<p><em>Write the C if-statement code equivalent for each snippet of assembly, treating registers as if they were variable names.</em></p>
+<ul>
+  <li>Q5:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  cmp w0, w1
+  b.eq 0xABCD &lt;foo+0x40&gt;
+</code></pre></div>    </div>
+    <pre><code class="language-C">    
+    
+</code></pre>
+  </li>
+  <li>Q6:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  cmp w0, #0x20
+  b.lt 0xABCD &lt;foo+0x80&gt;
+</code></pre></div>    </div>
+    <pre><code class="language-C">   
+    
+</code></pre>
+  </li>
+  <li>Q7:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  cmp w1, #0x1
+  b.ne 0xABCD &lt;foo+0xC0&gt;
+</code></pre></div>    </div>
+    <pre><code class="language-C">    
+    
+</code></pre>
+  </li>
+  <li>Q8:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  cmp w0, w1
+  b.le 0xABCD &lt;foo+0xF0&gt;
+</code></pre></div>    </div>
+    <pre><code class="language-C">    
+    
+</code></pre>
+  </li>
+</ul>
+
+
+  </body>
+</html>

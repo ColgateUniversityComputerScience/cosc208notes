@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="syntax.css">
+    <base target="_blank">
+  </html>
+  <body>
+      <h1 id="program-memory-free-structs">Program memory: free; structs</h1>
+<p><em>COSC 208, Introduction to Computer Systems, 2021-09-29</em></p>
+
+<h2 id="announcements">Announcements</h2>
+<ul>
+  <li>Project 1 Part B (and revisions to Part A) due tomorrow at 11pm</li>
+</ul>
+
+<h2 id="warm-up">Warm-up</h2>
+<p><em>Assume you wanted to write a function that creates a copy of a string. What is wrong with each of the following attempts at writing such a function?</em></p>
+
+<p>Q1:</p>
+<pre><code class="language-C">char *copy1(char strA[]) {
+    char strB[strlen(strA) + 1];
+    strcpy(strB, strA);
+    return strB;
+}
+</code></pre>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code></code></pre></div></div>
+
+<p>Q2:</p>
+<pre><code class="language-C">char copy2(char strA[]) {
+    char *strB = malloc(sizeof(char) * (strlen(strA) + 1));
+    strcpy(strB, strA);
+    return *strB;
+}
+</code></pre>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code></code></pre></div></div>
+
+<p>Q3:</p>
+<pre><code class="language-C">char *copy3(char strA[]) {
+    char *strB = malloc(sizeof(char *));
+    strcpy(strB, strA);
+    return strB;
+}
+</code></pre>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>
+<!--🛑 **STOP HERE** after completing the warm-up; if you have extra time please **skip ahead** to the extra practice.
+-->
+<div style="page-break-after: always;"></div>
+
+<h2 id="free">free</h2>
+<p><em>What memory deallocation mistake has been made in each of the following code snippets?</em></p>
+
+<p>Q4:</p>
+<pre><code class="language-C">int *ptrA = malloc(sizeof(int) * 3);
+int *ptrB = ptrA;
+free(ptrA);
+free(ptrB);
+</code></pre>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code></code></pre></div></div>
+
+<p>Q5:</p>
+<pre><code class="language-C">int *ptr = malloc(sizeof(int) * 3);
+ptr[0] = 1;
+free(ptr);
+ptr[1] = 2;
+</code></pre>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code></code></pre></div></div>
+
+<p>Q6:</p>
+<pre><code class="language-C">int *ptr = malloc(sizeof(int) * 3);
+ptr++;
+free(ptr);
+</code></pre>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code></code></pre></div></div>
+
+<p>Q7:</p>
+<pre><code class="language-C">int *ptrA = malloc(sizeof(int) * 3);
+int *ptrB = ptrA;
+ptrA[0] = 0;
+ptrB[1] = 1;
+free(ptrA);
+ptrB[2] = 2;
+</code></pre>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code></code></pre></div></div>
+<!--🛑 **STOP HERE** after completing the above questions; if you have extra time please **skip ahead** to the extra practice.
+-->
+<div style="page-break-after: always;"></div>
+
+<h2 id="pointers-to-structs">Pointers to structs</h2>
+<p>Assume you are given the following code:</p>
+<pre><code class="language-C">struct account {
+    int number; // Account number
+    int balance; // Current account balance
+};
+int deposit(struct account *acct, int amount);
+int transfer(struct account *from, struct amount *to, int amount);
+</code></pre>
+
+<p>Q8: <em>Write the <code class="language-plaintext highlighter-rouge">deposit</code> function, which adds <code class="language-plaintext highlighter-rouge">amount</code> to the balance of <code class="language-plaintext highlighter-rouge">acct</code>. The function should return the amount deposited.</em></p>
+<pre><code class="language-C">
+
+
+
+
+
+
+
+
+
+
+
+</code></pre>
+
+<p>Q9: <em>Write the <code class="language-plaintext highlighter-rouge">transfer</code> function which moves <code class="language-plaintext highlighter-rouge">amount</code> from one account to another. The function should return the amount transferred if the transfer was successful or 0 otherwise.</em></p>
+<pre><code class="language-C">
+
+
+
+
+
+
+
+
+
+
+
+</code></pre>
+<div style="page-break-after:always;"></div>
+
+<h2 id="extra-practice">Extra practice</h2>
+<p><em>Two structs have been defined representing a queue and an item on a queue.</em></p>
+<pre><code class="language-C">struct item {
+    int value;
+    struct item *next;
+};
+struct queue {
+    struct item *head;
+    struct item *tail;
+};
+</code></pre>
+
+<p><em>The <code class="language-plaintext highlighter-rouge">new_queue</code> function creates a new, empty queue.</em></p>
+<pre><code class="language-C">struct queue *new_queue() {
+    struct queue *q = malloc(sizeof(struct queue));
+    q-&gt;head = NULL;
+    q-&gt;tail = NULL;
+    return q;
+}
+</code></pre>
+
+<p>Q10: <em>Write a function called <code class="language-plaintext highlighter-rouge">enqueue</code> that adds a new value at the end of the queue.</em></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+
+
+
+
+
+
+
+
+
+</code></pre></div></div>
+
+<p>Q11: <em>Write a function called <code class="language-plaintext highlighter-rouge">dequeue</code> that removes and returns the value at the head of the queue. The function should return -1 if the queue is empty.</em></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+
+
+
+
+
+
+
+</code></pre></div></div>
+
+<p>Q12: <em>Write a function called <code class="language-plaintext highlighter-rouge">free_queue</code> that empties and frees a queue.</em></p>
+
+  </body>
+</html>

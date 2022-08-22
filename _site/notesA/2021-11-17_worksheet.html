@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="syntax.css">
+    <base target="_blank">
+  </html>
+  <body>
+      <h1 id="exam-3-review">Exam 3 Review</h1>
+<p><em>COSC 208, Introduction to Computer Systems, 2021-11-17</em></p>
+
+<h2 id="announcements">Announcements</h2>
+<ul>
+  <li>Exam 3
+    <ul>
+      <li>Study guide posted on Moodle</li>
+      <li>In-class portion: during class Friday</li>
+      <li>Take-home portion: due at 11pm on Monday</li>
+    </ul>
+  </li>
+  <li>Project 3 due Thursday, December 2</li>
+</ul>
+
+<h2 id="outline">Outline</h2>
+<ul>
+  <li>Memory hierarchy</li>
+  <li>Caching</li>
+  <li>Processes</li>
+  <li>Scheduling</li>
+  <li>Threads</li>
+</ul>
+
+<h2 id="memory-hierarchy">Memory hierarchy</h2>
+<p>Q1: What is the <strong>fastest volatile</strong> memory?</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>
+
+<p>Q2: What is the <strong>fastest non-volatile</strong> memory?</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+</code></pre></div></div>
+
+<p>Q3: Why is a hard disk drive (HDD) slower than a solid state drive (SSD)?</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+</code></pre></div></div>
+
+<p>Q4: Why is accessing main memory (i.e., Random Access Memory (RAM)) slower than accessing a cache?</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+</code></pre></div></div>
+
+<p>Q5: Why do solid state drives (SSDs) cost less per unit of capacity than main memory (i.e., Random Access Memory (RAM))?</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+</code></pre></div></div>
+
+<h2 id="caching">Caching</h2>
+<p>Q6: <em>Assume the cache size is 3 and the <strong>optimal</strong> cache replacement algorithm is used. Indicate what happens with the cache on each data access.</em></p>
+<ul>
+  <li>Access 2</li>
+  <li>Access 4</li>
+  <li>Access 1</li>
+  <li>Access 2</li>
+  <li>Access 4</li>
+  <li>Access 3</li>
+  <li>Access 2</li>
+  <li>Access 4</li>
+  <li>Access 1</li>
+  <li>Access 2</li>
+  <li>Access 4</li>
+  <li>Access 1</li>
+</ul>
+
+<p>Q7: <em>Assume the cache size is 3 and the <strong>least recently used (LRU)</strong> cache replacement algorithm is used. Indicate what happens with the cache on each data access.</em></p>
+<ul>
+  <li>Access 2</li>
+  <li>Access 4</li>
+  <li>Access 1</li>
+  <li>Access 2</li>
+  <li>Access 4</li>
+  <li>Access 3</li>
+  <li>Access 2</li>
+  <li>Access 4</li>
+  <li>Access 1</li>
+  <li>Access 2</li>
+  <li>Access 4</li>
+  <li>Access 1</li>
+</ul>
+
+<h2 id="processes">Processes</h2>
+<p>Q8: <em>Write a program that creates a new process. The child process should print “I am a child”; the parent process should print “I am a parent; my child is CPID” (replacing CPID with the child’s PID).</em></p>
+<pre><code class="language-C">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</code></pre>
+
+<p>Q9: <em>Will the output produced by your program always appear in a particular order? Why or why not?</em></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+</code></pre></div></div>
+
+<h2 id="scheduling">Scheduling</h2>
+<p><em>Consider the following set of processes:</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Process</th>
+      <th>Duration</th>
+      <th>Arrival Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A</td>
+      <td>20</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>B</td>
+      <td>15</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>C</td>
+      <td>25</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>D</td>
+      <td>5</td>
+      <td>10</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code></code></pre></div></div>
+<p>Q10: <em>Draw the schedule when a First In First Out (FIFO) scheduling algorithm is used.</em></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+
+</code></pre></div></div>
+
+<p>Q11: <em>Compute the turnaround and wait time for each process based on the above schedule.</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Process</th>
+      <th>Turnaround</th>
+      <th>Wait</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>B</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>C</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>D</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code></code></pre></div></div>
+<p>Q12: <em>Draw the schedule when a Shortest Job First (SJF) scheduling algorithm is used.</em></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+
+
+</code></pre></div></div>
+
+<p>Q13: <em>Compute the turnaround and wait time for each process based on the above schedule.</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Process</th>
+      <th>Turnaround</th>
+      <th>Wait</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>B</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>C</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>D</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code></code></pre></div></div>
+<p>Q14: <em>Draw the schedule when a Shortest Time to Completion First (STCF) scheduling algorithm is used.</em></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+
+
+
+</code></pre></div></div>
+
+<p>Q15: <em>Compute the turnaround and wait time for each process based on the above schedule.</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Process</th>
+      <th>Turnaround</th>
+      <th>Wait</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>B</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>C</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>D</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code></code></pre></div></div>
+<p>Q16: <em>Draw the schedule when a Round Round (RR) scheduling algorithm is used with a time quantum of 10.</em></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+
+
+
+</code></pre></div></div>
+
+<p>Q17: <em>Compute the turnaround and wait time for each process based on the above schedule.</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Process</th>
+      <th>Turnaround</th>
+      <th>Wait</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>B</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>C</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>D</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<div style="page-break-after:always;"></div>
+
+<h2 id="threads">Threads</h2>
+<p><em>A program contains the following functions:</em></p>
+<pre><code class="language-C">void *dec(void *arg) {
+    int *t = (int *)arg;
+    *t--;
+    return NULL:
+}
+
+void *inc(void *arg) {
+    int *t = (int *)arg;
+    *t++;
+    return NULL;
+}
+
+void *zero(void *arg) {
+    int *t = (int *)arg;
+    *t = 0;
+    return NULL;
+}
+</code></pre>
+<p><em>For each of the following main methods, list <strong>all possible outputs</strong> the program could produce. Assume threads are only preempted if they become blocked waiting for other threads.</em></p>
+
+<p>Q18:</p>
+<pre><code class="language-C">int main() {
+    int *total = malloc(sizeof(int));
+    *total = 2;
+    pthread_t thrA, thrB;
+    pthread_create(&amp;thrA, NULL, &amp;inc, total);
+    pthread_create(&amp;thrB, NULL, &amp;inc, total);
+    pthread_join(&amp;thrA);
+    pthread_join(&amp;thrB);
+    printf("%d\n", *total);
+}
+</code></pre>
+
+<p>Q19:</p>
+<pre><code class="language-C">int main() {
+    int *total = malloc(sizeof(int));
+    *total = 2;
+    pthread_t thrA, thrB;
+    pthread_create(&amp;thrA, NULL, &amp;dec, total);
+    pthread_create(&amp;thrB, NULL, &amp;zero, total);
+    pthread_join(&amp;thrA);
+    pthread_join(&amp;thrB);
+    printf("%d\n", *total);
+} 
+</code></pre>
+
+<p>Q20:</p>
+<pre><code class="language-C">int main() {
+    int *total = malloc(sizeof(int));
+    *total = 2;
+    pthread_t thrA, thrB;
+    pthread_create(&amp;thrA, NULL, &amp;zero, total);
+    pthread_join(&amp;thrA);
+    pthread_create(&amp;thrB, NULL, &amp;inc, total);
+    pthread_join(&amp;thrB);
+    printf("%d\n", *total);
+} 
+</code></pre>
+
+  </body>
+</html>

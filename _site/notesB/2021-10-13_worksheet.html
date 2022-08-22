@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="syntax.css">
+    <base target="_blank">
+  </html>
+  <body>
+      <h1 id="assembly-tracing-conditionals-intro">Assembly: Tracing; conditionals intro</h1>
+<p><em>COSC 208, Introduction to Computer Systems, 2021-10-13</em></p>
+
+<h2 id="announcements">Announcements</h2>
+<ul>
+  <li>Project 2 Part 1 due next Thursday,  at 11pm</li>
+</ul>
+
+<h2 id="outline">Outline</h2>
+<ul>
+  <li>Warm-up</li>
+  <li>Tracing assembly code</li>
+  <li>Conditionals</li>
+</ul>
+
+<h2 id="warm-up">Warm-up</h2>
+<ul>
+  <li>Q1: <em>Write the C code equivalent for each line of assembly, treating registers as if they were variable names. For example, the C code equivalent for <code class="language-plaintext highlighter-rouge">sub sp, sp, #0x20</code> is <code class="language-plaintext highlighter-rouge">sp = sp - 0x20</code></em>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  0000000000400544 &lt;sum&gt;:
+
+      400544:	d10083ff 	sub	sp, sp, #0x20   
+
+      400548:	b9001fe0 	str	w0, [sp, #28]  
+
+      40054c:	f9000be1 	str	x1, [sp, #16]  
+
+      400550:	f9400be8 	ldr	x8, [sp, #16]  
+
+      400554:	b9400109 	ldr	w9, [x8]     
+
+      400558:	b9000fe9 	str	w9, [sp, #12]  
+
+      40055c:	b9401fe9 	ldr	w9, [sp, #28]  
+
+      400560:	b9400fea 	ldr	w10, [sp, #12]  
+
+      400564:	0b0a0129 	add	w9, w9, w10     
+
+      400568:	b9000be9 	str	w9, [sp, #8]    
+
+      40056c:	b9400be0 	ldr	w0, [sp, #8]   
+         
+      400570:	910083ff 	add	sp, sp, #0x20   
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<div style="page-break-after: always;"></div>
+
+<h2 id="tracing-assembly-code">Tracing assembly code</h2>
+
+<ul>
+  <li>
+    <p>Q2: <em>The assembly corresponds to the following C code. Label each line of assembly code with the line number of the line of C code from which the assembly instruction was derived.</em></p>
+
+    <pre><code class="language-C">  1  int sum(int a, int *b) {
+  2     int c = *b;
+  3     int d = a + c;
+  4     return d;
+  5  }
+</code></pre>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  0000000000400544 &lt;sum&gt;:
+      400544:	d10083ff 	sub	sp, sp, #0x20   
+      400548:	b9001fe0 	str	w0, [sp, #28]   
+      40054c:	f9000be1 	str	x1, [sp, #16]   
+      400550:	f9400be8 	ldr	x8, [sp, #16]   
+      400554:	b9400109 	ldr	w9, [x8]        
+      400558:	b9000fe9 	str	w9, [sp, #12]   
+      40055c:	b9401fe9 	ldr	w9, [sp, #28]   
+      400560:	b9400fea 	ldr	w10, [sp, #12]  
+      400564:	0b0a0129 	add	w9, w9, w10     
+      400568:	b9000be9 	str	w9, [sp, #8]    
+      40056c:	b9400be0 	ldr	w0, [sp, #8]    
+      400570:	910083ff 	add	sp, sp, #0x20   
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Q3: <em>Place in the stack below the parameters <code class="language-plaintext highlighter-rouge">a</code>, <code class="language-plaintext highlighter-rouge">b</code> and local
+variables <code class="language-plaintext highlighter-rouge">c</code> and <code class="language-plaintext highlighter-rouge">d</code> (before executing last assembly instruction; and
+assuming <code class="language-plaintext highlighter-rouge">sp = 0xF0</code> initially)</em></p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>          0  1  2  3  4  5  6  7  8
+       +--+--+--+--+--+--+--+--+ &lt;- sp
+  0xD0 |                       |
+       +--+--+--+--+--+--+--+--+
+  0xD8 |           |           |
+       +--+--+--+--+--+--+--+--+`
+  0xE0 |                       |
+       +--+--+--+--+--+--+--+--+
+  0xE8 |           |           |
+       +--+--+--+--+--+--+--+--+
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<div style="page-break-after: always;"></div>
+
+<h2 id="conditionals">Conditionals</h2>
+<ul>
+  <li>Q4: <em>The following C code was compiled into assembly. Label each line of assembly code with the line number of the line of C code from which the assembly instruction was derived.</em>
+    <pre><code class="language-C">  1  int divide(int numerator, int denominator) {
+  2      int result = -1;
+  3      result = numerator / denominator;
+  4      return result;
+  5  }
+</code></pre>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  0000000000400544 &lt;divide&gt;:
+      400544:	d10043ff 	sub	sp, sp, #0x10       
+      400548:	12800008 	mov	w8, #0xffffffff     
+      40054c:	b9000fe0 	str	w0, [sp, #12]       
+      400550:	b9000be1 	str	w1, [sp, #8]        
+      400554:	b90007e8 	str	w8, [sp, #4]        
+      400558:	b9400fe8 	ldr	w8, [sp, #12]       
+      40055c:	b9400be9 	ldr	w9, [sp, #8]        
+      400560:	1ac90d08 	sdiv	w8, w8, w9      
+      400564:	b90007e8 	str	w8, [sp, #4]       
+      400568:	b94007e0 	ldr	w0, [sp, #4]       
+      40056c:	910043ff 	add	sp, sp, #0x10      
+      400570:	d65f03c0 	ret                    
+</code></pre></div>    </div>
+  </li>
+  <li>Q5: <em>Why is <code class="language-plaintext highlighter-rouge">#0xffffffff</code> being stored in <code class="language-plaintext highlighter-rouge">w8</code>?</em>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+</code></pre></div>    </div>
+  </li>
+  <li>Q6: <em>When might this function cause an error?</em>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<div style="page-break-after: always;"></div>
+
+<ul>
+  <li>
+    <p>The following code prevents this error.</p>
+
+    <pre><code class="language-C">  1  int divide_safe(int numerator, int denominator) {
+  2      int result = -1;
+  3      if (denominator != 0) {
+  4          result = numerator / denominator;
+  5      }
+  6      return result;
+  7  }
+</code></pre>
+  </li>
+</ul>
+
+<h2 id="conditional-assembly-code">Conditional assembly code</h2>
+
+<ul>
+  <li>
+    <p>Q7: <em>Its compiled assembly include a branch. Label each line of assembly code with the line number of the line of C code from which the assembly instruction was derived</em></p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  0000000000400544 &lt;divide_safe&gt;:
+      400544:	d10043ff 	sub	sp, sp, #0x10           
+      400548:	12800008 	mov	w8, #0xffffffff       
+      40054c:	b9000fe0 	str	w0, [sp, #12]        
+      400550:	b9000be1 	str	w1, [sp, #8]       
+      400554:	b90007e8 	str	w8, [sp, #4]       
+      400558:	b9400be8 	ldr	w8, [sp, #8]       
+      40055c:	340000a8 	cbz	w8, 400570 &lt;divide_safe+0x2c&gt; 
+      400560:	b9400fe8 	ldr	w8, [sp, #12]                 
+      400564:	b9400be9 	ldr	w9, [sp, #8]                  
+      400568:	1ac90d08 	sdiv	w8, w8, w9               
+      40056c:	b90007e8 	str	w8, [sp, #4]              
+      400570:	b94007e0 	ldr	w0, [sp, #4]              
+      400574:	910043ff 	add	sp, sp, #0x10             
+      400578:	d65f03c0 	ret                           
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Q8: <em>What does the <code class="language-plaintext highlighter-rouge">cbz</code> instruction do?</em></p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Q9: <em>Why does the assembly use <code class="language-plaintext highlighter-rouge">cbz</code> when the C code contains <code class="language-plaintext highlighter-rouge">!= 0</code>?</em></p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+</code></pre></div>    </div>
+  </li>
+</ul>
+<div style="page-break-after: always;"></div>
+
+
+  </body>
+</html>

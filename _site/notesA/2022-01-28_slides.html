@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="syntax.css">
+    <base target="_blank">
+  </html>
+  <body>
+      <h2 id="warm-up">Warm-up</h2>
+<p><em>Write a program that prints the number of days, hours, and minutes in a week.</em></p>
+
+<div style="page-break-after: always;"></div>
+
+<h2 id="q2">Q2:</h2>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+int main() {
+    int num = random();
+    if (num % 2 == 0) {
+        printf("heads\n");
+    } else {
+        printf("tails\n");
+    }
+}
+</code></pre>
+
+<div style="page-break-after: always;"></div>
+
+<h2 id="q3">Q3:</h2>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+int main() {
+    for (int i = 2; i &lt;= 100; i+=2) {
+        printf("%d\n", i);
+    }
+}
+</code></pre>
+<p>~ OR ~</p>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+int main() {
+    for (int i = 0; i &lt;= 100; i++) {
+        if (0 == i % 2) {
+            printf("%d\n", i);
+        }
+    }
+}
+</code></pre>
+
+<div style="page-break-after: always;"></div>
+
+<h2 id="q4">Q4:</h2>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+int main() {
+    int i = 2;
+    while (i &lt;= 100) {
+        printf("%d\n", i);
+        i+=2;
+    }
+}
+</code></pre>
+
+<div style="page-break-after: always;"></div>
+
+<h2 id="q5">Q5</h2>
+<pre><code class="language-C">int isletter(char ch) {
+    if (ch &gt;= 'A' &amp;&amp; ch &lt;= 'Z') { // Uppercase letter
+        return 1;
+    } else if (ch &gt;= 'a' &amp;&amp; ch &lt;= 'z') { // Lowercase letter
+        return 1;
+    } else { // Not a letter
+        return 0;
+    }
+}
+</code></pre>
+
+<div style="page-break-after: always;"></div>
+
+<h2 id="q6">Q6:</h2>
+<pre><code class="language-C">char flipcase(char ch) {
+    if (ch &gt;= 'A' &amp;&amp; ch &lt;= 'Z') { // Uppercase to lowercase
+        return ch - 'A' + 'a';
+    } elseif (ch &gt;= 'a' &amp;&amp; ch &lt;= 'z') { // Lowercase to uppercase
+        return ch - 'a' + 'A';
+    } else { // Not a letter
+        return ch;
+    }
+}
+</code></pre>
+
+<div style="page-break-after: always;"></div>
+
+<h2 id="q7">Q7:</h2>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+#define MAX 2048
+int main() {
+    int i = 2;
+    while (i &lt;= MAX) {
+        printf("%d ", i);
+        i *= 2;
+    }
+    printf("\n");
+}
+</code></pre>
+
+<div style="page-break-after: always;"></div>
+
+<h2 id="q8">Q8:</h2>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+int main() {
+    for (int i = 1; i &lt;= 100; i++) {
+        if (i % 3 == 0 &amp;&amp; i % 5 == 0) {
+            printf("Both\n");
+        }
+        else if (i % 5 == 0) {
+            printf("Five\n");
+        }
+        else if (i % 3 == 0) {
+            printf("Three\n");
+        }
+        else {
+            printf("%d\n", i);
+        }
+    }
+}
+</code></pre>
+
+<div style="page-break-after: always;"></div>
+
+<h2 id="q9">Q9:</h2>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+int main() {
+    for (char upper='A'; upper &lt;= 'Z'; upper++) {
+        char lower = upper - 'A' + 'a';
+        printf("%c%c", upper, lower);
+    }
+    printf("\n");
+}
+</code></pre>
+
+<div style="page-break-after: always;"></div>
+
+<h2 id="q10">Q10:</h2>
+<pre><code class="language-C">int floorm(int num, int multiple) {
+    return num - (num % multiple);
+}
+</code></pre>
+
+  </body>
+</html>

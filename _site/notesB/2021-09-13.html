@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="syntax.css">
+    <base target="_blank">
+  </html>
+  <body>
+      <h1 id="number-representation-binary-arithmetic-overflow">Number representation: binary arithmetic; overflow</h1>
+<p><em>COSC 208, Introduction to Computer Systems, 2021-09-13</em></p>
+
+<h2 id="announcements">Announcements</h2>
+<ul>
+  <li>Exam 1 this Friday ?</li>
+  <li>Project 1 Part 1 due Thursday (two days mercy Saturday night)</li>
+</ul>
+
+<h2 id="outline">Outline</h2>
+<ul>
+  <li>Warm-up</li>
+  <li>Binary arithmetic</li>
+  <li>Overflow</li>
+</ul>
+
+<h2 id="warm-up">Warm-up</h2>
+<ul>
+  <li><em>Express these decimal numbers using 8-bit two’s complement:</em>
+    <ul>
+      <li>-49 = <code class="language-plaintext highlighter-rouge">0b11001111</code></li>
+      <li>-11 = <code class="language-plaintext highlighter-rouge">0b11110101</code></li>
+    </ul>
+  </li>
+  <li><em>What is the easy way to negate a number?</em>
+    <ul>
+      <li>Flip all bits and add 1</li>
+      <li>Example:
+        <ul>
+          <li>11 = <code class="language-plaintext highlighter-rouge">0b00001011</code></li>
+          <li>Flip bits: <code class="language-plaintext highlighter-rouge">0b11110100</code></li>
+          <li>Add 1: <code class="language-plaintext highlighter-rouge">0b11110101</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="binary-arithmetic">Binary arithmetic</h2>
+<h3 id="addition">Addition</h3>
+<p>Same as decimal, except you carry a one instead of a ten
+Example: 5 + 5</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  0b0101
++ 0b0101
+--------
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  0b0101
++ 0b0101
+--------
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      1
+  0b0101
++ 0b0101
+--------
+       0
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     01
+  0b0101
++ 0b0101
+--------
+      10
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    101
+  0b0101
++ 0b0101
+--------
+     010
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    101
+  0b0101
++ 0b0101
+--------
+  0b1010
+</code></pre></div></div>
+<p>Check our work:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1 * 2^3 + 0 * 2^2 + 1 * 2^1 + 0 * 2^0 = 8 + 2 = 10 = 5+5
+</code></pre></div></div>
+<p>Another example: 5 + -5</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  0b0101
++ 0b1011
+--------
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      1
+  0b0101
++ 0b1011
+--------
+       0
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     11
+  0b0101
++ 0b1011
+--------
+      00
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    111
+  0b0101
++ 0b1011
+--------
+     000
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    111
+  0b0101
++ 0b1011
+--------
+    0000
+(Carry-out =&gt; 1)
+</code></pre></div></div>
+<h3 id="subtraction">Subtraction</h3>
+<p>Simply add the negation</p>
+
+<h3 id="practice-using-8-bit-signed-integers"><em>Practice using 8-bit signed integers</em></h3>
+<ul>
+  <li>10 + 5 = <code class="language-plaintext highlighter-rouge">0b00001010</code> + <code class="language-plaintext highlighter-rouge">0b00000101</code> = <code class="language-plaintext highlighter-rouge">0b00001111</code></li>
+  <li>7 + 15 = <code class="language-plaintext highlighter-rouge">0b00000111</code> + <code class="language-plaintext highlighter-rouge">0b00001111</code> = <code class="language-plaintext highlighter-rouge">0b00010110</code></li>
+  <li>-10 + 5 = (<code class="language-plaintext highlighter-rouge">0b11110101</code> + <code class="language-plaintext highlighter-rouge">0b1</code>) + <code class="language-plaintext highlighter-rouge">0b00000101</code> = <code class="language-plaintext highlighter-rouge">0b11110110</code> + <code class="language-plaintext highlighter-rouge">0b00000101</code> = <code class="language-plaintext highlighter-rouge">0b11111011</code></li>
+  <li>10 - 5 = <code class="language-plaintext highlighter-rouge">0b00001010</code> + (<code class="language-plaintext highlighter-rouge">0b11111010</code> + <code class="language-plaintext highlighter-rouge">0b1</code>) = <code class="language-plaintext highlighter-rouge">0b00001010</code> + <code class="language-plaintext highlighter-rouge">0b11111011</code> = <code class="language-plaintext highlighter-rouge">0b00000101</code></li>
+  <li>64 + 64 = <code class="language-plaintext highlighter-rouge">0b01000000</code> + <code class="language-plaintext highlighter-rouge">0b1000000</code> = <code class="language-plaintext highlighter-rouge">0b10000000</code></li>
+</ul>
+
+<h2 id="overflow">Overflow</h2>
+<ul>
+  <li><em>Convert the 8-bit signed integer <code class="language-plaintext highlighter-rouge">0b10000000</code> to decimal:</em> -128</li>
+  <li>64 + 64 = -128!? What!?</li>
+  <li>Computation overflowed — i.e., wrapped around to negative numbers
+    <ul>
+      <li>Computation can also underflow — i.e., wrap around to positive numbers; e.g., -64 + -65 = <code class="language-plaintext highlighter-rouge">0b11000000</code> + <code class="language-plaintext highlighter-rouge">0b10111111</code> = <code class="language-plaintext highlighter-rouge">0b01111111</code> = 127</li>
+    </ul>
+  </li>
+  <li><em>What happens if you overflow with unsigned integers?</em> — you get a smaller positive integer</li>
+</ul>
+
+<h3 id="practice-with-overflow"><em>Practice with overflow</em></h3>
+<p><em>For each of the following computations, determine whether the computation overflows, underflows, or neither. Assume we are using 8-bit signed integers.</em></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">0b10000000</code> + <code class="language-plaintext highlighter-rouge">0b01111111</code> — neither</li>
+  <li><code class="language-plaintext highlighter-rouge">0b10000001</code> + <code class="language-plaintext highlighter-rouge">0b01111111</code> — neither</li>
+  <li><code class="language-plaintext highlighter-rouge">0b10000000</code> + <code class="language-plaintext highlighter-rouge">0b10000001</code> — underflow</li>
+  <li><code class="language-plaintext highlighter-rouge">0b11000000</code> + <code class="language-plaintext highlighter-rouge">0b11000000</code> — neither</li>
+  <li><code class="language-plaintext highlighter-rouge">0b01111111</code> + <code class="language-plaintext highlighter-rouge">0b00000001</code> — overflow</li>
+</ul>
+
+<h2 id="extra-practice">Extra practice</h2>
+<ul>
+  <li><em>Convert <code class="language-plaintext highlighter-rouge">512</code> to unsigned binary.</em> — <code class="language-plaintext highlighter-rouge">0b1000000000</code></li>
+  <li><em>Convert <code class="language-plaintext highlighter-rouge">-42</code> to 8-bit signed binary.</em> — <code class="language-plaintext highlighter-rouge">0b11010110</code></li>
+  <li><em>Convert <code class="language-plaintext highlighter-rouge">0xFAB</code> to unsigned binary.</em> – <code class="language-plaintext highlighter-rouge">0b111110101011</code></li>
+  <li><em>Write a function called <code class="language-plaintext highlighter-rouge">valid_hex</code> that takes a string and returns 1 if it is a valid hexadecimal number; otherwise return 0. A valid hexadecimal number must start with <code class="language-plaintext highlighter-rouge">0x</code> and only contain the digits <code class="language-plaintext highlighter-rouge">0</code>-<code class="language-plaintext highlighter-rouge">9</code> and letters <code class="language-plaintext highlighter-rouge">A</code>-<code class="language-plaintext highlighter-rouge">F</code> (in upper or lower case).</em>
+    <pre><code class="language-C">  int valid_hex(char str[]) {
+      if (str[0] != '0' || str[1] != 'x') {
+          return 0;
+      }
+      for (int i = 2; i &lt; strlen(str); i++) {
+          if (!((str[i] &gt;= '0 &amp;&amp; str[i] &lt;= '9') 
+              || (str[i] &gt;= 'A' &amp;&amp; str[i] &lt;= 'F') 
+              || (str[i] &gt;= 'a' &amp;&amp; str[i] &lt;= 'f'))) {
+              return 0;
+          }
+      }
+      return 1;
+  }
+</code></pre>
+  </li>
+</ul>
+
+
+  </body>
+</html>

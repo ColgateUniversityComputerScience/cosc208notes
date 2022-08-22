@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="syntax.css">
+    <base target="_blank">
+  </html>
+  <body>
+      <h1 id="final-review-some-of-the-last-topics">Final review: some of the last topics</h1>
+<p><em>COSC 208, Introduction to Computer Systems, 2021-12-10</em></p>
+
+<h2 id="announcements">Announcements</h2>
+<ul>
+  <li>Final exam
+    <ul>
+      <li>Friday noon to 2</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="review-memory">Review: memory</h2>
+<ul>
+  <li>The intended behavior of the program below is to output a string that contains multiple copies of a word (e.g., <code class="language-plaintext highlighter-rouge">"byebye"</code>). The code below compiles without warnings, but it contains multiple errors.
+    <pre><code class="language-C">  1   #include &lt;stdlib.h&gt;
+  2   #include &lt;string.h&gt;
+  3   #include &lt;stdio.h&gt;
+  4   char *repeat(char *word, int count) {
+  5       char *dup = malloc(sizeof(*word) * count + 1);
+  6       int k = 0;
+  7       for (int i = 0; i &lt; count; i++) {
+  8           for (int j = 0; j &lt;= strlen(word) * count; j++) {
+  9               dup[k] = word[j];
+  10              k++;
+  11          }
+  12      }
+  13      free(dup);
+  14      return dup;
+  15  }
+  16  int main() {
+  17      char *orig = malloc(4);
+  18      strcpy(orig, "bye");
+  19      char *result = repeat(orig, 2);
+  20      printf("%s\n", result);
+  21  }
+</code></pre>
+    <p>For each of the following errors produced by valgrind, describe (in 2-3 sentences) <strong>why</strong> the error is occurring and <strong>how</strong> you would modify the code to correct the error.</p>
+
+    <ul>
+      <li>Q1:
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  Invalid write of size 1
+      at 0x4006CA: repeat (repeat.c:9)
+      by 0x400752: main (repeat.c:19)
+  Address 0x5204093 is 0 bytes after a block of size 3 alloc'd
+      at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+      by 0x40066B: repeat (repeat.c:5)
+      by 0x400752: main (repeat.c:19)
+</code></pre></div>        </div>
+        <p>Not enough space was allocated for the duplicated string: <code class="language-plaintext highlighter-rouge">sizeof(*word)</code> gets the size of a single character. Use <code class="language-plaintext highlighter-rouge">strlen(word)</code> to get the number of characters in the original word.</p>
+      </li>
+      <li>Q2:
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  Invalid read of size 1
+      at 0x4006BF: repeat (repeat.c:9)
+      by 0x400752: main (repeat.c:19)
+  Address 0x5204044 is 0 bytes after a block of size 4 alloc'd
+      at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+      by 0x400723: main (repeat.c:17)
+</code></pre></div>        </div>
+        <p>The inner for loop goes beyond the end of the original word. The for loop condition should be <code class="language-plaintext highlighter-rouge">j &lt; strlen(word)</code>.</p>
+      </li>
+      <li>Q3:
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  Invalid read of size 1
+      at 0x4E88CD0: vfprintf (vfprintf.c:1632)
+      by 0x4E8F8A8: printf (printf.c:33)
+      by 0x40076B: main (repeat.c:20)
+  Address 0x5204090 is 0 bytes inside a block of size 3 free'd
+      at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+      by 0x4006FF: repeat (repeat.c:13)
+      by 0x400752: main (repeat.c:19)
+  Block was alloc'd at
+      at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+      by 0x40066B: repeat (repeat.c:5)
+      by 0x400752: main (repeat.c:19)
+</code></pre></div>        </div>
+        <p>The string containing the repeated word is free’d (in <code class="language-plaintext highlighter-rouge">repeat</code>) before it is printed (in <code class="language-plaintext highlighter-rouge">main</code>). Move the call to <code class="language-plaintext highlighter-rouge">free</code> in <code class="language-plaintext highlighter-rouge">repeat</code> to after the call to <code class="language-plaintext highlighter-rouge">printf</code> in <code class="language-plaintext highlighter-rouge">main</code>.</p>
+      </li>
+      <li>Q4:
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  4 bytes in 1 blocks are definitely lost in loss record 1 of 1
+      at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+      by 0x400723: main (repeat.c:17)
+</code></pre></div>        </div>
+        <p>The space for the original word (allocated in <code class="language-plaintext highlighter-rouge">main</code>) is not freed. Add <code class="language-plaintext highlighter-rouge">free(orig)</code> after the call to <code class="language-plaintext highlighter-rouge">repeat</code> in <code class="language-plaintext highlighter-rouge">main</code>.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="review-threads">Review: threads</h2>
+<ul>
+  <li>A program contains the following global variables and functions:
+    <pre><code class="language-C">  void *dbl(void *arg) {
+      int *t = (int *)arg;
+      *t = *t * 2;
+  }
+
+  void *one(void *arg) {
+      int *t = (int *)arg;
+      *t = 1;
+  }
+</code></pre>
+    <p><em>For each of the following main methods, list <strong>all possible outputs</strong> the program could produce. Assume threads are only preempted if they become blocked waiting for other threads.</em></p>
+    <ul>
+      <li>Q5:
+        <pre><code class="language-C">  int main() {
+      int *total = malloc(sizeof(int));
+      *total = 3;
+      pthread_t thrA, thrB;
+      pthread_create(&amp;thrA, NULL, &amp;dbl, total);
+      pthread_create(&amp;thrB, NULL, &amp;one, total);
+      pthread_join(&amp;thrA);
+      pthread_join(&amp;thrB);
+      printf("%d\n", total);
+  }
+</code></pre>
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">1</code> (if <code class="language-plaintext highlighter-rouge">thrB</code> runs after <code class="language-plaintext highlighter-rouge">thrA</code> finishes)</li>
+          <li><code class="language-plaintext highlighter-rouge">2</code> (if <code class="language-plaintext highlighter-rouge">thrA</code> runs after <code class="language-plaintext highlighter-rouge">thrB</code> finishes)</li>
+        </ul>
+      </li>
+      <li>Q6:
+        <pre><code class="language-C">  int main() {
+      int *total = malloc(sizeof(int));
+      *total = 3
+      pthread_t thrA, thrB;
+      pthread_create(&amp;thrA, NULL, &amp;one, total);
+      pthread_join(&amp;thrA);
+      pthread_create(&amp;thrB, NULL, &amp;dbl, total);
+      pthread_join(&amp;thrB);
+      printf("%d\n", total);
+  }
+</code></pre>
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">2</code> (<code class="language-plaintext highlighter-rouge">thrA</code> is joined, i.e., must finish, before <code class="language-plaintext highlighter-rouge">thrB</code> is created)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="review-sockets">Review: sockets</h2>
+<ul>
+  <li>Q7: <em>What sequence of socket functions should a server application call?</em>
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">socket</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bind</code></li>
+      <li><code class="language-plaintext highlighter-rouge">listen</code></li>
+      <li><code class="language-plaintext highlighter-rouge">accept</code></li>
+      <li><code class="language-plaintext highlighter-rouge">recv</code></li>
+      <li><code class="language-plaintext highlighter-rouge">send</code></li>
+      <li><code class="language-plaintext highlighter-rouge">close</code></li>
+      <li><code class="language-plaintext highlighter-rouge">close</code></li>
+    </ol>
+  </li>
+</ul>
+
+  </body>
+</html>

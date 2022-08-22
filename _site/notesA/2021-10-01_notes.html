@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="syntax.css">
+    <base target="_blank">
+  </html>
+  <body>
+      <h1 id="architecture-von-neumann-logic-gates">Architecture: von Neumann; logic gates</h1>
+<p><em>COSC 208, Introduction to Computer Systems, 2021-10-01</em></p>
+
+<h2 id="announcements">Announcements</h2>
+<ul>
+  <li>First DEI reflection due Thursday at 11pm</li>
+</ul>
+
+<h2 id="outline">Outline</h2>
+<ul>
+  <li>Warm-up</li>
+  <li>von Neumann Architecture</li>
+  <li>Hardware building blocks</li>
+  <li>Logic gates</li>
+</ul>
+
+<h2 id="warm-up">Warm-up</h2>
+<p>Assume you are given the following code:</p>
+<pre><code class="language-C">struct account {
+    int number; // Account number
+    int balance; // Current account balance
+};
+int deposit(struct account *acct, int amount);
+int transfer(struct account *from, struct amount *to, int amount);
+</code></pre>
+
+<p>Q1: <em>Write the <code class="language-plaintext highlighter-rouge">deposit</code> function, which adds <code class="language-plaintext highlighter-rouge">amount</code> to the balance of <code class="language-plaintext highlighter-rouge">acct</code>. The function should return the amount deposited.</em></p>
+<pre><code class="language-C">int deposit(struct account *acct, int amount) {
+    acct-&gt;balance += amount;
+    return amount;
+} 
+</code></pre>
+
+<p>Q2: <em>Write the <code class="language-plaintext highlighter-rouge">transfer</code> function which moves <code class="language-plaintext highlighter-rouge">amount</code> from one account to another. The function should return the amount transferred if the transfer was successful or 0 otherwise.</em></p>
+<pre><code class="language-C">int transfer(struct account *from, struct amount *to, int amount) {
+    if (from-&gt;balance &lt; amount)
+        return 0;
+    from-&gt;balance -= amount;
+    to-&gt;balance += amount;
+    return amount;
+}
+</code></pre>
+
+<h2 id="von-neumann-architecture">von Neumann Architecture</h2>
+
+<p><img src="https://diveintosystems.org/book/C5-Arch/_images/vonNArch.png" alt="" /></p>
+
+<ul>
+  <li><em>Where are instructions stored prior to execution?</em> — memory unit</li>
+  <li><em>Where are instructions stored during execution?</em> — instruction register</li>
+  <li><em>Where is data stored when it is not in use?</em> — memory unit</li>
+  <li><em>Where is data stored when it is being operated on?</em> — (general purpose) registers</li>
+  <li>Notice: instructions and data are both stored in the memory unit, but there are different registers for instructions and data in the CPU</li>
+  <li>Fetch-Decode-Execute-Store cycle
+    <ul>
+      <li><em>What happens in the fetch stage?</em> — The control unit loads the next instruction from memory, based on the program counter, into the instruction register</li>
+      <li><em>What happens in the decode stage?</em> — break instruction into operation and operands; load operands from memory into registers, if necessary</li>
+      <li><em>What happens in the execute stage?</em> — The ALU performs the operation on the operands</li>
+      <li><em>What happens in the store stage?</em> — The control unit stores the result in memory</li>
+    </ul>
+  </li>
+  <li><em>How can we make this cycle faster?</em>
+    <ul>
+      <li>Pipelining</li>
+      <li>Parallelism</li>
+      <li>Faster bus</li>
+      <li>Faster ALU/control unit</li>
+      <li>Faster memory</li>
+      <li>Use separate memory units for storing instructions and data and separate buses for loading/storing instructions and data; known as the Harvard Architecture, which addresses the von Neumann bottleneck</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="hardware-building-blocks">Hardware building blocks</h2>
+<ul>
+  <li>Transistors — switches that control electrical flow; output state depends on current state plus input state</li>
+  <li>Logic gates — created from transistors; implement boolean operations (AND, NO, NOT, etc.)</li>
+  <li>Circuit — created from logic gates</li>
+  <li>Processing, control, and units — created from circuits</li>
+</ul>
+
+<h2 id="logic-gates">Logic gates</h2>
+<p>Q3: <em>Fill-in the truth tables for all six types of gates</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>A</th>
+      <th>B</th>
+      <th>A AND B</th>
+      <th>A OR B</th>
+      <th>NOT A</th>
+      <th>A NAND B</th>
+      <th>A NOR B</th>
+      <th>A XOR B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="building-logic-gates">Building logic gates</h2>
+<ul>
+  <li>A chip is easier to build if it contains fewer types of gates</li>
+  <li>
+    <p>Q4: <em>How do you use AND and NOT gates to create a NAND gate?</em></p>
+
+    <p><img src="/cosc208/images/circuits/gate_nand.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Q5: <em>How do you use OR and NOT gates to create a NOR gate?</em></p>
+
+    <p><img src="/cosc208/images/circuits/gate_nor.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Q6: <em>How do you use NAND gates to create a NOT gate?</em></p>
+
+    <p><img src="/cosc208/images/circuits/gate_not_from_nand.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Q7: <em>How do you use NAND gates to create an AND gate?</em></p>
+
+    <p><img src="/cosc208/images/circuits/gate_and_from_nand.png" alt="" /></p>
+  </li>
+</ul>
+
+  </body>
+</html>

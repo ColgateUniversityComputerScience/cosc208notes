@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="syntax.css">
+    <base target="_blank">
+  </html>
+  <body>
+      <h1 id="networking-sockets-continued-tcpip-model">Networking: Sockets (continued); TCP/IP model</h1>
+<p><em>COSC 208, Introduction to Computer Systems, 2021-12-01</em></p>
+
+<h2 id="announcements">Announcements</h2>
+<ul>
+  <li>Project 3 due tomorrow at 11pm</li>
+  <li>2nd DEI reflection due Tuesday</li>
+  <li>Attend faculty candidate research talks
+    <ul>
+      <li>11:20am Thurs, Dec 2; Tues, Dec 7; Wed, Dec 15</li>
+      <li>Earn 2 points of extra credit on final exam for each talk you attend (earnings capped at 4 points)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="outline">Outline</h2>
+<ul>
+  <li>SETs</li>
+  <li>Warm-up</li>
+  <li>Server application</li>
+  <li>TCP/IP model</li>
+  <li>Packet switching</li>
+  <li>Transport layer</li>
+</ul>
+
+<h2 id="warm-up">Warm-up</h2>
+<p>Q1: <em>What is wrong with this client application?</em></p>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+#include &lt;sys/types.h&gt;
+#include &lt;sys/socket.h&gt;
+#include &lt;string.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;arpa/inet.h&gt;
+
+#define HTTP_PORT 80
+#define WWW_EXAMPLE_COM 0x5DB8D822 // 93.184.216.34
+
+int main() {
+    struct sockaddr_in server_addr;
+    server_addr.sin_family = AF_INET;
+    server_addr.sin_port = HTTP_PORT;
+    server_addr.sin_addr.s_addr = WWW_EXAMPLE_COM;
+    int sock = connect((const struct sockaddr *) &amp;server_addr, sizeof(server_addr));
+
+    char buf[1024] = "GET / HTTP/1.1\r\nHost: www.example.com\r\n\r\n";
+    send(sock, buf, strlen(buf), 0);
+
+    int len = recv(sock, buf, 1024, 0);
+    buf[len] = '\0';
+    printf("%s\n", buf);
+}
+</code></pre>
+
+<div style="page-break-after: always;"></div>
+
+<h2 id="server-application">Server application</h2>
+<pre><code class="language-C">1   #include &lt;stdio.h&gt;
+2   #include &lt;sys/types.h&gt;
+3   #include &lt;sys/socket.h&gt;
+4   #include &lt;netinet/in.h&gt;
+5   #include &lt;string.h&gt;
+6   #include &lt;unistd.h&gt;
+7
+8   int main() {
+9       int server_sock = socket(AF_INET, SOCK_STREAM, 0);
+10      if (server_sock &lt; 0) {
+11         perror("socket failed");
+12         return 1;
+13      }
+14
+15      struct sockaddr_in server_addr;
+16      server_addr.sin_family = AF_INET;
+17      server_addr.sin_port = htons(13346);
+18      server_addr.sin_addr.s_addr = htonl(INADDR_ANY);
+19      int result = bind(server_sock, &amp;server_addr, sizeof(server_addr));
+20      if (result &lt; 0) {
+21          perror("bind failed");
+22          return 1;
+23      }
+24
+25      result = listen(server_sock, 0);
+26      if (result &lt; 0) {
+27          perror("listen failed");
+28          return 1;
+29      }
+30
+31      struct sockaddr_in client_addr;
+32      unsigned int client_addr_len = sizeof(client_addr);
+33      int client_sock = accept(server_sock, &amp;client_addr, &amp;client_addr_len);
+34
+35      char buf[2048];
+36      int len = recv(client_sock, buf, 2048, 0);
+37      if (len &lt; 0) {
+38          perror("recv failed");
+39          return 1;
+40      }
+41      buf[len] = '\0';
+42      printf("%s\n", buf);
+43
+44      strcpy(buf, "Acknowledged\n");
+45      len = send(client_sock, buf, strlen(buf), 0);
+46      if (len &lt; 0) {
+47          perror("send failed");
+48          return 1;
+49      }
+50      
+51      close(client_sock);
+52      close(server_sock);
+53  }
+</code></pre>
+
+  </body>
+</html>

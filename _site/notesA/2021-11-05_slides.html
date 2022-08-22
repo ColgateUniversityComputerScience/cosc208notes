@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="syntax.css">
+    <base target="_blank">
+  </html>
+  <body>
+      <h2 id="no-warm-up--happy-friday">No warm-up — Happy Friday!</h2>
+
+<div style="page-break-after: always;"></div>
+
+<h2 id="example-system-call">Example system call</h2>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
+#include &lt;unistd.h&gt;
+int user() {
+    int uid = getuid();
+    return uid;
+}
+int main() {
+    int u = user();
+    printf("User %d is running this process\n", u);
+}
+</code></pre>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>00000000004006ac &lt;user&gt;:
+    4006ac:	d10083ff 	sub	sp, sp, #0x20
+    4006b0:	f9000bfe 	str	x30, [sp, #16]
+    4006b4:	94007713 	bl	41e300 &lt;__getuid&gt;
+    4006b8:	b9000fe0 	str	w0, [sp, #12]
+    4006bc:	b9400fe0 	ldr	w0, [sp, #12]
+    4006c0:	f9400bfe 	ldr	x30, [sp, #16]
+    4006c4:	910083ff 	add	sp, sp, #0x20
+    4006c8:	d65f03c0 	ret
+000000000041e300 &lt;__getuid&gt;:
+    41e300:	d28015c8 	mov	x8, #0xae
+    41e304:	d4000001 	svc	#0x0
+    41e308:	d65f03c0 	ret
+</code></pre></div></div>
+<div style="page-break-after: always;"></div>
+
+<h1 id="q1">Q1</h1>
+<p><em>Consider building a Lego kit as an analogy for operating systems’ process abstraction. Match each component of the analogy with the corresponding component of a real computer system.</em></p>
+
+<h2 id="analogy">Analogy</h2>
+<ul>
+  <li>Cabinet/drawers for storing Legos</li>
+  <li>Lego bricks</li>
+  <li>Building area (e.g., tabletop)</li>
+  <li>Instruction booklet</li>
+  <li>Following the assembly instructions</li>
+  <li>Current step for the instruction booklet</li>
+  <li>Completed kit</li>
+  <li>You</li>
+</ul>
+
+<h2 id="real-system">Real system</h2>
+<ul>
+  <li>CPU</li>
+  <li>persistent storage</li>
+  <li>process</li>
+  <li>program</li>
+  <li>program counter</li>
+  <li>program inputs</li>
+  <li>program outputs</li>
+  <li>registers and main memory</li>
+</ul>
+
+<div style="page-break-after: always;"></div>
+
+<h2 id="q2">Q2:</h2>
+<pre><code class="language-C">int main(int argc, char **argv) {
+    printf("Before fork");
+    int pid = fork();
+    printf("After fork");
+    return 0;
+}
+</code></pre>
+
+<div style="page-break-after: always;"></div>
+
+<h2 id="q3">Q3:</h2>
+<pre><code class="language-C">int main(int argc, char **argv) {
+    printf("Before fork");
+    int pid = fork();
+    if (pid == 0) {
+        printf("Child gets %d\n", pid);
+    } else {
+        printf("Parent gets %d\n", pid);
+    }
+    return 0;
+}
+</code></pre>
+
+  </body>
+</html>

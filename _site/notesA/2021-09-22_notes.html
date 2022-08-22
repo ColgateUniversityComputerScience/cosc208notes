@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="syntax.css">
+    <base target="_blank">
+  </html>
+  <body>
+      <h1 id="program-memory-pointers">Program memory: pointers</h1>
+<p><em>COSC 208, Introduction to Computer Systems, 2021-09-22</em></p>
+
+<h2 id="announcements">Announcements</h2>
+<ul>
+  <li>In-class exam grades on Moodle</li>
+  <li>DEI reflection due Thurs, Oct 7
+    <ul>
+      <li>Core SP lecture tomorrow @ 4:30pm in Ho 101</li>
+    </ul>
+  </li>
+  <li>Project 1 Part B due next Thursday (September 30)</li>
+</ul>
+
+<h2 id="outline">Outline</h2>
+<ul>
+  <li>Warm-up</li>
+  <li>Pointers</li>
+  <li>Pointers as parameters</li>
+  <li>Extra practice</li>
+</ul>
+
+<h2 id="warm-up">Warm-up</h2>
+<ul>
+  <li>Q1: <em>What words can you spell with only hex digits? (You are allowed to use digits for letters that look alike: 0 = O, 1 = I or l, 2 = Z, 5 = S.)</em></li>
+</ul>
+
+<h2 id="pointers">Pointers</h2>
+<ul>
+  <li>A special type of variable that holds a memory address
+    <ul>
+      <li>A pointer “points to” a location in memory</li>
+    </ul>
+  </li>
+  <li>Declaration consists of:
+    <ul>
+      <li>Type of value stored in memory at the address stored in the pointer variable</li>
+      <li>Asterisk (<code class="language-plaintext highlighter-rouge">*</code>)</li>
+      <li>Name of pointer variable</li>
+      <li>Example: <code class="language-plaintext highlighter-rouge">int *p</code> — declares a pointer variable <code class="language-plaintext highlighter-rouge">p</code> that refers to a memory location where an integer is stored</li>
+    </ul>
+  </li>
+  <li>Can be used to indirectly read and write another variable</li>
+  <li>Address-of (<code class="language-plaintext highlighter-rouge">&amp;</code>) operator obtains the memory address where a variable is stored
+  Example:
+    <pre><code class="language-C">  int i = 42;
+  int *p = &amp;i; // p now contains the address where the value of variable i is stored
+          // p “points-to” i
+</code></pre>
+  </li>
+  <li>De-reference (*) operator is used to refer to the value stored at the memory address contained in the pointer variable
+    <ul>
+      <li>Example:
+        <pre><code class="language-C">  printf("%d\n",*p); // Outputs 42, because p contains the memory address where i is stored (i.e., p points-to i), and the variable i currently contains the value 42
+</code></pre>
+      </li>
+      <li>Example:
+        <pre><code class="language-C">  *p = *p + 1; // Updates the value in variable i to 43, because p contains the memory address where i is stored (i.e., p points-to i)
+</code></pre>
+      </li>
+    </ul>
+  </li>
+  <li><em>What happens if we assign a value to the pointer variable without dereferencing the pointer?</em> — we update the memory address stored in the pointer variable; we point to a new location in memory</li>
+</ul>
+
+<h2 id="practice-with-pointers">Practice with pointers</h2>
+<ul>
+  <li>Q2: <em>Write a snippet of code that:</em>
+    <ol>
+      <li><em>Declares a <code class="language-plaintext highlighter-rouge">char</code> variable called <code class="language-plaintext highlighter-rouge">orig</code> and initializes it with the value <code class="language-plaintext highlighter-rouge">'A'</code></em></li>
+      <li><em>Declares and initializes a pointer called <code class="language-plaintext highlighter-rouge">ptr</code> that points to <code class="language-plaintext highlighter-rouge">orig</code></em></li>
+      <li><em>Uses the pointer to update the value stored in <code class="language-plaintext highlighter-rouge">orig</code> to <code class="language-plaintext highlighter-rouge">'B'</code></em>
+        <pre><code class="language-C">  char orig = 'A';
+  char *ptr = &amp;orig;
+  *ptr = 'B';
+</code></pre>
+      </li>
+    </ol>
+  </li>
+  <li>Q3: <em>What is the output of this program?</em> — draw a memory diagram to help
+    <pre><code class="language-C">  int main() {
+      int a = 1;
+      int b = 2;
+      char c = 'C';
+      int *x = &amp;a;
+      int *y = &amp;b;
+      char *z = &amp;c;
+      printf("%d %d %c\n", *x, *y, *z);
+      *x += 1;
+      b += 2;
+      *z = 'D';
+      printf("%d %d %c\n", *x, *y, *z);
+      printf("%d %d %c\n", a, b, c);
+      x = y;
+      *x += 10;
+      a += 20;
+      printf("%d %d\n", *x, *y);
+      printf("%d %d\n", a, b);
+  }
+</code></pre>
+    <p>Output</p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  1 2 C
+  2 4 D
+  2 4 D
+  14 14
+  22 14
+</code></pre></div>    </div>
+  </li>
+  <li>Q4: <em>What is the output of this program?</em>
+    <pre><code class="language-C">  int main() {
+      int a = 1; // Assume at 0x4
+      int *x = &amp;a; // Assume at 0x8
+      int **y = &amp;x; // Assume at 0xC
+      printf("%p %p %p\n", a, x ,y);
+      printf("%p %p\n", *x , *y);
+  }
+</code></pre>
+    <p>Output</p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  0x1 0x4 0x8
+  0x1 0x4
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="pointers-as-parameters">Pointers as parameters</h2>
+<ul>
+  <li>Functions can take pointers as parameters
+    <ul>
+      <li>Similar to a pointer declaration, include an asterisk before the parameter name: e.g., <code class="language-plaintext highlighter-rouge">void foo(int *a)</code></li>
+      <li>Function gets a copy of the memory address stored in the pointer variable, not a copy of the value stored at that memory address</li>
+    </ul>
+  </li>
+  <li>Example
+    <pre><code class="language-C">  void value(int a) {
+      a = 2;
+  }
+  void pointer(int *b) {
+      *b = 3;
+  }
+  int main() {
+      int v = 1;
+      int *p = &amp;v;
+      value(v);
+      printf("%d\n", v);
+      pointer(p);
+      printf("%d\n", v);
+  }
+</code></pre>
+  </li>
+  <li>Q5: <em>What is the output of this program?</em>
+    <pre><code class="language-C">  void copy1(int a, int b) {
+      a = b;
+  }
+  void copy2(int *c, int *d) {
+      c = d;
+  }
+  void copy3(int *e, int *f) {
+      *e = *f;
+  }
+  int main() {
+      int q = 1;
+      int r = 2;
+      copy1(q, r);
+      int s = 3;
+      int t = 4;
+      copy2(&amp;s, &amp;t);
+      int u = 5;
+      int v = 6;
+      copy3(&amp;u, &amp;v);
+      printf("%d %d %d %d %d %d\n", q, r, s, t, u, v);
+  }
+</code></pre>
+  </li>
+</ul>
+
+<h2 id="extra-practice">Extra practice</h2>
+<ul>
+  <li>Q6: <em>Write a function called <code class="language-plaintext highlighter-rouge">transfer</code> that takes two integer pointers and an amount to transfer and moves the specified amount from one integer to the other.</em>
+    <pre><code class="language-C">  void transfer(int *from, int *to, int amount) {
+      *from -= amount;
+      *to += amount;
+  }
+</code></pre>
+  </li>
+</ul>
+
+  </body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="syntax.css">
+    <base target="_blank">
+  </html>
+  <body>
+      <h1 id="exam-2-review">Exam 2 Review</h1>
+<p><em>COSC 208, Introduction to Computer Systems, 2021-10-22</em></p>
+
+<h2 id="mapping-assembly-code-to-c-source-code">Mapping assembly code to C source code</h2>
+
+<pre><code class="language-C">  1  int interest_due(int outstanding, int rate) {
+  2      int annual = outstanding * rate;
+  3      int divisor = 12 * 100;
+  4      int monthly = annual / divisor;
+  5      return monthly;
+  6  }
+  7
+  8  int make_payment(int outstanding, int payment, int rate) {
+  9      int interest = interest_due(outstanding, rate);
+ 10      int principal = payment - interest;
+ 11      if (principal &gt; outstanding) {
+ 12          outstanding = 0;
+ 13      }
+ 14      else {
+ 15          outstanding -= principal;	
+ 16      }
+ 17      return outstanding;
+ 18  }
+ 19
+ 20  int months_remain(int outstanding, int payment, int rate) {
+ 21      int months = 0;
+ 22      while (outstanding &gt; 0) {
+ 23          months++;
+ 24          outstanding = make_payment(outstanding, payment, rate);
+ 25      }
+ 26      return months;
+ 27  }
+</code></pre>
+
+<h3 id="assembly-for-the-c-code-above">Assembly for the C code above</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>000000000000088c &lt;interest_due&gt;:
+ 88c:	sub	sp, sp, #0x20
+ 890:	str	w0, [sp, #12]
+ 894:	str	w1, [sp, #8]
+ 898:	ldr	w1, [sp, #12]
+ 89c:	ldr	w0, [sp, #8]
+ 8a0:	mul	w0, w1, w0
+ 8a4:	str	w0, [sp, #20]
+ 8a8:	mov	w0, #0x4b0
+ 8ac:	str	w0, [sp, #24]
+ 8b0:	ldr	w1, [sp, #20]
+ 8b4:	ldr	w0, [sp, #24]
+ 8b8:	sdiv	w0, w1, w0
+ 8bc:	str	w0, [sp, #28]
+ 8c0:	ldr	w0, [sp, #28]
+ 8c4:	add	sp, sp, #0x20
+ 8c8:	ret
+</code></pre></div></div>
+<div style="page-break-after: always;"></div>
+
+<p>## Q1 and Q2 solution 
+Q1: <em>For each line of <strong>interest_due</strong> in the assembly code, indicate which line of C code was used to generate that line of assembly code.</em></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>000000000000088c &lt;interest_due&gt;:
+ 88c:	sub	sp, sp, #0x20   // 1
+ 890:	str	w0, [sp, #12]   // 1
+ 894:	str	w1, [sp, #8]    // 1
+ 898:	ldr	w1, [sp, #12]   // 2
+ 89c:	ldr	w0, [sp, #8]    // 2
+ 8a0:	mul	w0, w1, w0      // 2
+ 8a4:	str	w0, [sp, #20]   // 2
+ 8a8:	mov	w0, #0x4b0      // 3
+ 8ac:	str	w0, [sp, #24]   // 3
+ 8b0:	ldr	w1, [sp, #20]   // 4
+ 8b4:	ldr	w0, [sp, #24]   // 4
+ 8b8:	sdiv	w0, w1, w0    // 4
+ 8bc:	str	w0, [sp, #28]   // 4
+ 8c0:	ldr	w0, [sp, #28]   // 5
+ 8c4:	add	sp, sp, #0x20   // 5
+ 8c8:	ret                 // 5
+</code></pre></div></div>
+
+<p>Q2: <em>For each line of <strong>make_payment</strong> in the assembly code, indicate which line of C code was used to generate that line of assembly code.</em></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>00000000000008cc &lt;make_payment&gt;:
+ 8cc:	stp	x29, x30, [sp, #-48]! // 8
+ 8d0:	mov	x29, sp               // 8
+ 8d4:	str	w0, [sp, #28]         // 8
+ 8d8:	str	w1, [sp, #24]         // 8
+ 8dc:	str	w2, [sp, #20]         // 8
+ 8e0:	ldr	w1, [sp, #20]         // 9
+ 8e4:	ldr	w0, [sp, #28]         // 9
+ 8e8:	bl	88c &lt;interest_due&gt;    // 9
+ 8ec:	str	w0, [sp, #40]         // 9
+ 8f0:	ldr	w1, [sp, #24]         // 10
+ 8f4:	ldr	w0, [sp, #40]         // 10
+ 8f8:	sub	w0, w1, w0            // 10
+ 8fc:	str	w0, [sp, #44]         // 10
+ 900:	ldr	w1, [sp, #44]         // 11
+ 904:	ldr	w0, [sp, #28]         // 11
+ 908:	cmp	w1, w0                // 11
+ 90c:	b.le	918 &lt;make_payment+0x4c&gt; // 11
+ 910:	str	wzr, [sp, #28]        // 12
+ 914:	b	928 &lt;make_payment+0x5c&gt; // 13
+ 918:	ldr	w1, [sp, #28]         // 15
+ 91c:	ldr	w0, [sp, #44]         // 15
+ 920:	sub	w0, w1, w0            // 15
+ 924:	str	w0, [sp, #28]         // 15
+ 928:	ldr	w0, [sp, #28]         // 17
+ 92c:	ldp	x29, x30, [sp], #48   // 17
+ 930:	ret                       // 17
+</code></pre></div></div>
+
+<div style="page-break-after: always;"></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>00000000000008cc &lt;make_payment&gt;:
+ 8cc:	stp	x29, x30, [sp, #-48]!
+ 8d0:	mov	x29, sp
+ 8d4:	str	w0, [sp, #28]
+ 8d8:	str	w1, [sp, #24]
+ 8dc:	str	w2, [sp, #20]
+ 8e0:	ldr	w1, [sp, #20]
+ 8e4:	ldr	w0, [sp, #28]
+ 8e8:	bl	88c &lt;interest_due&gt;
+ 8ec:	str	w0, [sp, #40]
+ 8f0:	ldr	w1, [sp, #24]
+ 8f4:	ldr	w0, [sp, #40]
+ 8f8:	sub	w0, w1, w0
+ 8fc:	str	w0, [sp, #44]
+ 900:	ldr	w1, [sp, #44]
+ 904:	ldr	w0, [sp, #28]
+ 908:	cmp	w1, w0
+ 90c:	b.le	918 &lt;make_payment+0x4c&gt;
+ 910:	str	wzr, [sp, #28]
+ 914:	b	928 &lt;make_payment+0x5c&gt;
+ 918:	ldr	w1, [sp, #28]
+ 91c:	ldr	w0, [sp, #44]
+ 920:	sub	w0, w1, w0
+ 924:	str	w0, [sp, #28]
+ 928:	ldr	w0, [sp, #28]
+ 92c:	ldp	x29, x30, [sp], #48
+ 930:	ret
+
+0000000000000934 &lt;months_remain&gt;:
+ 934:	stp	x29, x30, [sp, #-48]!
+ 938:	mov	x29, sp
+ 93c:	str	w0, [sp, #28]
+ 940:	str	w1, [sp, #24]
+ 944:	str	w2, [sp, #20]
+ 948:	str	wzr, [sp, #44]
+ 94c:	b	970 &lt;months_remain+0x3c&gt;
+ 950:	ldr	w0, [sp, #44]
+ 954:	add	w0, w0, #0x1
+ 958:	str	w0, [sp, #44]
+ 95c:	ldr	w2, [sp, #20]
+ 960:	ldr	w1, [sp, #24]
+ 964:	ldr	w0, [sp, #28]
+ 968:	bl	8cc &lt;make_payment&gt;
+ 96c:	str	w0, [sp, #28]
+ 970:	ldr	w0, [sp, #28]
+ 974:	cmp	w0, #0x0
+ 978:	b.gt	950 &lt;months_remain+0x1c&gt;
+ 97c:	ldr	w0, [sp, #44]
+ 980:	ldp	x29, x30, [sp], #48
+ 984:	ret
+</code></pre></div></div>
+
+<p>Q1: <em>For each line of <strong>interest_due</strong> in the assembly code, indicate which line of C code was used to generate that line of assembly code.</em></p>
+
+<p>Q2: <em>For each line of <strong>make_payment</strong> in the assembly code, indicate which line of C code was used to generate that line of assembly code.</em></p>
+
+<div style="page-break-after: always;"></div>
+
+<h2 id="translating-assembly-into-low-level-c-code">Translating assembly into low-level C code</h2>
+<p>Q3: <em>For each of the following lines of assembly, write one or more lines of low-level C code that express the semantics (i.e., meaning) of the assembly code. Your C code should use register names as variable names.</em></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>00000000000008cc &lt;make_payment&gt;:
+ 8cc:	stp	x29, x30, [sp, #-48]!   
+ 8d0:	mov	x29, sp                 
+ 8d4:	str	w0, [sp, #28]           
+ 8d8:	str	w1, [sp, #24]           
+ 8dc:	str	w2, [sp, #20]           
+ 8e0:	ldr	w1, [sp, #20]           
+ 8e4:	ldr	w0, [sp, #28]           
+ 8e8:	bl	88c &lt;interest_due&gt;      
+ 8ec:	str	w0, [sp, #40]           
+ 8f0:	ldr	w1, [sp, #24]           
+ 8f4:	ldr	w0, [sp, #40]           
+ 8f8:	sub	w0, w1, w0              
+ 8fc:	str	w0, [sp, #44]           
+ 900:	ldr	w1, [sp, #44]           
+ 904:	ldr	w0, [sp, #28]           
+ 908:	cmp	w1, w0                  
+ 90c:	b.le	918 &lt;make_payment+0x4c&gt; 
+ 910:	str	wzr, [sp, #28]          
+ 914:	b	928 &lt;make_payment+0x5c&gt;   
+ 918:	ldr	w1, [sp, #28]           
+ 91c:	ldr	w0, [sp, #44]           
+ 920:	sub	w0, w1, w0              
+ 924:	str	w0, [sp, #28]           
+ 928:	ldr	w0, [sp, #28]           
+ 92c:	ldp	x29, x30, [sp], #48     
+ 930:	ret                         
+</code></pre></div></div>
+
+<h2 id="converting-c-code-to-use-goto">Converting C code to use goto</h2>
+<p>Q4: <em>Create a <code class="language-plaintext highlighter-rouge">make_payment_goto</code> function that behaves the same as the <code class="language-plaintext highlighter-rouge">make_payment</code> function but uses <code class="language-plaintext highlighter-rouge">goto</code> statements, just as a compiler would do when generating assembly code.</em></p>
+<pre><code class="language-C">void make_payment_goto(int outstanding, int payment, int rate) {
+  int interest = interest_due(outstanding, rate);
+  int principal = payment - interest);
+  
+
+
+
+
+
+
+
+
+
+
+</code></pre>
+<div style="page-break-after: always;"></div>
+
+<p>Q5: <em>Complete a <code class="language-plaintext highlighter-rouge">months_remain_goto</code> function that behaves the same as the <code class="language-plaintext highlighter-rouge">months_remain</code> function but uses <code class="language-plaintext highlighter-rouge">goto</code> statements, just as a compiler would do when generating assembly code.</em></p>
+
+<pre><code class="language-C">int months_remain_goto(int outstanding, int payment, int rate) {
+
+  int months = 0;
+
+
+______:
+
+  if (outstanding &lt;= 0) {
+    ________;
+  }
+
+  ________++;
+  
+  ______________________________________;
+  
+  _______;
+
+
+______:
+
+  return months;
+}
+</code></pre>
+
+<h2 id="drawing-the-stack-and-registers-after-executing-assembly">Drawing the stack and registers after executing assembly</h2>
+<p>Q6: <em>Assume the code starts executing at the beginning of the <code class="language-plaintext highlighter-rouge">make_payment</code> function (i.e., <code class="language-plaintext highlighter-rouge">pc = 0x8cc)</code>. Draw a digram that shows the contents of the stack and registers immediately before executing the last two instructions in the <code class="language-plaintext highlighter-rouge">interest_due</code> function (i.e., before executing the assembly instruction at address <code class="language-plaintext highlighter-rouge">0x8c4</code>). Your stack and registers should contain values (e.g., <code class="language-plaintext highlighter-rouge">0x8cc</code>) *not* variable or register names.</em></p>
+
+<p><em>Assume the initial values of the registers are as follows:</em></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">pc = 0x8cc</code></li>
+  <li><code class="language-plaintext highlighter-rouge">sp = 0xf80</code></li>
+  <li><code class="language-plaintext highlighter-rouge">w0 = 0x186a0</code></li>
+  <li><code class="language-plaintext highlighter-rouge">w1 = 0x1f4</code></li>
+  <li><code class="language-plaintext highlighter-rouge">w2 = 0x3</code></li>
+  <li><code class="language-plaintext highlighter-rouge">x29 = 0xf80</code></li>
+  <li><code class="language-plaintext highlighter-rouge">x30 = 0x96c</code></li>
+</ul>
+
+
+  </body>
+</html>

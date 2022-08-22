@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="syntax.css">
+    <base target="_blank">
+  </html>
+  <body>
+      <h1 id="networking-cloud-computing-review">Networking: cloud computing; review</h1>
+<p><em>COSC 208, Introduction to Computer Systems, 2021-12-10</em></p>
+
+<h2 id="announcements">Announcements</h2>
+<ul>
+  <li>Office hours
+    <ul>
+      <li>Today 10:15am-11:45am</li>
+      <li>Monday 12pm-4pm</li>
+      <li>Wednesday 8:30am-10:30am</li>
+      <li>Thursday 9:30am-11:30am</li>
+    </ul>
+  </li>
+  <li>Final exam
+    <ul>
+      <li>Study guide posted on Moodle</li>
+      <li>Take-home portion due Friday at 9am</li>
+      <li>In-class portion Friday 9am-11am</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="outline">Outline</h2>
+<ul>
+  <li>Warm-up</li>
+  <li>Virtual machines</li>
+  <li>Characteristics of cloud computing</li>
+  <li>Cloud service models</li>
+  <li>Review</li>
+</ul>
+
+<h2 id="warm-up">Warm-up</h2>
+<p><em>Below is a simplified picture of Aaron’s home.</em></p>
+
+<p><img src="../images/wireless/home.png" style="width:375px;" /></p>
+
+<p><em>Aaron’s wireless smart television with built-in video streaming does not work well: videos pause frequently to buffer, and videos have low resolution.</em></p>
+
+<p>Q1: <em>What are two potential causes of this problem?</em></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+
+
+</code></pre></div></div>
+
+<p>Q2: <em>What can Aaron change to address each of these problems?</em></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+
+
+</code></pre></div></div>
+<p>🛑 <strong>STOP HERE</strong> after completing the warm-up; please <strong>DO NOT WORK AHEAD</strong>.</p>
+
+<div style="page-break-after:always;"></div>
+
+<h2 id="cloud-service-models">Cloud service models</h2>
+<p>Q3: <em>For each of the following service providers, indicate what type of service they offer.</em></p>
+<ul>
+  <li><em>Box provides secure file sharing and storage</em>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div>    </div>
+  </li>
+  <li><em>Microsoft Azure provides virtual machines running Windows or Linux</em>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div>    </div>
+  </li>
+  <li><em>Heroku allows tenants to deploy code written in Ruby, Java, PHP, Python, Go, Scala, or Clojure</em>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div>    </div>
+  </li>
+  <li><em>Oracle Supply Chain Management (SCM) is software that allows businesses to manage their supply chain</em>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="review-memory">Review: memory</h2>
+<p>The intended behavior of the program below is to output a string that contains multiple copies of a word (e.g., <code class="language-plaintext highlighter-rouge">"byebye"</code>). The code below compiles without warnings, but it contains multiple errors.</p>
+<pre><code class="language-C">1   #include &lt;stdlib.h&gt;
+2   #include &lt;string.h&gt;
+3   #include &lt;stdio.h&gt;
+4   char *repeat(char *word, int count) {
+5       char *dup = malloc(sizeof(*word) * count + 1);
+6       int k = 0;
+7       for (int i = 0; i &lt; count; i++) {
+8           for (int j = 0; j &lt;= strlen(word) * count; j++) {
+9               dup[k] = word[j];
+10              k++;
+11          }
+12      }
+13      free(dup);
+14      return dup;
+15  }
+16  int main() {
+17      char *orig = malloc(4);
+18      strcpy(orig, "bye");
+19      char *result = repeat(orig, 2);
+20      printf("%s\n", result);
+21  }
+</code></pre>
+
+<div style="page-break-after:always;"></div>
+
+<p>For each of the following errors produced by valgrind, describe (in 2-3 sentences) <strong>why</strong> the error is occurring and <strong>how</strong> you would modify the code to correct the error.</p>
+
+<p>Q4:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Invalid write of size 1
+    at 0x4006CA: repeat (repeat.c:9)
+    by 0x400752: main (repeat.c:19)
+Address 0x5204093 is 0 bytes after a block of size 3 alloc'd
+    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+    by 0x40066B: repeat (repeat.c:5)
+    by 0x400752: main (repeat.c:19)
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+</code></pre></div></div>
+
+<p>Q5:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Invalid read of size 1
+    at 0x4006BF: repeat (repeat.c:9)
+    by 0x400752: main (repeat.c:19)
+Address 0x5204044 is 0 bytes after a block of size 4 alloc'd
+    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+    by 0x400723: main (repeat.c:17)
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+</code></pre></div></div>
+
+<p>Q6:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Invalid read of size 1
+    at 0x4E88CD0: vfprintf (vfprintf.c:1632)
+    by 0x4E8F8A8: printf (printf.c:33)
+    by 0x40076B: main (repeat.c:20)
+Address 0x5204090 is 0 bytes inside a block of size 3 free'd
+    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+    by 0x4006FF: repeat (repeat.c:13)
+    by 0x400752: main (repeat.c:19)
+Block was alloc'd at
+    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+    by 0x40066B: repeat (repeat.c:5)
+    by 0x400752: main (repeat.c:19)
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+</code></pre></div></div>
+
+<p>Q7:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4 bytes in 1 blocks are definitely lost in loss record 1 of 1
+    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+    by 0x400723: main (repeat.c:17)
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+</code></pre></div></div>
+
+<div style="page-break-after:always;"></div>
+
+<h2 id="review-threads">Review: threads</h2>
+<p>A program contains the following global variables and functions:</p>
+<pre><code class="language-C">void *dbl(void *arg) {
+    int *t = (int *)arg;
+    *t = *t * 2;
+}
+
+void *one(void *arg) {
+    int *t = (int *)arg;
+    *t = 1;
+}
+</code></pre>
+<p><em>For each of the following main methods, list <strong>all possible outputs</strong> the program could produce. Assume threads are only preempted if they become blocked waiting for other threads.</em></p>
+
+<p>Q8:</p>
+<pre><code class="language-C">int main() {
+    int *total = malloc(sizeof(int));
+    *total = 3;
+    pthread_t thrA, thrB;
+    pthread_create(&amp;thrA, NULL, &amp;dbl, total);
+    pthread_create(&amp;thrB, NULL, &amp;one, total);
+    pthread_join(&amp;thrA);
+    pthread_join(&amp;thrB);
+    printf("%d\n", total);
+}
+</code></pre>
+
+<p>Q9:</p>
+<pre><code class="language-C">int main() {
+    int *total = malloc(sizeof(int));
+    *total = 3
+    pthread_t thrA, thrB;
+    pthread_create(&amp;thrA, NULL, &amp;one, total);
+    pthread_join(&amp;thrA);
+    pthread_create(&amp;thrB, NULL, &amp;dbl, total);
+    pthread_join(&amp;thrB);
+    printf("%d\n", total);
+}
+</code></pre>
+
+<h2 id="review-sockets">Review: sockets</h2>
+<p>Q10: <em>What sequence of socket functions should a server application call?</em></p>
+
+  </body>
+</html>

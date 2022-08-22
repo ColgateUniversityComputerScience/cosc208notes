@@ -1,0 +1,138 @@
+# Assembly: conditionals
+_COSC 208, Introduction to Computer Systems, 2021-10-15_
+
+## Announcements
+* Project 2 Part A due Thursday, Oct 21
+
+## Outline
+* Warm-up
+* Conditionals
+* Practice with conditionals
+
+## Warm-up
+_Translate the following assembly code snippets into low-level C code, treating registers as if they were variable names. (Hint: each snippet translates into an if-statement)_
+Q1: 
+```
+cmp w0, w1
+b.eq 0xAB40 <foo+0x40>
+```
+```C
+
+
+
+```
+
+Q2: 
+```
+cmp w0, #0x20
+b.lt 0xAB80 <foo+0x80>
+```
+```C
+
+
+
+```
+
+Q3: 
+```
+cmp w1, #0x1
+b.ne 0xABC0 <foo+0xC0>
+```
+```C
+
+
+
+```
+
+Q4: 
+```
+cmp w0, w1
+b.le 0xABF0 <foo+0xF0>
+```
+```C
+
+
+
+```
+🛑 **STOP HERE** after completing the warm-up; if you have extra time please **skip ahead** to the extra practice.
+
+<div style="page-break-after:always;"></div>
+
+## Conditionals — example
+```C
+1  int divide_safe(int numerator, int denominator) {
+2      int result = -1;
+3      if (denominator != 0) {
+4          result = numerator / denominator;
+5      }
+6      return result;
+7  }
+```
+```
+0000000000400544 <divide_safe>:
+    400544:	d10043ff 	sub	sp, sp, #0x10                   //
+    400548:	12800008 	mov	w8, #0xffffffff                 //
+    40054c:	b9000fe0 	str	w0, [sp, #12]                   //
+    400550:	b9000be1 	str	w1, [sp, #8]                    //
+    400554:	b90007e8 	str	w8, [sp, #4]                    //
+    400558:	b9400be8 	ldr	w8, [sp, #8]                    //
+    40055c:	340000a8 	cbz	w8, 400570 <divide_safe+0x2c>   //
+    400560:	b9400fe8 	ldr	w8, [sp, #12]                   //
+    400564:	b9400be9 	ldr	w9, [sp, #8]                    //
+    400568:	1ac90d08 	sdiv	w8, w8, w9                      //   
+    40056c:	b90007e8 	str	w8, [sp, #4]                    //
+    400570:	b94007e0 	ldr	w0, [sp, #4]                    //
+    400574:	910043ff 	add	sp, sp, #0x10                   //
+    400578:	d65f03c0 	ret	                                //
+```
+
+<div style="page-break-after:always;"></div>
+
+## Practice with conditionals
+Q5: _The C code below was compiled into assembly. Label each line of assembly code with the line number of the line of C code from which the assembly instruction was derived._ 
+```C
+1  int flip(int bit) {
+2     int result = -1;
+3     if (bit == 0) {
+4          result = 1; 
+5      } 
+6      else {
+7          result = 0;
+8      }
+9      return result;
+10 }
+```
+```
+0000000000400544 <flip>:
+    400544:	d10043ff 	sub	sp, sp, #0x10               //
+    400548:	12800008 	mov	w8, #0xffffffff             //
+    40054c:	b9000fe0 	str	w0, [sp, #12]               //
+    400550:	b9000be8 	str	w8, [sp, #8]                //
+    400554:	b9400fe8 	ldr	w8, [sp, #12]               //
+    400558:	35000088 	cbnz	w8, 400568 <flip+0x24>      //
+    40055c:	52800028 	mov	w8, #0x1                    //
+    400560:	b9000be8 	str	w8, [sp, #8]                //
+    400564:	14000002 	b	40056c <flip+0x28>          //
+    400568:	b9000bff 	str	wzr, [sp, #8]               //
+    40056c:	b9400be0 	ldr	w0, [sp, #8]                //
+    400570:	910043ff 	add	sp, sp, #0x10               //
+    400574:	d65f03c0 	ret	                            //
+```
+
+Q6: _Write a function called `flip_goto` that behaves the same as `flip` but matches the structure of the assembly code that will be generated for `flip`. (Hint: you'll need two `goto` statements.)_
+
+<div style="page-break-after:always;"></div>
+
+## Extra practice
+Q7: _Write a function called `adjust_goto` that behaves the same as `adjust` but matches the structure of the asssembly code that will be generated for `adjust`. (Hint: you'll need two `goto` statements.)_
+```C
+int adjust(int value) {
+    if (value < 10) {
+        value = value * 10;
+    }
+    else {
+        value = value / 10;
+    }
+    return value;
+}
+```
