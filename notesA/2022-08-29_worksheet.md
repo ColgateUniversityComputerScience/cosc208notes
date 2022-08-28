@@ -1,13 +1,13 @@
 # C: compilation; types; operators; output
-_COSC 208, Introduction to Computer Systems, 2022-01-26_
+_COSC 208, Introduction to Computer Systems, 2022-01-28_
 
 ## Announcements
-* Masks are required in class, lab, and office hours
 * Before next class: Read Dive Into Systems 1.3-1.4.0 and answer pre-class questions
-* First lab today/tomorrow
+* Welcome Back CS Dept Tea: Tuesday at 11:30am in McGregory 319
 
 ## Outline
 * Warm-up
+* Learning community guidelines
 * Hello, C
 * Types
 * Operators
