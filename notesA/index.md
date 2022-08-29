@@ -4,9 +4,9 @@
 
 ## C
 * Compilation; types; operators; output (2022-08-29) <!--[[Notes]](2022-08-29_notes)--> [[Worksheet]](2022-08-29_worksheet)
+* Control structures; functions (2022-08-31) <!--[[Notes]](2022-08-31_notes)--> [[Worksheet]](2022-08-31_worksheet)
 
 <!--
-* Control structures; functions (2022-01-28) [[Notes]](2022-01-28_notes) [[Worksheet]](2022-01-28_worksheet)
 * Using libraries; stack frames (2022-01-31) [[Notes]](2022-01-31_notes) [[Worksheet]](2022-01-31_worksheet)
 * Arrays; strings; input (2022-02-02) [[Notes]](2022-02-02_notes) [[Worksheet]](2022-02-02_worksheet)
 

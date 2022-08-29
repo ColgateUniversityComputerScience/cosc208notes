@@ -1,9 +1,15 @@
 # C: stack frames; using libraries
-_COSC 208, Introduction to Computer Systems, 2022-01-31_
+_COSC 208, Introduction to Computer Systems, 2022-09-02_
 
 ## Announcements
 * Complete readings and pre-class questions before each class period
-* First DEI activity due Thurs, Feb 10
+* DEI assignment 1 due Thurs @ 11pm
+
+## Outline
+* Warm-up
+* Using libraries
+* Creating libraries
+* Stack frames
 
 ## Warm-up
 This warm-up focuses on the biological process of cell division

@@ -1,9 +1,15 @@
 # C: control structures
-_COSC 208, Introduction to Computer Systems, 2022-01-28_
+_COSC 208, Introduction to Computer Systems, 2022-08-31_
 
 ## Announcements
-* Before next class: read _Dive Into Systems_ Section 1.4 and answer pre-class questions
-* First lab today/tomorrow
+* Before next class: read _Dive Into Systems_ 1.4.1, 2.9.5-2.9.6 and answer pre-class questions
+* First lab today or tomorrow
+* DEI assignment 1 due Thurs, Sept 8 @ 11pm
+
+## Outline
+* Warm-up
+* Control structures
+* Defining functions
 
 ## Warm-up
 Q1: _Write a program that prints the number of days, hours, and minutes in a week._
