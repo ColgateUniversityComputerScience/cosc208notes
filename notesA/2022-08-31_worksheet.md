@@ -38,9 +38,11 @@ Q2: _Assume the variables `year`, `month` and `day` contain the parts of a date.
 
 Q3: _Assume the variables `length` and `width` contain the dimensions of a sports field/court. Use `printf` to output the dimensions (`94ft x 50ft`)_
 
-<div style="height:5em;"></div>
+<div style="height:4em;"></div>
 
 Q4: _Assume the variables `first` and `last` contain a patient's first and last initial, and the variables `systolic` and `diastolic` contain the patient's blood pressure readings. Use `printf` to output the patient's initials and blood pressure (e.g., `A.G. 115/70`)_
+
+<div style="height:4em;"></div>
 
 🛑 Stop here after completing the above questions; if you have extra time please **skip ahead** to the extra practice.
 
@@ -83,11 +85,11 @@ Q7: _Write the same program using a while loop._
 
 🛑 Stop here after completing the above questions; if you have extra time please **skip ahead** to the extra practice.
 
-<div style="page-break-after:always;"></div>
-
 ## Functions
 Q8: _Write a function called `isletter` that takes a character and returns `1` if the character is a letter, or `0` otherwise._
 ```C
+
+
 
 
 
@@ -118,8 +120,6 @@ Q9: _Write a program that prints out the powers of 2 from 2 through 2048._
 
 
 ```
-
-<div style="page-break-after:always;"></div>
 
 Q10: _Write a program that prints all numbers from 1 to 100, except:_
 * _If the number is divisible by 3 then print `Three`_
