@@ -3,7 +3,7 @@
 * Hello (2022-08-25) [[Notes]](2022-08-25_notes) [[Worksheet]](2022-08-25_worksheet)
 
 ## C
-* Compilation; types; operators; output (2022-08-29) <!--[[Notes]](2022-08-29_notes)--> [[Worksheet]](2022-08-29_worksheet)
+* Compilation; types; operators; output (2022-08-29) [[Notes]](2022-08-29_notes) [[Worksheet]](2022-08-29_worksheet)
 * Control structures; functions (2022-08-31) <!--[[Notes]](2022-08-31_notes)--> [[Worksheet]](2022-08-31_worksheet)
 
 <!--
