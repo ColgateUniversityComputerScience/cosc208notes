@@ -5,11 +5,10 @@
 ## C
 * Compilation; types; operators; output (2022-08-29) [[Notes]](2022-08-29_notes) [[Worksheet]](2022-08-29_worksheet)
 * Control structures; functions (2022-08-31) [[Notes]](2022-08-31_notes) [[Worksheet]](2022-08-31_worksheet)
-* Using libraries; stack frames (2022-09-02) <!--[[Notes]](2022-09-02_notes)--> [[Worksheet]](2022-09-02_worksheet)
+* Using libraries; stack frames (2022-09-02) [[Notes]](2022-09-02_notes) [[Worksheet]](2022-09-02_worksheet)
+* Arrays; strings; input (2022-09-05) <!--[[Notes]](2022-09-05_notes)--> [[Worksheet]](2022-09-05_worksheet)
 
 <!--
-* Arrays; strings; input (2022-02-02) [[Notes]](2022-02-02_notes) [[Worksheet]](2022-02-02_worksheet)
-
 ## Number representation
 * Structs; number bases (2022-02-07) [[Notes]](2022-02-07_notes) [[Worksheet]](2022-02-07_worksheet)
 * Base conversion; signed integers (2022-02-09) [[Notes]](2022-02-09_notes) [[Worksheet]](2022-02-09_worksheet)

@@ -23,10 +23,6 @@ Q1: _Write a function called `isletter` that takes a character and returns `1` i
 
 
 
-
-
-
-
 ```
 
 🛑 Stop here after completing the warm-up; if you have extra time please **skip ahead** to the extra practice.
