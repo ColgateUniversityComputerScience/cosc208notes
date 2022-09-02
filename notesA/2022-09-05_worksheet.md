@@ -1,8 +1,9 @@
 # C: arrays; strings; input
-_COSC 208, Introduction to Computer Systems, 2022-02-02_
+_COSC 208, Introduction to Computer Systems, 2022-09-05_
 
 ## Announcements
-* First DEI activity due Thurs, Feb 10
+* DEI assignment 1 due Thurs @ 11pm
+* Programming project 1 due Thurs, Sept 15 @ 11pm
 
 ## Warm-up
 Q1: _Draw the contents of the stack immediately before the program prints "n=2"_

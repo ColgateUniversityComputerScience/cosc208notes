@@ -1,4 +1,4 @@
-# C: stack frames; using libraries
+# C: using libraries; stack frames
 _COSC 208, Introduction to Computer Systems, 2022-09-02_
 
 ## Announcements
@@ -8,7 +8,6 @@ _COSC 208, Introduction to Computer Systems, 2022-09-02_
 ## Outline
 * Warm-up
 * Using libraries
-* Creating libraries
 * Stack frames
 
 ## Warm-up
