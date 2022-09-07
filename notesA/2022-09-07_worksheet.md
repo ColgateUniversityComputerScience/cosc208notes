@@ -13,28 +13,23 @@ _COSC 208, Introduction to Computer Systems, 2022-02-07_
 
 ## Warm-up
 Q1: _What is the output of this program?_
-    ```C
-    int main() {
-        char first[] = "Colgate";
-        char second[10] = "Univ";
-        printf("%lu %lu\n", strlen(first));
-        printf("%lu %lu\n", strlen(second));
-        first[strlen(first)] = '-';
-        second[strlen(second)-1] = '.';
-        printf("%s%s\n", first, second);
-        first[3] = '.';
-        first[4] = '\0';
-        printf("%s %s\n", first, second);
-    }
-    ```
-    ```
-    7
-    4
-    Colgate-��Uni.
-    Col. Uni.
-    ```
-* Q2: _Write a program that asks the user for a string and prints the string backwards._
-    ```C
+```C
+int main() {
+    char first[] = "Colgate";
+    char second[10] = "Univ";
+    printf("%lu %lu\n", strlen(first));
+    printf("%lu %lu\n", strlen(second));
+    first[strlen(first)] = '-';
+    second[strlen(second)-1] = '.';
+    printf("%s%s\n", first, second);
+    first[3] = '.';
+    first[4] = '\0';
+    printf("%s %s\n", first, second);
+}
+```
+
+Q2: _Write a program that asks the user for a string and prints the string backwards._
+```C
 
 
 
@@ -47,7 +42,8 @@ Q1: _What is the output of this program?_
 
 
 
-    ```
+```
+
 🛑 Stop here after completing the warm-up; if you have extra time please **skip ahead** to the extra practice.
 
 ## Binary (i.e., base 2)
