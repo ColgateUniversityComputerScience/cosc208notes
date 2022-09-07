@@ -1,5 +1,5 @@
-# Number representation: number bases; base converstion
-_COSC 208, Introduction to Computer Systems, 2022-02-07_
+# Number representation: number bases; base conversion
+_COSC 208, Introduction to Computer Systems, 2022-09-07_
 
 ## Announcements
 * DEI assignment 1 due tomorrow @ 11pm
@@ -26,6 +26,9 @@ int main() {
     first[4] = '\0';
     printf("%s %s\n", first, second);
 }
+
+
+
 ```
 
 Q2: _Write a program that asks the user for a string and prints the string backwards._
@@ -42,9 +45,16 @@ Q2: _Write a program that asks the user for a string and prints the string backw
 
 
 
+
+
+
+
+
 ```
 
 🛑 Stop here after completing the warm-up; if you have extra time please **skip ahead** to the extra practice.
+
+<div style="page-break-after: always;"></div>
 
 ## Binary (i.e., base 2)
 _Convert these binary numbers to decimal (i.e., base 10):_
@@ -113,6 +123,8 @@ Q11: `0b11100111`
 
 ```
 
+<div style="page-break-after: always;"></div>
+
 _Convert these hexadecimal numbers to binary:_
 
 Q12: `0x5`
@@ -151,6 +163,9 @@ Q15: _Write a function called `count_words` that takes a string and counts the n
 
 
 
+
+
+
 ```
 
 _Convert these binary numbers to decimal (i.e., base 10):_
@@ -164,6 +179,9 @@ _Convert these binary numbers to decimal (i.e., base 10):_
 
 
     ```
+
+<div style="page-break-after: always;"></div>
+
 _Convert these hexadecimal numbers to decimal (i.e., base 10):_
 * Q18: `0x9`
     ```
