@@ -50,6 +50,8 @@ Q2: _Write a program that asks the user for a string and prints the string backw
 
 
 
+
+
 ```
 
 🛑 Stop here after completing the warm-up; if you have extra time please **skip ahead** to the extra practice.
@@ -150,6 +152,11 @@ Q14: `0x37`
 ## Extra practice
 Q15: _Write a function called `count_words` that takes a string and counts the number of words in the string. Assume each word is separated by a single space, and the string will contain at least one word. For example, `"Today is Wednesday."` contains 3 words._
 ```C
+
+
+
+
+
 
 
 
