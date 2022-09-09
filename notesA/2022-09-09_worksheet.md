@@ -1,6 +1,17 @@
 # Number representation: base conversion (continued); signed integers; type conversion
 _COSC 208, Introduction to Computer Systems, 2022-09-09_
 
+## Announcements
+* Programming project 1 due Thurs @ 11pm
+
+## Outline
+* Warm-up
+* Hexadecimal
+* Binary <-> hex conversion
+* Decimal -> binary conversion
+* Signed integers
+* Type conversion
+
 ## Warm-up
 _Convert these binary numbers to decimal:_
 
