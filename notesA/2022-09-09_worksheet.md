@@ -102,8 +102,6 @@ Q12: `0x37`
 ```
 🛑 Stop here after completing the above conversions; if you have extra time please **skip ahead** to the extra practice.
 
-<div style="page-break-after: always;"></div>
-
 ## Decimal -> Binary Conversion
 _Convert these decimal numbers to binary:_
 
@@ -132,6 +130,8 @@ Q16: `192`
 ```
 
 🛑 Stop here after completing the above conversions; if you have extra time please **skip ahead** to the extra practice.
+
+<div style="page-break-after: always;"></div>
 
 ## Signed integers
 _Express these decimal numbers using 8-bit two's complement:_
@@ -202,7 +202,10 @@ Q27: `0b101111111111`
 
 ```
 
+<div style="page-break-after: always;"></div>
+
 _Convert these hexadecimal numbers to binary:_
+
 Q28: `0x8`
 ```
 
