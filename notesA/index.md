@@ -9,10 +9,10 @@
 * Arrays; strings; input (2022-09-05) [[Notes]](2022-09-05_notes) [[Worksheet]](2022-09-05_worksheet)
 
 ## Number representation
-* Number bases; base conversion (2022-09-07) <!--[[Notes]](2022-09-07_notes)--> [[Worksheet]](2022-09-07_worksheet)
+* Number bases; base conversion (2022-09-07) [[Notes]](2022-09-07_notes) [[Worksheet]](2022-09-07_worksheet)
+* Base conversion (continued); signed integers; type conversion (2022-09-09) <!--[[Notes]](2022-09-09_notes)--> [[Worksheet]](2022-09-09_worksheet)
 
 <!--
-* Base conversion; signed integers (2022-02-09) [[Notes]](2022-02-09_notes) [[Worksheet]](2022-02-09_worksheet)
 * Binary arithmetic; overflow (2022-02-11) [[Notes]](2022-02-11_notes) [[Worksheet]](2022-02-11_worksheet)
 * Bitwise operators; real numbers (2022-02-14) [[Notes]](2022-02-14_notes) [[Worksheet]](2022-02-14_worksheet)
 
