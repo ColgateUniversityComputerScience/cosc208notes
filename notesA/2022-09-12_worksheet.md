@@ -1,8 +1,14 @@
-# Number representation: binary arithmetic; overflow
-_COSC 208, Introduction to Computer Systems, 2022-02-11_
+# Number representation: type conversion; binary arithmetic; overflow
+_COSC 208, Introduction to Computer Systems, 2022-09-12_
 
 ## Announcements
-* Project 1 Part A due Thursday at 11pm
+* Programming project 1 due Thurs @ 11pm
+
+## Outline
+* Warm-up
+* Type conversion
+* Binary arithmetic
+* Overflow
 
 ## Warm-up
 _Express these decimal numbers using 8-bit two's complement:_
