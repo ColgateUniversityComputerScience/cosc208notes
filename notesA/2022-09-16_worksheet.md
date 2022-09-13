@@ -15,6 +15,7 @@ _COSC 208, Introduction to Computer Systems, 2022-09-16_
 
 ## Warm-up
 _Apply the following bitwise operations_
+
 Q1: `0b0011 & 0b0101`
 ```
 
@@ -43,6 +44,8 @@ Q4: _Write a snippet of code that:_
 
 
 ```
+
+<div style="page-break-after: always;"></div>
 
 Q5: _What is the output of this program?_ — draw a memory diagram to help
 ```C
@@ -107,6 +110,8 @@ int main() {
     printf("%d\n", v);
 }
 ```
+
+<div style="page-break-after: always;"></div>
 
 Q7: _What is the output of this program?_
 ```C
