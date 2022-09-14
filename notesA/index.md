@@ -12,11 +12,12 @@
 * Number bases; base conversion (2022-09-07) [[Notes]](2022-09-07_notes) [[Worksheet]](2022-09-07_worksheet)
 * Base conversion (continued); signed integers (2022-09-09) [[Notes]](2022-09-09_notes) [[Worksheet]](2022-09-09_worksheet)
 * Type conversion; binary arithmetic (2022-09-12) [[Notes]](2022-09-12_notes) [[Worksheet]](2022-09-12_worksheet)
-* Overflow; bitwise operators; real numbers (2022-09-14) <!--[[Notes]](2022-09-14_notes)--> [[Worksheet]](2022-09-14_worksheet)
+* Overflow; bitwise operators; real numbers (2022-09-14) [[Notes]](2022-09-14_notes) [[Worksheet]](2022-09-14_worksheet)
+
+## Program memory
+* Pointers (2022-09-16) <!--[[Notes]](2022-09-16_notes)--> [[Worksheet]](2022-09-16_worksheet)
 
 <!--
-## Program memory
-* Pointers (2022-02-16) [[Notes]](2022-02-16_notes) [[Worksheet]](2022-02-16_worksheet)
 * Arrays & pointers (2022-02-18) [[Notes]](2022-02-18_notes) [[Worksheet]](2022-02-18_worksheet)
 * Exam 1 review (2022-02-21) [[Notes]](2022-02-21_notes) [[Worksheet]](2022-02-21_worksheet)
 * malloc (2022-02-28) [[Notes]](2022-02-28_notes) [[Worksheet]](2022-02-28_worksheet)

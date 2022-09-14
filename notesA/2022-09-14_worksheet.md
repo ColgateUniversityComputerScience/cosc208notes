@@ -121,7 +121,7 @@ Q18: `char c;`
 ```
 ```
 
-Q19: `long long d;`
+Q19: `long d;`
 ```
 ```
 
