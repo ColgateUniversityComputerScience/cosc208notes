@@ -37,10 +37,6 @@ int main() {
     printf("%d %d %d %d %d %d\n", q, r, s, t, u, v);
 }
 ```
-```
-
-
-```
 
 Q2: _What is the output of this program?_
 ```C
@@ -59,10 +55,7 @@ int main() {
     printf("%d %d\n", x, *y);
 }
 ```
-```
 
-
-```
 🛑 **STOP HERE** after completing the warm-up; if you have extra time please **skip ahead** to the extra practice.
 
 ## Arrays & pointers
@@ -189,13 +182,6 @@ int main() {
     swap2(&ptrA, &ptrB);
     printf("%d %d %d %d\n", a, b, *ptrA, *ptrB);
 }
-```
-```
-
-
-
-
-
 ```
 
 <div style="page-break-after:always;"></div>
