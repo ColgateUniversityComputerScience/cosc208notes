@@ -1,15 +1,48 @@
 # Program memory: arrays & pointers
-_COSC 208, Introduction to Computer Systems, 2022-02-18_
+_COSC 208, Introduction to Computer Systems, 2022-09-19_
 
 ## Announcements
 * Exam 1
     * Study guide posted on Moodle
-    * Take-home portion: released after class on Monday; due at the beginning of class on Wednesday
-    * In-class portion: during class on Wednesday
-* Project 1 Part B due Thurs, Mar 3
+    * Take-home portion: released after class on Wednesday; due at the beginning of class on Friday
+    * In-class portion: during class on Friday
+* DEI assignment 2 due Thurs, Sept 29
+
+## Outline
+* Warm-up
+* Arrays & pointers
 
 ## Warm-up
 Q1: _What is the output of this program?_
+```C
+void copy1(int a, int b) {
+    a = b;
+}
+void copy2(int *c, int *d) {
+    c = d;
+}
+void copy3(int *e, int *f) {
+    *e = *f;
+}
+int main() {
+    int q = 1;
+    int r = 2;
+    copy1(q, r);
+    int s = 3;
+    int t = 4;
+    copy2(&s, &t);
+    int u = 5;
+    int v = 6;
+    copy3(&u, &v);
+    printf("%d %d %d %d %d %d\n", q, r, s, t, u, v);
+}
+```
+```
+
+
+```
+
+Q2: _What is the output of this program?_
 ```C
 void increment1(int a) {
     a = a + 1;
@@ -27,8 +60,6 @@ int main() {
 }
 ```
 ```
-
-
 
 
 ```
@@ -73,7 +104,7 @@ int main() {
 
 ```
 
-Q2: _What is the output of this program?_
+Q3: _What is the output of this program?_
 ```C
 int main() {
     int nums[4] = {1,2,3,4};
@@ -97,7 +128,7 @@ int main() {
 
 ```
 
-Q3: _What is the output of this program?_
+Q4: _What is the output of this program?_
 ```C
 int main() {
     char *first = "Colgate";
@@ -123,7 +154,7 @@ int main() {
 ```
 
 ## Extra practice
-Q4: _What do the following two functions do? How are they different?_
+Q5: _What do the following two functions do? How are they different?_
 ```C
 void swap1(int *m, int *n) {
     int tmp = *n;
@@ -146,7 +177,7 @@ void swap2(int **x, int **y) {
 
 ```
 
-Q5: _What is the output of this program?_
+Q6: _What is the output of this program?_
 ```C
 int main() {
     int a = 1;
@@ -169,7 +200,7 @@ int main() {
 
 <div style="page-break-after:always;"></div>
 
-Q6: _Draw a memory diagram that displays the program's variables and their values when the program reaches the comment `STOP HERE`._
+Q7: _Draw a memory diagram that displays the program's variables and their values when the program reaches the comment `STOP HERE`._
 ```C
 char *split(char *str, char delim) {
     for (int i = 0; i < strlen(str); i++) {
