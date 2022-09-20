@@ -16,7 +16,7 @@
 
 ## Program memory
 * Pointers (2022-09-16) [[Notes]](2022-09-16_notes) [[Worksheet]](2022-09-16_worksheet)
-* Arrays & pointers (2022-09-19) <!--[[Notes]](2022-09-19_notes)--> [[Worksheet]](2022-09-19_worksheet)
+* Arrays & pointers (2022-09-19) [[Notes]](2022-09-19_notes) [[Worksheet]](2022-09-19_worksheet)
 
 <!--
 * Exam 1 review (2022-02-21) [[Notes]](2022-02-21_notes) [[Worksheet]](2022-02-21_worksheet)
