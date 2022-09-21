@@ -1,11 +1,12 @@
 # Exam 1 Review
-_COSC 208, Introduction to Computer Systems, 2022-02-21_
+_COSC 208, Introduction to Computer Systems, 2022-09-21_
 
 ## Announcements
 * Exam 1
     * Study guide posted on Moodle
-    * Take-home portion: due at the beginning of class on Monday
-    * In-class portion: during class on Monday
+    * Take-home portion: released after class on Wednesday; due at the beginning of class on Friday
+    * In-class portion: during class on Friday
+* DEI assignment 2 due Thurs, Sept 29
 
 ## Binary arithmetic
 _Perform the following calculations. Operands are encoded using two's complement encoding with 6 bits. For each calculation, express the result in binary and decimal, and indicate whether the result overflows, underflows, or neither._
@@ -223,27 +224,3 @@ int main() {
     printf("%s %d\n", a, i);
 }
 ```
-
-<div style="page-break-after:always;"></div>
-
-## Structs
-
-Q20: _Define a struct for representing a chemical element, which includes the element's:_
-* _Name_
-* _Chemical symbol_
-* _Atomic number_
-* _State (solid, liquid, or gas) at room temperature_
-
-```C
-
-
-
-
-
-
-
-
-
-```
-
-Q21: _Write a function called `lookup` that takes a chemical symbol and an array containing a struct for each of the 118 elements in the periodic table. The function should return the specified element's atomic number. If the provided symbol does not correspond to a known element, the function should return -1._
