@@ -1,9 +1,9 @@
 # Program memory: malloc
-_COSC 208, Introduction to Computer Systems, 2022-02-28_
+_COSC 208, Introduction to Computer Systems, 2022-09-26_
 
 ## Announcements
-* Project 1 Part B due Thursday at 11pm
-* 2nd DEI in CS activity due Thursday, March 10
+* DEI assignment 2 due Thurs, Sept 29
+* Programming project 1 due Thurs, Oct 6 @ 11pm
 
 ## No warm-up — Happy Monday!
 
@@ -75,25 +75,4 @@ Q4: _Write a function called `generate_password` that takes an unsigned integer 
 ```
 
 ## Extra practice
-Q5: _Write a function called `substring` that takes a string, a starting index, and a length, and returns a substring. If the starting index is too large, the function should return `NULL`. If the length is too large, the function should return a shorter substring._
-```C
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-```
-
-Q6: _Write a function called `lengths` that takes an array of strings and the number of elements in the array and returns an array of integers containing the length of each string._
+Q5: _Write a function called `lengths` that takes an array of strings and the number of elements in the array and returns an array of integers containing the length of each string._

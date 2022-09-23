@@ -18,10 +18,10 @@
 * Pointers (2022-09-16) [[Notes]](2022-09-16_notes) [[Worksheet]](2022-09-16_worksheet)
 * Arrays & pointers (2022-09-19) [[Notes]](2022-09-19_notes) [[Worksheet]](2022-09-19_worksheet)
 * Exam 1 review (2022-09-21) [[Notes]](2022-09-21_notes) [[Worksheet]](2022-09-21_worksheet)
-
+* malloc (2022-09-26) <!--[[Notes]](2022-09-26_notes)--> [[Worksheet]](2022-09-26_worksheet)
 <!--
-* malloc (2022-02-28) [[Notes]](2022-02-28_notes) [[Worksheet]](2022-02-28_worksheet)
-* free; structs (2022-03-02) [[Notes]](2022-03-02_notes) [[Worksheet]](2022-03-02_worksheet)
+* free; 2D arrays; command-line arguments (2022-09-28) [[Notes]](2022-09-28_notes) [[Worksheet]](2022-09-28_worksheet)
+* structs (2022-09-30) [[Notes]](2022-09-30_notes) [[Worksheet]](2022-09-30_worksheet)
 
 ## Architecture
 * von Neumann (2022-03-04) [[Notes]](2022-03-04_notes) [[Worksheet]](2022-03-04_worksheet)
