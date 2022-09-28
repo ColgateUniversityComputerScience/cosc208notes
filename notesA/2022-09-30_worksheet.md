@@ -159,3 +159,109 @@ Q14: _Write a struct definition to represent a date (year, month number, and day
 ```
 
 Q15: _Write a function called `compare` that takes two date structs and returns -1 if the first date occurs before the second, 0 if the dates are equal, and 1 if the first date occurs after the second._
+
+
+
+## Pointers to structs
+Assume you are given the following code:
+```C
+struct account {
+    int number; // Account number
+    int balance; // Current account balance
+};
+int deposit(struct account *acct, int amount);
+int transfer(struct account *from, struct amount *to, int amount);
+```
+
+Q8: _Write the `deposit` function, which adds `amount` to the balance of `acct`. The function should return the amount deposited._
+```C
+
+
+
+
+
+
+
+
+
+
+
+
+```
+
+Q9: _Write the `transfer` function which moves `amount` from one account to another. The function should return the amount transferred if the transfer was successful or 0 otherwise._
+```C
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
+<div style="page-break-after:always;"></div>
+
+## Extra practice
+_Two structs have been defined representing a queue and an item on a queue._
+```C
+struct item {
+    int value;
+    struct item *next;
+};
+struct queue {
+    struct item *head;
+    struct item *tail;
+};
+```
+
+_The `new_queue` function creates a new, empty queue._
+```C
+struct queue *new_queue() {
+    struct queue *q = malloc(sizeof(struct queue));
+    q->head = NULL;
+    q->tail = NULL;
+    return q;
+}
+```
+
+Q10: _Write a function called `enqueue` that adds a new value at the end of the queue._
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
+
+Q11: _Write a function called `dequeue` that removes and returns the value at the head of the queue. The function should return -1 if the queue is empty._
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
+
+Q12: _Write a function called `free_queue` that empties and frees a queue._

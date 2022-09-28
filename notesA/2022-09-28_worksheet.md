@@ -1,9 +1,17 @@
-# Program memory: free; structs
-_COSC 208, Introduction to Computer Systems, 2022-03-02_
+# Program memory: free; 2D arrays; command-line arguments
+_COSC 208, Introduction to Computer Systems, 2022-09-28_
 
 ## Announcements
-* Project 1 Part B due tomorrow at 11pm
-* 2nd DEI in CS activity due Thursday, March 10
+* DEI assignment 2 due tomorrow @ 11pm
+* Programming project 2 due Thurs, Oct 6 @ 11pm
+
+## Outline
+* Warm-up
+* Heap memory deallocation
+* 2D arrays on the stack
+* 2D arrays as 1D arrays
+* 2D arrays as arrays-of-arrays
+* Command-line arguments
 
 ## Warm-up
 _Assume you wanted to write a function that creates a copy of a string. What is wrong with each of the following attempts at writing such a function?_
@@ -41,7 +49,7 @@ char *copy3(char strA[]) {
 ```
 
 ```
-🛑 **STOP HERE** after completing the warm-up; if you have extra time please **skip ahead** to the extra practice.
+🛑 **STOP HERE** after completing the warm-up; if you have extra time please **take a few deep breaths** to reduce stress.
 
 ## free
 _What memory deallocation mistake has been made in each of the following code snippets?_
@@ -86,21 +94,24 @@ ptrB[2] = 2;
 ```
 ```
 ```
-🛑 **STOP HERE** after completing the above questions; if you have extra time please **skip ahead** to the extra practice.
+🛑 **STOP HERE** after completing the above questions; if you have extra time please **take a few deep breaths** to reduce stress.
 
-## Pointers to structs
-Assume you are given the following code:
-```C
-struct account {
-    int number; // Account number
-    int balance; // Current account balance
-};
-int deposit(struct account *acct, int amount);
-int transfer(struct account *from, struct amount *to, int amount);
+## 2D arrays on the stack
+Q8: _Assume we wanted to create an array to represent a calendar:_
+```
++----+----+----+----+----+----+----+
+|  1 |  2 |  3 |  4 |  5 |  6 |  7 |
++----+----+----+----+----+----+----+
+|  8 |  9 | 10 | 11 | 12 | 13 | 14 |
++----+----+----+----+----+----+----+
+| 15 | 16 | 17 | 18 | 19 | 20 | 21 |
++----+----+----+----+----+----+----+
+| 22 | 23 | 24 | 25 | 26 | 27 | 28 |
++----+----+----+----+----+----+----+
+```
+_Write a function called `fill_calendar` that creates a 2D array on the stack and populates the array with the appropriate values._
 ```
 
-Q8: _Write the `deposit` function, which adds `amount` to the balance of `acct`. The function should return the amount deposited._
-```C
 
 
 
@@ -110,13 +121,6 @@ Q8: _Write the `deposit` function, which adds `amount` to the balance of `acct`.
 
 
 
-
-
-
-```
-
-Q9: _Write the `transfer` function which moves `amount` from one account to another. The function should return the amount transferred if the transfer was successful or 0 otherwise._
-```C
 
 
 
@@ -131,63 +135,37 @@ Q9: _Write the `transfer` function which moves `amount` from one account to anot
 
 
 ```
-<div style="page-break-after:always;"></div>
 
-## Extra practice
-_Two structs have been defined representing a queue and an item on a queue._
-```C
-struct item {
-    int value;
-    struct item *next;
-};
-struct queue {
-    struct item *head;
-    struct item *tail;
-};
-```
+🛑 **STOP HERE** after completing the above question; if you have extra time please **take a few deep breaths** to reduce stress.
 
-_The `new_queue` function creates a new, empty queue._
+## 2D arrays as 1D arrays
+Q9: _Fill-in the blanks to complete the `fill_calendar_linear` function which creates a fully linear calendar._
 ```C
-struct queue *new_queue() {
-    struct queue *q = malloc(sizeof(struct queue));
-    q->head = NULL;
-    q->tail = NULL;
-    return q;
+void fill_calendar_linear() {
+    int calendar[_____];
+    int day = 1;
+    for (int week = 0; week < 4; week++) {
+        for (int dow = 0; dow < 7; dow++) {
+            calendar[__________________] = day;
+            day++;
+        }
+    }
 }
 ```
 
-Q10: _Write a function called `enqueue` that adds a new value at the end of the queue._
+## 2D arrays as arrays-of-arrays
+```C
+int **fill_calendar_arrayofarrays_heap() {
+    int **calendar = malloc(sizeof(int *) * 4);
+    int day = 1;
+    for (int week = 0; week < 4; week++) {
+        calendar[week] = malloc(sizeof(int) * 7);
+        for (int dow = 0; dow < 7; dow++) {
+            calendar[week][dow] = day;
+            day++;
+        }
+    }
+    return calendar;
+    ```
+}
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-```
-
-Q11: _Write a function called `dequeue` that removes and returns the value at the head of the queue. The function should return -1 if the queue is empty._
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-```
-
-Q12: _Write a function called `free_queue` that empties and frees a queue._
