@@ -64,6 +64,8 @@ free(ptrB);
 ```
 ```
 
+<div style="page-break-after: always;"></div>
+
 Q5:
 ```C
 int *ptr = malloc(sizeof(int) * 3);
@@ -110,31 +112,8 @@ Q8: _Assume we wanted to create an array to represent a calendar:_
 +----+----+----+----+----+----+----+
 ```
 _Write a function called `fill_calendar` that creates a 2D array on the stack and populates the array with the appropriate values._
-```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-```
+<div style="page-break-after: always;"></div>
 
 🛑 **STOP HERE** after completing the above question; if you have extra time please **take a few deep breaths** to reduce stress.
 
@@ -166,6 +145,5 @@ int **fill_calendar_arrayofarrays_heap() {
         }
     }
     return calendar;
-    ```
 }
 ```
