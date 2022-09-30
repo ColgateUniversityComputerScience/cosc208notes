@@ -20,10 +20,9 @@
 * Exam 1 review (2022-09-21) [[Notes]](2022-09-21_notes) [[Worksheet]](2022-09-21_worksheet)
 * malloc (2022-09-26) [[Notes]](2022-09-26_notes) [[Worksheet]](2022-09-26_worksheet)
 * free; 2D arrays; command-line arguments (2022-09-28) [[Notes]](2022-09-28_notes) [[Worksheet]](2022-09-28_worksheet)
+* structs (2022-09-30) <!--[[Notes]](2022-09-30_notes)--> [[Worksheet]](2022-09-30_worksheet)
 
 <!--
-* structs (2022-09-30) [[Notes]](2022-09-30_notes) [[Worksheet]](2022-09-30_worksheet)
-
 ## Architecture
 * von Neumann (2022-03-04) [[Notes]](2022-03-04_notes) [[Worksheet]](2022-03-04_worksheet)
 * Logic gates; circuits (2022-03-07) [[Notes]](2022-03-07_notes) [[Worksheet]](2022-03-07_worksheet)

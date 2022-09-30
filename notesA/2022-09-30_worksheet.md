@@ -39,8 +39,18 @@ char **elongate(char *str) {
 
 
 
+
+
+
+
+
+
+
+
 ```
 🛑 Stop here after completing the warm-up; if you have extra time please **skip ahead** to the extra practice.
+
+<div style="page-break-after:always;"></div>
 
 ## Structs
 Q2: _What is the output of this program?_
@@ -98,6 +108,8 @@ int main() {
 ```
 🛑 Stop here after completing the above questions; if you have extra time please **skip ahead** to the extra practice.
 
+<div style="page-break-after:always;"></div>
+
 ## Pointers to structs
 Assume you are given the following code:
 ```C
@@ -141,7 +153,6 @@ Q5: _Write the `transfer` function which moves `amount` from one account to anot
 
 
 ```
-<div style="page-break-after:always;"></div>
 
 ## Extra practice
 Q6: _Write a struct definition to represent a date (year, month number, and day)._
