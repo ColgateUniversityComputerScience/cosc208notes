@@ -1,12 +1,30 @@
-# C: structs; Number representation: number bases
-_COSC 208, Introduction to Computer Systems, 2022-02-07_
+# C: structs
+_COSC 208, Introduction to Computer Systems, 2022-09-30_
 
 ## Announcements
-* First DEI activity due Thursday @ 11pm
-* Project 1 Part A due Thurs, Feb 17
+* Programming project 2 due Thurs @ 11pm
+
+## Outline
+* Warm-up
+* Command-line arguments
+* Structs
+* Pointers to structs
 
 ## Warm-up
-Q1: _Write a function called `count_words` that takes a string and counts the number of words in the string. Assume each word is separated by a single space, and the string will contain at least one word. For example, `"Today is Monday."` contains 3 words._
+Q1: _Draw a memory diagram depicting the contents of the stack and heap immediately before the function `elongate("dog")` returns._
+```C
+char **elongate(char *str) {
+    char **result = malloc(sizeof(char *) * strlen(str));
+    for (int i = 0; i < strlen(str); i++) {
+        result[i] = malloc(sizeof(char) * (i + 2));
+        for (int j = 0; j < i+1; j++) {
+            result[i][j] = str[j];
+        }
+        result[i][i+1] = '\0';
+    }
+    return result;
+}
+```
 ```C
 
 
@@ -30,7 +48,6 @@ Q2: _What is the output of this program?_
 struct one {
     char x;
     char y;
-    short z;
 };
 struct two {
     int m;
@@ -39,13 +56,17 @@ struct two {
 int main() {
     struct one a;
     struct two b;
-    printf("%d %d\n", sizeof(struct one), sizeof(a.z));
+    printf("%d %d\n", sizeof(struct one), sizeof(a.y));
     printf("%d %d\n", sizeof(b), sizeof(b.n));
 }
 ```
+```
 
-<div style="page-break-after:always;"></div>
- 
+
+
+
+```
+
 Q3: _What is the output of this program?_
 ```C
 struct alpha {
@@ -77,91 +98,6 @@ int main() {
 ```
 🛑 Stop here after completing the above questions; if you have extra time please **skip ahead** to the extra practice.
 
-## Binary (i.e., base 2)
-_Convert these binary numbers to decimal (i.e., base 10):_
-
-Q4: `0b10`
-```
-
-
-```
-
-Q5: `0b11`
-```
-
-
-```
-
-Q6: `0b1010`
-```
-
-
-```
-
-Q7: `0b1111`
-```
-
-
-```
-
-Q8: `0b11001100`
-```
-
-
-```
-
-🛑 Stop here after completing the above conversions; if you have extra time please **skip ahead** to the extra practice.
-
-## Hexadecimal (i.e., base 16)
-_Convert these hexadecimal numbers to decimal (i.e., base 10):_
-
-Q9: `0x9`
-```
-
-
-```
-
-Q10: `0xB`
-```
-
-
-```
-
-Q11: `0xF`
-```
-
-
-```
-
-Q12: `0x11`
-```
-
-
-```
-
-Q13: `0x248`
-```
-
-
-```
-
-🛑 Stop here after completing the above conversions; if you have extra time please **skip ahead** to the extra practice.
-
-## Extra practice
-Q14: _Write a struct definition to represent a date (year, month number, and day)._
-```C
-
-
-
-
-
-
-```
-
-Q15: _Write a function called `compare` that takes two date structs and returns -1 if the first date occurs before the second, 0 if the dates are equal, and 1 if the first date occurs after the second._
-
-
-
 ## Pointers to structs
 Assume you are given the following code:
 ```C
@@ -173,7 +109,7 @@ int deposit(struct account *acct, int amount);
 int transfer(struct account *from, struct amount *to, int amount);
 ```
 
-Q8: _Write the `deposit` function, which adds `amount` to the balance of `acct`. The function should return the amount deposited._
+Q4: _Write the `deposit` function, which adds `amount` to the balance of `acct`. The function should return the amount deposited._
 ```C
 
 
@@ -189,7 +125,7 @@ Q8: _Write the `deposit` function, which adds `amount` to the balance of `acct`.
 
 ```
 
-Q9: _Write the `transfer` function which moves `amount` from one account to another. The function should return the amount transferred if the transfer was successful or 0 otherwise._
+Q5: _Write the `transfer` function which moves `amount` from one account to another. The function should return the amount transferred if the transfer was successful or 0 otherwise._
 ```C
 
 
@@ -208,6 +144,41 @@ Q9: _Write the `transfer` function which moves `amount` from one account to anot
 <div style="page-break-after:always;"></div>
 
 ## Extra practice
+Q6: _Write a struct definition to represent a date (year, month number, and day)._
+```C
+
+
+
+
+
+
+```
+
+Q7: _Write a function called `compare` that takes two date structs and returns -1 if the first date occurs before the second, 0 if the dates are equal, and 1 if the first date occurs after the second._
+```C
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
+
+<div style="page-break-after:always;"></div>
+
 _Two structs have been defined representing a queue and an item on a queue._
 ```C
 struct item {
@@ -230,7 +201,7 @@ struct queue *new_queue() {
 }
 ```
 
-Q10: _Write a function called `enqueue` that adds a new value at the end of the queue._
+Q8: _Write a function called `enqueue` that adds a new value at the end of the queue._
 ```
 
 
@@ -247,7 +218,7 @@ Q10: _Write a function called `enqueue` that adds a new value at the end of the 
 
 ```
 
-Q11: _Write a function called `dequeue` that removes and returns the value at the head of the queue. The function should return -1 if the queue is empty._
+Q9: _Write a function called `dequeue` that removes and returns the value at the head of the queue. The function should return -1 if the queue is empty._
 ```
 
 
@@ -264,4 +235,4 @@ Q11: _Write a function called `dequeue` that removes and returns the value at th
 
 ```
 
-Q12: _Write a function called `free_queue` that empties and frees a queue._
+Q10: _Write a function called `free_queue` that empties and frees a queue._
