@@ -75,6 +75,7 @@ int main() {
 
 
 
+
 ```
 
 Q3: _What is the output of this program?_
@@ -101,6 +102,8 @@ int main() {
 }
 ```
 ```
+
+
 
 
 
@@ -133,14 +136,10 @@ Q4: _Write the `deposit` function, which adds `amount` to the balance of `acct`.
 
 
 
-
-
 ```
 
 Q5: _Write the `transfer` function which moves `amount` from one account to another. The function should return the amount transferred if the transfer was successful or 0 otherwise._
 ```C
-
-
 
 
 
@@ -166,27 +165,6 @@ Q6: _Write a struct definition to represent a date (year, month number, and day)
 ```
 
 Q7: _Write a function called `compare` that takes two date structs and returns -1 if the first date occurs before the second, 0 if the dates are equal, and 1 if the first date occurs after the second._
-```C
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-```
 
 <div style="page-break-after:always;"></div>
 
