@@ -116,10 +116,3 @@ Q8: _How do you use NAND gates to create a NOT gate?_
 ```
 
 Q9: _How do you use NAND gates to create an AND gate?_
-```
-
-
-
-
-
-```
