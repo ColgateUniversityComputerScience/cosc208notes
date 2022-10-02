@@ -60,6 +60,8 @@ Q4a: _Complete the truth table for this operation_
 |  1  |  1  |     0      |   0   |      1      |
 |  1  |  1  |     1      |   1   |      1      |
 
+<div style="page-break-after:always;"></div>
+
 Q4b: _What is the boolean expression for `sum`?_
 ```
 
