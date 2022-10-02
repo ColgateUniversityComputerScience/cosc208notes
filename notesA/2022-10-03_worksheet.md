@@ -17,18 +17,11 @@ struct account {
     int number; // Account number
     int balance; // Current account balance
 };
-int deposit(struct account *acct, int amount);
-int transfer(struct account *from, struct amount *to, int amount);
-struct account *open_account(int starting);
-int close_account(struct account *acct);
 ```
 
-Q1: _Write the `deposit` function, which adds `amount` to the balance of `acct`. The function should return the amount deposited._
+Q1: _Write the `deposit` function, which adds `amount` to the balance of `acct` and returns the amount deposited._
 ```C
-
-
-
-
+int deposit(struct account *acct, int amount) {
 
 
 
@@ -39,9 +32,7 @@ Q1: _Write the `deposit` function, which adds `amount` to the balance of `acct`.
 
 Q2: _Write the `transfer` function which moves `amount` from one account to another. The function should return the amount transferred if the transfer was successful or 0 otherwise._
 ```C
-
-
-
+int transfer(struct account *from, struct amount *to, int amount) {
 
 
 
@@ -54,8 +45,7 @@ Q2: _Write the `transfer` function which moves `amount` from one account to anot
 
 Q3: _Write the `open_account` function, which creates a new account with a random account number and the specified `starting` balance._
 ```C
-
-
+struct account *open_account(int starting) {
 
 
 
@@ -70,9 +60,7 @@ Q3: _Write the `open_account` function, which creates a new account with a rando
 
 Q4: _Write the `close_account` function, which eliminates the account `acct` and returns the remaining balance._ 
 ```C
-
-
-
+int close_account(struct account *acct) {
 
 
 
@@ -84,8 +72,6 @@ Q4: _Write the `close_account` function, which eliminates the account `acct` and
 
 ```
 🛑 **STOP HERE** after completing the warm-up; if you have extra time take a few deep breaths to help reduce stress. 
-
-<div style="page-break-after:always;"></div>
 
 ## Logic gates
 Q5: _Fill-in the truth tables for all six types of gates_
