@@ -138,8 +138,6 @@ Q7e: _Draw the circuit for `carry_out`_
 
 🛑 **STOP HERE** after completing the above questions; if you have extra time **skip ahead** to the extra practice. 
 
-<div style="page-break-after:always;"></div>
-
 ## N-bit circuits
 Q8: _Fill-in the truth-table for `A > B` when A and B are two bits_
 
