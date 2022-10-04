@@ -23,10 +23,10 @@
 * structs (2022-09-30) [[Notes]](2022-09-30_notes) [[Worksheet]](2022-09-30_worksheet)
 
 ## Architecture
-* von Neumann (2022-10-03) <!--[[Notes]](2022-10-03_notes)--> [[Worksheet]](2022-10-03_worksheet)
+* von Neumann (2022-10-03) [[Notes]](2022-10-03_notes) [[Worksheet]](2022-10-03_worksheet)
+* Logic gates; circuits (2022-10-05) <!--[[Notes]](2022-10-05_notes)--> [[Worksheet]](2022-10-05_worksheet)
 
 <!--
-* Logic gates; circuits (2022-03-07) [[Notes]](2022-03-07_notes) [[Worksheet]](2022-03-07_worksheet)
 
 ## Assembly
 * Instruction formats; mapping assembly code to C code (2022-03-09) [[Notes]](2022-03-09_notes) [[Worksheet]](2022-03-09_worksheet)
