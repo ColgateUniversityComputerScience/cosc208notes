@@ -24,7 +24,8 @@
 
 ## Architecture
 * von Neumann (2022-10-03) [[Notes]](2022-10-03_notes) [[Worksheet]](2022-10-03_worksheet)
-* Logic gates; circuits (2022-10-05) <!--[[Notes]](2022-10-05_notes)--> [[Worksheet]](2022-10-05_worksheet)
+* Logic gates; circuits (2022-10-05) [[Notes]](2022-10-05_notes) [[Worksheet]](2022-10-05_worksheet)
+* Circuits (continued) (2022-10-07) <!--[[Notes]](2022-10-07_notes)--> [[Worksheet]](2022-10-07_worksheet)
 
 <!--
 
