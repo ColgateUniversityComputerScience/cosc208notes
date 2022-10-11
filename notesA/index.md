@@ -25,12 +25,13 @@
 ## Architecture
 * von Neumann (2022-10-03) [[Notes]](2022-10-03_notes) [[Worksheet]](2022-10-03_worksheet)
 * Logic gates; circuits (2022-10-05) [[Notes]](2022-10-05_notes) [[Worksheet]](2022-10-05_worksheet)
-* Circuits (continued) (2022-10-07) <!--[[Notes]](2022-10-07_notes)--> [[Worksheet]](2022-10-07_worksheet)
+* Circuits (continued) (2022-10-07) [[Notes]](2022-10-07_notes) [[Worksheet]](2022-10-07_worksheet)
 
-<!--
 
 ## Assembly
-* Instruction formats; mapping assembly code to C code (2022-03-09) [[Notes]](2022-03-09_notes) [[Worksheet]](2022-03-09_worksheet)
+* Instruction formats; mapping assembly code to C code (2022-10-12) <!--[[Notes]](2022-10-12_notes)--> [[Worksheet]](2022-10-12_worksheet)
+
+<!--
 * Load/store operations; arithmetic and bitwise operations; translating assembly code to low-level C code (2022-03-11) [[Notes]](2022-03-11_notes) [[Worksheet]](2022-03-11_worksheet)
 * Tracing assembly (2022-03-21) [[Notes]](2022-03-21_notes) [[Worksheet]](2022-03-21_worksheet)
 * Conditionals (2022-03-23) [[Notes]](2022-03-23_notes) [[Worksheet]](2022-03-23_worksheet)

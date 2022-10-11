@@ -1,10 +1,55 @@
+# Assembly: instruction formats; mapping assembly code to C code
+_COSC 208, Introduction to Computer Systems, 2022-10-12_
+
+## Announcements
+* Programming project 3 due Thursday, October 20 @ 11pm
+
+## Outline
+* Warm-up
+* Assembly
+* Operands
+* Mapping assembly code to C code
+
 ## Warm-up
-Q1: _Create a 1-bit circuit for `A <= B` using `AND`, `OR`, `NOT` gates_
+Q1: _Where are multiplexers used in a processing unit?_
+```
+
+
+
+
+
+
+
+
+
+
+
+
+```
+
+Q2: _How do multiplexers relate to assembly instructions?_
+```
+
+
+
+
+
+
+
+
+
+
+
+
+```
+🛑 **STOP HERE** after completing the warm-up; if you have extra time take a few deep breaths to reduce stress.
 
 <div style="page-break-after: always;"></div>
 
-## Assembly
+## Assembly Example
+C code (`seasons.c`)
 ```C
+1   #include <stdio.h>
 2   int seasons_of_love() {
 3       int dpy = 365;
 4       int hpd = 24;
@@ -13,7 +58,16 @@ Q1: _Create a 1-bit circuit for `A <= B` using `AND`, `OR`, `NOT` gates_
 7       int m = h * mph;
 8       return m;
 9   }
+10  int main() {
+11      int minutes = seasons_of_love();
+12      printf("%d minutes\n", minutes);
+13      printf("%d moments so dear\n", minutes - 600);
+14      printf("%d minutes\n", minutes);
+15      printf("How do you measure? Measure a year?\n");
+16  }
 ```
+
+Assembly code (excerpt from `seasons.txt`)
 ```
 00000000000007ac <seasons_of_love>:
     7ac:   d10083ff        sub     sp, sp, #0x20
