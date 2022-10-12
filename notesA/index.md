@@ -29,7 +29,7 @@
 
 
 ## Assembly
-* Instruction formats; mapping assembly code to C code (2022-10-12) <!--[[Notes]](2022-10-12_notes)--> [[Worksheet]](2022-10-12_worksheet)
+* Instruction formats; mapping assembly code to C code (2022-10-12) [[Notes]](2022-10-12_notes) [[Worksheet]](2022-10-12_worksheet)
 
 <!--
 * Load/store operations; arithmetic and bitwise operations; translating assembly code to low-level C code (2022-03-11) [[Notes]](2022-03-11_notes) [[Worksheet]](2022-03-11_worksheet)
