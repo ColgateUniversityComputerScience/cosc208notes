@@ -14,6 +14,8 @@ _COSC 208, Introduction to Computer Systems, 2022-10-14_
 ## Warm-up: schedule change poll
 https://pollev.com/aarongj
 
+🛑 **STOP HERE** after completing the survey; please **do not** work ahead.
+
 ## Practice mapping assembly code to C code
 Q1: _The following C code was compiled into assembly._
 ```C
@@ -47,6 +49,8 @@ _For each line of assembly, indicate which original line of C code (above) the a
 ```
 
 🛑 **STOP HERE** after completing the above question; if you have extra time please **skip ahead** to the extra practice.
+
+<div style="page-break-after: always;"></div>
 
 ## Load/store operations
  _Write the C code equivalent for each line of assembly, treating registers as if they were variable names._
@@ -105,6 +109,8 @@ Q9: `sdiv w9, w9, w10`
 ```
 
 🛑 **STOP HERE** after completing the above questions; if you have extra time please **skip ahead** to the extra practice.
+
+<div style="page-break-after: always;"></div>
 
 ## Translating assembly code to low-level C code
 The following C program (`operands.c`) has been compiled into assembly:
@@ -171,12 +177,10 @@ Q11: _How does the assembly code for `operandsA` and `operandsB` differ? Why?_
 
 
 
-
 ```
 
 Q12: _How does the assembly code for `operandsB` and `operandsD` differ? Why?_
 ```
-
 
 
 
@@ -189,13 +193,11 @@ Q13: _How does the assembly code for `operandsC` and `operandsD` differ? Why?_
 
 
 
-
 ```
 
-## Extra practice
+## Extra practice: Q14 & Q15
 _Write the C code equivalent for each line of assembly, treating registers as if they were variable names._
 
-Q14: 
 ```
 00000000000007ac <seasons_of_love>:
     7ac:   d10083ff        sub     sp, sp, #0x20
@@ -217,8 +219,6 @@ Q14:
     7ec:   910083ff        add     sp, sp, #0x20
     7f0:   d65f03c0        ret
 ```
-
-Q15: 
 ```
 000000000000076c <years_to_double>:
     76c:	d10083ff 	sub	sp, sp, #0x20
