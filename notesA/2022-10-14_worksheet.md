@@ -1,16 +1,20 @@
 # Assembly: load/store operations; arithmetic operations; translating assembly code to low-level C code
-_COSC 208, Introduction to Computer Systems, 2022-03-11_
+_COSC 208, Introduction to Computer Systems, 2022-10-14_
 
 ## Announcements
-* Project 2 Part A due Thursday, Mar 31 
+* Programming project 3 due Thursday @ 11pm
 
 ## Outline
 * Warm-up
+* Practice mapping assembly code to C code
 * Load/store operations 
 * Arithmetic and bitwise operations
 * Translating assembly code to low-level C code
 
-## Warm-up: mapping assembly code to C code
+## Warm-up: schedule change poll
+https://pollev.com/aarongj
+
+## Practice mapping assembly code to C code
 Q1: _The following C code was compiled into assembly._
 ```C
 1   #include <stdio.h>
@@ -42,7 +46,7 @@ _For each line of assembly, indicate which original line of C code (above) the a
     794:	d65f03c0 	ret
 ```
 
-🛑 **STOP HERE** after completing the warm-up; if you have extra time please **skip ahead** to the extra practice.
+🛑 **STOP HERE** after completing the above question; if you have extra time please **skip ahead** to the extra practice.
 
 ## Load/store operations
  _Write the C code equivalent for each line of assembly, treating registers as if they were variable names._
