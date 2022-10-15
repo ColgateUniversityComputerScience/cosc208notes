@@ -1,8 +1,12 @@
 # Assembly: Tracing assembly code
-_COSC 208, Introduction to Computer Systems, 2022-03-21_
+_COSC 208, Introduction to Computer Systems, 2022-10-17_
 
 ## Announcements
-* Project 2 due Thursday, March 31 
+* Programming project 3 due Thursday @ 11pm
+* No lab this week
+* Exam 2
+      * Take-home portion: released Wed, Oct 26; due Fri, Oct 28
+      * In-class portion: Fri, Oct 28
 
 ## Warm-up
 Q1: _The following C code was compiled into assembly (using `clang`)._
