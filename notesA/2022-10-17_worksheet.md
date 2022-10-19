@@ -5,8 +5,8 @@ _COSC 208, Introduction to Computer Systems, 2022-10-17_
 * Programming project 3 due Thursday @ 11pm
 * No lab this week
 * Exam 2
-      * Take-home portion: released Wed, Oct 26; due Fri, Oct 28
-      * In-class portion: Fri, Oct 28
+    * Take-home portion: released Wed, Oct 26; due Fri, Oct 28
+    * In-class portion: Fri, Oct 28
 
 ## Warm-up
 Q1: _The following C code was compiled into assembly (using `clang`)._
@@ -186,7 +186,7 @@ Q5: _Assume the following assembly code was generated (using `gcc`) for a C func
     790:    910083ff     add    sp, sp, #0x20
     794:    d65f03c0     ret
 ```
-Assume the registers initially hold the following values:_
+_Assume the registers initially hold the following values:_
 ```
 sp = 0x780
 w/x0 = 9

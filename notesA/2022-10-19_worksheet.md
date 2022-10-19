@@ -1,40 +1,41 @@
 # Assembly: conditionals
-_COSC 208, Introduction to Computer Systems, 2022-03-23_
+_COSC 208, Introduction to Computer Systems, 2022-10-19_
 
 ## Announcements
-* Project 2 due Thursday, March 31 
+* Programming project 3 due tomorrow @ 11pm
+* No lab this week
 
 ## Warm-up
-Q1: _Assume the registers currently hold the following values:_
-```
-sp = 0xA980
-w/x0 = 0
-w/x1 = 1
-w/x2 = 2
-w/x3 = 3
-w/x4 = 4
-w/x5 = 5
-```
-_Draw the contents of the stack after the following instructions have been executed:_
-```
-sub sp, sp, #0x30
-str w0, [sp, #16]
-str x1, [sp]
-str w2, [sp, #20]
-str x3, [sp, #32]
-str w4, [sp, #28]
-str w5, [sp, #8]
+Q1: _The following C code was compiled into assembly (using `gcc`)._
+```C
+1  int divide(int numerator, int denominator) {
+2      int result = -1;
+3      result = numerator / denominator;
+4      return result;
+5  }
 ```
 ```
-
-
-
-
-
-
-
-
-
+000000000000076c <divide>:                      // Line     Low-level C
+    76c:    d10083ff     sub    sp, sp, #0x20   // 1        sp = sp - 0x20
+    770:    b9000fe0     str    w0, [sp, #12]   // 1        *(sp+12) = w0
+    774:    b9000be1     str    w1, [sp, #8]    // 1        *(sp+8) = w1
+    778:    12800000     mov    w0, #0xffffffff // 2        w0 = 0xffffffff
+    77c:    b9001fe0     str    w0, [sp, #28]   // 2        *(sp+28) = w0
+    780:    b9400fe1     ldr    w1, [sp, #12]   // 3        w1 = *(sp+12)
+    784:    b9400be0     ldr    w0, [sp, #8]    // 3        w0 = *(sp+8)
+    788:    1ac00c20     sdiv   w0, w1, w0      // 3        w0 = w1/w0
+    78c:    b9001fe0     str    w0, [sp, #28]   // 3        *(sp+28) = w0
+    790:    b9401fe0     ldr    w0, [sp, #28]   // 4        w0 = *(sp+28)
+    794:    910083ff     add    sp, sp, #0x20   // 4        sp = sp + 0x20
+    798:    d65f03c0     ret                    // 4        return
+```
+_Draw the contents of the stack and registers after executing the assembly code. Assume the registers initially hold the following values:_
+```
+sp = 0xFE0
+w/x0 = 100
+w/x1 = 5
+```
+```
 
 
 
@@ -121,7 +122,42 @@ Q3: _Write a function called `flip_goto` that behaves the same as `flip` but mat
 <div style="page-break-after:always;"></div>
 
 ## Extra practice
-Q4: _Write a function called `adjust_goto` that behaves the same as `adjust` but matches the structure of the asssembly code that will be generated for `adjust`. (Hint: you'll need two `goto` statements.)_
+Q4: _Assume the registers currently hold the following values:_
+```
+sp = 0xA980
+w/x0 = 0
+w/x1 = 1
+w/x2 = 2
+w/x3 = 3
+w/x4 = 4
+w/x5 = 5
+```
+_Draw the contents of the stack after the following instructions have been executed:_
+```
+sub sp, sp, #0x30
+str w0, [sp, #16]
+str x1, [sp]
+str w2, [sp, #20]
+str x3, [sp, #32]
+str w4, [sp, #28]
+str w5, [sp, #8]
+```
+```
+
+
+
+
+
+
+
+
+
+
+
+
+```
+
+Q5: _Write a function called `adjust_goto` that behaves the same as `adjust` but matches the structure of the assembly code that will be generated for `adjust`. (Hint: you'll need two `goto` statements.)_
 ```C
 int adjust(int value) {
     if (value < 10) {
