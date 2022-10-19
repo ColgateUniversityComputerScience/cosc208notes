@@ -1,8 +1,11 @@
 # Assembly: loops
-_COSC 208, Introduction to Computer Systems, 2021-10-18_
+_COSC 208, Introduction to Computer Systems, 2022-10-21_
 
 ## Announcements
-* Project 2 Part A due Thursday
+* Exam 2
+    * Study guide posted on Moodle
+    * Take-home portion: released Wed, Oct 26; due Fri, Oct 28
+    * In-class portion: Fri, Oct 28
 
 ## Outline
 * Warm-up
@@ -10,30 +13,40 @@ _COSC 208, Introduction to Computer Systems, 2021-10-18_
 * Loops duality
 
 ## Warm-up
-Q1: _The following C code was compiled into assembly (using `gcc`). Label each line of assembly code with the line number of the line of C code from which the assembly instruction was derived._ 
+Q1: _The following C code was compiled into assembly (using `clang`). Label each line of assembly code with the line number of the line of C code from which the assembly instruction was derived._ 
 ```C
-1   int abs(int value) {
-2       if (value < 0) {
-3               value = value * -1;
+1   int adjust(int value) {
+2       if (value < 10) {
+3           value = value * 10;
 4       }
-5       return value;
-6   }
+5       else {
+6           value = value / 10;
+7       }
+8       return value;
+9   }
 ```
+_For each line of assembly: (1) indicate which original line of C code (above) the assembly instruction was derived from; and (2) write the low-level C code equivalent of the assembly instruction, treating registers as if they were variable names._
 ```
-000000000000074c <abs>:
-    74c:   d10043ff        sub     sp, sp, #0x10    // 
-    750:   b9000fe0        str     w0, [sp, #12]    // 
-    754:   b9400fe0        ldr     w0, [sp, #12]    // 
-    758:   7100001f        cmp     w0, #0x0         // 
-    75c:   5400008a        b.ge    76c <abs+0x20>   // 
-    760:   b9400fe0        ldr     w0, [sp, #12]    // 
-    764:   4b0003e0        neg     w0, w0           // 
-    768:   b9000fe0        str     w0, [sp, #12]    // 
-    76c:   b9400fe0        ldr     w0, [sp, #12]    // 
-    770:   910043ff        add     sp, sp, #0x10    // 
-    774:   d65f03c0        ret                      // 
-``` 
-🛑 **STOP HERE** after completing the warm-up; if you have extra time take a few deep breaths to reduce stress.
+0000000000400544 <adjust>:                          // Line     Low-level C
+    400544:  d10043ff   sub  sp, sp, #0x10          //
+    400548:  b9000fe0   str  w0, [sp, #12]          //
+    40054c:  b9400fe8   ldr  w8, [sp, #12]          //
+    400550:  7100291f   cmp  w8, #0xa               //
+    400554:  540000ca   b.ge 40056c <adjust+0x28>   //
+    400558:  b9400fe8   ldr  w8, [sp, #12]          //
+    40055c:  52800149   mov  w9, #0xa               //
+    400560:  1b097d08   mul  w8, w8, w9             //
+    400564:  b9000fe8   str  w8, [sp, #12]          //
+    400568:  14000005   b    40057c <adjust+0x38>   //
+    40056c:  b9400fe8   ldr  w8, [sp, #12]          //
+    400570:  52800149   mov  w9, #0xa               //
+    400574:  1ac90d08   sdiv w8, w8, w9             //
+    400578:  b9000fe8   str  w8, [sp, #12]          //
+    40057c:  b9400fe0   ldr  w0, [sp, #12]          //
+    400580:  910043ff   add  sp, sp, #0x10          //
+    400584:  d65f03c0   ret                         //
+```
+🛑 **STOP HERE** after completing the warm-up; if you have extra time please **skip ahead** to the extra practice.
 
 <div style="page-break-after:always;"></div>
 
@@ -114,7 +127,7 @@ int tally_for(int x) {
 
 
 ```
-🛑 **STOP HERE** after completing the above question; if you have extra time take a few deep breaths to reduce stress.
+🛑 **STOP HERE** after completing the above question; if you have extra time please **skip ahead** to the extra practice.
 
 <div style="page-break-after:always;"></div>
 
@@ -152,7 +165,7 @@ Q3: _The following C code was compiled into assembly (using `clang`). Label each
     400590:    910043ff     add    sp, sp, #0x10        //
     400594:    d65f03c0     ret                         //
 ```
-🛑 **STOP HERE** after completing the above question; if you have extra time take a few deep breaths to help reduce stress.
+🛑 **STOP HERE** after completing the above question; if you have extra time please **skip ahead** to the extra practice.
 
 <div style="page-break-after:always;"></div>
 
@@ -192,3 +205,30 @@ Q3: _The following C code was compiled into assembly (using `clang`). Label each
         4005c8:    d65f03c0     ret                             // 
     ```
 * Q5: _Write a function called `onebits_goto` that behaves the same as `onebits` but matches the structure of the assembly code that will be generated for `onebits`._
+
+<div style="page-break-after:always;"></div>
+
+## Extra practice
+Q6: _The following C code was compiled into assembly (using `gcc`). Label each line of assembly code with the line number of the line of C code from which the assembly instruction was derived._ 
+```C
+1   int abs(int value) {
+2       if (value < 0) {
+3               value = value * -1;
+4       }
+5       return value;
+6   }
+```
+```
+000000000000074c <abs>:
+    74c:   d10043ff        sub     sp, sp, #0x10    // 
+    750:   b9000fe0        str     w0, [sp, #12]    // 
+    754:   b9400fe0        ldr     w0, [sp, #12]    // 
+    758:   7100001f        cmp     w0, #0x0         // 
+    75c:   5400008a        b.ge    76c <abs+0x20>   // 
+    760:   b9400fe0        ldr     w0, [sp, #12]    // 
+    764:   4b0003e0        neg     w0, w0           // 
+    768:   b9000fe0        str     w0, [sp, #12]    // 
+    76c:   b9400fe0        ldr     w0, [sp, #12]    // 
+    770:   910043ff        add     sp, sp, #0x10    // 
+    774:   d65f03c0        ret                      // 
+``` 
