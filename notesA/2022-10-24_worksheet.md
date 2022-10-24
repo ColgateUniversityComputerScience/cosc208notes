@@ -1,52 +1,57 @@
 # Assembly: functions
-_COSC 208, Introduction to Computer Systems, 2022-03-28_
+_COSC 208, Introduction to Computer Systems, 2022-10-24_
 
 ## Announcements
 * Exam 2
     * Study guide posted on Moodle
     * Take-home portion: released Wednesday after class; due Friday before class
     * In-class portion: Friday during class
+* Pre-register for COSC courses for spring semester by Friday at 5pm
 
 ## Outline
 * Warm-up
 * Functions
 
 ## Warm-up
-* Q1: _The following C code was compiled into assembly (using `clang`). For each line of assembly, indicate which original line of C code the assembly instruction was derived from._
-    ```C
-    1   int onebits(unsigned int num) {
-    2       int ones = 0;
-    3       while (num != 0) {
-    4           if (num & 0b1) {
-    5               ones++;
-    6           }
-    7           num = num >> 1;
-    8       }
-    9       return ones;
-    10  }
-    ```
-    ```
-    0000000000400584 <onebits>:
-        400584:    d10043ff     sub    sp, sp, #0x10            // 
-        400588:    b9000fe0     str    w0, [sp, #12]            // 
-        40058c:    b9000bff     str    wzr, [sp, #8]            // 
-        400590:    b9400fe8     ldr    w8, [sp, #12]            // 
-        400594:    34000168     cbz    w8, 4005c0 <onebits+0x3c>// 
-        400598:    b9400fe8     ldr    w8, [sp, #12]            // 
-        40059c:    12000108     and    w8, w8, #0x1             // 
-        4005a0:    34000088     cbz    w8, 4005b0 <onebits+0x2c>// 
-        4005a4:    b9400be8     ldr    w8, [sp, #8]             // 
-        4005a8:    11000508     add    w8, w8, #0x1             // 
-        4005ac:    b9000be8     str    w8, [sp, #8]             // 
-        4005b0:    b9400fe8     ldr    w8, [sp, #12]            // 
-        4005b4:    53017d08     lsr    w8, w8, #1               // 
-        4005b8:    b9000fe8     str    w8, [sp, #12]            //
-        4005bc:    17fffff5     b    400590 <onebits+0xc>       // 
-        4005c0:    b9400be0     ldr    w0, [sp, #8]             // 
-        4005c4:    910043ff     add    sp, sp, #0x10            // 
-        4005c8:    d65f03c0     ret                             // 
-    ```
-* Q2: _Write a function called `onebits_goto` that behaves the same as `onebits` but matches the structure of the assembly code that will be generated for `onebits`._
+Q1: _The following C code was compiled into assembly (using `clang`). For each line of assembly, indicate which original line of C code the assembly instruction was derived from._
+```C
+1   int onebits(unsigned int num) {
+2       int ones = 0;
+3       while (num != 0) {
+4           if (num & 0b1) {
+5               ones++;
+6           }
+7           num = num >> 1;
+8       }
+9       return ones;
+10  }
+```
+```
+0000000000400584 <onebits>:
+    400584:    d10043ff     sub    sp, sp, #0x10            // 
+    400588:    b9000fe0     str    w0, [sp, #12]            // 
+    40058c:    b9000bff     str    wzr, [sp, #8]            // 
+    400590:    b9400fe8     ldr    w8, [sp, #12]            // 
+    400594:    34000168     cbz    w8, 4005c0 <onebits+0x3c>// 
+    400598:    b9400fe8     ldr    w8, [sp, #12]            // 
+    40059c:    12000108     and    w8, w8, #0x1             // 
+    4005a0:    34000088     cbz    w8, 4005b0 <onebits+0x2c>// 
+    4005a4:    b9400be8     ldr    w8, [sp, #8]             // 
+    4005a8:    11000508     add    w8, w8, #0x1             // 
+    4005ac:    b9000be8     str    w8, [sp, #8]             // 
+    4005b0:    b9400fe8     ldr    w8, [sp, #12]            // 
+    4005b4:    53017d08     lsr    w8, w8, #1               // 
+    4005b8:    b9000fe8     str    w8, [sp, #12]            //
+    4005bc:    17fffff5     b    400590 <onebits+0xc>       // 
+    4005c0:    b9400be0     ldr    w0, [sp, #8]             // 
+    4005c4:    910043ff     add    sp, sp, #0x10            // 
+    4005c8:    d65f03c0     ret                             // 
+```
+
+Q2: _Write a function called `onebits_goto` that behaves the same as `onebits` but matches the structure of the assembly code that will be generated for `onebits`._
+```
+
+```
 
 🛑 **STOP HERE** after completing the warm-up; if you have extra time please **skip ahead** to the extra practice.
 
