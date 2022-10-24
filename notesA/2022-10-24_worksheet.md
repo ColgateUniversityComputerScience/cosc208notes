@@ -223,6 +223,11 @@ Q6: _The following C code was compiled into assembly (using `clang`). For each l
     4005a8:    f94013fe     ldr    x30, [sp, #32]  // 
     4005ac:    9100c3ff     add    sp, sp, #0x30   // 
     4005b0:    d65f03c0     ret                    // 
+```
+
+<div style="page-break-after:always;"></div>
+
+```
 00000000004005b4 <main>:
     4005b4:    d10083ff     sub    sp, sp, #0x20   // 
     4005b8:    f9000bfe     str    x30, [sp, #16]  // 
@@ -239,7 +244,5 @@ Q6: _The following C code was compiled into assembly (using `clang`). For each l
     4005e4:    910083ff     add    sp, sp, #0x20   // 
     4005e8:    d65f03c0     ret                    // 
 ```
-
-<div style="page-break-after:always;"></div>
 
 Q7: _Draw the contents of the stack and registers just prior to the execution of the second-to-last assembly instruction in `sum`. Assume the initial value in the `sp` register is `0xF80`._
