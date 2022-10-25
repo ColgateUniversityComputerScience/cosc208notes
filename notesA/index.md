@@ -34,7 +34,7 @@
 * Tracing assembly (2022-10-17) [[Notes]](2022-10-17_notes) [[Worksheet]](2022-10-17_worksheet)
 * Conditionals (2022-10-19) [[Notes]](2022-10-19_notes) [[Worksheet]](2022-10-19_worksheet)
 * Loops (2022-10-21) [[Notes]](2022-10-21_notes) [[Worksheet]](2022-10-21_worksheet)
-* Functions (2022-10-24) <!--[[Notes]](2022-10-24_notes)--> [[Worksheet]](2022-10-24_worksheet)
+* Functions (2022-10-24) [[Notes]](2022-10-24_notes) [[Worksheet]](2022-10-24_worksheet)
 
 <!--
 
