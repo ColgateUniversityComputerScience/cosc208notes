@@ -62,6 +62,40 @@ struct item *dequeue(struct item *head, int *result) {
 
 <div style="page-break-after:always;"></div>
 
+
+## Circuits
+Q3: _Draw a 1-bit circuit for `A < B` using only `AND`, `OR`, and `NOT` gates. Show your work (i.e., any intermediate design steps you took)._
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
+
+
+Q4: _Assume you have access to 1-bit circuits for `A < B`, `A == B`, and `A > B` and logic gates for `AND`, `OR`, and `NOT`. Draw a 2-bit circuit for `A < B` which uses the existing circuits and logic gates. Assume `A1` and `B1` are the most significant bits, and `A2` and `B2` are the least significant bits._
+
+<div style="page-break-after:always;"></div>
+
+Q5: _Use the available circuits to create a processing unit with four registers and four operations (`+`, `-`, `<`, and `==`)._
+
+![](../images/circuits/processing_unit_empty.png)
+
+<div style="page-break-after:always;"></div>
+
+
 ## Assembly
 
 ### C code
@@ -189,7 +223,7 @@ struct item *dequeue(struct item *head, int *result) {
 <div style="page-break-after:always;"></div>
 
 ### Mapping assembly code to C source code
-Q3: _For each line of assembly code, indicate which line of C code was used to generate that line of assembly code._
+Q6: _For each line of assembly code, indicate which line of C code was used to generate that line of assembly code._
 ```
 00000000004005d4 <interest_due>:
   4005d4:    d10083ff     sub    sp, sp, #0x20   // 
@@ -210,7 +244,7 @@ Q3: _For each line of assembly code, indicate which line of C code was used to g
   400610:    d65f03c0     ret                    // 
 ```
 
-Q4: _For each line of assembly code, indicate which line of C code was used to generate that line of assembly code._
+Q7: _For each line of assembly code, indicate which line of C code was used to generate that line of assembly code._
 ```
 0000000000400614 <make_payment>:
   400614:    d100c3ff     sub    sp, sp, #0x30   // 
@@ -245,7 +279,7 @@ Q4: _For each line of assembly code, indicate which line of C code was used to g
 <div style="page-break-after:always;"></div>
 
 ### Translating assembly into low-level C code
-Q5: _For each of the following lines of assembly, write one or more lines of low-level C code that express the semantics (i.e., meaning) of the assembly code. Your C code should use register names as variable names._
+Q8: _For each of the following lines of assembly, write one or more lines of low-level C code that express the semantics (i.e., meaning) of the assembly code. Your C code should use register names as variable names._
 ```
 0000000000400614 <make_payment>:
   400614:    d100c3ff     sub    sp, sp, #0x30   // 
@@ -280,7 +314,7 @@ Q5: _For each of the following lines of assembly, write one or more lines of low
 <div style="page-break-after:always;"></div>
 
 ### Transforming C code to use goto
-Q6: _Create a `make_payment_goto` function that behaves the same as the `make_payment` function but uses `goto` statements, just as a compiler would do when generating assembly code._
+Q9: _Create a `make_payment_goto` function that behaves the same as the `make_payment` function but uses `goto` statements, just as a compiler would do when generating assembly code._
 ```C
 
 
@@ -299,7 +333,7 @@ Q6: _Create a `make_payment_goto` function that behaves the same as the `make_pa
 
 ```
 
-Q7: _Create a `months_remain_goto` function that behaves the same as the `months_remain` function but uses `goto` statements, just as a compiler would do when generating assembly code._
+Q10: _Create a `months_remain_goto` function that behaves the same as the `months_remain` function but uses `goto` statements, just as a compiler would do when generating assembly code._
 ```C
 
 
@@ -321,7 +355,7 @@ Q7: _Create a `months_remain_goto` function that behaves the same as the `months
 <div style="page-break-after:always;"></div>
 
 ## Tracing assembly code
-Q8: _Assume the code starts executing at the beginning of the `make_payment` function (i.e., `pc = 0x400614)`. Draw a digram that shows the contents of the stack and registers immediately before executing the `ret` instruction in the `interest_due` function (i.e., before executing the assembly instruction at address `0x400610`). Your stack and registers should contain values (e.g., `0x400614`) *not* variable or register names._
+Q11: _Assume the code starts executing at the beginning of the `make_payment` function (i.e., `pc = 0x400614)`. Draw a digram that shows the contents of the stack and registers immediately before executing the `ret` instruction in the `interest_due` function (i.e., before executing the assembly instruction at address `0x400610`). Your stack and registers should contain values (e.g., `0x400614`) *not* variable or register names._
 
 _Assume the initial values of the registers are as follows:_
 * `pc = 0x4006c0`

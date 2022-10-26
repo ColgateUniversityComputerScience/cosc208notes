@@ -35,13 +35,13 @@
 * Conditionals (2022-10-19) [[Notes]](2022-10-19_notes) [[Worksheet]](2022-10-19_worksheet)
 * Loops (2022-10-21) [[Notes]](2022-10-21_notes) [[Worksheet]](2022-10-21_worksheet)
 * Functions (2022-10-24) [[Notes]](2022-10-24_notes) [[Worksheet]](2022-10-24_worksheet)
+* Exam 2 review (2022-10-26) <!--[[Notes]](2022-10-26_notes)--> [[Worksheet]](2022-10-26_worksheet)
 
 <!--
 
 ## Efficiency
 * Memory hierarchy (2022-03-30) [[Notes]](2022-03-30_notes) [[Worksheet]](2022-03-30_worksheet)
 * Locality (2022-04-01) [[Notes]](2022-04-01_notes) [[Worksheet]](2022-04-01_worksheet)
-* Exam 2 review (2022-04-04) [[Notes]](2022-04-04_notes) [[Worksheet]](2022-04-04_worksheet)
 * Caching (2022-04-08) [[Notes]](2022-04-08_notes) [[Worksheet]](2022-04-08_worksheet)
 
 ## Multiprocessing
