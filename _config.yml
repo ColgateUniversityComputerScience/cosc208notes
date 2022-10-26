@@ -19,7 +19,7 @@
 # in the templates via {{ site.myvariable }}.
 
 title: Introduction to Computer Systems (COSC 208A)
-baseurl: "/cosc208" # the subpath of your site, e.g. /blog
+baseurl: "/cosc208notes" # the subpath of your site, e.g. /blog
 url: "https://colgateuniversitycomputerscience.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
