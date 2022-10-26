@@ -1,13 +1,18 @@
 # Exam 2 Review
-_COSC 208, Introduction to Computer Systems, 2022-04-04_
+_COSC 208, Introduction to Computer Systems, 2022-10-26_
 
 ## Announcements
 * Exam 2
     * Study guide posted on Moodle
-    * Take-home portion: released after class on Monday; due Thursday at 11pm 
-    * In-class portion: during class on Wednesday
-* No lab this week
-* Project 3 due Thurs, Apr 14
+    * Take-home portion: released Wednesday after class; due Friday before class
+    * In-class portion: Friday during class
+* Pre-register for COSC courses for spring semester by Friday at 5pm
+
+## Outline
+* Trace assembly code with function calls
+* Exam 2 review
+
+## No warm-up — happy Wednesday!
 
 ## Dynamic memory allocation
 Q1: _The function below allocates several regions of memory on the heap. Draw a diagram that depicts the contents of and pointers between these memory regions at the end of main. Label each memory region with its size in bytes.)_
