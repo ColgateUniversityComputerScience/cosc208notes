@@ -363,7 +363,7 @@ Q10: _Create a `months_remain_goto` function that behaves the same as the `month
 Q11: _Assume the code starts executing at the beginning of the `make_payment` function (i.e., `pc = 0x400614)`. Draw a digram that shows the contents of the stack and registers immediately before executing the `ret` instruction in the `interest_due` function (i.e., before executing the assembly instruction at address `0x400610`). Your stack and registers should contain values (e.g., `0x400614`) *not* variable or register names._
 
 _Assume the initial values of the registers are as follows:_
-* `pc = 0x4006c0`
+* `pc = 0x400614`
 * `sp = 0xf80`
 * `w0 = 100000`
 * `w1 = 500`
