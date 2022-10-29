@@ -27,7 +27,6 @@
 * Logic gates; circuits (2022-10-05) [[Notes]](2022-10-05_notes) [[Worksheet]](2022-10-05_worksheet)
 * Circuits (continued) (2022-10-07) [[Notes]](2022-10-07_notes) [[Worksheet]](2022-10-07_worksheet)
 
-
 ## Assembly
 * Instruction formats; mapping assembly code to C code (2022-10-12) [[Notes]](2022-10-12_notes) [[Worksheet]](2022-10-12_worksheet)
 * Load/store operations; arithmetic and bitwise operations; translating assembly code to low-level C code (2022-10-14) [[Notes]](2022-10-14_notes) [[Worksheet]](2022-10-14_worksheet)
@@ -37,12 +36,12 @@
 * Functions (2022-10-24) [[Notes]](2022-10-24_notes) [[Worksheet]](2022-10-24_worksheet)
 * Exam 2 review (2022-10-26) [[Notes]](2022-10-26_notes) [[Worksheet]](2022-10-26_worksheet)
 
-<!--
-
 ## Efficiency
-* Memory hierarchy (2022-03-30) [[Notes]](2022-03-30_notes) [[Worksheet]](2022-03-30_worksheet)
-* Locality (2022-04-01) [[Notes]](2022-04-01_notes) [[Worksheet]](2022-04-01_worksheet)
-* Caching (2022-04-08) [[Notes]](2022-04-08_notes) [[Worksheet]](2022-04-08_worksheet)
+* Memory hierarchy; locality (2022-10-31) <!--[[Notes]](2022-10-31_notes)--> [[Worksheet]](2022-10-31_worksheet)
+
+<!--
+* Caching (2022-11-02) [[Notes]](2022-11-02_notes) [[Worksheet]](2022-11-02_worksheet)
+* Optimizing for locality (2022-11-04) [[Notes]](2022-11-04_notes) [[Worksheet]](2022-11-04_worksheet)
 
 ## Multiprocessing
 * Cache replacement; operating systems (2022-04-11) [[Notes]](2022-04-11_notes) [[Worksheet]](2022-04-11_worksheet)
