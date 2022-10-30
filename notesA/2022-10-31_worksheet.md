@@ -6,6 +6,7 @@ _COSC 208, Introduction to Computer Systems, 2022-10-31_
 * DEI Assignment 3 due Tues, Nov 15
 * Exam 3 in-class portion: Fri, Nov 18
 * DEI Assignment 4 canceled
+* Complete the National College Health Assessment (NCHA) – [https://www.colgate.edu/oia/survey/ncha](https://www.colgate.edu/oia/survey/ncha)
 
 ## Outline
 * Memory hierarchy
