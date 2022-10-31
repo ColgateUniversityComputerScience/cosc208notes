@@ -37,7 +37,7 @@
 * Exam 2 review (2022-10-26) [[Notes]](2022-10-26_notes) [[Worksheet]](2022-10-26_worksheet)
 
 ## Efficiency
-* Memory hierarchy; locality (2022-10-31) <!--[[Notes]](2022-10-31_notes)--> [[Worksheet]](2022-10-31_worksheet)
+* Memory hierarchy; locality (2022-10-31) [[Notes]](2022-10-31_notes) [[Worksheet]](2022-10-31_worksheet)
 
 <!--
 * Caching (2022-11-02) [[Notes]](2022-11-02_notes) [[Worksheet]](2022-11-02_worksheet)
