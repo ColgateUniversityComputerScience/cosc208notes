@@ -38,9 +38,9 @@
 
 ## Efficiency
 * Memory hierarchy; locality (2022-10-31) [[Notes]](2022-10-31_notes) [[Worksheet]](2022-10-31_worksheet)
+* Caching (2022-11-02) <!--[[Notes]](2022-11-02_notes)--> [[Worksheet]](2022-11-02_worksheet)
 
 <!--
-* Caching (2022-11-02) [[Notes]](2022-11-02_notes) [[Worksheet]](2022-11-02_worksheet)
 * Optimizing for locality (2022-11-04) [[Notes]](2022-11-04_notes) [[Worksheet]](2022-11-04_worksheet)
 
 ## Multiprocessing
