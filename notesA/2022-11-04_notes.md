@@ -2,8 +2,9 @@
 _COSC 208, Introduction to Computer Systems, 2022-11-04_
 
 ## Announcements
+* No open lab hours on Tuesdays for the rest of the semester
 * Project 4 due Thursday
-* DEI Assignment 3 due Tues, Nov 15
+* DEI Assignment 3 (Awareness of the Culture and Contributions of Indigenous Peoples) due Tues, Nov 15
 
 ## Outline
 * Warm-up
