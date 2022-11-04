@@ -39,13 +39,12 @@
 ## Efficiency
 * Memory hierarchy; locality (2022-10-31) [[Notes]](2022-10-31_notes) [[Worksheet]](2022-10-31_worksheet)
 * Caching (2022-11-02) [[Notes]](2022-11-02_notes) [[Worksheet]](2022-11-02_worksheet)
-* Cache replacement (continued); optimizing for locality (2022-11-04) <!--[[Notes]](2022-11-04_notes)--> [[Worksheet]](2022-11-04_worksheet)
-
-<!--
+* Cache replacement (continued); optimizing for locality (2022-11-04) [[Notes]](2022-11-04_notes) [[Worksheet]](2022-11-04_worksheet)
 
 ## Multiprocessing
-* Cache replacement; operating systems (2022-04-11) [[Notes]](2022-04-11_notes) [[Worksheet]](2022-04-11_worksheet)
-* Limited direct execution; system calls (2022-04-13) [[Notes]](2022-04-13_notes) [[Worksheet]](2022-04-13_worksheet)
+* Limited direct execution; system calls (2022-11-07) <!--[[Notes]](2022-11-07_notes)--> [[Worksheet]](2022-11-07_worksheet)
+
+<!--
 * processes; fork & wait (2022-04-15) [[Notes]](2022-04-15_notes) [[Worksheet]](2022-04-15_worksheet)
 * exec; non-preemptive scheduling (2022-04-18) [[Notes]](2022-04-18_notes) [[Worksheet]](2022-04-18_worksheet)
 * Preemptive scheduling (2022-04-20) [[Notes]](2022-04-20_notes) [[Worksheet]](2022-04-20_worksheet)
