@@ -5,6 +5,12 @@ _COSC 208, Introduction to Computer Systems, 2022-11-07_
 * Project 4 due Thursday
 * DEI Assignment 3 due Tues, Nov 15
 
+## Outline
+* Operating Systems (OS)
+* Accessing hardware
+* Limited direct execution
+* System calls
+
 ## Warm-up 
 _Modify the following functions to improve locality_
 
