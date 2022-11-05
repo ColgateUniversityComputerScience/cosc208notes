@@ -45,7 +45,7 @@
 * Limited direct execution; system calls (2022-11-07) <!--[[Notes]](2022-11-07_notes)--> [[Worksheet]](2022-11-07_worksheet)
 
 <!--
-* processes; fork & wait (2022-04-15) [[Notes]](2022-04-15_notes) [[Worksheet]](2022-04-15_worksheet)
+* processes; fork & wait (2022-11-09) [[Notes]](2022-11-09_notes) [[Worksheet]](2022-11-09_worksheet)
 * exec; non-preemptive scheduling (2022-04-18) [[Notes]](2022-04-18_notes) [[Worksheet]](2022-04-18_worksheet)
 * Preemptive scheduling (2022-04-20) [[Notes]](2022-04-20_notes) [[Worksheet]](2022-04-20_worksheet)
 * Threads (2022-04-22) [[Notes]](2022-04-22_notes) [[Worksheet]](2022-04-22_worksheet)

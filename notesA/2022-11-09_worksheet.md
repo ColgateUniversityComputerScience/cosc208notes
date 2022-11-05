@@ -2,9 +2,15 @@
 _COSC 208, Introduction to Computer Systems, 2022-04-15_
 
 ## Announcements
-* Project 3 deadline extended to Monday at 11pm
+* Project 4 due tomorrow @ 11pm
+* DEI Assignment 3 due Tues, Nov 15
 
-## No warm-up — Happy Friday!
+## Outline
+* Process abstraction
+* Creating processes
+* Waiting for processes
+
+## No warm-up — Happy Wednesday!
 
 ## Process abstraction
 Q1: _Consider building a Lego kit as an analogy for operating systems' process abstraction. Match each component of the analogy with the corresponding component of a real computer system._
