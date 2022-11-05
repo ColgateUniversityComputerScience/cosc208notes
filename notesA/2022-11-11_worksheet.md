@@ -1,11 +1,21 @@
 # Multiprocessing: exec; non-preemptive scheduling
-_COSC 208, Introduction to Computer Systems, 2022-04-18_
+_COSC 208, Introduction to Computer Systems, 2022-11-11_
 
 ## Announcements
-* Project 3 due today at 11pm
-* 3rd DEI activity due Thursday
+* DEI Assignment 3 due Tuesday
+* Exam 3
+    * Study guide posted on Moodle
+    * Take-home portion: released Wed, Nov 16; due Fri, Nov 18
+    * In-class portion: Fri, Nov 18 
 
-## Warm-up (Q5 from Friday)
+## Outline
+* Warm-up
+* Running a different program
+* Scheduling processes
+* First In First Out (FIFO) scheduling
+* Shortest Job First (SJF) scheduling
+
+## Warm-up (Q5 from Wednesday)
 Q1: _What are all possible outputs of this program (assuming the new process has PID 13346)?_
 ```C
 int main() {
@@ -32,7 +42,10 @@ int main() {
 
 
 ```
-🛑 **STOP HERE** after completing the warm-up; if you have extra time take a few deep breaths to help reduce stress.
+🛑 **STOP HERE** after completing the warm-up; if you have extra time take a few deep breaths to reduce stress.
+
+
+<div style="page-break-after:always;"></div>
 
 ## Running a different program
 Example program
@@ -51,8 +64,6 @@ int main(int argc, char **argv) {
     return 0;
 }
 ```
-
-<div style="page-break-after:always;"></div>
 
 Q2: _What is the output produced by running `./progA`, assuming no errors occur?_
 **progA:**
@@ -84,3 +95,19 @@ int main() {
     }
 }
 ```
+
+🛑 **STOP HERE** after completing the above questions; if you have extra time take a few deep breaths to reduce stress.
+
+
+<div style="page-break-after:always;"></div>
+
+## First In First Out (FIFO) scheduling
+Q3: _Consider the following processes:_
+
+| Process | Arrival time | Duration | 
+|---------|--------------|----------|
+| A       | 0            | 15       |
+| B       | 5            | 15       |
+| C       | 10           | 60       |
+
+_Determine the schedule and compute the turnaround time for each process using First In First Out (FIFO) scheduling._

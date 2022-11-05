@@ -3,7 +3,7 @@ _COSC 208, Introduction to Computer Systems, 2022-04-15_
 
 ## Announcements
 * Project 4 due tomorrow @ 11pm
-* DEI Assignment 3 due Tues, Nov 15
+* DEI Assignment 3 due Tuesday
 
 ## Outline
 * Process abstraction

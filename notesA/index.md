@@ -46,11 +46,12 @@
 
 <!--
 * processes; fork & wait (2022-11-09) [[Notes]](2022-11-09_notes) [[Worksheet]](2022-11-09_worksheet)
-* exec; non-preemptive scheduling (2022-04-18) [[Notes]](2022-04-18_notes) [[Worksheet]](2022-04-18_worksheet)
-* Preemptive scheduling (2022-04-20) [[Notes]](2022-04-20_notes) [[Worksheet]](2022-04-20_worksheet)
-* Threads (2022-04-22) [[Notes]](2022-04-22_notes) [[Worksheet]](2022-04-22_worksheet)
-* Pthreads API (2022-04-25) [[Notes]](2022-04-25_notes) [[Worksheet]](2022-04-25_worksheet)
-* Making programs multi-threaded (2022-04-27) [[Notes]](2022-04-27_notes) [[Worksheet]](2022-04-27_worksheet)
+* exec; non-preemptive scheduling (2022-11-11) [[Notes]](2022-11-11_notes) [[Worksheet]](2022-11-11_worksheet)
+* Preemptive scheduling (2022-11-14) [[Notes]](2022-11-14_notes) [[Worksheet]](2022-11-14_worksheet)
+* Exam 3 review (2022-11-16) [[Notes]](2022-11-16_notes) [[Worksheet]](2022-11-16_worksheet)
+* Threads (2022-11-28) [[Notes]](2022-11-28_notes) [[Worksheet]](2022-11-28_worksheet)
+* Pthreads API (2022-11-30) [[Notes]](2022-11-30_notes) [[Worksheet]](2022-11-30_worksheet)
+* Making programs multi-threaded (2022-12-02) [[Notes]](2022-12-02_notes) [[Worksheet]](2022-12-02_worksheet)
 * Making programs multi-threaded (continued) (2022-04-29) [[Notes]](2022-04-29_notes) [[Worksheet]](2022-04-29_worksheet)
 * Virtual machines (2022-05-02) [[Notes]](2022-05-02_notes) [[Worksheet]](2022-05-02_worksheet)
 * Containers; data centers; cloud computing (2022-05-04) [[Notes]](2022-05-04_notes) [[Worksheet]](2022-05-04_worksheet)
