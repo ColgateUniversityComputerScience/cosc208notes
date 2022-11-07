@@ -42,10 +42,10 @@
 * Cache replacement (continued); optimizing for locality (2022-11-04) [[Notes]](2022-11-04_notes) [[Worksheet]](2022-11-04_worksheet)
 
 ## Multiprocessing
-* Limited direct execution; system calls (2022-11-07) <!--[[Notes]](2022-11-07_notes)--> [[Worksheet]](2022-11-07_worksheet)
+* Limited direct execution; system calls (2022-11-07) [[Notes]](2022-11-07_notes) [[Worksheet]](2022-11-07_worksheet)
+* processes; fork & wait (2022-11-09) <!--[[Notes]](2022-11-09_notes)--> [[Worksheet]](2022-11-09_worksheet)
 
 <!--
-* processes; fork & wait (2022-11-09) [[Notes]](2022-11-09_notes) [[Worksheet]](2022-11-09_worksheet)
 * exec; non-preemptive scheduling (2022-11-11) [[Notes]](2022-11-11_notes) [[Worksheet]](2022-11-11_worksheet)
 * Preemptive scheduling (2022-11-14) [[Notes]](2022-11-14_notes) [[Worksheet]](2022-11-14_worksheet)
 * Exam 3 review (2022-11-16) [[Notes]](2022-11-16_notes) [[Worksheet]](2022-11-16_worksheet)

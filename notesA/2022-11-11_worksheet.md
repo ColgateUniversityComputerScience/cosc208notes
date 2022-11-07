@@ -16,32 +16,7 @@ _COSC 208, Introduction to Computer Systems, 2022-11-11_
 * Shortest Job First (SJF) scheduling
 
 ## Warm-up (Q5 from Wednesday)
-Q1: _What are all possible outputs of this program (assuming the new process has PID 13346)?_
-```C
-int main() {
-    int pid = fork();
-    printf("A %d\n", pid);
-    if (pid == 0) {
-        printf("B\n");
-    } else {
-        wait(NULL);
-        printf("C\n");
-    }
-}
-```
-```
 
-
-
-
-
-
-
-
-
-
-
-```
 🛑 **STOP HERE** after completing the warm-up; if you have extra time take a few deep breaths to reduce stress.
 
 

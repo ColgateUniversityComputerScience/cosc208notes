@@ -19,7 +19,7 @@ Q1:
 char prediction(int *votes, char *projection)
     int democrat = 0;
     int republican = 0;
-    int lenght = strlen(projection);
+    int length = strlen(projection);
     for (int d = 0; d < length; d++) {
         if (projection[d] == 'D') {
             democrat += votes[d];
