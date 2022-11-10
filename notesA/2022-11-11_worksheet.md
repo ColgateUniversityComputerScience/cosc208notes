@@ -5,7 +5,6 @@ _COSC 208, Introduction to Computer Systems, 2022-11-11_
 * Project 4 deadline extended to Monday @ 11pm
 * DEI Assignment 3 deadline extended to Monday, Nov 29 @ 11pm
 * Exam 3
-    * Study guide posted on Moodle
     * Take-home portion: released Wed, Nov 16; due Fri, Nov 18
     * In-class portion: Fri, Nov 18 
 
@@ -14,8 +13,6 @@ _COSC 208, Introduction to Computer Systems, 2022-11-11_
 * Waiting for processes
 * Running a different program
 * Scheduling processes
-* First In First Out (FIFO) scheduling
-* Shortest Job First (SJF) scheduling
 
 ## Warm-up
 Q1: _What does the following code output?_
@@ -23,7 +20,6 @@ Q1: _What does the following code output?_
 int main() {
     int x = 10;
     int y = 20;
-    x++;
     int retval = fork();
     if (retval == 0) {
         y -= 5;
@@ -36,7 +32,6 @@ int main() {
 ```
 
 🛑 **STOP HERE** after completing the warm-up; if you have extra time take a few deep breaths to reduce stress.
-
 
 ## Waiting for processes
 Q2: _What are all possible outputs of this program?_
