@@ -45,7 +45,7 @@
 * Limited direct execution; system calls (2022-11-07) [[Notes]](2022-11-07_notes) [[Worksheet]](2022-11-07_worksheet)
 * processes; fork (2022-11-09) [[Notes]](2022-11-09_notes) [[Worksheet]](2022-11-09_worksheet)
 * wait & exec (2022-11-11) [[Notes]](2022-11-11_notes) [[Worksheet]](2022-11-11_worksheet)
-* Scheduling (2022-11-14) <!--[[Notes]](2022-11-14_notes)--> [[Worksheet]](2022-11-14_worksheet)
+* Scheduling (2022-11-14) <!--[[Notes]](2022-11-14_notes)--> [_No worksheet_]
 
 <!--
 * Exam 3 review (2022-11-16) [[Notes]](2022-11-16_notes) [[Worksheet]](2022-11-16_worksheet)
