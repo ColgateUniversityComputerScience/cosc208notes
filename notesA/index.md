@@ -43,11 +43,11 @@
 
 ## Multiprocessing
 * Limited direct execution; system calls (2022-11-07) [[Notes]](2022-11-07_notes) [[Worksheet]](2022-11-07_worksheet)
-* processes; fork (2022-11-09) [[Notes]](2022-11-09_notes)[[Worksheet]](2022-11-09_worksheet)
-* wait & exec; non-preemptive scheduling (2022-11-11) <!--[[Notes]](2022-11-11_notes)--> [[Worksheet]](2022-11-11_worksheet)
+* processes; fork (2022-11-09) [[Notes]](2022-11-09_notes) [[Worksheet]](2022-11-09_worksheet)
+* wait & exec (2022-11-11) [[Notes]](2022-11-11_notes) [[Worksheet]](2022-11-11_worksheet)
+* Scheduling (2022-11-14) <!--[[Notes]](2022-11-14_notes)--> [[Worksheet]](2022-11-14_worksheet)
 
 <!--
-* Preemptive scheduling (2022-11-14) [[Notes]](2022-11-14_notes) [[Worksheet]](2022-11-14_worksheet)
 * Exam 3 review (2022-11-16) [[Notes]](2022-11-16_notes) [[Worksheet]](2022-11-16_worksheet)
 * Threads (2022-11-28) [[Notes]](2022-11-28_notes) [[Worksheet]](2022-11-28_worksheet)
 * Pthreads API (2022-11-30) [[Notes]](2022-11-30_notes) [[Worksheet]](2022-11-30_worksheet)

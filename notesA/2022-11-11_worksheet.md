@@ -1,4 +1,4 @@
-# Multiprocessing: wait & exec; non-preemptive scheduling
+# Multiprocessing: wait & exec; scheduling
 _COSC 208, Introduction to Computer Systems, 2022-11-11_
 
 ## Announcements
@@ -114,5 +114,3 @@ int main() {
     }
 }
 ```
-
-🛑 **STOP HERE** after completing the above questions; if you have extra time take a few deep breaths to reduce stress.
