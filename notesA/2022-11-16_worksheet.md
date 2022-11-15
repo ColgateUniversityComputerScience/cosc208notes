@@ -50,6 +50,8 @@ Q5: _Cross-out unnecessary loads and stores for the following assembly code:_
     798:    d65f03c0     ret
 ```
 
+<div style="page-break-after:always;"></div>
+
 Q6: _Cross-out unnecessary loads and stores for the following assembly code:_
 ```
 000000000000071c <flip>:
@@ -69,7 +71,6 @@ Q6: _Cross-out unnecessary loads and stores for the following assembly code:_
     750:    d65f03c0     ret    
 ```
 
-<div style="page-break-after:always;"></div>
 
 ## Locality
 Q7: _For each of the following scenarios, indicate whether it is an example of temporal locality, spatial locality, or neither._
@@ -106,6 +107,8 @@ Q7: _For each of the following scenarios, indicate whether it is an example of t
 
     ```
 
+<div style="page-break-after:always;"></div>
+
 ## Caching
 Q8: _Assume the cache size is 3 and the **optimal** cache replacement algorithm is used. Indicate what happens with the cache on each data access._
 * Access 2
@@ -135,8 +138,6 @@ Q9: _Assume the cache size is 3 and the **least recently used (LRU)** cache repl
 * Access 4
 * Access 1
 
-<div style="page-break-after:always;"></div>
-
 ## Loop optimization
 Q10: _Modify the following code to perform all relevant loop optimizations. You should assume the length of the key is **significantly smaller** than the length of the plain string, such that the entire key will fit in the cache but the entire plain string will not fit in the cache._
 ```C
@@ -155,6 +156,8 @@ char *vigenere(char *plain, char *key, int keylen) {
     return cipher;
 }
 ```
+
+<div style="page-break-after:always;"></div>
 
 ## Processes
 Q11: _Write a program that creates a new process. The child process should print "I am a child"; the parent process should print "I am a parent; my child is CPID" (replacing CPID with the child’s PID)._
@@ -178,8 +181,12 @@ Q11: _Write a program that creates a new process. The child process should print
 ```
 
 Q12: _Will the output produced by your program always appear in a particular order? Why or why not?_
+```
 
-<div style="page-break-after:always;"></div>
+
+
+
+```
 
 Q13: _Write a program that creates two new processes. The first process should run the executable `/usr/bin/whoami`. The second process should print `I have a sibling` after the first process has finished._
 ```C
@@ -201,6 +208,8 @@ Q13: _Write a program that creates two new processes. The first process should r
 
 ```
 
+<div style="page-break-after:always;"></div>
+
 Q14: _What are all possible outputs the following program may produce?_
 ```C
 int main() {
@@ -215,8 +224,6 @@ int main() {
     }
 }
 ```
-
-<div style="page-break-after:always;"></div>
 
 ## Scheduling
 _Consider the following set of processes:_
@@ -249,6 +256,9 @@ Q16: _Compute the turnaround and wait time for each process based on the above s
 
 ```
 ```
+
+<div style="page-break-after:always;"></div>
+
 Q17: _Draw the schedule when a Shortest Job First (SJF) scheduling algorithm is used._
 ```
 
@@ -290,8 +300,6 @@ Q20: _Compute the turnaround and wait time for each process based on the above s
 
 ```
 ```
-
-<div style="page-break-after:always;"></div>
 
 Q21: _Draw the schedule when a Round Round (RR) scheduling algorithm is used with a time quantum of 10._
 ```
