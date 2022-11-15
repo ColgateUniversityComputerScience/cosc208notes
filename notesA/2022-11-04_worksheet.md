@@ -13,11 +13,11 @@ _COSC 208, Introduction to Computer Systems, 2022-11-04_
 
 ## Warm-up
 Q1: _For each of the following instances of caching, indicate whether the caching is motivated by temporal or spatial locality._
-* A CPU caches the first 32 instructions of a function when the function is called – spatial
-* A CPU caches all of the instructions for a frequently called function – temporal
-* A web browser caches the Moodle pages for your courses, which you view multiple times per week – temporal
-* A content distribution network (CDN) caches a video that has gone viral – temporal
-* A content distribution network (CDN) caches "recommended videos" related to a video – spatial
+* A CPU caches the first 32 instructions of a function when the function is called
+* A CPU caches all of the instructions for a frequently called function
+* A web browser caches the Moodle pages for your courses, which you view multiple times per week
+* A content distribution network (CDN) caches a video that has gone viral
+* A content distribution network (CDN) caches "recommended videos" related to a video
 
 🛑 **STOP HERE** after completing the warm-up; if you have extra time, take a few deep breaths to reduce stress.
 
