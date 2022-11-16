@@ -78,15 +78,15 @@ Q7: _For each of the following scenarios, indicate whether it is an example of t
     ```
 
     ```
-* A grocery list is arranged in alphabetical order – neither
+* A grocery list is arranged in alphabetical order
     ```
 
     ```
-* Clothes in a closet are grouped into outfits, with a sweater, a shirt, and a pair of pants stored next to each other – spatial locality
+* Clothes in a closet are grouped into outfits, with a sweater, a shirt, and a pair of pants stored next to each other
     ```
 
     ```
-* Boxes of cereal, bowls, and spoons are stored in adjacent kitchen cabinets/drawers – spatial locality
+* Boxes of cereal, bowls, and spoons are stored in adjacent kitchen cabinets/drawers
     ```
 
     ```
