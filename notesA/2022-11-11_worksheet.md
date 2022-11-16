@@ -90,7 +90,8 @@ Q4: _What is the output produced by running `./progA`, assuming no errors occur?
 int main() {
     pid_t a = fork();
     if (a == 0) {
-        execv("./progB", NULL);
+        char *cmd[] = { "./progB", NULL };
+        execv(cmd[0], cmd);
         printf("A 2nd gen\n");
         return 0;
     } else {
