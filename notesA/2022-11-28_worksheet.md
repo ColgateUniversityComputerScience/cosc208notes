@@ -36,8 +36,18 @@ int main() {
     printf("z is %d\n", z);
 }
 ```
+```
+
+
+
+
+
+
+```
 
 🛑 **STOP HERE** after completing the warm-up; if you have extra time please **skip ahead** to the extra practice.
+
+<div style="page-break-after: always;"></div>
 
 ## Threads
 Example program
@@ -62,6 +72,8 @@ int main() {
 }
 ```
 
+<div style="page-break-after: always;"></div>
+
 Q2: _What are all possible outputs produced by this program?_
 ```C
 void *thread_main(void *arg) {
@@ -79,7 +91,17 @@ int main() {
     // Wait for threads to finish
 }
 ```
+```
+
+
+
+
+
+
+```
 🛑 **STOP HERE** after completing the above question; if you have extra time please **skip ahead** to the extra practice.
+
+<div style="page-break-after: always;"></div>
 
 ## Pthreads API
 Q3: _What are all possible outputs produced by this program?_
@@ -122,6 +144,8 @@ Q4: _What are all possible outputs produced by this program?_
 15      pthread_join(thread2, NULL);
 16  }
 ```
+
+<div style="page-break-after: always;"></div>
 
 ## Creating multiple threads
 Example
@@ -169,6 +193,8 @@ int main() {
     }
 }
 ```
+
+<div style="page-break-after: always;"></div>
 
 Q6: _What output is produced by the following program? (Note: there is only one possible ordering.)_
 ```C
