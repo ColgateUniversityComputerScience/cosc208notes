@@ -72,8 +72,6 @@ int main() {
 }
 ```
 
-<div style="page-break-after: always;"></div>
-
 Q2: _What are all possible outputs produced by this program?_
 ```C
 void *thread_main(void *arg) {
