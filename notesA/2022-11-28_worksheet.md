@@ -122,6 +122,13 @@ Q3: _What are all possible outputs produced by this program?_
 16      pthread_join(thread2, NULL);
 17  }
 ```
+```
+
+
+
+
+
+```
 
 Q4: _What are all possible outputs produced by this program?_
 ```C
