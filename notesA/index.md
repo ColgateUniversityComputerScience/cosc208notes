@@ -49,11 +49,10 @@
 * Exam 3 review (2022-11-16) [[Notes]](2022-11-16_notes) [[Worksheet]](2022-11-16_worksheet)
 
 ## Multithreading
-* Threads (2022-11-28) <!--[[Notes]](2022-11-28_notes)--> [[Worksheet]](2022-11-28_worksheet)
+* Threads (2022-11-28) [[Notes]](2022-11-28_notes) [[Worksheet]](2022-11-28_worksheet)
+* Making programs multi-threaded (2022-11-30) <!--[[Notes]](2022-11-30_notes)--> [[Worksheet]](2022-11-30_worksheet)
 
 <!--
-* Pthreads API (2022-11-30) [[Notes]](2022-11-30_notes) [[Worksheet]](2022-11-30_worksheet)
-* Making programs multi-threaded (2022-12-02) [[Notes]](2022-12-02_notes) [[Worksheet]](2022-12-02_worksheet)
 * Making programs multi-threaded (continued) (2022-04-29) [[Notes]](2022-04-29_notes) [[Worksheet]](2022-04-29_worksheet)
 * Virtual machines (2022-05-02) [[Notes]](2022-05-02_notes) [[Worksheet]](2022-05-02_worksheet)
 * Containers; data centers; cloud computing (2022-05-04) [[Notes]](2022-05-04_notes) [[Worksheet]](2022-05-04_worksheet)
