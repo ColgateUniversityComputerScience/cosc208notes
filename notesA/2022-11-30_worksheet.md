@@ -2,6 +2,8 @@
 _COSC 208, Introduction to Computer Systems, 2022-04-27_
 
 # Announcements
+* Attend faculty candidate talks Dec 1, 8, 13, 14, & 15 at 11:20am
+    * Earn 2 points of extra credit on final exam for each talk or discussion attended (maximum of 4 points)
 * Project 5 due Thurs, Dec 8 @ 11pm 
 
 ## Outline
@@ -38,6 +40,10 @@ Q1: _What are all possible outputs produced by this program?_
 21  }
 ```
 ```
+
+
+
+
 
 
 
@@ -119,10 +125,18 @@ Q2: _Write a function called `sum_array` which takes an array of `ARRAY_LEN` int
 
 
 
+
+
 ```
 
 Q3: _Write a function called `sum_matrix` which takes an array of `NUM_ARRAYS` arrays of integers (i.e., an `int **`) and returns the sum of all the integers. The function should create `NUM_ARRAYS` threads, each running the `sum_array` function for a single array of integers. Assume `NUM_ARRAYS` is a constant which has been `#define`d._
 ```
+
+
+
+
+
+
 
 
 
