@@ -50,7 +50,7 @@
 
 ## Multithreading
 * Threads (2022-11-28) [[Notes]](2022-11-28_notes) [[Worksheet]](2022-11-28_worksheet)
-* Making programs multi-threaded (2022-11-30) <!--[[Notes]](2022-11-30_notes)--> [[Worksheet]](2022-11-30_worksheet)
+* Making programs multi-threaded (2022-11-30) [[Notes]](2022-11-30_notes) [[Worksheet]](2022-11-30_worksheet)
 
 <!--
 * Making programs multi-threaded (continued) (2022-04-29) [[Notes]](2022-04-29_notes) [[Worksheet]](2022-04-29_worksheet)
