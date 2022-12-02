@@ -1,4 +1,4 @@
-# Multithreading: making programs multi-threaded (continued); Virtualization: virtual machines & containers
+# Multithreading: making programs multi-threaded (continued)
 _COSC 208, Introduction to Computer Systems, 2022-12-02_
 
 ## Announcements
@@ -13,8 +13,6 @@ _COSC 208, Introduction to Computer Systems, 2022-12-02_
 ## Outline
 * Warm-up
 * Making programs multi-threaded (continued)
-* Virtual machines
-* Hypervisors
 
 ## Warm-up
 Q1: _Consider the following program:_
