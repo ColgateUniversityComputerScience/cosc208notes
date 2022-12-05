@@ -54,10 +54,10 @@
 * Making programs multi-threaded (continued) (2022-12-02) [[Notes]](2022-12-02_notes) [[Worksheet]](2022-12-02_worksheet)
 
 ## Virtualization
-* Virtual machines & containers (2022-12-05) <!--[[Notes]](2022-12-05_notes)--> [_No worksheet_]
+* Virtual machines (2022-12-05) [[Notes]](2022-12-05_notes) [_No worksheet_]
+* Containers; data centers; cloud computing (2022-12-07) <!--[[Notes]](2022-12-07_notes)--> [[Worksheet]](2022-12-07_worksheet)
 
 <!--
-* Data centers; cloud computing (2022-05-04) [[Notes]](2022-05-04_notes) [[Worksheet]](2022-05-04_worksheet)
 * Exam 3 (Final) review (2022-05-06) [[Notes]](2022-05-06_notes) [[Worksheet]](2022-05-06_worksheet)
 -->
 
