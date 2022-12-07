@@ -1,4 +1,4 @@
-# Virtualization: containers; data centers; cloud computing
+# Virtualization: containers; data centers
 _COSC 208, Introduction to Computer Systems, 2022-12-07_
 
 ## Announcements
@@ -15,7 +15,6 @@ _COSC 208, Introduction to Computer Systems, 2022-12-07_
 * CPU sharing
 * Containers
 * Data centers
-* Cloud computing
 
 ## Warm-up
 Q1: _Draw a diagram of a system that does **not** use a hypervisor._
