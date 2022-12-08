@@ -57,6 +57,8 @@ Q3: _What is an advantage of using **virtual machines with a type 2 hypervisor**
 
 ```
 
+<div style="page-break-after:always;"></div>
+
 Q4: _What is an advantage of using **containers** instead of **virtual machines with a type 1 hypervisor**?_
 ```
 
@@ -116,6 +118,8 @@ int main() {
 }
 ```
 
+<div style="page-break-after:always;"></div>
+
 ## Number representation
 Q8: _Convert `0b10101010` to an unsigned decimal number_
 ```
@@ -173,6 +177,7 @@ Q15: _In a system that represents numbers using 8-bit two's complement will the 
 
 ```
 
+<div style="page-break-after:always;"></div>
 
 ## Pointers & dynamic memory allocation
 Q16: _Assume the following program is executed._
@@ -195,6 +200,8 @@ int main() {
 ```
 
 _Draw the contents of the stack and heap when the program reaches the comment `STOP HERE`. If a memory region is freed, cross it out; do not erase it from your diagram._
+
+<div style="page-break-after:always;"></div>
 
 ## Memory errors
 The intended behavior of the program below is to output a string that contains multiple copies of a word (e.g., `"byebye"`). The code below compiles without warnings, but it contains multiple errors.
