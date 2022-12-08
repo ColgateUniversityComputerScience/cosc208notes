@@ -56,10 +56,7 @@
 ## Virtualization
 * Virtual machines (2022-12-05) [[Notes]](2022-12-05_notes) [_No worksheet_]
 * Containers; data centers (2022-12-07) [[Notes]](2022-12-07_notes) [[Worksheet]](2022-12-07_worksheet)
-
-<!--
-* Cloud computing; Exam 4 (Final) review (2022-12-09) [[Notes]](2022-12-09_notes) [[Worksheet]](2022-12-09_worksheet)
--->
+* Cloud computing; Exam 4 (Final) review (2022-12-09) <!--[[Notes]](2022-12-09_notes)--> [[Worksheet]](2022-12-09_worksheet)
 
 <!--
 ## Networking

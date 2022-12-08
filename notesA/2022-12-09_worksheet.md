@@ -1,15 +1,22 @@
-# Exam 3 (Final) Review
-_COSC 208, Introduction to Computer Systems, 2022-05-06_
+# Virtualization: cloud computing; Exam 4 (Final) Review
+_COSC 208, Introduction to Computer Systems, 2022-12-09_
 
 ## Announcements
+* Attend faculty candidate talks Dec 12 (11am), 13 (11:30am), 14 (11:30am), & 15 (time TBA)
+    * Earn 2 points of extra credit on final exam for each talk attended (maximum of 4 points)
 * Final exam
     * Study guide posted on Moodle
-    * Take-home portion due Friday, May 13 at 9am
-    * In-class portion Friday May 13 9am-11am
-* Finals week office hours
-    * Monday 8:30am-2pm
-    * Tuesday 8:30am-10am
-    * Thursday 8:30am-12pm
+    * Take-home portion: due Monday
+    * In-class portion: Monday 9am-11am or 12pm-2pm
+    * **Return your RPi during the in-class portion**
+
+## Outline
+* Cloud computing
+* Virtual machines and containers
+* Threads
+* Number representation
+* Pointers & dynamic memory allocation
+* Memory errors
 
 ## No warm-up — Happy last day of the semester!
 
@@ -32,99 +39,9 @@ Q1: _For each of the following service providers, indicate what type of service 
 
     ```
 
-## Memory hierarchy
-Q2: What is the **fastest volatile** memory?
-```
 
-```
-
-Q3: What is the **fastest non-volatile** memory?
-```
-
-
-```
-
-Q4: Why is a hard disk drive (HDD) slower than a solid state drive (SSD)?
-```
-
-
-```
-
-Q5: Why is accessing main memory (i.e., Random Access Memory (RAM)) slower than accessing a cache?
-```
-
-
-```
-
-<div style="page-break-after:always;"></div>
-
-## Caching
-Q6: _Assume the cache size is 3 and the **optimal** cache replacement algorithm is used. Indicate what happens with the cache on each data access._
-* Access 2
-* Access 4
-* Access 1
-* Access 2
-* Access 4
-* Access 3
-* Access 2
-* Access 4
-* Access 1
-* Access 2
-* Access 4
-* Access 1
-
-Q7: _Assume the cache size is 3 and the **least recently used (LRU)** cache replacement algorithm is used. Indicate what happens with the cache on each data access._
-* Access 2
-* Access 4
-* Access 1
-* Access 2
-* Access 4
-* Access 3
-* Access 2
-* Access 4
-* Access 1
-* Access 2
-* Access 4
-* Access 1
-
-## Processes
-Q8: _Write a program that creates a new process. The child process should print "I am a child"; the parent process should print "I am a parent; my child is CPID" (replacing CPID with the child’s PID)._
-```C
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-```
-
-Q9: _Will the output produced by your program always appear in a particular order? Why or why not?_
-
-<div style="page-break-after:always;"></div>
-
-## Scheduling
-_Consider the following set of processes:_
-
-| Process | Duration | Arrival Time |
-|---------|----------|--------------|
-| A       | 20       | 0            |
-| B       | 15       | 0            |
-| C       | 25       | 5            |
-| D       | 5        | 10           |
-
-```
-```
-Q10: _Draw the schedule when a First In First Out (FIFO) scheduling algorithm is used._
+## Virtual machines and containers
+Q2: _What is an advantage of using **virtual machines with a type 1 hypervisor** instead of **virtual machines with a type 2 hypervisor**?_
 ```
 
 
@@ -132,160 +49,154 @@ Q10: _Draw the schedule when a First In First Out (FIFO) scheduling algorithm is
 
 ```
 
-Q11: _Compute the turnaround and wait time for each process based on the above schedule._
-
-| Process | Turnaround | Wait |
-|---------|------------|------|
-| A       |            |      |
-| B       |            |      |
-| C       |            |      |
-| D       |            |      |
-
+Q3: _What is an advantage of using **virtual machines with a type 2 hypervisor** instead of **virtual machines with a type 1 hypervisor**?_
 ```
-```
-Q12: _Draw the schedule when a Shortest Job First (SJF) scheduling algorithm is used._
-```
-
 
 
 
 
 ```
 
-Q13: _Compute the turnaround and wait time for each process based on the above schedule._
-
-| Process | Turnaround | Wait |
-|---------|------------|------|
-| A       |            |      |
-| B       |            |      |
-| C       |            |      |
-| D       |            |      |
-
+Q4: _What is an advantage of using **containers** instead of **virtual machines with a type 1 hypervisor**?_
 ```
-```
-Q14: _Draw the schedule when a Shortest Time to Completion First (STCF) scheduling algorithm is used._
-```
-
-
 
 
 
 
 ```
 
-Q15: _Compute the turnaround and wait time for each process based on the above schedule._
-
-| Process | Turnaround | Wait |
-|---------|------------|------|
-| A       |            |      |
-| B       |            |      |
-| C       |            |      |
-| D       |            |      |
-
-```
-```
-
-<div style="page-break-after:always;"></div>
-
-Q16: _Draw the schedule when a Round Round (RR) scheduling algorithm is used with a time quantum of 10._
+Q5: _What is an advantage of using **virtual machines with a type 1 hypervisor** instead of **containers**?_
 ```
 
 
 
 
-
-
 ```
-
-Q17: _Compute the turnaround and wait time for each process based on the above schedule._
-
-| Process | Turnaround | Wait |
-|---------|------------|------|
-| A       |            |      |
-| B       |            |      |
-| C       |            |      |
-| D       |            |      |
-
 
 ## Threads
-_A program contains the following functions:_
+A program contains the following global variables and functions:
 ```C
-void *dec(void *arg) {
+void *dbl(void *arg) {
     int *t = (int *)arg;
-    *t--;
-    return NULL:
+    *t = *t * 2;
 }
 
 void *inc(void *arg) {
     int *t = (int *)arg;
-    *t++;
-    return NULL;
-}
-
-void *zero(void *arg) {
-    int *t = (int *)arg;
-    *t = 0;
-    return NULL;
+    *t = *t + 1;
 }
 ```
-
-<div style="page-break-after:always;"></div>
-
 _For each of the following main methods, list **all possible outputs** the program could produce. Assume threads are only preempted if they become blocked waiting for other threads._
 
-Q18:
+Q6:
 ```C
 int main() {
     int *total = malloc(sizeof(int));
-    *total = 2;
+    *total = 3;
     pthread_t thrA, thrB;
-    pthread_create(&thrA, NULL, &inc, total);
+    pthread_create(&thrA, NULL, &dbl, total);
     pthread_create(&thrB, NULL, &inc, total);
     pthread_join(thrA, NULL);
     pthread_join(thrB, NULL);
-    printf("%d\n", *total);
+    printf("%d\n", total);
 }
 ```
-```
 
-
-```
-
-Q19:
+Q7:
 ```C
 int main() {
     int *total = malloc(sizeof(int));
-    *total = 2;
+    *total = 3
     pthread_t thrA, thrB;
-    pthread_create(&thrA, NULL, &dec, total);
-    pthread_create(&thrB, NULL, &zero, total);
+    pthread_create(&thrA, NULL, &inc, total);
     pthread_join(thrA, NULL);
+    pthread_create(&thrB, NULL, &dbl, total);
     pthread_join(thrB, NULL);
-    printf("%d\n", *total);
-} 
+    printf("%d\n", total);
+}
 ```
+
+## Number representation
+Q8: _Convert `0b10101010` to an unsigned decimal number_
 ```
 
 
+
 ```
 
-Q20:
+Q9: _Convert `0b10101010` to an signed decimal number_
+```
+
+
+
+```
+
+Q10: _Convert `43` to 8-bit two's complement_
+```
+
+
+
+```
+
+Q11: _Convert `-43` to 8-bit two's complement_
+```
+
+
+
+```
+
+Q12: _Compute `0b0011 & 0b0101`_
+```
+
+
+
+```
+
+Q13: _Compute `0b0011 | 0b0101`_
+```
+
+
+
+```
+
+Q14: _In a system that represents numbers using 8-bit two's complement will the computation `120 + 16` result in overflow, underflow, or neither?_
+```
+
+
+
+```
+
+Q15: _In a system that represents numbers using 8-bit two's complement will the computation `-120 + -8` result in overflow, underflow, or neither?_
+```
+
+
+
+```
+
+
+## Pointers & dynamic memory allocation
+Q16: _Assume the following program is executed._
 ```C
+void magic(char *x, char **y) {
+    char *z = *y;
+    z[2] = 'a';
+    *x = 'k';
+    *y = &x[1];
+    // STOP HERE
+}
+
 int main() {
-    int *total = malloc(sizeof(int));
-    *total = 2;
-    pthread_t thrA, thrB;
-    pthread_create(&thrA, NULL, &zero, total);
-    pthread_join(thrA, NULL);
-    pthread_create(&thrB, NULL, &inc, total);
-    pthread_join(thrB, NULL);
-    printf("%d\n", *total);
-} 
+    char *season = malloc(sizeof(char) * 7);
+    strcpy(season, "winter");
+    char precip[6] = "snow";
+    char *ptr = season + 3;
+    magic(precip, &ptr);
+}
 ```
 
-<div style="page-break-after:always;"></div>
+_Draw the contents of the stack and heap when the program reaches the comment `STOP HERE`. If a memory region is freed, cross it out; do not erase it from your diagram._
 
-## Memory
+## Memory errors
 The intended behavior of the program below is to output a string that contains multiple copies of a word (e.g., `"byebye"`). The code below compiles without warnings, but it contains multiple errors.
 ```C
 1   #include <stdlib.h>
@@ -312,7 +223,7 @@ The intended behavior of the program below is to output a string that contains m
 ```
 For each of the following errors produced by valgrind, describe (in 2-3 sentences) **why** the error is occurring and **how** you would modify the code to correct the error.
 
-Q21:
+Q17:
 ```
 Invalid write of size 1
     at 0x4006CA: repeat (repeat.c:9)
@@ -328,7 +239,7 @@ Address 0x5204093 is 0 bytes after a block of size 3 alloc'd
 
 ```
 
-Q22:
+Q18:
 ```
 Invalid read of size 1
     at 0x4006BF: repeat (repeat.c:9)
@@ -340,7 +251,7 @@ Address 0x5204044 is 0 bytes after a block of size 4 alloc'd
 
 <div style="page-break-after:always;"></div>
 
-Q23:
+Q19:
 ```
 Invalid read of size 1
     at 0x4E88CD0: vfprintf (vfprintf.c:1632)
@@ -361,7 +272,7 @@ Block was alloc'd at
 
 ```
 
-Q24:
+Q20:
 ```
 4 bytes in 1 blocks are definitely lost in loss record 1 of 1
     at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
@@ -371,54 +282,4 @@ Q24:
 
 
 
-```
-
-<div style="page-break-after:always;"></div>
-
-## Threads
-A program contains the following global variables and functions:
-```C
-void *dbl(void *arg) {
-    int *t = (int *)arg;
-    *t = *t * 2;
-}
-
-void *one(void *arg) {
-    int *t = (int *)arg;
-    *t = 1;
-}
-```
-
-_For each of the following main methods, list **all possible outputs** the program could produce. Assume threads are only preempted if they become blocked waiting for other threads._
-
-Q25:
-```C
-int main() {
-    int *total = malloc(sizeof(int));
-    *total = 3;
-    pthread_t thrA, thrB;
-    pthread_create(&thrA, NULL, &dbl, total);
-    pthread_create(&thrB, NULL, &one, total);
-    pthread_join(thrA, NULL);
-    pthread_join(thrB, NULL);
-    printf("%d\n", total);
-}
-```
-```
-
-
-```
-
-Q26:
-```C
-int main() {
-    int *total = malloc(sizeof(int));
-    *total = 3
-    pthread_t thrA, thrB;
-    pthread_create(&thrA, NULL, &one, total);
-    pthread_join(thrA, NULL);
-    pthread_create(&thrB, NULL, &dbl, total);
-    pthread_join(thrB, NULL);
-    printf("%d\n", total);
-}
 ```
