@@ -5,7 +5,7 @@ _COSC 208, Introduction to Computer Systems, 2022-12-09_
 * Attend faculty candidate talks Dec 12 (11am), 13 (11:30am), 14 (11:30am), & 15 (time TBA)
     * Earn 2 points of extra credit on final exam for each talk attended (maximum of 4 points)
 * Final exam
-    * **Additional office hours today 12pm-2pm**
+    * **Additional office hours today 12:30pm-2pm and Sunday 10:30am-noon**
     * Study guide posted on Moodle
     * Take-home portion: due Monday
     * In-class portion: Monday 9am-11am or 12pm-2pm
