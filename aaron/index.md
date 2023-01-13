@@ -4,3 +4,4 @@
 
 ## C
 * compilation; types; operators; output (2023-01-25) [[Worksheet]](2023-01-25.worksheet.html)
+* control structures; functions (2023-01-27) [[Worksheet]](2023-01-27.worksheet.html)
