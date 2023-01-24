@@ -26,7 +26,7 @@ with open('index.md', 'w') as index:
                 index.write("\n## {}\n".format(category))
             index.write("* {} ({}) ".format(
                     title, date))
-            if datetime.date.today() > dateutil.parser.parse(date).date():
+            if datetime.date.today() >= dateutil.parser.parse(date).date():
                 index.write("[[Notes]]({}) \n".format(
                         filename.replace('.ipynb', '.notes.html')))
             index.write("[[Worksheet]]({})\n".format(
