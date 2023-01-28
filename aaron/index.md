@@ -4,5 +4,7 @@
 [[Worksheet]](2023-01-23.worksheet.html)
 
 ## C
-* compilation; types; operators; output (2023-01-25) [[Worksheet]](2023-01-25.worksheet.html)
-* control structures; functions (2023-01-27) [[Worksheet]](2023-01-27.worksheet.html)
+* compilation; types; operators; output (2023-01-25) [[Notes]](2023-01-25.notes.html) 
+[[Worksheet]](2023-01-25.worksheet.html)
+* control structures; functions (2023-01-27) [[Notes]](2023-01-27.notes.html) 
+[[Worksheet]](2023-01-27.worksheet.html)
