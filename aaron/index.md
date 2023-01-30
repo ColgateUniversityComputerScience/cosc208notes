@@ -8,5 +8,6 @@
 [[Worksheet]](2023-01-25.worksheet.html)
 * control structures; functions (2023-01-27) [[Notes]](2023-01-27.notes.html) 
 [[Worksheet]](2023-01-27.worksheet.html)
-* using libraries; stack frames (2023-01-30) [[Worksheet]](2023-01-30.worksheet.html)
+* using libraries; stack frames (2023-01-30) [[Notes]](2023-01-30.notes.html) 
+[[Worksheet]](2023-01-30.worksheet.html)
 * arrays; strings; input (2023-02-01) [[Worksheet]](2023-02-01.worksheet.html)
