@@ -10,4 +10,8 @@
 [[Worksheet]](2023-01-27.worksheet.html)
 * using libraries; stack frames (2023-01-30) [[Notes]](2023-01-30.notes.html) 
 [[Worksheet]](2023-01-30.worksheet.html)
-* arrays; strings; input (2023-02-01) [[Worksheet]](2023-02-01.worksheet.html)
+* arrays; strings; input (2023-02-01) [[Notes]](2023-02-01.notes.html) 
+[[Worksheet]](2023-02-01.worksheet.html)
+
+## Number representation
+* number bases; base conversion (2023-02-03) [[Worksheet]](2023-02-03.worksheet.html)
