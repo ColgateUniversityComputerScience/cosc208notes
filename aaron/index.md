@@ -14,4 +14,5 @@
 [[Worksheet]](2023-02-01.worksheet.html)
 
 ## Number representation
-* number bases; base conversion (2023-02-03) [[Worksheet]](2023-02-03.worksheet.html)
+* number bases; base conversion (2023-02-03) [[Notes]](2023-02-03.notes.html) 
+[[Worksheet]](2023-02-03.worksheet.html)
