@@ -51,4 +51,5 @@ table {
 
 div.highlight {
     margin-left: 2.5em !important;
+    page-break-inside: avoid;
 }

@@ -18,3 +18,4 @@
 [[Worksheet]](2023-02-03.worksheet.html)
 * base conversion (continued); signed integers (2023-02-06) [[Worksheet]](2023-02-06.worksheet.html)
 * type conversion; binary arithmetic (2023-02-08) [[Worksheet]](2023-02-08.worksheet.html)
+* overflow; bitwise operators; real numbers (2023-02-10) [[Worksheet]](2023-02-10.worksheet.html)
