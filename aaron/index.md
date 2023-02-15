@@ -26,4 +26,8 @@
 ## Program memory
 * pointers (2023-02-13) [[Notes]](2023-02-13.notes.html) 
 [[Worksheet]](2023-02-13.worksheet.html)
-* arrays & pointers (2023-02-15) [[Worksheet]](2023-02-15.worksheet.html)
+* arrays & pointers (2023-02-15) [[Notes]](2023-02-15.notes.html) 
+[[Worksheet]](2023-02-15.worksheet.html)
+
+## Review
+* Exam 1 (2023-02-17) [[Worksheet]](2023-02-17.worksheet.html)
