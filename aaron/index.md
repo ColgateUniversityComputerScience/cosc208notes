@@ -30,4 +30,5 @@
 [[Worksheet]](2023-02-15.worksheet.html)
 
 ## Review
-* Exam 1 (2023-02-17) [[Worksheet]](2023-02-17.worksheet.html)
+* Exam 1 (2023-02-17) [[Notes]](2023-02-17.notes.html) 
+[[Worksheet]](2023-02-17.worksheet.html)
