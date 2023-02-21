@@ -32,3 +32,6 @@
 ## Review
 * Exam 1 (2023-02-17) [[Notes]](2023-02-17.notes.html) 
 [[Worksheet]](2023-02-17.worksheet.html)
+
+## Program memory
+* pointer arithmetic; malloc (2023-02-22) [[Worksheet]](2023-02-22.worksheet.html)
