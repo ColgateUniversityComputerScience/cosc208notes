@@ -40,4 +40,5 @@
 [[Worksheet]](2023-02-24.worksheet.html)
 * 2D arrays (2023-02-27) [[Notes]](2023-02-27.notes.html) 
 [[Worksheet]](2023-02-27.worksheet.html)
-* structs (2023-03-01) [[Worksheet]](2023-03-01.worksheet.html)
+* structs (2023-03-01) [[Notes]](2023-03-01.notes.html) 
+[[Worksheet]](2023-03-01.worksheet.html)
