@@ -42,3 +42,6 @@
 [[Worksheet]](2023-02-27.worksheet.html)
 * structs (2023-03-01) [[Notes]](2023-03-01.notes.html) 
 [[Worksheet]](2023-03-01.worksheet.html)
+
+## Architecture
+* von Neumann; logic gates (2023-03-03) [[Worksheet]](2023-03-03.worksheet.html)
