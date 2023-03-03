@@ -44,4 +44,6 @@
 [[Worksheet]](2023-03-01.worksheet.html)
 
 ## Architecture
-* von Neumann; logic gates (2023-03-03) [[Worksheet]](2023-03-03.worksheet.html)
+* von Neumann (2023-03-03) [[Notes]](2023-03-03.notes.html) 
+[[Worksheet]](2023-03-03.worksheet.html)
+* logic gates; circuits (2023-03-06) [[Worksheet]](2023-03-06.worksheet.html)
