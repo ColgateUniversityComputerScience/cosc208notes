@@ -46,4 +46,5 @@
 ## Architecture
 * von Neumann (2023-03-03) [[Notes]](2023-03-03.notes.html) 
 [[Worksheet]](2023-03-03.worksheet.html)
-* logic gates; circuits (2023-03-06) [[Worksheet]](2023-03-06.worksheet.html)
+* logic gates; 1-bit circuits (2023-03-06) [[Worksheet]](2023-03-06.worksheet.html)
+* n-bit circuits; processing unit (2023-03-08) [[Worksheet]](2023-03-08.worksheet.html)
