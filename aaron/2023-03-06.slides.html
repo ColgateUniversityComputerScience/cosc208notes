@@ -14916,7 +14916,7 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><em>Your goal is to create a 1-bit circuit to perform addition. The circuit will take 3 input bits (<code>A</code>, <code>B</code>, and carry_in) and produce 2 output bits (<code>sum</code> and carry_out).</em></p>
+<p><em>Your goal is to create a 1-bit circuit to perform addition. The circuit will take 3 input bits (<code>A</code>, <code>B</code>, and <code>I</code> = carry-in) and produce 2 output bits (<code>S</code> = sum and <code>O</code> = carry_out).</em></p>
 <ul>
 <li>Q8: <em>Complete the truth table for this operation</em></li>
 </ul>
@@ -14936,9 +14936,9 @@ div.jp-OutputPrompt {
 <tr>
   <th><code>A</code></th>
   <th><code>B</code></th>
-  <th><code>carry_in</code></th>
-  <th><code>sum</code></th>
-  <th><code>carry_out</code></th>
+  <th><code>I</code></th>
+  <th><code>S</code></th>
+  <th><code>O</code></th>
 </tr>
 </thead>
 <tbody>
@@ -15012,7 +15012,7 @@ div.jp-OutputPrompt {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <ul>
-<li>Q9: <em>What is the boolean expression for <code>sum</code>?</em></li>
+<li>Q9: <em>What is the boolean expression for <code>S</code>?</em></li>
 </ul>
 
 </div>
@@ -15026,7 +15026,7 @@ div.jp-OutputPrompt {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <ul>
-<li>Q10: <em>Draw the circuit for <code>sum</code></em></li>
+<li>Q10: <em>Draw the circuit for <code>S</code></em></li>
 </ul>
 
 </div>
@@ -15040,7 +15040,7 @@ div.jp-OutputPrompt {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <ul>
-<li>Q11: <em>What is the boolean expression for <code>carry_out</code>?</em></li>
+<li>Q11: <em>What is the boolean expression for <code>O</code>?</em></li>
 </ul>
 
 </div>
@@ -15054,7 +15054,7 @@ div.jp-OutputPrompt {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <ul>
-<li>Q12: <em>Draw the circuit for <code>carry_out</code></em></li>
+<li>Q12: <em>Draw the circuit for <code>O</code></em></li>
 </ul>
 
 </div>
