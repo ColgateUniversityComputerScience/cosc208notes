@@ -50,4 +50,5 @@
 [[Worksheet]](2023-03-06.worksheet.html)
 * n-bit circuits; multiplexers (2023-03-08) [[Notes]](2023-03-08.notes.html) 
 [[Worksheet]](2023-03-08.worksheet.html)
-* processing unit (2023-03-10) [[Worksheet]](2023-03-10.worksheet.html)
+* processing unit (2023-03-10) [[Notes]](2023-03-10.notes.html) 
+[[Worksheet]](2023-03-10.worksheet.html)
