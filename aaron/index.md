@@ -54,5 +54,6 @@
 [[Worksheet]](2023-03-10.worksheet.html)
 
 ## Assembly
-* instruction formats; mapping assembly code to C code (2023-03-20) [[Worksheet]](2023-03-20.worksheet.html)
+* instruction formats; mapping assembly code to C code (2023-03-20) [[Notes]](2023-03-20.notes.html) 
+[[Worksheet]](2023-03-20.worksheet.html)
 * load/store operations; arithmetic and bitwise operations; translating assembly code to low-level C code (2023-03-22) [[Worksheet]](2023-03-22.worksheet.html)
