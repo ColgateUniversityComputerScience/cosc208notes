@@ -58,3 +58,4 @@
 [[Worksheet]](2023-03-20.worksheet.html)
 * load/store operations; arithmetic and bitwise operations; translating assembly code to low-level C code (2023-03-22) [[Notes]](2023-03-22.notes.html) 
 [[Worksheet]](2023-03-22.worksheet.html)
+* Tracing assembly code (2023-03-24) [[Worksheet]](2023-03-24.worksheet.html)
