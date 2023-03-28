@@ -60,4 +60,5 @@
 [[Worksheet]](2023-03-22.worksheet.html)
 * Tracing assembly code (2023-03-24) [[Notes]](2023-03-24.notes.html) 
 [[Worksheet]](2023-03-24.worksheet.html)
-* conditionals (2023-03-27) [[Worksheet]](2023-03-27.worksheet.html)
+* conditionals (2023-03-27) [[Notes]](2023-03-27.notes.html) 
+[[Worksheet]](2023-03-27.worksheet.html)
