@@ -64,3 +64,6 @@
 [[Worksheet]](2023-03-27.worksheet.html)
 * functions (2023-03-29) [[Notes]](2023-03-29.notes.html) 
 [[Worksheet]](2023-03-29.worksheet.html)
+
+## Review
+* Exam 2 (2023-03-31) [[Worksheet]](2023-03-31.worksheet.html)
