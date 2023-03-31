@@ -66,4 +66,5 @@
 [[Worksheet]](2023-03-29.worksheet.html)
 
 ## Review
-* Exam 2 (2023-03-31) [[Worksheet]](2023-03-31.worksheet.html)
+* Exam 2 (2023-03-31) [[Notes]](2023-03-31.notes.html) 
+[[Worksheet]](2023-03-31.worksheet.html)
