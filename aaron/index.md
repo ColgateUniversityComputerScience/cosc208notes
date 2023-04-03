@@ -71,3 +71,4 @@
 
 ## Efficiency
 * memory hierarchy; locality (2023-04-05) [[Worksheet]](2023-04-05.worksheet.html)
+* caching (2023-04-07) [[Worksheet]](2023-04-07.worksheet.html)
