@@ -68,3 +68,6 @@
 ## Review
 * Exam 2 (2023-03-31) [[Notes]](2023-03-31.notes.html) 
 [[Worksheet]](2023-03-31.worksheet.html)
+
+## Efficiency
+* memory hierarchy; locality (2023-04-05) [[Worksheet]](2023-04-05.worksheet.html)
