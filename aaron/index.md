@@ -75,3 +75,6 @@
 * caching (2023-04-07) [[Notes]](2023-04-07.notes.html) 
 [[Worksheet]](2023-04-07.worksheet.html)
 * caching (continued); loop optimization (2023-04-10) [[Worksheet]](2023-04-10.worksheet.html)
+
+## Multiprocessing
+* limited direct execution; system calls (2023-04-12) [[Worksheet]](2023-04-12.worksheet.html)
