@@ -82,4 +82,6 @@
 [[Worksheet]](2023-04-12.worksheet.html)
 * processes; fork & wait (2023-04-14) [[Notes]](2023-04-14.notes.html) 
 [[Worksheet]](2023-04-14.worksheet.html)
-* non-preemptive scheduling (2023-04-21) [[Worksheet]](2023-04-21.worksheet.html)
+* scheduling (2023-04-21) [[Notes]](2023-04-21.notes.html) 
+[[Worksheet]](2023-04-21.worksheet.html)
+* scheduling (continued); threads (2023-04-24) [[Worksheet]](2023-04-24.worksheet.html)
