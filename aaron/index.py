@@ -21,16 +21,25 @@ with open('index.md', 'w') as index:
             else:
                 category = None
             date = contents["cells"][0]["source"][1].split(",")[2].strip(" _")
-            print("{} ({})".format(title, date))
-            if (category != last_category):
-                index.write("\n## {}\n".format(category))
-            index.write("* {} ({}) ".format(
-                    title, date))
-            if (datetime.date.today() > dateutil.parser.parse(date).date()
-                or (datetime.date.today() == dateutil.parser.parse(date).date() and datetime.datetime.now().hour >= 12)):
-                index.write("[[Notes]]({}) \n".format(
-                        filename.replace('.ipynb', '.notes.html')))
-            index.write("[[Worksheet]]({})\n".format(
-                    filename.replace('.ipynb', '.worksheet.html')))
-            last_category = category
+            notes_filename = filename.replace('.ipynb', '.notes.html')
+            worksheet_filename = filename.replace('.ipynb', '.worksheet.html')
+        elif filename.endswith('.notes.pdf'):
+            date = filename.split('.')[0]
+            title = "wait and exec"
+            category = "Multiprocessing"
+            notes_filename = filename
+            worksheet_filename = filename.replace('.notes', '.worksheet')
+        else:
+            continue
+        
+        print("{} ({})".format(title, date))
+        if (category != last_category):
+            index.write("\n## {}\n".format(category))
+        index.write("* {} ({}) ".format(
+                title, date))
+        if (datetime.date.today() > dateutil.parser.parse(date).date()
+            or (datetime.date.today() == dateutil.parser.parse(date).date() and datetime.datetime.now().hour >= 12)):
+            index.write("[[Notes]]({}) \n".format(notes_filename))
+        index.write("[[Worksheet]]({})\n".format(worksheet_filename))
+        last_category = category
 
