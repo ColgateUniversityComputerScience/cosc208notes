@@ -90,4 +90,6 @@
 [[Worksheet]](2023-04-24.worksheet.html)
 
 ## Multithreading
-* threads (2023-04-26) [[Worksheet]](2023-04-26.worksheet.html)
+* threads (2023-04-26) [[Notes]](2023-04-26.notes.html) 
+[[Worksheet]](2023-04-26.worksheet.html)
+* writing multi-threaded programs (2023-04-28) [[Worksheet]](2023-04-28.worksheet.html)
