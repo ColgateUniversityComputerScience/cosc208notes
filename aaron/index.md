@@ -93,3 +93,7 @@
 * threads (2023-04-26) [[Notes]](2023-04-26.notes.html) 
 [[Worksheet]](2023-04-26.worksheet.html)
 * writing multi-threaded programs (2023-04-28) [[Worksheet]](2023-04-28.worksheet.html)
+
+## Virtualization
+* virtual machines & containers (2023-05-01) [[Worksheet]](2023-05-01.worksheet.html)
+* data centers; cloud computing (2023-05-03) [[Worksheet]](2023-05-03.worksheet.html)
