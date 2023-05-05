@@ -100,4 +100,5 @@
 [[Worksheet]](2023-05-01.worksheet.html)
 * data centers (2023-05-03) [[Notes]](2023-05-03.notes.html) 
 [[Worksheet]](2023-05-03.worksheet.html)
-* cloud computing; Exam 3 review (2023-05-05) [[Worksheet]](2023-05-05.worksheet.html)
+* cloud computing; Exam 3 review (2023-05-05) [[Notes]](2023-05-05.notes.html) 
+[[Worksheet]](2023-05-05.worksheet.html)
