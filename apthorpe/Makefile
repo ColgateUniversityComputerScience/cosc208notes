@@ -4,7 +4,6 @@ HTML = $(NOTEBOOKS:.ipynb=.html)
 MARKDOWN = $(NOTEBOOKS:.ipynb=.md)
 
 all: $(HTML) $(MARKDOWN)
-	python3 index.py
 
 .PRECIOUS: %.notes.md %.slides.html %.worksheet.md
 
@@ -22,6 +21,9 @@ all: $(HTML) $(MARKDOWN)
 
 %.colab: %.ipynb
 	jupyter nbconvert --to notebook $< --TagRemovePreprocessor.enabled=True --TagRemovePreprocessor.remove_cell_tags "notes-only" --output='$@'
+
+index: 
+	python3 index.py
 
 clean:
 	rm *.slides.html *.notes.md *.worksheet.md

@@ -3,4 +3,4 @@
 * Hello, Computer Systems (2023-08-24) [[Worksheet]](2023-08-24.worksheet.html)
 
 ## C
-* compilation; types; operators; output (2023-08-28) [[Worksheet]](2023-08-28.worksheet.html)
+* Compilation, variables, operators, output, control structures (2023-08-28) [[Worksheet]](2023-08-28.worksheet.html)
