@@ -4,4 +4,5 @@
 [[Worksheet]](2023-08-24.worksheet.html)
 
 ## C
-* Compilation, variables, operators, output, control structures (2023-08-28) [[Worksheet]](2023-08-28.worksheet.html)
+* Compilation, variables, operators, output, control structures (2023-08-28) [[Notes]](2023-08-28.notes.html) 
+[[Worksheet]](2023-08-28.worksheet.html)
