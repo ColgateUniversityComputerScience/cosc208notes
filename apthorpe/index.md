@@ -6,4 +6,5 @@
 ## C
 * Compilation, variables, operators, output, control structures (2023-08-28) [[Notes]](2023-08-28.notes.html) 
 [[Worksheet]](2023-08-28.worksheet.html)
-* Functions, libraries, stack frames (2023-08-30) [[Worksheet]](2023-08-30.worksheet.html)
+* Functions, libraries, stack frames (2023-08-30) [[Notes]](2023-08-30.notes.html) 
+[[Worksheet]](2023-08-30.worksheet.html)
