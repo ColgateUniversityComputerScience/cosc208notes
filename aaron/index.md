@@ -6,7 +6,8 @@
 ## C
 * compilation; variables; operators; output; control structures (2023-08-28) [[Notes]](2023-08-28.notes.html) 
 [[Worksheet]](2023-08-28.worksheet.html)
-* defining functions; using libraries; stack frames (2023-08-30) [[Worksheet]](2023-08-30.worksheet.html)
+* defining functions; using libraries; stack frames (2023-08-30) [[Notes]](2023-08-30.notes.html) 
+[[Worksheet]](2023-08-30.worksheet.html)
 * arrays; strings; input (2023-09-01) [[Worksheet]](2023-09-01.worksheet.html)
 
 ## Number representation
