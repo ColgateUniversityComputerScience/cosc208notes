@@ -8,3 +8,4 @@
 [[Worksheet]](2023-08-28.worksheet.html)
 * Functions, libraries, stack frames (2023-08-30) [[Notes]](2023-08-30.notes.html) 
 [[Worksheet]](2023-08-30.worksheet.html)
+* Arrays, strings, input (2023-09-01) [[Worksheet]](2023-09-01.worksheet.html)
