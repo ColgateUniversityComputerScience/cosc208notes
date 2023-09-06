@@ -14,5 +14,6 @@
 ## Number representation
 * number bases; base conversion (2023-09-04) [[Notes]](2023-09-04.notes.html) 
 [[Worksheet]](2023-09-04.worksheet.html)
-* base conversion (continued); signed integers (2023-09-06) [[Worksheet]](2023-09-06.worksheet.html)
+* base conversion (continued); signed integers (2023-09-06) [[Notes]](2023-09-06.notes.html) 
+[[Worksheet]](2023-09-06.worksheet.html)
 * type conversion; binary arithmetic (2023-09-08) [[Worksheet]](2023-09-08.worksheet.html)
