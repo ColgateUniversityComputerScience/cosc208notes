@@ -16,3 +16,4 @@
 [[Worksheet]](2023-09-04.worksheet.html)
 * Base conversion (continued); signed integers (2023-09-06) [[Notes]](2023-09-06.notes.html) 
 [[Worksheet]](2023-09-06.worksheet.html)
+* Type conversion; binary arithmetic (2023-09-08) [[Worksheet]](2023-09-08.worksheet.html)
