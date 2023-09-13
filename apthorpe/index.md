@@ -22,4 +22,5 @@
 [[Worksheet]](2023-09-11.worksheet.html)
 
 ## Program memory
-* Pointers (2023-09-13) [[Worksheet]](2023-09-13.worksheet.html)
+* Pointers (2023-09-13) [[Notes]](2023-09-13.notes.html) 
+[[Worksheet]](2023-09-13.worksheet.html)
