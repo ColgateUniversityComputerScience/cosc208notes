@@ -18,7 +18,8 @@
 [[Worksheet]](2023-09-06.worksheet.html)
 * type conversion; binary arithmetic (2023-09-08) [[Notes]](2023-09-08.notes.html) 
 [[Worksheet]](2023-09-08.worksheet.html)
-*  binary arithmetic; overflow; bitwise operators (2023-09-11) [[Worksheet]](2023-09-11.worksheet.html)
+*  binary arithmetic; overflow; bitwise operators (2023-09-11) [[Notes]](2023-09-11.notes.html) 
+[[Worksheet]](2023-09-11.worksheet.html)
 
 ## Program memory
 * pointers (2023-09-13) [[Worksheet]](2023-09-13.worksheet.html)
