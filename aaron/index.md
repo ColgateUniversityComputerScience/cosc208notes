@@ -26,4 +26,4 @@
 [[Worksheet]](2023-09-13.worksheet.html)
 * arrays & pointers (2023-09-15) [[Worksheet]](2023-09-15.worksheet.html)
 * pointer arithmetic; pointers as return values (2023-09-18) [[Worksheet]](2023-09-18.worksheet.html)
-* malloc and free; dynamic 1D arrays (2023-09-20) [[Worksheet]](2023-09-20.worksheet.html)
+* malloc and free (2023-09-20) [[Worksheet]](2023-09-20.worksheet.html)
