@@ -24,3 +24,4 @@
 ## Program memory
 * Pointers (2023-09-13) [[Notes]](2023-09-13.notes.html) 
 [[Worksheet]](2023-09-13.worksheet.html)
+* Arrays & pointers (2023-09-15) [[Worksheet]](2023-09-15.worksheet.html)
