@@ -26,3 +26,4 @@
 [[Worksheet]](2023-09-13.worksheet.html)
 * Arrays & pointers (2023-09-15) [[Notes]](2023-09-15.notes.html) 
 [[Worksheet]](2023-09-15.worksheet.html)
+* Pointer arithmetic; pointers as return values (2023-09-18) [[Worksheet]](2023-09-18.worksheet.html)
