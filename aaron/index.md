@@ -31,3 +31,6 @@
 * malloc and free (2023-09-20) [[Notes]](2023-09-20.notes.html) 
 [[Worksheet]](2023-09-20.worksheet.html)
 * 2D arrays (2023-09-22) [[Worksheet]](2023-09-22.worksheet.html)
+
+## Review
+* Midterm Exam 1 (2023-09-25) [[Worksheet]](2023-09-25.worksheet.html)
