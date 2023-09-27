@@ -28,6 +28,8 @@
 [[Worksheet]](2023-09-15.worksheet.html)
 * Pointer arithmetic; pointers as return values (2023-09-18) [[Notes]](2023-09-18.notes.html) 
 [[Worksheet]](2023-09-18.worksheet.html)
+* Malloc and free (2023-09-20) [[Notes]](2023-09-20.notes.html) 
+[[Worksheet]](2023-09-20.worksheet.html)
 
 ## Review
 * Midterm Exam 1 (2023-09-25) [[Notes]](2023-09-25.notes.html) 
