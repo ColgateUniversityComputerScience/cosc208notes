@@ -38,4 +38,8 @@
 [[Worksheet]](2023-09-25.worksheet.html)
 
 ## Program memory
-* structs (2023-10-02) [[Worksheet]](2023-10-02.worksheet.html)
+* structs (2023-10-02) [[Notes]](2023-10-02.notes.html) 
+[[Worksheet]](2023-10-02.worksheet.html)
+
+## Architecture
+* von Neumann; logic gates (2023-10-04) [[Worksheet]](2023-10-04.worksheet.html)
