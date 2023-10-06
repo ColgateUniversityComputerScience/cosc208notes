@@ -40,3 +40,6 @@
 [[Worksheet]](2023-10-02.worksheet.html)
 * structs (2023-10-04) [[Notes]](2023-10-04.notes.html) 
 [[Worksheet]](2023-10-04.worksheet.html)
+
+## Architecture
+* von Neumann; logic gates; 1-bit circuits (2023-10-06) [[Worksheet]](2023-10-06.worksheet.html)
