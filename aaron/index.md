@@ -48,4 +48,8 @@
 [[Worksheet]](2023-10-06.worksheet.html)
 * n-bit circuits; multiplexers (2023-10-11) [[Notes]](2023-10-11.notes.html) 
 [[Worksheet]](2023-10-11.worksheet.html)
-* processing unit (2023-10-13) [[Worksheet]](2023-10-13.worksheet.html)
+* processing unit (2023-10-13) [[Notes]](2023-10-13.notes.html) 
+[[Worksheet]](2023-10-13.worksheet.html)
+
+## Assembly
+* operations and operands; mapping assembly to C (2023-10-16) [[Worksheet]](2023-10-16.worksheet.html)
