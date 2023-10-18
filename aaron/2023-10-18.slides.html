@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
 
-<title>2023-03-22 slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>2023-10-18 slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 <!-- General and theme style sheets -->
 <link rel="stylesheet" href="https://unpkg.com/reveal.js@4.0.2/dist/reveal.css">
@@ -14669,7 +14669,151 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Q1: <em>The following C code was compiled into assembly.</em></p>
+<p><em>Use the provided ARM64 reference sheet to answer the following questions.</em></p>
+<ul>
+<li>Q1: <em>What is the difference between a <code>neg</code> instruction and a <code>mvn</code> instruction?</em></li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<ul>
+<li>Q2: <em>What is the difference between an <code>orr</code> instruction and a <code>eor</code> instruction?</em></li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<ul>
+<li>Q3: <em>What is the difference between a <code>lsr</code> instruction and a <code>ldr</code> instruction?</em></li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<ul>
+<li>Q4: <em>What is the difference between a <code>add</code> instruction and a <code>and</code> instruction?</em></li>
+</ul>
+
+</div>
+</div>
+</div>
+</div></section></section><section ><section >
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Mapping-assembly-code-to-C-code">Mapping assembly code to C code<a class="anchor-link" href="#Mapping-assembly-code-to-C-code">&#182;</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<ul>
+<li>Example</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs   celltag_worksheet-code-only">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-c"><pre><span></span><span class="cm">/* 1*/</span><span class="w">   </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cm">/* 2*/</span><span class="w">   </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="cm">/* 3*/</span><span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="nf">dog_years</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">birth</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="cm">/* 4*/</span><span class="w">       </span><span class="kt">int</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2023</span><span class="p">;</span><span class="w"></span>
+<span class="cm">/* 5*/</span><span class="w">       </span><span class="kt">int</span><span class="w"> </span><span class="n">years</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">birth</span><span class="p">;</span><span class="w"></span>
+<span class="cm">/* 6*/</span><span class="w">       </span><span class="n">years</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">years</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span><span class="w"></span>
+<span class="cm">/* 7*/</span><span class="w">       </span><span class="k">return</span><span class="w"> </span><span class="n">years</span><span class="p">;</span><span class="w"></span>
+<span class="cm">/* 8*/</span><span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="cm">/* 9*/</span><span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="cm">/*10*/</span><span class="w">       </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;What year were you born? &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="cm">/*11*/</span><span class="w">       </span><span class="kt">char</span><span class="w"> </span><span class="n">year</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span><span class="w"></span>
+<span class="cm">/*12*/</span><span class="w">       </span><span class="n">fgets</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="n">stdin</span><span class="p">);</span><span class="w"></span>
+<span class="cm">/*13*/</span><span class="w">       </span><span class="kt">int</span><span class="w"> </span><span class="n">dog_age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dog_years</span><span class="p">(</span><span class="n">atoi</span><span class="p">(</span><span class="n">year</span><span class="p">));</span><span class="w"></span>
+<span class="cm">/*14*/</span><span class="w">       </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;You are %d dog years old</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dog_age</span><span class="p">);</span><span class="w"></span>
+<span class="cm">/*15*/</span><span class="w">   </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div></section><section >
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_worksheet-only" data-mime-type="text/markdown">
+<pre><code>0000000000000914 &lt;dog_years&gt;:
+ 914:   d10083ff        sub     sp, sp, #0x20
+ 918:   b9000fe0        str     w0, [sp, #12]
+ 91c:   5280fce0        mov     w0, #0x7e7
+ 920:   b9001be0        str     w0, [sp, #24]
+ 924:   b9401be1        ldr     w1, [sp, #24]
+ 928:   b9400fe0        ldr     w0, [sp, #12]
+ 92c:   4b000020        sub     w0, w1, w0
+ 930:   b9001fe0        str     w0, [sp, #28]
+ 934:   b9401fe1        ldr     w1, [sp, #28]
+ 938:   2a0103e0        mov     w0, w1
+ 93c:   531d7000        lsl     w0, w0, #3
+ 940:   4b010000        sub     w0, w0, w1
+ 944:   b9001fe0        str     w0, [sp, #28]
+ 948:   b9401fe0        ldr     w0, [sp, #28]
+ 94c:   910083ff        add     sp, sp, #0x20
+ 950:   d65f03c0        ret
+</code></pre>
+<div style="page-break-after:always;"></div>
+
+</div>
+</div>
+</div>
+</div></section><section >
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<ul>
+<li>Q5: <em>For each line of assembly, indicate which original line of C code the assembly instruction was derived from.</em></li>
+</ul>
 
 </div>
 </div>
@@ -14701,18 +14845,6 @@ div.jp-OutputPrompt {
 </div>
 </div>
 
-</div></section><section >
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><em>For each line of assembly, indicate which original line of C code (above) the assembly instruction was derived from.</em></p>
-
-</div>
-</div>
-</div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
@@ -14721,17 +14853,78 @@ div.jp-OutputPrompt {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_worksheet-only" data-mime-type="text/markdown">
 <pre><code>000000000000076c &lt;years_to_double&gt;:
-    76c:	d10083ff 	sub  sp, sp, #0x20
-    770:	b9000fe0 	str  w0, [sp, #12]
-    774:	52800900 	mov  w0, #0x48
-    778:	b9001be0 	str  w0, [sp, #24]
-    77c:	b9401be1 	ldr  w1, [sp, #24]
-    780:	b9400fe0 	ldr  w0, [sp, #12]
-    784:	1ac00c20 	sdiv w0, w1, w0
-    788:	b9001fe0 	str  w0, [sp, #28]
-    78c:	b9401fe0 	ldr  w0, [sp, #28]
-    790:	910083ff 	add  sp, sp, #0x20
-    794:	d65f03c0 	ret
+    76c:    d10083ff     sub  sp, sp, #0x20
+    770:    b9000fe0     str  w0, [sp, #12]
+    774:    52800900     mov  w0, #0x48
+    778:    b9001be0     str  w0, [sp, #24]
+    77c:    b9401be1     ldr  w1, [sp, #24]
+    780:    b9400fe0     ldr  w0, [sp, #12]
+    784:    1ac00c20     sdiv w0, w1, w0
+    788:    b9001fe0     str  w0, [sp, #28]
+    78c:    b9401fe0     ldr  w0, [sp, #28]
+    790:    910083ff     add  sp, sp, #0x20
+    794:    d65f03c0     ret
+</code></pre>
+
+</div>
+</div>
+</div>
+</div></section><section >
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<ul>
+<li>Q6: <em>For each line of assembly, indicate which original line of C code the assembly instruction was derived from.</em></li>
+</ul>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs   celltag_worksheet-code-only">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-c"><pre><span></span><span class="cm">/* 1*/</span><span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cm">/* 2*/</span><span class="w">  </span><span class="kt">long</span><span class="w"> </span><span class="nf">deref</span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="cm">/* 3*/</span><span class="w">      </span><span class="kt">long</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span><span class="w"></span>
+<span class="cm">/* 4*/</span><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">v</span><span class="p">;</span><span class="w"></span>
+<span class="cm">/* 5*/</span><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="cm">/* 6*/</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="cm">/* 7*/</span><span class="w">      </span><span class="kt">long</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<span class="cm">/* 8*/</span><span class="w">      </span><span class="kt">long</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">deref</span><span class="p">(</span><span class="o">&amp;</span><span class="n">x</span><span class="p">);</span><span class="w"></span>
+<span class="cm">/* 9*/</span><span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;y = %ld</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span><span class="w"></span>
+<span class="cm">/*10*/</span><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="cm">/*11*/</span><span class="w">  </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_worksheet-only" data-mime-type="text/markdown">
+<pre><code>0000000000000854 &lt;deref&gt;:
+ 854:   d10083ff    sub sp, sp, #0x20
+ 858:   f90007e0    str x0, [sp, #8]
+ 85c:   f94007e0    ldr x0, [sp, #8]
+ 860:   f9400000    ldr x0, [x0]
+ 864:   f9000fe0    str x0, [sp, #24]
+ 868:   f9400fe0    ldr x0, [sp, #24]
+ 86c:   910083ff    add sp, sp, #0x20
+ 870:   d65f03c0    ret
 </code></pre>
 
 </div>
@@ -14744,165 +14937,7 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Load/store-operations">Load/store operations<a class="anchor-link" href="#Load/store-operations">&#182;</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><em>Write the C code equivalent for each line of assembly, treating registers as if they were variable names.</em></p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li>Q2: <code>ldr x0, [sp]</code></li>
-</ul>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li>Q3: <code>str w0, [sp]</code></li>
-</ul>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li>Q4: <code>ldr x1, [sp,#12]</code></li>
-</ul>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li>Q5: <code>str x2, [x3,#0x10]</code></li>
-</ul>
-
-</div>
-</div>
-</div>
-</div></section></section><section ><section >
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Arithmetic-and-logical-operations">Arithmetic and logical operations<a class="anchor-link" href="#Arithmetic-and-logical-operations">&#182;</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><em>Write the C code equivalent for each line of assembly, treating registers as if they were variable names.</em></p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li>Q6: <code>lsl w0, w1, w2</code></li>
-</ul>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li>Q7: <code>and w3, w4, w3</code></li>
-</ul>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li>Q8: <code>mul x2, x4, x6</code></li>
-</ul>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li>Q9: <code>sdiv w9, w9, w10</code></li>
-</ul>
-
-</div>
-</div>
-</div>
-</div></section></section><section ><section >
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Translating-assembly-code-to-low-level-C-code">Translating assembly code to low-level C code<a class="anchor-link" href="#Translating-assembly-code-to-low-level-C-code">&#182;</a></h2><p>The following C program (<code>operands.c</code>) has been compiled into assembly:</p>
+<p>The following C program (<code>operands.c</code>) has been compiled into assembly:</p>
 
 </div>
 </div>
@@ -14949,46 +14984,32 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li>Q10: <em>Write the C code equivalent for each line of assembly, treating registers as if they were variable names. The assembly code for the <code>operandsA</code> function has already been translated into C code.</em></li>
-</ul>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_worksheet-only" data-mime-type="text/markdown">
 <pre><code>00000000000007ec &lt;operandsA&gt;:
-    7ec:	d10043ff 	sub	sp, sp, #0x10   // sp = sp - 0x10
-    7f0:	b9000fe0 	str	w0, [sp, #12]   // *(sp + 12) = w0
-    7f4:	b9400fe0 	ldr	w0, [sp, #12]   // w0 = *(sp + 12)
-    7f8:	910043ff 	add	sp, sp, #0x10   // sp = sp + 0x10
-    7fc:	d65f03c0 	ret	                // return
+    7ec:    d10043ff     sub    sp, sp, #0x10
+    7f0:    b9000fe0     str    w0, [sp, #12]
+    7f4:    b9400fe0     ldr    w0, [sp, #12]
+    7f8:    910043ff     add    sp, sp, #0x10
+    7fc:    d65f03c0     ret    
 0000000000000800 &lt;operandsB&gt;:
-    800:	d10043ff 	sub	sp, sp, #0x10   //
-    804:	f90007e0 	str	x0, [sp, #8]    //
-    808:	f94007e0 	ldr	x0, [sp, #8]    //
-    80c:	910043ff 	add	sp, sp, #0x10   //
-    810:	d65f03c0 	ret	                //
+    800:    d10043ff     sub    sp, sp, #0x10
+    804:    f90007e0     str    x0, [sp, #8]
+    808:    f94007e0     ldr    x0, [sp, #8]
+    80c:    910043ff     add    sp, sp, #0x10
+    810:    d65f03c0     ret
 0000000000000814 &lt;operandsC&gt;:
-    814:	d10043ff 	sub	sp, sp, #0x10   //
-    818:	f90007e0 	str	x0, [sp, #8]    //
-    81c:	f94007e0 	ldr	x0, [sp, #8]    //
-    820:	b9400000 	ldr	w0, [x0]        //
-    824:	910043ff 	add	sp, sp, #0x10   //
-    828:	d65f03c0 	ret	                //
+    814:    d10043ff     sub    sp, sp, #0x10
+    818:    f90007e0     str    x0, [sp, #8]
+    81c:    f94007e0     ldr    x0, [sp, #8]
+    820:    b9400000     ldr    w0, [x0]
+    824:    910043ff     add    sp, sp, #0x10
+    828:    d65f03c0     ret
 000000000000082c &lt;operandsD&gt;:
-    82c:	d10043ff 	sub	sp, sp, #0x10   //
-    830:	f90007e0 	str	x0, [sp, #8]    //
-    834:	f94007e0 	ldr	x0, [sp, #8]    //
-    838:	f9400000 	ldr	x0, [x0]        //
-    83c:	910043ff 	add	sp, sp, #0x10   //
-    840:	d65f03c0 	ret	                //
+    82c:    d10043ff     sub    sp, sp, #0x10
+    830:    f90007e0     str    x0, [sp, #8]
+    834:    f94007e0     ldr    x0, [sp, #8]
+    838:    f9400000     ldr    x0, [x0]
+    83c:    910043ff     add    sp, sp, #0x10
+    840:    d65f03c0     ret
 </code></pre>
 <div style="page-break-after:always;"></div>
 
@@ -15003,7 +15024,7 @@ div.jp-OutputPrompt {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <ul>
-<li>Q11: <em>How does the assembly code for <code>operandsA</code> and <code>operandsB</code> differ? Why?</em></li>
+<li>Q7: <em>How does the assembly code for <code>operandsA</code> and <code>operandsB</code> differ? Why?</em></li>
 </ul>
 
 </div>
@@ -15017,7 +15038,7 @@ div.jp-OutputPrompt {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <ul>
-<li>Q12: <em>How does the assembly code for <code>operandsB</code> and <code>operandsD</code> differ? Why?</em></li>
+<li>Q8: <em>How does the assembly code for <code>operandsB</code> and <code>operandsD</code> differ? Why?</em></li>
 </ul>
 
 </div>
@@ -15031,7 +15052,7 @@ div.jp-OutputPrompt {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <ul>
-<li>Q13: <em>How does the assembly code for <code>operandsC</code> and <code>operandsD</code> differ? Why?</em></li>
+<li>Q9: <em>How does the assembly code for <code>operandsC</code> and <code>operandsD</code> differ? Why?</em></li>
 </ul>
 
 </div>
@@ -15056,13 +15077,44 @@ div.jp-OutputPrompt {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <ul>
-<li>Q14: <em>Write the C code equivalent for each line of assembly, treating registers as if they were variable names.</em></li>
+<li>Q10: <em>For each line of assembly, indicate which original line of C code the assembly instruction was derived from.</em></li>
 </ul>
 
 </div>
 </div>
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs   celltag_worksheet-code-only">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-c"><pre><span></span><span class="cm">/* 1*/</span><span class="w">   </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cm">/* 2*/</span><span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="nf">seasons_of_love</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="cm">/* 3*/</span><span class="w">       </span><span class="kt">int</span><span class="w"> </span><span class="n">dpy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">365</span><span class="p">;</span><span class="w"></span>
+<span class="cm">/* 4*/</span><span class="w">       </span><span class="kt">int</span><span class="w"> </span><span class="n">hpd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">24</span><span class="p">;</span><span class="w"></span>
+<span class="cm">/* 5*/</span><span class="w">       </span><span class="kt">int</span><span class="w"> </span><span class="n">mph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span><span class="w"></span>
+<span class="cm">/* 6*/</span><span class="w">       </span><span class="kt">int</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dpy</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">hpd</span><span class="p">;</span><span class="w"></span>
+<span class="cm">/* 7*/</span><span class="w">       </span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mph</span><span class="p">;</span><span class="w"></span>
+<span class="cm">/* 8*/</span><span class="w">       </span><span class="k">return</span><span class="w"> </span><span class="n">m</span><span class="p">;</span><span class="w"></span>
+<span class="cm">/* 9*/</span><span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="cm">/*10*/</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="cm">/*11*/</span><span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">minutes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">seasons_of_love</span><span class="p">();</span><span class="w"></span>
+<span class="cm">/*12*/</span><span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d minutes</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">minutes</span><span class="p">);</span><span class="w"></span>
+<span class="cm">/*13*/</span><span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d moments so dear</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">minutes</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">600</span><span class="p">);</span><span class="w"></span>
+<span class="cm">/*14*/</span><span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d minutes</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">minutes</span><span class="p">);</span><span class="w"></span>
+<span class="cm">/*15*/</span><span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;How do you measure? Measure a year?</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="cm">/*16*/</span><span class="w">  </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15093,60 +15145,6 @@ div.jp-OutputPrompt {
 </div>
 </div>
 </div>
-</div></section><section >
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li>Q15: <em>Write the C code equivalent for each line of assembly, treating registers as if they were variable names.</em></li>
-</ul>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_worksheet-only" data-mime-type="text/markdown">
-<pre><code>000000000000076c &lt;years_to_double&gt;:
-    76c:	d10083ff 	sub  sp, sp, #0x20
-    770:	b9000fe0 	str  w0, [sp, #12]
-    774:	52800900 	mov  w0, #0x48
-    778:	b9001be0 	str  w0, [sp, #24]
-    77c:	b9401be1 	ldr  w1, [sp, #24]
-    780:	b9400fe0 	ldr  w0, [sp, #12]
-    784:	1ac00c20 	sdiv w0, w1, w0
-    788:	b9001fe0 	str  w0, [sp, #28]
-    78c:	b9401fe0 	ldr  w0, [sp, #28]
-    790:	910083ff 	add  sp, sp, #0x20
-    794:	d65f03c0 	ret
-</code></pre>
-
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-c"><pre><span></span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
 </div></section></section>
 </div>
 </div>
