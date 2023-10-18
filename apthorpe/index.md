@@ -50,4 +50,6 @@
 [[Worksheet]](2023-10-13.worksheet.html)
 
 ## Assembly
-* operations and operands; mapping assembly to C (2023-10-16) [[Worksheet]](2023-10-16.worksheet.html)
+* Operations and operands; mapping assembly to C (2023-10-16) [[Notes]](2023-10-16.notes.html) 
+[[Worksheet]](2023-10-16.worksheet.html)
+* Mapping assembly code to C (2023-10-18) [[Worksheet]](2023-10-18.worksheet.html)
