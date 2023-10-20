@@ -54,4 +54,6 @@
 ## Assembly
 * operations and operands (2023-10-16) [[Notes]](2023-10-16.notes.html) 
 [[Worksheet]](2023-10-16.worksheet.html)
-* Mapping assembly code to C (2023-10-18) [[Worksheet]](2023-10-18.worksheet.html)
+* Mapping assembly code to C (2023-10-18) [[Notes]](2023-10-18.notes.html) 
+[[Worksheet]](2023-10-18.worksheet.html)
+* Tracing assembly code (2023-10-20) [[Worksheet]](2023-10-20.worksheet.html)
