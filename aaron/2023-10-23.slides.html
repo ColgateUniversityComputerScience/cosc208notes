@@ -14777,7 +14777,7 @@ w/x1 = 5
     788:    540000a0     b.eq   79c &lt;divide_safe+0x30&gt;
     78c:    b9400fe1     ldr    w1, [sp, #12]
     790:    b9400be0     ldr    w0, [sp, #8]
-    794:    1ac00c20     sdiv   w0, w1, w0
+    794:    1ac00c20     udiv   w0, w1, w0
     798:    b9001fe0     str    w0, [sp, #28]
     79c:    b9401fe0     ldr    w0, [sp, #28]
     7a0:    910083ff     add    sp, sp, #0x20
@@ -14914,23 +14914,6 @@ w/x1 = 5
  790:   910083ff        add     sp, sp, #0x20
  794:   d65f03c0        ret
 </code></pre>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_notes-only" data-mime-type="text/markdown">
-<ul>
-<li>For loop can always be expressed using a while loop<ul>
-<li>Assembly code generated for a for loop matches the assembly code generated for a while loop</li>
-</ul>
-</li>
-</ul>
 
 </div>
 </div>
