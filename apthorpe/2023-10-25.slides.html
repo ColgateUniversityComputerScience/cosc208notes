@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
 
-<title>2023-10-23 slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>2023-10-25 slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 <!-- General and theme style sheets -->
 <link rel="stylesheet" href="https://unpkg.com/reveal.js@4.0.2/dist/reveal.css">
@@ -15174,6 +15174,7 @@ div.jp-OutputPrompt {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Announcements">Announcements<a class="anchor-link" href="#Announcements">&#182;</a></h2><ul>
 <li>Midterm Exam 2: Mon, Oct 30 6:30pm-8:30pm</li>
+<li>Project 3 due Thurs, Nov 9</li>
 </ul>
 
 </div>
@@ -15188,23 +15189,21 @@ div.jp-OutputPrompt {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Outline">Outline<a class="anchor-link" href="#Outline">&#182;</a></h2><ul>
 <li>Warm-up</li>
-<li>Mapping C conditionals to assembly</li>
-<li>Transforming C code to goto-form</li>
-<li>Practice with conditionals</li>
-<li>Mapping C loops to assembly &amp; transforming to goto form</li>
+<li>Mapping C loops to assembly</li>
+<li>Functions</li>
 </ul>
 
 </div>
 </div>
 </div>
 </div></section></section><section ><section >
-<div id="cell-id=44ca8936-a4e8-48ca-b099-db88b663c676" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div id="cell-id=e663073f-3384-4891-978a-b8c31d0a6263" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Warm-up-(Q3-&amp;-Q4-from-last-class)">Warm-up (Q3 &amp; Q4 from last class)<a class="anchor-link" href="#Warm-up-(Q3-&amp;-Q4-from-last-class)">&#182;</a></h2>
+<h2 id="Warm-up">Warm-up<a class="anchor-link" href="#Warm-up">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -15216,11 +15215,14 @@ div.jp-OutputPrompt {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-c"><pre><span></span><span class="cm">/*1*/</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="nf">divide</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">numerator</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">denominator</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/*2*/</span><span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
-<span class="cm">/*3*/</span><span class="w">      </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numerator</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">denominator</span><span class="p">;</span>
-<span class="cm">/*4*/</span><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
-<span class="cm">/*5*/</span><span class="w">  </span><span class="p">}</span>
+<div class=" highlight hl-c"><pre><span></span><span class="cm">/* 1*/</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="nf">adjust</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="cm">/* 2*/</span><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="cm">/* 3*/</span><span class="w">          </span><span class="n">value</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="cm">/* 4*/</span><span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="cm">/* 5*/</span><span class="w">          </span><span class="n">value</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="cm">/* 6*/</span><span class="w">      </span><span class="p">}</span>
+<span class="cm">/* 7*/</span><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+<span class="cm">/* 8*/</span><span class="w">  </span><span class="p">}</span>
 </pre></div>
 
      </div>
@@ -15229,61 +15231,48 @@ div.jp-OutputPrompt {
 </div>
 
 </div>
-<div id="cell-id=d5ce946a-c4d0-4dbf-b717-6c8c42fb7a0f" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div id="cell-id=ebb176b0-807a-4fe0-95ff-336daec12900" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_worksheet-only" data-mime-type="text/markdown">
-<pre><code>000000000000076c &lt;divide&gt;:
-    76c:    d10083ff     sub    sp, sp, #0x20
-    770:    b9000fe0     str    w0, [sp, #12]
-    774:    b9000be1     str    w1, [sp, #8]
-    778:    12800000     mov    w0, #0xffffffff
-    77c:    b9001fe0     str    w0, [sp, #28]
-    780:    b9400fe1     ldr    w1, [sp, #12]
-    784:    b9400be0     ldr    w0, [sp, #8]
-    788:    1ac00820     udiv   w0, w1, w0
-    78c:    b9001fe0     str    w0, [sp, #28]
-    790:    b9401fe0     ldr    w0, [sp, #28]
-    794:    910083ff     add    sp, sp, #0x20
-    798:    d65f03c0     ret
+<pre><code>0000000000000754 &lt;adjust&gt;:
+ 754:   d10043ff    sub sp, sp, #0x10
+ 758:   b9000fe0    str w0, [sp, #12]
+ 75c:   b9400fe0    ldr w0, [sp, #12]
+ 760:   7100001f    cmp w0, #0x0
+ 764:   5400010d    b.le    784 &lt;adjust+0x30&gt;
+ 768:   b9400fe0    ldr w0, [sp, #12]
+ 76c:   7100241f    cmp w0, #0xa
+ 770:   540000ac    b.ge    784 &lt;adjust+0x30&gt;
+ 774:   b9400fe0    ldr w0, [sp, #12]
+ 778:   51002800    sub w0, w0, #0xa
+ 77c:   b9000fe0    str w0, [sp, #12]
+ 780:   14000004    b   790 &lt;adjust+0x3c&gt;
+ 784:   b9400fe0    ldr w0, [sp, #12]
+ 788:   11002800    add w0, w0, #0xa
+ 78c:   b9000fe0    str w0, [sp, #12]
+ 790:   b9400fe0    ldr w0, [sp, #12]
+ 794:   910043ff    add sp, sp, #0x10
+ 798:   d65f03c0    ret
 </code></pre>
-
-</div>
-</div>
-</div>
-</div>
-<div id="cell-id=bf3b0f6c-e377-449b-8baa-5d25e8edac92" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li>Q2: <em>Assume the registers initially hold the following values:</em></li>
-</ul>
-<pre><code>sp = 0xFE0
-w/x0 = 100
-w/x1 = 5
-</code></pre>
-<p><em>Draw the contents of the stack and registers just prior to the execution of the last instruction (<code>ret</code>) above.</em></p>
 
 </div>
 </div>
 </div>
 </div></section></section><section ><section >
-<div id="cell-id=a176dd9c-601e-4bdb-864a-1592fea894b6" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div id="cell-id=bc000204-12cc-4597-8ffd-1948cf588205" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Mapping-C-conditionals-to-assembly">Mapping C conditionals to assembly<a class="anchor-link" href="#Mapping-C-conditionals-to-assembly">&#182;</a></h2>
+<h2 id="Mapping-C-loops-to-assembly">Mapping C loops to assembly<a class="anchor-link" href="#Mapping-C-loops-to-assembly">&#182;</a></h2>
 </div>
 </div>
 </div>
-</div><div id="cell-id=07c57368-0a2f-4f2d-bef3-b2eed13d432b" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div id="cell-id=77120044-0023-45b8-b37e-7448d07a92b8" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs   celltag_worksheet-code-only">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15291,13 +15280,14 @@ w/x1 = 5
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-c"><pre><span></span><span class="cm">/*1*/</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="nf">divide_safe</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">numerator</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">denominator</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/*2*/</span><span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
-<span class="cm">/*3*/</span><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">denominator</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/*4*/</span><span class="w">          </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numerator</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">denominator</span><span class="p">;</span>
-<span class="cm">/*5*/</span><span class="w">      </span><span class="p">}</span>
-<span class="cm">/*6*/</span><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
-<span class="cm">/*7*/</span><span class="w">  </span><span class="p">}</span>
+<div class=" highlight hl-c"><pre><span></span><span class="cm">/* 1*/</span><span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="nf">pow2</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="cm">/* 2*/</span><span class="w">       </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="cm">/* 3*/</span><span class="w">       </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="cm">/* 4*/</span><span class="w">           </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="cm">/* 5*/</span><span class="w">           </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="cm">/* 6*/</span><span class="w">       </span><span class="p">}</span>
+<span class="cm">/* 7*/</span><span class="w">       </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<span class="cm">/* 8*/</span><span class="w">   </span><span class="p">}</span>
 </pre></div>
 
      </div>
@@ -15306,45 +15296,47 @@ w/x1 = 5
 </div>
 
 </div>
-<div id="cell-id=c20bede3-4751-4766-b756-b0094ad1dd62" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div id="cell-id=76a63fff-098d-4dc2-9897-e39716a47e72" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_worksheet-only" data-mime-type="text/markdown">
-<pre><code>000000000000076c &lt;divide_safe&gt;:
-    76c:    d10083ff     sub    sp, sp, #0x20
-    770:    b9000fe0     str    w0, [sp, #12]
-    774:    b9000be1     str    w1, [sp, #8]
-    778:    12800000     mov    w0, #0xffffffff
-    77c:    b9001fe0     str    w0, [sp, #28]
-    780:    b9400be0     ldr    w0, [sp, #8]
-    784:    7100001f     cmp    w0, #0x0
-    788:    540000a0     b.eq   79c &lt;divide_safe+0x30&gt;
-    78c:    b9400fe1     ldr    w1, [sp, #12]
-    790:    b9400be0     ldr    w0, [sp, #8]
-    794:    1ac00c20     sdiv   w0, w1, w0
-    798:    b9001fe0     str    w0, [sp, #28]
-    79c:    b9401fe0     ldr    w0, [sp, #28]
-    7a0:    910083ff     add    sp, sp, #0x20
-    7a4:    d65f03c0     ret
+<pre><code>0000000000000754 &lt;pow2&gt;:
+ 754:   d10083ff        sub     sp, sp, #0x20
+ 758:   b9000fe0        str     w0, [sp, #12]
+ 75c:   52800020        mov     w0, #0x1
+ 760:   b9001fe0        str     w0, [sp, #28]
+ 764:   14000007        b       780 &lt;pow2+0x2c&gt;
+ 768:   b9401fe0        ldr     w0, [sp, #28]
+ 76c:   531f7800        lsl     w0, w0, #1
+ 770:   b9001fe0        str     w0, [sp, #28]
+ 774:   b9400fe0        ldr     w0, [sp, #12]
+ 778:   51000400        sub     w0, w0, #0x1
+ 77c:   b9000fe0        str     w0, [sp, #12]
+ 780:   b9400fe0        ldr     w0, [sp, #12]
+ 784:   7100001f        cmp     w0, #0x0
+ 788:   54ffff0c        b.gt    768 &lt;pow2+0x14&gt;
+ 78c:   b9401fe0        ldr     w0, [sp, #28]
+ 790:   910083ff        add     sp, sp, #0x20
+ 794:   d65f03c0        ret
 </code></pre>
 
 </div>
 </div>
 </div>
 </div></section></section><section ><section >
-<div id="cell-id=f7b77b9a-49c9-41ac-afd8-7801c0e64367" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div id="cell-id=606c6508-1c20-4e41-b565-9ed97f003daf" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Practice-with-conditionals">Practice with conditionals<a class="anchor-link" href="#Practice-with-conditionals">&#182;</a></h2>
+<h2 id="Practice-with-loops">Practice with loops<a class="anchor-link" href="#Practice-with-loops">&#182;</a></h2>
 </div>
 </div>
 </div>
-</div><div id="cell-id=97026190-1907-4d70-a108-e465b94f9be1" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div id="cell-id=395b12b4-54e0-44b0-9350-3d132be93a23" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs   celltag_worksheet-code-only">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15352,16 +15344,15 @@ w/x1 = 5
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-c"><pre><span></span><span class="cm">/* 1*/</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="nf">flip</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">bit</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/* 2*/</span><span class="w">     </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
-<span class="cm">/* 3*/</span><span class="w">     </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bit</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/* 4*/</span><span class="w">          </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span>
-<span class="cm">/* 5*/</span><span class="w">      </span><span class="p">}</span><span class="w"> </span>
-<span class="cm">/* 6*/</span><span class="w">      </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/* 7*/</span><span class="w">          </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="cm">/* 8*/</span><span class="w">      </span><span class="p">}</span>
-<span class="cm">/* 9*/</span><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
-<span class="cm">/*10*/</span><span class="w"> </span><span class="p">}</span>
+<div class=" highlight hl-c"><pre><span></span><span class="cm">/* 1*/</span><span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="nf">powi</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="cm">/* 2*/</span><span class="w">       </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="cm">/* 3*/</span><span class="w">       </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="cm">/* 4*/</span><span class="w">       </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="cm">/* 5*/</span><span class="w">           </span><span class="n">result</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="n">m</span><span class="p">;</span>
+<span class="cm">/* 6*/</span><span class="w">           </span><span class="n">i</span><span class="o">++</span><span class="p">;</span>
+<span class="cm">/* 7*/</span><span class="w">       </span><span class="p">}</span>
+<span class="cm">/* 8*/</span><span class="w">       </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<span class="cm">/* 9*/</span><span class="w">   </span><span class="p">}</span>
 </pre></div>
 
      </div>
@@ -15370,34 +15361,169 @@ w/x1 = 5
 </div>
 
 </div>
-<div id="cell-id=8ce6d873-e318-435a-88e1-fe8136166b46" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div id="cell-id=acbbcceb-9e28-4ea0-84f2-ee86259333df" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_worksheet-only" data-mime-type="text/markdown">
-<pre><code>000000000000071c &lt;flip&gt;:                            // Line
-    71c:    d10083ff     sub    sp, sp, #0x20       // 
-    720:    b9000fe0     str    w0, [sp, #12]       // 
-    724:    12800000     mov    w0, #0xffffffff     // 
-    728:    b9001fe0     str    w0, [sp, #28]       // 
-    72c:    b9400fe0     ldr    w0, [sp, #12]       // 
-    730:    7100001f     cmp    w0, #0x0            //
-    734:    54000081     b.ne   744 &lt;flip+0x28&gt;     // 
-    738:    52800020     mov    w0, #0x1            // 
-    73c:    b9001fe0     str    w0, [sp, #28]       // 
-    740:    14000002     b      748 &lt;flip+0x2c&gt;     // 
-    744:    b9001fff     str    wzr, [sp, #28]      // 
-    748:    b9401fe0     ldr    w0, [sp, #28]       // 
-    74c:    910083ff     add    sp, sp, #0x20       // 
-    750:    d65f03c0     ret                        // 
+<pre><code>0000000000000714 &lt;powi&gt;:
+ 714:   d10083ff    sub sp, sp, #0x20
+ 718:   b9000fe0    str w0, [sp, #12]
+ 71c:   b9000be1    str w1, [sp, #8]
+ 720:   52800020    mov w0, #0x1
+ 724:   b9001be0    str w0, [sp, #24]
+ 728:   b9001fff    str wzr, [sp, #28]
+ 72c:   14000008    b   74c &lt;powi+0x38&gt;
+ 730:   b9401be1    ldr w1, [sp, #24]
+ 734:   b9400fe0    ldr w0, [sp, #12]
+ 738:   1b007c20    mul w0, w1, w0
+ 73c:   b9001be0    str w0, [sp, #24]
+ 740:   b9401fe0    ldr w0, [sp, #28]
+ 744:   11000400    add w0, w0, #0x1
+ 748:   b9001fe0    str w0, [sp, #28]
+ 74c:   b9401fe1    ldr w1, [sp, #28]
+ 750:   b9400be0    ldr w0, [sp, #8]
+ 754:   6b00003f    cmp w1, w0
+ 758:   54fffecb    b.lt    730 &lt;powi+0x1c&gt;
+ 75c:   b9401be0    ldr w0, [sp, #24]
+ 760:   910083ff    add sp, sp, #0x20
+ 764:   d65f03c0    ret
+</code></pre>
+
+</div>
+</div>
+</div>
+</div></section><section >
+<div id="cell-id=01867c0a-4708-4a60-9c00-6f16b7432864" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Q3: <em>Write a function called <code>powi_goto</code> that behaves the same as <code>powi</code> but matches the structure of the assembly code that will be generated for <code>powi</code>. (Hint: you'll need two <code>goto</code> statements.)</em></p>
+
+</div>
+</div>
+</div>
+</div></section></section><section ><section >
+<div id="cell-id=7e7daf30-f7cc-4e7d-8406-4132a56392e9" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Function-calls-in-assembly">Function calls in assembly<a class="anchor-link" href="#Function-calls-in-assembly">&#182;</a></h2>
+</div>
+</div>
+</div>
+</div><div id="cell-id=9d5e332f-19f5-4180-8de2-1655e73ec25f" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-c"><pre><span></span><span class="cm">/*1*/</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="nf">multiply</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="cm">/*2*/</span><span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="cm">/*3*/</span><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+<span class="cm">/*4*/</span><span class="w">  </span><span class="p">}</span>
+<span class="cm">/*5*/</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="nf">volume</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="cm">/*6*/</span><span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">multiply</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
+<span class="cm">/*7*/</span><span class="w">      </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">multiply</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">);</span>
+<span class="cm">/*8*/</span><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">w</span><span class="p">;</span>
+<span class="cm">/*9*/</span><span class="w">  </span><span class="p">}</span>
+<span class="cm">/*10*/</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="cm">/*11*/</span><span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">volume</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
+<span class="cm">/*12*/</span><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+<span class="cm">/*13*/</span><span class="w">  </span><span class="p">}</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div id="cell-id=76f64c74-ee2c-4dd0-ac5d-7bfcd257ba1d" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<pre><code>0000000000400544 &lt;multiply&gt;:
+    400544:    d10043ff     sub    sp, sp, #0x10    // 1
+    400548:    b9000fe0     str    w0, [sp, #12]    // 1
+    40054c:    b9000be1     str    w1, [sp, #8]     // 1
+    400550:    b9400fe8     ldr    w8, [sp, #12]    // 2
+    400554:    b9400be9     ldr    w9, [sp, #8]     // 2
+    400558:    1b097d08     mul    w8, w8, w9       // 2
+    40055c:    b90007e8     str    w8, [sp, #4]     // 2
+    400560:    b94007e0     ldr    w0, [sp, #4]     // 3
+    400564:    910043ff     add    sp, sp, #0x10    // 3
+    400568:    d65f03c0     ret                     // 3
+</code></pre>
+
+</div>
+</div>
+</div>
+</div></section><section >
+<div id="cell-id=1e1ff9dc-a3a7-4ae2-93a6-1b80ea350852" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<pre><code>000000000040056c &lt;volume&gt;:
+    40056c:    d10083ff     sub    sp, sp, #0x20    // 5
+    400570:    f9000bfe     str    x30, [sp, #16]   // 5
+    400574:    b9000fe0     str    w0, [sp, #12]    // 5
+    400578:    b9000be1     str    w1, [sp, #8]     // 5
+    40057c:    b90007e2     str    w2, [sp, #4]     // 5
+    400580:    b9400fe0     ldr    w0, [sp, #12]    // 6
+    400584:    b9400be1     ldr    w1, [sp, #8]     // 6
+    400588:    97ffffef     bl    400544 &lt;multiply&gt; // 6
+    40058c:    b90003e0     str    w0, [sp]         // 6
+    400590:    b94003e0     ldr    w0, [sp]         // 7
+    400594:    b94007e1     ldr    w1, [sp, #4]     // 7
+    400598:    97ffffeb     bl    400544 &lt;multiply&gt; // 7
+    40059c:    b90003e0     str    w0, [sp]         // 7
+    4005a0:    b94003e0     ldr    w0, [sp]         // 8
+    4005a4:    f9400bfe     ldr    x30, [sp, #16]   // 8
+    4005a8:    910083ff     add    sp, sp, #0x20    // 8
+    4005ac:    d65f03c0     ret                     // 8
+</code></pre>
+
+</div>
+</div>
+</div>
+</div>
+<div id="cell-id=3c913d0d-f40b-4cf0-bc27-9d682a75a735" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<pre><code>00000000004005b0 &lt;main&gt;:                               
+    4005b0:    d10083ff     sub    sp, sp, #0x20       // 10
+    4005b4:    f9000bfe     str    x30, [sp, #16]      // 10
+    4005b8:    52800020     mov    w0, #0x1            // 11
+    4005bc:    52800061     mov    w1, #0x3            // 11
+    4005c0:    528000a2     mov    w2, #0x5            // 11
+    4005c4:    97ffffe9     bl     40056c &lt;volume&gt;     // 11
+    4005c8:    b9000be0     str    w0, [sp, #8]        // 11
+    4005cc:    b9400be0     ldr    w0, [sp, #8]        // 12
+    4005d0:    f9400bfe     ldr    x30, [sp, #16]      // 12
+    4005d4:    910083ff     add    sp, sp, #0x20       // 12
+    4005d8:    d65f03c0     ret                        // 12
 </code></pre>
 
 </div>
 </div>
 </div>
 </div></section></section><section ><section >
-<div id="cell-id=a82d425b-2220-4a29-9e28-64dbb110b731" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div id="cell-id=52a00d34-0981-45fc-ba9a-3ff047d682a8" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15408,49 +15534,18 @@ w/x1 = 5
 </div>
 </div>
 </div>
-<div id="cell-id=d5358bfd-652e-4c68-9ece-3263651ea34e" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div id="cell-id=d7c5193f-a4c3-43ef-88bb-6fabafc475fc" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Q7: <em>Assume the registers currently hold the following values:</em></p>
-<pre><code>sp = 0xA980
-w/x0 = 0
-w/x1 = 1
-w/x2 = 2
-w/x3 = 3
-w/x4 = 4
-w/x5 = 5
-</code></pre>
-<p><em>Draw the contents of the stack after the following instructions have been executed:</em></p>
-<pre><code>sub sp, sp, #0x30
-str w0, [sp, #16]
-str x1, [sp]
-str w2, [sp, #20]
-str x3, [sp, #32]
-str w4, [sp, #28]
-str w5, [sp, #8]
-</code></pre>
+<p>Q4: <em>Write a function called <code>adjust_goto</code> that behaves the same as <code>adjust</code> but matches the structure of the assembly code that is generated for <code>adjust</code>. (Hint: you'll need three <code>goto</code> statements.)</em></p>
 
 </div>
 </div>
 </div>
-</div></section><section >
-<div id="cell-id=e6d5e6df-d819-4b26-bb16-fd8e2666c592" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li>Q8: <em>The following C code was compiled into assembly (using <code>gcc</code>). Label each line of assembly code with the line number of the line of C code from which the assembly instruction was derived.</em></li>
-</ul>
-
-</div>
-</div>
-</div>
-</div><div id="cell-id=6c6d0a4d-ac5c-446c-90de-612c6b0eb476" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div id="cell-id=f2632e9a-ef45-43d3-973a-dc8f77d344ea" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15458,12 +15553,42 @@ str w5, [sp, #8]
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-c"><pre><span></span><span class="cm">/* 1*/</span><span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="nf">abs</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/* 2*/</span><span class="w">       </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/* 3*/</span><span class="w">           </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
-<span class="cm">/* 4*/</span><span class="w">       </span><span class="p">}</span>
-<span class="cm">/* 5*/</span><span class="w">       </span><span class="k">return</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
-<span class="cm">/* 6*/</span><span class="w">   </span><span class="p">}</span>
+<div class=" highlight hl-c"><pre><span></span><span class="cm">/* 1*/</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="nf">adjust</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="cm">/* 2*/</span><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="cm">/* 3*/</span><span class="w">          </span><span class="n">value</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="cm">/* 4*/</span><span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="cm">/* 5*/</span><span class="w">          </span><span class="n">value</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="cm">/* 6*/</span><span class="w">      </span><span class="p">}</span>
+<span class="cm">/* 7*/</span><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+<span class="cm">/* 8*/</span><span class="w">  </span><span class="p">}</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div></section><section ><div id="cell-id=3ec4e98a-9a4e-4e1f-85e5-568ac77a85eb" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-c"><pre><span></span><span class="cm">/* 1*/</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="nf">flip_elif</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">bit</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="cm">/* 2*/</span><span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<span class="cm">/* 3*/</span><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bit</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="cm">/* 4*/</span><span class="w">          </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">;</span>
+<span class="cm">/* 5*/</span><span class="w">      </span><span class="p">}</span>
+<span class="cm">/* 6*/</span><span class="w">      </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bit</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="cm">/* 7*/</span><span class="w">          </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="cm">/* 8*/</span><span class="w">      </span><span class="p">}</span>
+<span class="cm">/* 9*/</span><span class="w">      </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="cm">/*10*/</span><span class="w">          </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="cm">/*11*/</span><span class="w">      </span><span class="p">}</span>
+<span class="cm">/*12*/</span><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<span class="cm">/*13*/</span><span class="w">  </span><span class="p">}</span>
 </pre></div>
 
      </div>
@@ -15472,44 +15597,37 @@ str w5, [sp, #8]
 </div>
 
 </div>
-<div id="cell-id=a18849a7-7273-47a9-8f5c-d1184671a510" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div id="cell-id=dbc23945-fc11-48f4-ae0a-395a30166260" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_worksheet-only" data-mime-type="text/markdown">
-<pre><code>000000000000074c &lt;abs&gt;:
-    74c:   d10043ff        sub     sp, sp, #0x10
-    750:   b9000fe0        str     w0, [sp, #12]
-    754:   b9400fe0        ldr     w0, [sp, #12]
-    758:   7100001f        cmp     w0, #0x0 
-    75c:   5400008a        b.ge    76c &lt;abs+0x20&gt;
-    760:   b9400fe0        ldr     w0, [sp, #12]
-    764:   4b0003e0        neg     w0, w0
-    768:   b9000fe0        str     w0, [sp, #12]
-    76c:   b9400fe0        ldr     w0, [sp, #12]
-    770:   910043ff        add     sp, sp, #0x10
-    774:   d65f03c0        ret
+<pre><code>000000000000071c &lt;flip_elif&gt;:
+    71c:    d10083ff     sub    sp, sp, #0x20
+    720:    b9000fe0     str    w0, [sp, #12]
+    724:    b9400fe0     ldr    w0, [sp, #12]
+    728:    7100001f     cmp    w0, #0x0
+    72c:    54000081     b.ne   73c &lt;flip_elif+0x20&gt;
+    730:    52800020     mov    w0, #0x1
+    734:    b9001fe0     str    w0, [sp, #28]
+    738:    14000008     b      758 &lt;flip_elif+0x3c&gt;
+    73c:    b9400fe0     ldr    w0, [sp, #12]
+    740:    7100041f     cmp    w0, #0x1
+    744:    54000061     b.ne   750 &lt;flip_elif+0x34&gt;
+    748:    b9001fff     str    wzr, [sp, #28]
+    74c:    14000003     b      758 &lt;flip_elif+0x3c&gt;
+    750:    12800000     mov    w0, #0xffffffff
+    754:    b9001fe0     str    w0, [sp, #28]
+    758:    b9401fe0     ldr    w0, [sp, #28]
+    75c:    910083ff     add    sp, sp, #0x20
+    760:    d65f03c0     ret
 </code></pre>
 
 </div>
 </div>
 </div>
-</div><div class="fragment" >
-<div id="cell-id=cc9eb57b-b504-458b-b35e-63811c26c1a9" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li>Q9: <em>Write a function called <code>abs_goto</code> that behaves the same as <code>abs</code> but matches the structure of the assembly code that is generated for <code>abs</code>.</em></li>
-</ul>
-
-</div>
-</div>
-</div>
-</div></div></section></section>
+</div></section></section>
 </div>
 </div>
 </body>
