@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
 
-<title>2023-03-31 slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>2023-10-27 slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 <!-- General and theme style sheets -->
 <link rel="stylesheet" href="https://unpkg.com/reveal.js@4.0.2/dist/reveal.css">
@@ -14658,7 +14658,7 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Tracing-assembly-code-with-function-calls">Tracing assembly code with function calls<a class="anchor-link" href="#Tracing-assembly-code-with-function-calls">&#182;</a></h2>
+<h2 id="Warm-up">Warm-up<a class="anchor-link" href="#Warm-up">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -14669,17 +14669,29 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<pre><code>0000000000400544 &lt;multiply&gt;:                           //
-    400544:    d10043ff     sub    sp, sp, #0x10       //
-    400548:    b9000fe0     str    w0, [sp, #12]       //
-    40054c:    b9000be1     str    w1, [sp, #8]        //
-    400550:    b9400fe8     ldr    w8, [sp, #12]       //
-    400554:    b9400be9     ldr    w9, [sp, #8]        //
-    400558:    1b097d08     mul    w8, w8, w9          //
-    40055c:    b90007e8     str    w8, [sp, #4]        //
-    400560:    b94007e0     ldr    w0, [sp, #4]        //
-    400564:    910043ff     add    sp, sp, #0x10       //
-    400568:    d65f03c0     ret                        //
+<ul>
+<li>Q1: <em>Draw the contents of the stack and registers after executing the following assembly code.</em></li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<pre><code>0000000000000714 &lt;helper&gt;:
+ 714:   d10043ff    sub sp, sp, #0x10
+ 718:   b9000fe0    str w0, [sp, #12]
+ 71c:   b9400fe0    ldr w0, [sp, #12]
+ 720:   11000400    add w0, w0, #0x1
+ 724:   b9000fe0    str w0, [sp, #12]
+ 728:   b9400fe0    ldr w0, [sp, #12]
+ 72c:   910043ff    add sp, sp, #0x10
+ 730:   d65f03c0    ret
 </code></pre>
 
 </div>
@@ -14692,48 +14704,16 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<pre><code>000000000040056c &lt;volume&gt;:                             //
-    40056c:    d10083ff     sub    sp, sp, #0x20       //
-    400570:    f9000bfe     str    x30, [sp, #16]      //
-    400574:    b9000fe0     str    w0, [sp, #12]       //
-    400578:    b9000be1     str    w1, [sp, #8]        //
-    40057c:    b90007e2     str    w2, [sp, #4]        //
-    400580:    b9400fe0     ldr    w0, [sp, #12]       //
-    400584:    b9400be1     ldr    w1, [sp, #8]        //
-    400588:    97ffffef     bl     400544 &lt;multiply&gt;   // 
-    40058c:    b90003e0     str    w0, [sp]            //
-    400590:    b94003e0     ldr    w0, [sp]            //
-    400594:    b94007e1     ldr    w1, [sp, #4]        //
-    400598:    97ffffeb     bl     400544 &lt;multiply&gt;   // 
-    40059c:    b90003e0     str    w0, [sp]            //
-    4005a0:    b94003e0     ldr    w0, [sp]            //
-    4005a4:    f9400bfe     ldr    x30, [sp, #16]      //
-    4005a8:    910083ff     add    sp, sp, #0x20       //
-    4005ac:    d65f03c0     ret                        //
-</code></pre>
-
-</div>
-</div>
-</div>
-</div></section><section >
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<pre><code>00000000004005b0 &lt;main&gt;:                               //
-    4005b0:    d10083ff     sub    sp, sp, #0x20       //
-    4005b4:    f9000bfe     str    x30, [sp, #16]      //
-    4005b8:    52800020     mov    w0, #0x1            //
-    4005bc:    52800061     mov    w1, #0x3            //
-    4005c0:    528000a2     mov    w2, #0x5            //
-    4005c4:    97ffffe9     bl     40056c &lt;volume&gt;     //
-    4005c8:    b9000be0     str    w0, [sp, #8]        //
-    4005cc:    b9400be0     ldr    w0, [sp, #8]        //
-    4005d0:    f9400bfe     ldr    x30, [sp, #16]      //
-    4005d4:    910083ff     add    sp, sp, #0x20       //
-    4005d8:    d65f03c0     ret                        //
+<pre><code>0000000000000734 &lt;main&gt;:
+ 734:   d10043ff    sub sp, sp, #0x10
+ 738:   f81e0ffe    str x30, [sp, #8]
+ 73c:   52800040    mov w0, #0x2
+ 740:   97fffff6    bl  714 &lt;helper&gt;
+ 744:   b9001fe0    str w0, [sp, #4]
+ 748:   b9401fe0    ldr w0, [sp, #4]
+ 74c:   f84207fe    ldr x30, [sp, #8]
+ 750:   910043ff    add sp, sp, #0x10
+ 754:   d65f03c0    ret
 </code></pre>
 
 </div>
@@ -14757,7 +14737,7 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Q1: <em>The function below allocates several regions of memory on the heap. Draw a diagram that depicts the contents of the stack and heap at the end of main. Label each memory region with its size in bytes.)</em></p>
+<p>Q2: <em>The function below allocates several regions of memory on the heap. Draw a diagram that depicts the contents of the stack and heap at the end of main. Label each memory region with its size in bytes.)</em></p>
 
 </div>
 </div>
@@ -14806,7 +14786,7 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Q2: <em>The following code provides a function to add an integer value to the end of a queue:</em></p>
+<p>Q3: <em>The following code provides a function to add an integer value to the end of a queue:</em></p>
 
 </div>
 </div>
@@ -14879,7 +14859,7 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Q3: <em>Draw a 1-bit circuit for <code>A &lt; B</code> using only <code>AND</code>, <code>OR</code>, and <code>NOT</code> gates. Show your work (i.e., any intermediate design steps you took).</em></p>
+<p>Q4: <em>Draw a 1-bit circuit for <code>A &lt; B</code> using only <code>AND</code>, <code>OR</code>, and <code>NOT</code> gates. Show your work (i.e., any intermediate design steps you took).</em></p>
 
 </div>
 </div>
@@ -14891,7 +14871,7 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Q4: <em>Assume you have access to 1-bit circuits for <code>A &lt; B</code>, <code>A == B</code>, and <code>A &gt; B</code> and logic gates for <code>AND</code>, <code>OR</code>, and <code>NOT</code>. Draw a 2-bit circuit for <code>A &lt; B</code> which uses the existing circuits and logic gates. Assume <code>A1</code> and <code>B1</code> are the most significant bits, and <code>A2</code> and <code>B2</code> are the least significant bits.</em></p>
+<p>Q5: <em>Assume you have access to 1-bit circuits for <code>A &lt; B</code>, <code>A == B</code>, and <code>A &gt; B</code> and logic gates for <code>AND</code>, <code>OR</code>, and <code>NOT</code>. Draw a 2-bit circuit for <code>A &lt; B</code> which uses the existing circuits and logic gates. Assume <code>A1</code> and <code>B1</code> are the most significant bits, and <code>A2</code> and <code>B2</code> are the least significant bits.</em></p>
 
 </div>
 </div>
@@ -14903,7 +14883,7 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Q5: <em>Use the available circuits to create a processing unit with four registers and four operations (<code>+</code>, <code>-</code>, <code>&lt;</code>, and <code>==</code>).</em></p>
+<p>Q6: <em>Use the available circuits to create a processing unit with four registers and four operations (<code>+</code>, <code>-</code>, <code>&lt;</code>, and <code>==</code>).</em></p>
 
 </div>
 </div>
@@ -14970,7 +14950,7 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Assembly-code">Assembly code<a class="anchor-link" href="#Assembly-code">&#182;</a></h3><pre><code>00000000004005d4 &lt;interest_due&gt;:                // Line 
+<h3 id="Assembly-code">Assembly code<a class="anchor-link" href="#Assembly-code">&#182;</a></h3><pre><code>00000000004005d4 &lt;interest_due&gt;:
   4005d4:    d10083ff     sub    sp, sp, #0x20  //
   4005d8:    b9001fe0     str    w0, [sp, #28]  //
   4005dc:    b9001be1     str    w1, [sp, #24]  //
@@ -14999,7 +14979,7 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<pre><code>0000000000400614 &lt;make_payment&gt;:                 // Line     Low-level C   
+<pre><code>0000000000400614 &lt;make_payment&gt;:
   400614:    d100c3ff     sub    sp, sp, #0x30   //
   400618:    f90013fe     str    x30, [sp, #32]  //
   40061c:    b9001fe0     str    w0, [sp, #28]   //
@@ -15039,19 +15019,7 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Q6: <em>For each line of assembly code, <strong>indicate which line of C code was used to generate that line of assembly</strong> code.</em></p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Q7: <em>For each line of assembly in <strong><code>make_payment</code>, write one or more lines of low-level C code</strong> that express the semantics (i.e., meaning) of the assembly code. Your C code should use register names as variable names.</em></p>
+<p>Q7: <em>For each line of assembly code, <strong>indicate which line of C code was used to generate that line of assembly</strong> code.</em></p>
 
 </div>
 </div>
