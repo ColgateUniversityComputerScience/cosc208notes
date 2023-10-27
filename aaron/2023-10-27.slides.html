@@ -14697,7 +14697,7 @@ div.jp-OutputPrompt {
 </div>
 </div>
 </div>
-</div></section><section >
+</div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -14812,7 +14812,7 @@ div.jp-OutputPrompt {
 
 <span class="w">    </span><span class="c1">// Item becomes new head if queue is empty</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">NULL</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">head</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">next</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">new</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="w">    </span>
 <span class="w">    </span><span class="c1">// Item goes at the end of the queue</span>
@@ -14943,6 +14943,18 @@ div.jp-OutputPrompt {
 </div>
 </div>
 
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Assembly-code">Assembly code<a class="anchor-link" href="#Assembly-code">&#182;</a></h3><p>Q7: <em>For each line of assembly code, <strong>indicate which line of C code was used to generate that line of assembly</strong> code.</em></p>
+
+</div>
+</div>
+</div>
 </div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
@@ -14950,7 +14962,7 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Assembly-code">Assembly code<a class="anchor-link" href="#Assembly-code">&#182;</a></h3><pre><code>00000000004005d4 &lt;interest_due&gt;:
+<pre><code>00000000004005d4 &lt;interest_due&gt;:
   4005d4:    d10083ff     sub    sp, sp, #0x20  //
   4005d8:    b9001fe0     str    w0, [sp, #28]  //
   4005dc:    b9001be1     str    w1, [sp, #24]  //
@@ -15008,18 +15020,6 @@ div.jp-OutputPrompt {
   400678:    9100c3ff     add    sp, sp, #0x30   //
   40067c:    d65f03c0     ret                    //
 </code></pre>
-
-</div>
-</div>
-</div>
-</div></section><section >
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Q7: <em>For each line of assembly code, <strong>indicate which line of C code was used to generate that line of assembly</strong> code.</em></p>
 
 </div>
 </div>
