@@ -62,3 +62,6 @@
 [[Worksheet]](2023-10-23.worksheet.html)
 * loops; functions (2023-10-25) [[Notes]](2023-10-25.notes.html) 
 [[Worksheet]](2023-10-25.worksheet.html)
+
+## Review
+* Midterm Exam 2 (2023-10-27) [[Worksheet]](2023-10-27.worksheet.html)
