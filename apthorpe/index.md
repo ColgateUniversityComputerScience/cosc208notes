@@ -58,9 +58,9 @@
 [[Worksheet]](2023-10-20.worksheet.html)
 * Conditionals (2023-10-23) [[Notes]](2023-10-23.notes.html) 
 [[Worksheet]](2023-10-23.worksheet.html)
-* Loops; functions (2023-10-25) [[Worksheet]](2023-10-25.worksheet.html)
+* Loops; functions (2023-10-25) [[Notes]](2023-10-25.notes.html) 
+[[Worksheet]](2023-10-25.worksheet.html)
 
 ## Review
 * Midterm Exam 2 (2023-10-27) [[Notes]](2023-10-27.notes.html) 
 [[Worksheet]](2023-10-27.worksheet.html)
-
