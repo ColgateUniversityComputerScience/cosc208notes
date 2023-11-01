@@ -66,3 +66,6 @@
 ## Review
 * Midterm Exam 2 (2023-10-27) [[Notes]](2023-10-27.notes.html) 
 [[Worksheet]](2023-10-27.worksheet.html)
+
+## Multiprocessing
+* limited direct execution; system calls (2023-11-01) [[Worksheet]](2023-11-01.worksheet.html)
