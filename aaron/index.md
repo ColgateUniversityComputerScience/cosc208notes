@@ -68,4 +68,6 @@
 [[Worksheet]](2023-10-27.worksheet.html)
 
 ## Multiprocessing
-* limited direct execution; system calls (2023-11-01) [[Worksheet]](2023-11-01.worksheet.html)
+* limited direct execution; system calls (2023-11-01) [[Notes]](2023-11-01.notes.html) 
+[[Worksheet]](2023-11-01.worksheet.html)
+* processes; fork (2023-11-03) [[Worksheet]](2023-11-03.worksheet.html)
