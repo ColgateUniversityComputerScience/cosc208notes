@@ -72,4 +72,6 @@
 [[Worksheet]](2023-11-01.worksheet.html)
 * processes; fork (2023-11-03) [[Notes]](2023-11-03.notes.html) 
 [[Worksheet]](2023-11-03.worksheet.html)
-* wait & exec (2023-11-06) [[Worksheet]](2023-11-06.worksheet.html)
+* wait & exec (2023-11-06) [[Notes]](2023-11-06.notes.html) 
+[[Worksheet]](2023-11-06.worksheet.html)
+* exec; inter-process communication (2023-11-08) [[Worksheet]](2023-11-08.worksheet.html)
