@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
 
-<title>2023-04-07 slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>2023-11-13 slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 <!-- General and theme style sheets -->
 <link rel="stylesheet" href="https://unpkg.com/reveal.js@4.0.2/dist/reveal.css">
@@ -14669,7 +14669,9 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Q1: <em>Cross-out unnecessary loads and stores in the following assembly code.</em></p>
+<ul>
+<li>Q1: <em>Cross-out unnecessary loads and stores in the following assembly code:</em></li>
+</ul>
 
 </div>
 </div>
@@ -14681,24 +14683,23 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_worksheet-only" data-mime-type="text/markdown">
-<pre><code>000000000040056c &lt;volume&gt;:                             
-    40056c:    d10083ff     sub    sp, sp, #0x20       
-    400570:    f9000bfe     str    x30, [sp, #16]      
-    400574:    b9000fe0     str    w0, [sp, #12]       
-    400578:    b9000be1     str    w1, [sp, #8]        
-    40057c:    b90007e2     str    w2, [sp, #4]        
-    400580:    b9400fe0     ldr    w0, [sp, #12]       
-    400584:    b9400be1     ldr    w1, [sp, #8]        
-    400588:    97ffffef     bl     400544 &lt;multiply&gt;    
-    40058c:    b90003e0     str    w0, [sp]            
-    400590:    b94003e0     ldr    w0, [sp]            
-    400594:    b94007e1     ldr    w1, [sp, #4]        
-    400598:    97ffffeb     bl     400544 &lt;multiply&gt;    
-    40059c:    b90003e0     str    w0, [sp]            
-    4005a0:    b94003e0     ldr    w0, [sp]            
-    4005a4:    f9400bfe     ldr    x30, [sp, #16]      
-    4005a8:    910083ff     add    sp, sp, #0x20       
-    4005ac:    d65f03c0     ret                        
+<pre><code>000000000000088c &lt;interest_due&gt;:
+    88c:    sub    sp, sp, #0x20
+    890:    str    w0, [sp, #12]
+    894:    str    w1, [sp, #8]
+    898:    ldr    w0, [sp, #12]
+    89c:    ldr    w1, [sp, #8] 
+    8a0:    mul    w0, w1, w0
+    8a4:    str    w0, [sp, #20]
+    8a8:    mov    w0, #0x4b0
+    8ac:    str    w0, [sp, #24]
+    8b0:    ldr    w1, [sp, #20]
+    8b4:    ldr    w0, [sp, #24] 
+    8b8:    sdiv   w0, w1, w0
+    8bc:    str    w0, [sp, #28] 
+    8c0:    ldr    w0, [sp, #28] 
+    8c4:    add    sp, sp, #0x20
+    8c8:    ret
 </code></pre>
 
 </div>
@@ -14762,7 +14763,7 @@ div.jp-OutputPrompt {
 </div>
 </div>
 </div>
-</div></div></section></section><section ><section >
+</div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -14781,7 +14782,7 @@ div.jp-OutputPrompt {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <ul>
-<li>Q5: <em>Cross-out unnecessary loads and stores in the following assembly code.</em></li>
+<li>Q5: <em>Cross-out unnecessary loads and stores in the following assembly code:</em></li>
 </ul>
 
 </div>
@@ -14794,58 +14795,30 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_worksheet-only" data-mime-type="text/markdown">
-<pre><code>0000000000400544 &lt;adjust&gt;:                          
-    400544:  d10043ff   sub  sp, sp, #0x10          
-    400548:  b9000fe0   str  w0, [sp, #12]          
-    40054c:  b9400fe8   ldr  w8, [sp, #12]          
-    400550:  7100291f   cmp  w8, #0xa               
-    400554:  540000ca   b.ge 40056c &lt;adjust+0x28&gt;   
-    400558:  b9400fe8   ldr  w8, [sp, #12]          
-    40055c:  52800149   mov  w9, #0xa               
-    400560:  1b097d08   mul  w8, w8, w9             
-    400564:  b9000fe8   str  w8, [sp, #12]          
-    400568:  14000005   b    40057c &lt;adjust+0x38&gt;   
-    40056c:  b9400fe8   ldr  w8, [sp, #12]          
-    400570:  52800149   mov  w9, #0xa               
-    400574:  1ac90d08   sdiv w8, w8, w9             
-    400578:  b9000fe8   str  w8, [sp, #12]          
-    40057c:  b9400fe0   ldr  w0, [sp, #12]          
-    400580:  910043ff   add  sp, sp, #0x10          
-    400584:  d65f03c0   ret                         
+<pre><code>000000000040056c &lt;volume&gt;:                             
+    40056c:    d10083ff     sub    sp, sp, #0x20       
+    400570:    f9000bfe     str    x30, [sp, #16]      
+    400574:    b9000fe0     str    w0, [sp, #12]       
+    400578:    b9000be1     str    w1, [sp, #8]        
+    40057c:    b90007e2     str    w2, [sp, #4]        
+    400580:    b9400fe0     ldr    w0, [sp, #12]       
+    400584:    b9400be1     ldr    w1, [sp, #8]        
+    400588:    97ffffef     bl     400544 &lt;multiply&gt;    
+    40058c:    b90003e0     str    w0, [sp]            
+    400590:    b94003e0     ldr    w0, [sp]            
+    400594:    b94007e1     ldr    w1, [sp, #4]        
+    400598:    97ffffeb     bl     400544 &lt;multiply&gt;    
+    40059c:    b90003e0     str    w0, [sp]            
+    4005a0:    b94003e0     ldr    w0, [sp]            
+    4005a4:    f9400bfe     ldr    x30, [sp, #16]      
+    4005a8:    910083ff     add    sp, sp, #0x20       
+    4005ac:    d65f03c0     ret                        
 </code></pre>
 
 </div>
 </div>
 </div>
-</div></section><section >
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_worksheet-only" data-mime-type="text/markdown">
-<pre><code>000000000000076c &lt;divide_safe&gt;:
-    76c:    d10083ff     sub    sp, sp, #0x20
-    770:    b9000fe0     str    w0, [sp, #12]
-    774:    b9000be1     str    w1, [sp, #8]
-    778:    12800000     mov    w0, #0xffffffff
-    77c:    b9001fe0     str    w0, [sp, #28]
-    780:    b9400be0     ldr    w0, [sp, #8]
-    784:    7100001f     cmp    w0, #0x0
-    788:    540000a0     b.eq   79c &lt;divide_safe+0x30&gt;
-    78c:    b9400fe1     ldr    w1, [sp, #12]
-    790:    b9400be0     ldr    w0, [sp, #8]
-    794:    1ac00c20     sdiv   w0, w1, w0
-    798:    b9001fe0     str    w0, [sp, #28]
-    79c:    b9401fe0     ldr    w0, [sp, #28]
-    7a0:    910083ff     add    sp, sp, #0x20
-    7a4:    d65f03c0     ret
-</code></pre>
-
-</div>
-</div>
-</div>
-</div></section></section>
+</div></div></section></section>
 </div>
 </div>
 </body>
