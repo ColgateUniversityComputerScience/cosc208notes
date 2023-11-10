@@ -14658,49 +14658,79 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Warm-up">Warm-up<a class="anchor-link" href="#Warm-up">&#182;</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <ul>
-<li>Q1: <em>Cross-out unnecessary loads and stores in the following assembly code:</em></li>
+<li>Q1: <em>For each of the following characteristics, circle the type(s) of memory to which the characteristic applies. (HDD = Hard Disk Drive; RAM = Random Access Memory; SSD = Solid State Drive)</em></li>
 </ul>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_worksheet-only" data-mime-type="text/markdown">
-<pre><code>000000000000088c &lt;interest_due&gt;:
-    88c:    sub    sp, sp, #0x20
-    890:    str    w0, [sp, #12]
-    894:    str    w1, [sp, #8]
-    898:    ldr    w0, [sp, #12]
-    89c:    ldr    w1, [sp, #8] 
-    8a0:    mul    w0, w1, w0
-    8a4:    str    w0, [sp, #20]
-    8a8:    mov    w0, #0x4b0
-    8ac:    str    w0, [sp, #24]
-    8b0:    ldr    w1, [sp, #20]
-    8b4:    ldr    w0, [sp, #24] 
-    8b8:    sdiv   w0, w1, w0
-    8bc:    str    w0, [sp, #28] 
-    8c0:    ldr    w0, [sp, #28] 
-    8c4:    add    sp, sp, #0x20
-    8c8:    ret
-</code></pre>
+<table>
+<thead>
+<tr>
+  <th>Characteristic</th>
+  <th></th>
+  <th></th>
+  <th></th>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><br/>Cheapest<br/><br/></td>
+  <td>Cache</td>
+  <td>HDD</td>
+  <td>RAM</td>
+  <td>Registers</td>
+  <td>SSD</td>
+</tr>
+<tr>
+  <td><br/>Fastest<br/><br/></td>
+  <td>Cache</td>
+  <td>HDD</td>
+  <td>RAM</td>
+  <td>Registers</td>
+  <td>SSD</td>
+</tr>
+<tr>
+  <td><br/>On CPU<br/><br/></td>
+  <td>Cache</td>
+  <td>HDD</td>
+  <td>RAM</td>
+  <td>Registers</td>
+  <td>SSD</td>
+</tr>
+<tr>
+  <td><br/>Volatile<br/><br/></td>
+  <td>Cache</td>
+  <td>HDD</td>
+  <td>RAM</td>
+  <td>Registers</td>
+  <td>SSD</td>
+</tr>
+<tr>
+  <td><br/>Size measured in megabytes (MB)<br/>in a present day laptop</td>
+  <td>Cache</td>
+  <td>HDD</td>
+  <td>RAM</td>
+  <td>Registers</td>
+  <td>SSD</td>
+</tr>
+<tr>
+  <td><br/>Size measured in gigabytes (GB)<br/>in a present day laptop</td>
+  <td>Cache</td>
+  <td>HDD</td>
+  <td>RAM</td>
+  <td>Registers</td>
+  <td>SSD</td>
+</tr>
+<tr>
+  <td><br/>Size measured in terabytes (TB)<br/>in a present day laptop</td>
+  <td>Cache</td>
+  <td>HDD</td>
+  <td>RAM</td>
+  <td>Registers</td>
+  <td>SSD</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 </div>
@@ -14735,7 +14765,7 @@ div.jp-OutputPrompt {
 </div>
 </div>
 </div>
-</div><div class="fragment" >
+</div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -14763,7 +14793,7 @@ div.jp-OutputPrompt {
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -14782,43 +14812,47 @@ div.jp-OutputPrompt {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <ul>
-<li>Q5: <em>Cross-out unnecessary loads and stores in the following assembly code:</em></li>
+<li>Q5: <em>What output is produced by this program, assuming the starting process's PID is 7034 and PIDs are sequentially assigned to new processes.</em></li>
 </ul>
 
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs   celltag_worksheet-code-only">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_worksheet-only" data-mime-type="text/markdown">
-<pre><code>000000000040056c &lt;volume&gt;:                             
-    40056c:    d10083ff     sub    sp, sp, #0x20       
-    400570:    f9000bfe     str    x30, [sp, #16]      
-    400574:    b9000fe0     str    w0, [sp, #12]       
-    400578:    b9000be1     str    w1, [sp, #8]        
-    40057c:    b90007e2     str    w2, [sp, #4]        
-    400580:    b9400fe0     ldr    w0, [sp, #12]       
-    400584:    b9400be1     ldr    w1, [sp, #8]        
-    400588:    97ffffef     bl     400544 &lt;multiply&gt;    
-    40058c:    b90003e0     str    w0, [sp]            
-    400590:    b94003e0     ldr    w0, [sp]            
-    400594:    b94007e1     ldr    w1, [sp, #4]        
-    400598:    97ffffeb     bl     400544 &lt;multiply&gt;    
-    40059c:    b90003e0     str    w0, [sp]            
-    4005a0:    b94003e0     ldr    w0, [sp]            
-    4005a4:    f9400bfe     ldr    x30, [sp, #16]      
-    4005a8:    910083ff     add    sp, sp, #0x20       
-    4005ac:    d65f03c0     ret                        
-</code></pre>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-c"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span><span class="cp"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Begin</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fork</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;A %d %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">,</span><span class="w"> </span><span class="n">getpid</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">wait</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;B %d %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">,</span><span class="w"> </span><span class="n">getpid</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">result2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fork</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;C %d %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">result2</span><span class="p">,</span><span class="w"> </span><span class="n">getpid</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">wait</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;D %d %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">result2</span><span class="p">,</span><span class="w"> </span><span class="n">getpid</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
 
+     </div>
 </div>
 </div>
 </div>
-</div></div></section></section>
+
+</div></section></section>
 </div>
 </div>
 </body>
