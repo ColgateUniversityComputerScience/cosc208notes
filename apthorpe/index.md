@@ -76,4 +76,8 @@
 [[Worksheet]](2023-11-08.worksheet.html)
 
 ## None
-* Multiprocessing: Interprocess communication; Efficiency: Memory hierarchy (2023-11-10) [[Worksheet]](2023-11-10.worksheet.html)
+* Multiprocessing: Interprocess communication; Efficiency: Memory hierarchy (2023-11-10) [[Notes]](2023-11-10.notes.html) 
+[[Worksheet]](2023-11-10.worksheet.html)
+
+## Efficiency
+* Locality; caching (2023-11-13) [[Worksheet]](2023-11-13.worksheet.html)
