@@ -72,11 +72,9 @@
 [[Worksheet]](2023-11-03.worksheet.html)
 * Wait & exec (2023-11-06) [[Notes]](2023-11-06.notes.html) 
 [[Worksheet]](2023-11-06.worksheet.html)
-* exec; inter-process communication (2023-11-08) [[Notes]](2023-11-08.notes.html) 
+* Exec; inter-process communication (2023-11-08) [[Notes]](2023-11-08.notes.html) 
 [[Worksheet]](2023-11-08.worksheet.html)
-
-## None
-* Multiprocessing: Interprocess communication; Efficiency: Memory hierarchy (2023-11-10) [[Notes]](2023-11-10.notes.html) 
+* Interprocess communication (2023-11-10) [[Notes]](2023-11-10.notes.html) 
 [[Worksheet]](2023-11-10.worksheet.html)
 
 ## Efficiency
