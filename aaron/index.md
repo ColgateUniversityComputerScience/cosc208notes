@@ -84,4 +84,6 @@
 ## Efficiency
 * locality; caching (2023-11-13) [[Notes]](2023-11-13.notes.html) 
 [[Worksheet]](2023-11-13.worksheet.html)
-* loop interchange; threads (2023-11-15) [[Worksheet]](2023-11-15.worksheet.html)
+* loop interchange; threads (2023-11-15) [[Notes]](2023-11-15.notes.html) 
+[[Worksheet]](2023-11-15.worksheet.html)
+* threads (2023-11-17) [[Worksheet]](2023-11-17.worksheet.html)
