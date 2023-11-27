@@ -14658,18 +14658,18 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Warm-up">Warm-up<a class="anchor-link" href="#Warm-up">&#182;</a></h2>
+<h2 id="No-warm-up:-Happy-Wednesday">No warm-up: Happy Wednesday<a class="anchor-link" href="#No-warm-up:-Happy-Wednesday">&#182;</a></h2>
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Transforming-programs-to-be-multi-threaded">Transforming programs to be multi-threaded<a class="anchor-link" href="#Transforming-programs-to-be-multi-threaded">&#182;</a></h2>
+<h2 id="Practice-writing-multi-threaded-programs">Practice writing multi-threaded programs<a class="anchor-link" href="#Practice-writing-multi-threaded-programs">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -14681,26 +14681,34 @@ div.jp-OutputPrompt {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <ul>
-<li>For-each style loops are natural candidates for threading<ul>
-<li>Example: a program that counts the number of occurrences of each vowel within a string</li>
-<li>Another example: a program that counts the longest sequence of each Short Tandem Repeat (STR) in a DNA sequence — you already performed loop optimization on such a program last week; this week in lab you'll make it multi-threaded</li>
-</ul>
-</li>
-<li>Steps<ul>
-<li>Move the body of the loop into its own &quot;worker&quot; function (if not done already)</li>
-<li>Write a &quot;wrapper&quot; function which:<ul>
-<li>Has the required signature for a thread function (i.e., takes a single <code>void *</code> parameter and returns a void pointer)</li>
-<li>Extracts the argument(s) for the &quot;worker&quot; function from the thread function's arguments</li>
-<li>Calls the &quot;worker&quot; function</li>
-<li>Prepares the return value from the &quot;worker&quot; function to be returned by the thread</li>
-</ul>
-</li>
-<li>Replace the body of the loop with the creation of threads that execute the &quot;wrapper&quot; function</li>
-<li>Add a second loop to wait for all threads to complete</li>
-</ul>
-</li>
+<li>Q1: <em>Write a function called <code>sum_array</code> which takes an array of <code>ARRAY_LEN</code> integers and returns the sum of the integers. Your function should have the appropriate prototype/implementation to serve as the entry point for a thread. Assume <code>ARRAY_LEN</code> is a constant which has been <code>#define</code>d.</em></li>
 </ul>
 
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<ul>
+<li>Q2: <em>Write a function called <code>sum_matrix</code> which takes an array of <code>NUM_ARRAYS</code> arrays of integers (i.e., an <code>int **</code>) and returns the sum of all the integers. The function should create <code>NUM_ARRAYS</code> threads, each running the <code>sum_array</code> function for a single array of integers. Assume <code>NUM_ARRAYS</code> is a constant which has been <code>#define</code>d.</em></li>
+</ul>
+
+</div>
+</div>
+</div>
+</div></section></section><section ><section >
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Transforming-programs-to-be-multi-threaded">Transforming programs to be multi-threaded<a class="anchor-link" href="#Transforming-programs-to-be-multi-threaded">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -14756,7 +14764,7 @@ div.jp-OutputPrompt {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <ul>
-<li>Q4: <em>Write a function called  <code>count_wrapper</code> that has the signature required for a thread function and calls the <code>count</code> function. (Hint: you'll need to declare a <code>struct</code> that contains all of the parameters required for <code>count</code>.)</em></li>
+<li>Q3: <em>Write a function called  <code>count_wrapper</code> that has the signature required for a thread function and calls the <code>count</code> function. (Hint: you'll need to declare a <code>struct</code> that contains all of the parameters required for <code>count</code>.)</em></li>
 </ul>
 
 </div>
@@ -14770,7 +14778,7 @@ div.jp-OutputPrompt {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <ul>
-<li>Q5: <em>Re-write <code>main</code> to create/wait for threads that execute <code>count_wrapper</code> (instead of calling <code>count</code> sequentially).</em></li>
+<li>Q4: <em>Re-write <code>main</code> to create/wait for threads that execute <code>count_wrapper</code> (instead of calling <code>count</code> sequentially).</em></li>
 </ul>
 
 </div>
