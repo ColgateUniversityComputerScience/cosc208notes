@@ -90,4 +90,5 @@
 [[Worksheet]](2023-11-17.worksheet.html)
 * writing multi-threaded programs (2023-11-27) [[Notes]](2023-11-27.notes.html) 
 [[Worksheet]](2023-11-27.worksheet.html)
-* making programs multi-threaded (2023-11-29) [[Worksheet]](2023-11-29.worksheet.html)
+* making programs multi-threaded (2023-11-29) [[Notes]](2023-11-29.notes.html) 
+[[Worksheet]](2023-11-29.worksheet.html)
