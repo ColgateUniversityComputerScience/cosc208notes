@@ -94,5 +94,6 @@
 [[Worksheet]](2023-11-29.worksheet.html)
 
 ## Virtualization
-* virtual machines (2023-12-01) [[Worksheet]](2023-12-01.worksheet.html)
+* virtual machines (2023-12-01) [[Notes]](2023-12-01.notes.html) 
+[[Worksheet]](2023-12-01.worksheet.html)
 * containers (2023-12-04) [[Worksheet]](2023-12-04.worksheet.html)
