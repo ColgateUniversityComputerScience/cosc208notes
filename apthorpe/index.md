@@ -82,5 +82,15 @@
 [[Worksheet]](2023-11-13.worksheet.html)
 * Loop interchange; threads (2023-11-15) [[Notes]](2023-11-15.notes.html) 
 [[Worksheet]](2023-11-15.worksheet.html)
-* writing multi-threaded programs (2023-11-27) [[Worksheet]](2023-11-27.worksheet.html)
-* making programs multi-threaded (2023-11-29) [[Worksheet]](2023-11-29.worksheet.html)
+* writing multi-threaded programs (2023-11-27) [[Notes]](2023-11-27.notes.html) 
+[[Worksheet]](2023-11-27.worksheet.html)
+* making programs multi-threaded (2023-11-29) [[Notes]](2023-11-29.notes.html) 
+[[Worksheet]](2023-11-29.worksheet.html)
+
+## Threads
+* Thread Synchronization (2023-12-01) [[Notes]](2023-12-01.notes.html) 
+[[Worksheet]](2023-12-01.worksheet.html)
+
+## Virtualization
+* Virtualization (2023-12-04) [[Notes]](2023-12-04.notes.html) 
+[[Worksheet]](2023-12-04.worksheet.html)
