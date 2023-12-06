@@ -98,7 +98,8 @@
 [[Worksheet]](2023-12-01.worksheet.html)
 * containers (2023-12-04) [[Notes]](2023-12-04.notes.html) 
 [[Worksheet]](2023-12-04.worksheet.html)
-* cloud computing (2023-12-06) [[Worksheet]](2023-12-06.worksheet.html)
+* cloud computing (2023-12-06) [[Notes]](2023-12-06.notes.html) 
+[[Worksheet]](2023-12-06.worksheet.html)
 
 ## Review
 * Final Exam (2023-12-08) [[Worksheet]](2023-12-08.worksheet.html)
