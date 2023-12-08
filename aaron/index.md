@@ -102,4 +102,4 @@
 [[Worksheet]](2023-12-06.worksheet.html)
 
 ## Review
-* Final Exam (2023-12-08) [[Worksheet]](2023-12-08.worksheet.html)
+* Final Exam (2023-12-08) [[Notes]](2023-12-08.notes.html) [[Worksheet]](2023-12-08.worksheet.html)
