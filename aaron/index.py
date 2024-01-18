@@ -8,7 +8,7 @@ import os
 last_category = None
 
 with open('index.md', 'w') as index:
-    index.write("# COSC 208, Introduction to Computer Systems, Fall 2023\n\n")
+    index.write("# COSC 208, Introduction to Computer Systems, Spring 2024\n\n")
     for filename in sorted(os.listdir(".")):
         if filename.endswith('.ipynb'):
             with open(filename, 'r') as notebook:
@@ -32,14 +32,14 @@ with open('index.md', 'w') as index:
         else:
             continue
             
-        if (dateutil.parser.parse(date).date() > dateutil.parser.parse("2023-08-01").date()):
+        if (dateutil.parser.parse(date).date() > dateutil.parser.parse("2024-01-01").date()):
             print("{} ({})".format(title, date))
             if (category != last_category):
                 index.write("\n## {}\n".format(category))
             index.write("* {} ({}) ".format(
                     title, date))
             if (datetime.date.today() > dateutil.parser.parse(date).date()
-                or (datetime.date.today() == dateutil.parser.parse(date).date() and datetime.datetime.now().hour >= 13)):
+                or (datetime.date.today() == dateutil.parser.parse(date).date() and datetime.datetime.now().hour >= 9)):
                 index.write("[[Notes]]({}) \n".format(notes_filename))
             index.write("[[Worksheet]]({})\n".format(worksheet_filename))
             last_category = category
