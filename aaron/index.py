@@ -23,12 +23,6 @@ with open('index.md', 'w') as index:
             date = contents["cells"][0]["source"][1].split(",")[2].strip(" _")
             notes_filename = filename.replace('.ipynb', '.notes.html')
             worksheet_filename = filename.replace('.ipynb', '.worksheet.html')
-        elif filename.endswith('.notes.pdf'):
-            date = filename.split('.')[0]
-            title = "wait and exec"
-            category = "Multiprocessing"
-            notes_filename = filename
-            worksheet_filename = filename.replace('.notes', '.worksheet')
         else:
             continue
             

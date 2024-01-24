@@ -4,5 +4,6 @@
 [[Worksheet]](2024-01-22.worksheet.html)
 
 ## Hello, C
-* compilation; variables; operators; output; control structures (2024-01-26) [[Worksheet]](2024-01-24.worksheet.html)
+* compilation; variables; operators; output; control structures (2024-01-24) [[Notes]](2024-01-24.notes.html) 
+[[Worksheet]](2024-01-24.worksheet.html)
 * defining functions; using libraries; stack frames (2024-01-26) [[Worksheet]](2024-01-26.worksheet.html)
