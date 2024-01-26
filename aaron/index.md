@@ -6,10 +6,11 @@
 ## Hello, C
 * compilation; variables; operators; output; control structures (2024-01-24) [[Notes]](2024-01-24.notes.html) 
 [[Worksheet]](2024-01-24.worksheet.html)
-* defining functions; using libraries; stack frames (2024-01-26) [[Worksheet]](2024-01-26.worksheet.html)
+* defining functions; using libraries; stack frames (2024-01-26) [[Notes]](2024-01-26.notes.html) 
+[[Worksheet]](2024-01-26.worksheet.html)
 
 ## Data representation
-* arrays; strings; input (2024-01-29) [[Worksheet]](2024-01-29.worksheet.html)
+* stack frames; arrays; strings; input (2024-01-29) [[Worksheet]](2024-01-29.worksheet.html)
 
 ## Number representation
 * number bases; base conversion (2024-01-31) [[Worksheet]](2024-01-31.worksheet.html)
