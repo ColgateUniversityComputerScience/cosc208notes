@@ -10,7 +10,8 @@
 [[Worksheet]](2024-01-26.worksheet.html)
 
 ## Data representation
-* stack frames; arrays; strings; input (2024-01-29) [[Worksheet]](2024-01-29.worksheet.html)
+* stack frames; arrays; strings; input (2024-01-29) [[Notes]](2024-01-29.notes.html) 
+[[Worksheet]](2024-01-29.worksheet.html)
 
 ## Number representation
-* number bases; base conversion (2024-01-31) [[Worksheet]](2024-01-31.worksheet.html)
+* number bases (2024-01-31) [[Worksheet]](2024-01-31.worksheet.html)
