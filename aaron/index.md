@@ -14,4 +14,6 @@
 [[Worksheet]](2024-01-29.worksheet.html)
 
 ## Number representation
-* number bases (2024-01-31) [[Worksheet]](2024-01-31.worksheet.html)
+* number bases (2024-01-31) [[Notes]](2024-01-31.notes.html) 
+[[Worksheet]](2024-01-31.worksheet.html)
+* base conversion; signed integers (2024-02-02) [[Worksheet]](2024-02-02.worksheet.html)
