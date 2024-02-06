@@ -18,4 +18,5 @@
 [[Worksheet]](2024-01-31.worksheet.html)
 * base conversion; signed integers (2024-02-02) [[Notes]](2024-02-02.notes.html) 
 [[Worksheet]](2024-02-02.worksheet.html)
-* signed integers; type conversion; binary arithmetic (2024-02-05) [[Worksheet]](2024-02-05.worksheet.html)
+* signed integers; type conversion (2024-02-05) [[Notes]](2024-02-05.notes.html) 
+[[Worksheet]](2024-02-05.worksheet.html)
