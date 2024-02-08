@@ -20,4 +20,6 @@
 [[Worksheet]](2024-02-02.worksheet.html)
 * signed integers; type conversion (2024-02-05) [[Notes]](2024-02-05.notes.html) 
 [[Worksheet]](2024-02-05.worksheet.html)
-*  binary arithmetic; overflow; bitwise operators (2024-02-07) [[Worksheet]](2024-02-07.worksheet.html)
+*  binary arithmetic; overflow (2024-02-07) [[Notes]](2024-02-07.notes.html) 
+[[Worksheet]](2024-02-07.worksheet.html)
+* bitwise operators; real numbers (2024-02-09) [[Worksheet]](2024-02-09.worksheet.html)
