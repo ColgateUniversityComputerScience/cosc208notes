@@ -22,4 +22,8 @@
 [[Worksheet]](2024-02-05.worksheet.html)
 *  binary arithmetic; overflow (2024-02-07) [[Notes]](2024-02-07.notes.html) 
 [[Worksheet]](2024-02-07.worksheet.html)
-* bitwise operators; real numbers (2024-02-09) [[Worksheet]](2024-02-09.worksheet.html)
+* bitwise operators (2024-02-09) [[Notes]](2024-02-09.notes.html) 
+[[Worksheet]](2024-02-09.worksheet.html)
+
+## Program memory
+* pointers (2024-02-12) [[Worksheet]](2024-02-12.worksheet.html)
