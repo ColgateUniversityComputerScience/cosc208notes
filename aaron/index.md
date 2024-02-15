@@ -26,4 +26,6 @@
 [[Worksheet]](2024-02-09.worksheet.html)
 
 ## Program memory
-* pointers (2024-02-12) [[Worksheet]](2024-02-12.worksheet.html)
+* pointers (2024-02-12) [[Notes]](2024-02-12.notes.html) 
+[[Worksheet]](2024-02-12.worksheet.html)
+* pointers as parameters; arrays & pointers (2024-02-16) [[Worksheet]](2024-02-16.worksheet.html)
