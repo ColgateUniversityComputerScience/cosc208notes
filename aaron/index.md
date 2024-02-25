@@ -32,4 +32,6 @@
 [[Worksheet]](2024-02-16.worksheet.html)
 * pointer arithmetic (2024-02-19) [[Notes]](2024-02-19.notes.html) 
 [[Worksheet]](2024-02-19.worksheet.html)
-* pointers as return values; malloc and free (2024-02-23) [[Worksheet]](2024-02-23.worksheet.html)
+* pointers as return values; malloc and free (2024-02-23) [[Notes]](2024-02-23.notes.html) 
+[[Worksheet]](2024-02-23.worksheet.html)
+* free; 2D arrays (2024-02-26) [[Worksheet]](2024-02-26.worksheet.html)
