@@ -34,5 +34,10 @@
 [[Worksheet]](2024-02-19.worksheet.html)
 * pointers as return values; malloc and free (2024-02-23) [[Notes]](2024-02-23.notes.html) 
 [[Worksheet]](2024-02-23.worksheet.html)
+* free; 2D arrays (2024-02-26) [[Notes]](2024-02-26-copy.notes.html) 
+[[Worksheet]](2024-02-26-copy.worksheet.html)
 * free; 2D arrays (2024-02-26) [[Notes]](2024-02-26.notes.html) 
 [[Worksheet]](2024-02-26.worksheet.html)
+
+## Architecture
+* von Neumann; logic gates (2024-03-01) [[Worksheet]](2024-03-01.worksheet.html)
