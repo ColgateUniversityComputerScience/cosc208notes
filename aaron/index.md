@@ -38,7 +38,8 @@
 [[Worksheet]](2024-02-26.worksheet.html)
 
 ## Architecture
-* von Neumann; logic gates (2024-03-01) [[Worksheet]](2024-03-01.worksheet.html)
+* von Neumann; logic gates (2024-03-01) [[Notes]](2024-03-01.notes.html) 
+[[Worksheet]](2024-03-01.worksheet.html)
 * 1-bit circuits (2024-03-04) [[Worksheet]](2024-03-04.worksheet.html)
 * n-bit circuits; multiplexers (2024-03-06) [[Worksheet]](2024-03-06.worksheet.html)
 * processing unit (2024-03-08) [[Worksheet]](2024-03-08.worksheet.html)
