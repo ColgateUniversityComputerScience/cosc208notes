@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
 
-<title>2023-10-11 slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>2024-03-08 slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 <!-- General and theme style sheets -->
 <link rel="stylesheet" href="https://unpkg.com/reveal.js@4.0.2/dist/reveal.css">
@@ -14670,8 +14670,10 @@ div.jp-OutputPrompt {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <ul>
-<li>Q1: <em>Create a 1-bit circuit for <code>A &lt;= B</code> using <code>AND</code>, <code>OR</code>, <code>NOT</code> gates</em></li>
+<li>Q1: <em>Draw a circuit that takes two 3-bit unsigned numbers (<code>0b A2 A1 A0</code> and <code>0b B2 B1 B0</code>) and outputs a single bit that indicates whether the first number is less than or equal to the second number. Assume you have access to an unlimited supply of <code>AND</code>, <code>OR</code>, and <code>NOT</code> gates and 1-bit greater-than, less-than, and equal-to circuits, as shown below</em></li>
 </ul>
+<p><img src="images/and_xsmall.png" alt="" /> <img src="images/or_xsmall.png" alt="" /> <img src="images/not_xsmall.png" alt="" /></p>
+<p><img src="images/circuits/greater-than-circuit_box.png" alt="" /> <img src="images/circuits/less-than-circuit_box.png" alt="" /> <img src="images/circuits/equals-circuit_box.png" alt="" /></p>
 
 </div>
 </div>
@@ -14683,7 +14685,7 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="n-bit-Logical-Circuits">n-bit Logical Circuits<a class="anchor-link" href="#n-bit-Logical-Circuits">&#182;</a></h2>
+<h2 id="Extra-practice">Extra practice<a class="anchor-link" href="#Extra-practice">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -14695,133 +14697,9 @@ div.jp-OutputPrompt {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <ul>
-<li>Q2: <em>Complete the truth-table for <code>A &gt; B</code> when A and B are two bits</em></li>
+<li>Q2: <em>Draw a circuit that takes two 3-bit <strong>signed</strong> numbers (<code>0b A2 A1 A0</code> and <code>0b B2 B1 B0</code>) and outputs a single bit that indicates whether the first number is <strong>greater than</strong> the second number. Assume you have access to an unlimited supply of <code>AND</code>, <code>OR</code>, and <code>NOT</code> gates and 1-bit greater-than, less-than, and equal-to circuits.</em></li>
 </ul>
 
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_worksheet-only" data-mime-type="text/markdown">
-<table>
-<thead>
-<tr>
-  <th>A1 A0</th>
-  <th>B1 B0</th>
-  <th>A &gt; B</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td>0   0</td>
-  <td>0   0</td>
-  <td>0</td>
-</tr>
-<tr>
-  <td>0   1</td>
-  <td>0   0</td>
-  <td>1</td>
-</tr>
-<tr>
-  <td>1   0</td>
-  <td>0   0</td>
-  <td></td>
-</tr>
-<tr>
-  <td>1   1</td>
-  <td>0   0</td>
-  <td></td>
-</tr>
-<tr>
-  <td>0   0</td>
-  <td>0   1</td>
-  <td></td>
-</tr>
-<tr>
-  <td>0   1</td>
-  <td>0   1</td>
-  <td></td>
-</tr>
-<tr>
-  <td>1   0</td>
-  <td>0   1</td>
-  <td></td>
-</tr>
-<tr>
-  <td>1   1</td>
-  <td>0   1</td>
-  <td></td>
-</tr>
-<tr>
-  <td>0   0</td>
-  <td>1   0</td>
-  <td></td>
-</tr>
-<tr>
-  <td>0   1</td>
-  <td>1   0</td>
-  <td></td>
-</tr>
-<tr>
-  <td>1   0</td>
-  <td>1   0</td>
-  <td></td>
-</tr>
-<tr>
-  <td>1   1</td>
-  <td>1   0</td>
-  <td></td>
-</tr>
-<tr>
-  <td>0   0</td>
-  <td>1   1</td>
-  <td></td>
-</tr>
-<tr>
-  <td>0   1</td>
-  <td>1   1</td>
-  <td></td>
-</tr>
-<tr>
-  <td>1   0</td>
-  <td>1   1</td>
-  <td></td>
-</tr>
-<tr>
-  <td>1   1</td>
-  <td>1   1</td>
-  <td></td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-</div></section></section><section ><section >
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_notes-only" data-mime-type="text/markdown">
-<h2 id="n-bit-arithmetic-circuits">n-bit arithmetic circuits<a class="anchor-link" href="#n-bit-arithmetic-circuits">&#182;</a></h2>
-</div>
-</div>
-</div>
-</div></section></section><section ><section >
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_notes-only" data-mime-type="text/markdown">
-<h2 id="Multiplexer-circuit">Multiplexer circuit<a class="anchor-link" href="#Multiplexer-circuit">&#182;</a></h2>
 </div>
 </div>
 </div>
