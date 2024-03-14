@@ -44,4 +44,9 @@
 [[Worksheet]](2024-03-04.worksheet.html)
 * n-bit circuits; multiplexers (2024-03-06) [[Notes]](2024-03-06.notes.html) 
 [[Worksheet]](2024-03-06.worksheet.html)
-* processing unit (2024-03-08) [[Worksheet]](2024-03-08.worksheet.html)
+* processing unit (2024-03-08) [[Notes]](2024-03-08.notes.html) 
+[[Worksheet]](2024-03-08.worksheet.html)
+
+## Assembly
+* operations and operands (2024-03-08) [[Notes]](2024-03-18.notes.html) 
+[[Worksheet]](2024-03-18.worksheet.html)

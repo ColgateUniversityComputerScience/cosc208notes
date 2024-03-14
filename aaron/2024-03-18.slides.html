@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
 
-<title>2023-10-16 slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>2024-03-18 slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 <!-- General and theme style sheets -->
 <link rel="stylesheet" href="https://unpkg.com/reveal.js@4.0.2/dist/reveal.css">
@@ -14676,48 +14676,6 @@ div.jp-OutputPrompt {
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li>Q2: <em>For this processor's assembly language, how many bits are required for the operation code?</em></li>
-</ul>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li>Q3: <em>For this processor's assembly language, how many bits are required for a complete instruction?</em></li>
-</ul>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li>Q4: <em>What is the binary representation of the assembly instruction for <code>r0 = r0 ^ r1</code>?</em></li>
-</ul>
-
-</div>
-</div>
-</div>
 </div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
@@ -14812,68 +14770,6 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Mapping-assembly-code-to-C-code">Mapping assembly code to C code<a class="anchor-link" href="#Mapping-assembly-code-to-C-code">&#182;</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs   celltag_worksheet-code-only">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-c"><pre><span></span><span class="cm">/* 1*/</span><span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
-<span class="cm">/* 2*/</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="nf">years_to_double</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">rate</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="cm">/* 3*/</span><span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">ruleof72</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">72</span><span class="p">;</span><span class="w"></span>
-<span class="cm">/* 4*/</span><span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">years</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ruleof72</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">rate</span><span class="p">;</span><span class="w"></span>
-<span class="cm">/* 5*/</span><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">years</span><span class="p">;</span><span class="w"></span>
-<span class="cm">/* 6*/</span><span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="cm">/* 7*/</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="cm">/* 8*/</span><span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"></span>
-<span class="cm">/* 9*/</span><span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">years_to_double</span><span class="p">(</span><span class="n">r</span><span class="p">);</span><span class="w"></span>
-<span class="cm">/*10*/</span><span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;With an interest rate of %d%% it </span>
-<span class="w">                   </span><span class="n">will</span><span class="w"> </span><span class="n">take</span><span class="w"> </span><span class="o">~%</span><span class="n">d</span><span class="w"> </span><span class="n">years</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">money</span><span class="err">\</span><span class="n">n</span><span class="s">&quot;, r, y);</span>
-<span class="cm">/*11*/</span><span class="w">  </span><span class="p">}</span><span class="w"></span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput  celltag_worksheet-only" data-mime-type="text/markdown">
-<pre><code>000000000000076c &lt;years_to_double&gt;:
-    76c:	d10083ff 	sub  sp, sp, #0x20
-    770:	b9000fe0 	str  w0, [sp, #12]
-    774:	52800900 	mov  w0, #0x48
-    778:	b9001be0 	str  w0, [sp, #24]
-    77c:	b9401be1 	ldr  w1, [sp, #24]
-    780:	b9400fe0 	ldr  w0, [sp, #12]
-    784:	1ac00c20 	sdiv w0, w1, w0
-    788:	b9001fe0 	str  w0, [sp, #28]
-    78c:	b9401fe0 	ldr  w0, [sp, #28]
-    790:	910083ff 	add  sp, sp, #0x20
-    794:	d65f03c0 	ret
-</code></pre>
-
-</div>
-</div>
-</div>
-</div></section></section><section ><section >
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Extra-practice">Extra practice<a class="anchor-link" href="#Extra-practice">&#182;</a></h2>
 </div>
 </div>
@@ -14886,49 +14782,7 @@ div.jp-OutputPrompt {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <ul>
-<li>Q6: <em>If the processing unit you created in the warm-up is fed the instruction <code>0b11110</code> what will the processing unit do?</em></li>
-</ul>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li>Q7: <em>If the processing unit you created in the warm-up is fed the instruction <code>0b11111</code> what will the processing unit do?</em></li>
-</ul>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li>Q8: <em>If the processing unit you created in the warm-up contained 16 registers instead of 2, how many bits would be required for a complete assembly instruction?</em></li>
-</ul>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li>Q9: <em>Draw the circuitry for a processing unit that has four general purpose registers (r0-r3) and supports four operations:</em><ul>
+<li>Q2: <em>Draw the circuitry for a processing unit that has four general purpose registers (r0-r3) and supports four operations:</em><ul>
 <li><code>nop</code>: no operation; do nothing</li>
 <li><code>mov</code>: copy a value from one register to another</li>
 <li><code>movc</code>: store a constant value into a register, where the constant comes from the last four bits of the instruction</li>
