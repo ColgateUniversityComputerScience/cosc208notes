@@ -48,5 +48,4 @@
 [[Worksheet]](2024-03-08.worksheet.html)
 
 ## Assembly
-* operations and operands (2024-03-08) [[Notes]](2024-03-18.notes.html) 
-[[Worksheet]](2024-03-18.worksheet.html)
+* operations and operands (2024-03-18) [[Worksheet]](2024-03-18.worksheet.html)
