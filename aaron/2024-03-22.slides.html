@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
 
-<title>2024-03-18 slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>2024-03-22 slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 <!-- General and theme style sheets -->
 <link rel="stylesheet" href="https://unpkg.com/reveal.js@4.0.2/dist/reveal.css">
@@ -14658,7 +14658,18 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Warm-up">Warm-up<a class="anchor-link" href="#Warm-up">&#182;</a></h2>
+<h2 id="No-Warm-up-%E2%80%93-Happy-Friday!">No Warm-up &#8211; Happy Friday!<a class="anchor-link" href="#No-Warm-up-%E2%80%93-Happy-Friday!">&#182;</a></h2>
+</div>
+</div>
+</div>
+</div></section></section><section ><section >
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Viewing-assembly-code">Viewing assembly code<a class="anchor-link" href="#Viewing-assembly-code">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -14670,7 +14681,69 @@ div.jp-OutputPrompt {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <ul>
-<li>Q1: <em>Draw the circuitry for a processing unit that has two general purpose registers (r0 and r1) and supports four bitwise operations (<code>&amp;</code>, <code>|</code>, <code>^</code>, <code>~</code>). Assume you already have storage, MUX, DMUX, and bitwise operations (<code>&amp;</code>, <code>|</code>, <code>^</code>, <code>~</code>) circuits available as building blocks.</em></li>
+<li>Example program (<code>dogyears.c</code>)</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs   celltag_worksheet-code-only">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-c"><pre><span></span><span class="cm">/* 1*/</span><span class="w">   </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cm">/* 2*/</span><span class="w">   </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="cm">/* 3*/</span><span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="nf">dog_years</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">birth</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="cm">/* 4*/</span><span class="w">       </span><span class="kt">int</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2023</span><span class="p">;</span><span class="w"></span>
+<span class="cm">/* 5*/</span><span class="w">       </span><span class="kt">int</span><span class="w"> </span><span class="n">years</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">birth</span><span class="p">;</span><span class="w"></span>
+<span class="cm">/* 6*/</span><span class="w">       </span><span class="n">years</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">years</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span><span class="w"></span>
+<span class="cm">/* 7*/</span><span class="w">       </span><span class="k">return</span><span class="w"> </span><span class="n">years</span><span class="p">;</span><span class="w"></span>
+<span class="cm">/* 8*/</span><span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="cm">/* 9*/</span><span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="cm">/*10*/</span><span class="w">       </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;What year were you born? &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="cm">/*11*/</span><span class="w">       </span><span class="kt">char</span><span class="w"> </span><span class="n">year</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span><span class="w"></span>
+<span class="cm">/*12*/</span><span class="w">       </span><span class="n">fgets</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="n">stdin</span><span class="p">);</span><span class="w"></span>
+<span class="cm">/*13*/</span><span class="w">       </span><span class="kt">int</span><span class="w"> </span><span class="n">dog_age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dog_years</span><span class="p">(</span><span class="n">atoi</span><span class="p">(</span><span class="n">year</span><span class="p">));</span><span class="w"></span>
+<span class="cm">/*14*/</span><span class="w">       </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;You are %d dog years old</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dog_age</span><span class="p">);</span><span class="w"></span>
+<span class="cm">/*15*/</span><span class="w">   </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div></section><section >
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<ul>
+<li>Assembly code (excerpt from <code>dogyears.txt</code>)<pre><code>0000000000000914 &lt;dog_years&gt;:
+ 914:   d10083ff        sub     sp, sp, #0x20
+ 918:   b9000fe0        str     w0, [sp, #12]
+ 91c:   5280fce0        mov     w0, #0x7e7
+ 920:   b9001be0        str     w0, [sp, #24]
+ 924:   b9401be1        ldr     w1, [sp, #24]
+ 928:   b9400fe0        ldr     w0, [sp, #12]
+ 92c:   4b000020        sub     w0, w1, w0
+ 930:   b9001fe0        str     w0, [sp, #28]
+ 934:   b9401fe1        ldr     w1, [sp, #28]
+ 938:   2a0103e0        mov     w0, w1
+ 93c:   531d7000        lsl     w0, w0, #3
+ 940:   4b010000        sub     w0, w0, w1
+ 944:   b9001fe0        str     w0, [sp, #28]
+ 948:   b9401fe0        ldr     w0, [sp, #28]
+ 94c:   910083ff        add     sp, sp, #0x20
+ 950:   d65f03c0        ret
+</code></pre>
+</li>
 </ul>
 
 </div>
@@ -14684,26 +14757,6 @@ div.jp-OutputPrompt {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Extra-practice">Extra practice<a class="anchor-link" href="#Extra-practice">&#182;</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li>Q2: <em>Draw the circuitry for a processing unit that has four general purpose registers (r0-r3) and supports four operations:</em><ul>
-<li><code>nop</code>: no operation; do nothing</li>
-<li><code>mov</code>: copy a value from one register to another</li>
-<li><code>movc</code>: store a constant value into a register, where the constant comes from the last four bits of the instruction</li>
-<li><code>add</code>: add the values in two registers and store the result in a register</li>
-</ul>
-</li>
-</ul>
-
 </div>
 </div>
 </div>
