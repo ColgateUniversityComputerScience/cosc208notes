@@ -54,4 +54,6 @@
 [[Worksheet]](2024-03-22.worksheet.html)
 * mapping assembly code to C (continued); tracing assembly code (2024-03-25) [[Notes]](2024-03-25.notes.html) 
 [[Worksheet]](2024-03-25.worksheet.html)
-* tracing assembly code (continued); conditionals (2024-03-27) [[Worksheet]](2024-03-27.worksheet.html)
+* tracing assembly code (continued) (2024-03-27) [[Notes]](2024-03-27.notes.html) 
+[[Worksheet]](2024-03-27.worksheet.html)
+* conditionals (2024-03-29) [[Worksheet]](2024-03-29.worksheet.html)
