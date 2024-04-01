@@ -56,4 +56,6 @@
 [[Worksheet]](2024-03-25.worksheet.html)
 * tracing assembly code (continued) (2024-03-27) [[Notes]](2024-03-27.notes.html) 
 [[Worksheet]](2024-03-27.worksheet.html)
-* conditionals (2024-03-29) [[Worksheet]](2024-03-29.worksheet.html)
+* conditionals (2024-03-29) [[Notes]](2024-03-29.notes.html) 
+[[Worksheet]](2024-03-29.worksheet.html)
+* loops; functions (2024-04-01) [[Worksheet]](2024-04-01.worksheet.html)
