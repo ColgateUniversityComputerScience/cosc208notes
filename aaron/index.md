@@ -64,4 +64,5 @@
 ## Operating Systems & Concurrency
 * limited direct execution; system calls (2024-04-05) [[Notes]](2024-04-05.notes.html) 
 [[Worksheet]](2024-04-05.worksheet.html)
-* system calls; processes (2024-04-08) [[Worksheet]](2024-04-08.worksheet.html)
+* system calls; processes (2024-04-08) [[Notes]](2024-04-08.notes.html) 
+[[Worksheet]](2024-04-08.worksheet.html)
