@@ -68,4 +68,6 @@
 [[Worksheet]](2024-04-08.worksheet.html)
 * process API (2024-04-10) [[Notes]](2024-04-10.notes.html) 
 [[Worksheet]](2024-04-10.worksheet.html)
-* process API (continued) (2024-04-12) [[Worksheet]](2024-04-12.worksheet.html)
+* process API (continued) (2024-04-12) [[Notes]](2024-04-12.notes.html) 
+[[Worksheet]](2024-04-12.worksheet.html)
+* threads (2024-04-15) [[Worksheet]](2024-04-15.worksheet.html)
