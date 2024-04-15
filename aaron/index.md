@@ -72,6 +72,4 @@
 [[Worksheet]](2024-04-12.worksheet.html)
 * threads (2024-04-15) [[Notes]](2024-04-15.notes.html) 
 [[Worksheet]](2024-04-15.worksheet.html)
-
-## Efficiency
 * writing multi-threaded programs (2024-04-17) [[Worksheet]](2024-04-17.worksheet.html)
