@@ -72,4 +72,6 @@
 [[Worksheet]](2024-04-12.worksheet.html)
 * threads (2024-04-15) [[Notes]](2024-04-15.notes.html) 
 [[Worksheet]](2024-04-15.worksheet.html)
-* writing multi-threaded programs (2024-04-17) [[Worksheet]](2024-04-17.worksheet.html)
+* pthreads API (2024-04-17) [[Notes]](2024-04-17.notes.html) 
+[[Worksheet]](2024-04-17.worksheet.html)
+* writing multi-threaded programs (2024-04-22) [[Worksheet]](2024-04-22.worksheet.html)
