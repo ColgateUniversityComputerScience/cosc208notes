@@ -74,4 +74,9 @@
 [[Worksheet]](2024-04-15.worksheet.html)
 * pthreads API (2024-04-17) [[Notes]](2024-04-17.notes.html) 
 [[Worksheet]](2024-04-17.worksheet.html)
-* writing multi-threaded programs (2024-04-22) [[Worksheet]](2024-04-22.worksheet.html)
+* writing multi-threaded programs (2024-04-22) [[Notes]](2024-04-22.notes.html) 
+[[Worksheet]](2024-04-22.worksheet.html)
+
+## Storage
+* memory hierarchy; locality (2024-04-24) [[Worksheet]](2024-04-24.worksheet.html)
+* cache replacement; loop interchange (2024-04-26) [[Worksheet]](2024-04-26.worksheet.html)
