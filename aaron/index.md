@@ -78,5 +78,6 @@
 [[Worksheet]](2024-04-22.worksheet.html)
 
 ## Storage
-* memory hierarchy; locality (2024-04-24) [[Worksheet]](2024-04-24.worksheet.html)
+* memory hierarchy; locality (2024-04-24) [[Notes]](2024-04-24.notes.html) 
+[[Worksheet]](2024-04-24.worksheet.html)
 * cache replacement; loop interchange (2024-04-26) [[Worksheet]](2024-04-26.worksheet.html)
