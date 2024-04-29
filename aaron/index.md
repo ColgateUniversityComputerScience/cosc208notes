@@ -84,4 +84,5 @@
 [[Worksheet]](2024-04-26.worksheet.html)
 
 ## Virtualization
-* virtual machines (2024-04-29) [[Worksheet]](2024-04-29.worksheet.html)
+* virtual machines (2024-04-29) [[Notes]](2024-04-29.notes.html) 
+[[Worksheet]](2024-04-29.worksheet.html)
