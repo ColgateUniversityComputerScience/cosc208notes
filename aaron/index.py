@@ -26,15 +26,15 @@ with open('index.md', 'w') as index:
         else:
             continue
             
-        if (dateutil.parser.parse(date).date() > dateutil.parser.parse("2024-01-01").date()):
-            print("{} ({})".format(title, date))
-            if (category != last_category):
-                index.write("\n## {}\n".format(category))
-            index.write("* {} ({}) ".format(
-                    title, date))
-            if (datetime.date.today() > dateutil.parser.parse(date).date()
-                or (datetime.date.today() == dateutil.parser.parse(date).date() and datetime.datetime.now().hour >= 9)):
-                index.write("[[Notes]]({}) \n".format(notes_filename))
-            index.write("[[Worksheet]]({})\n".format(worksheet_filename))
-            last_category = category
+        #if (dateutil.parser.parse(date).date() > dateutil.parser.parse("2024-01-01").date()):
+            #print(f"{} ({})".format(title, date))
+        if (category != last_category):
+            index.write("\n## {}\n".format(category))
+        index.write(f"* {title}")
+        index.write(f" [[Worksheet]]({worksheet_filename})")
+        #if (datetime.date.today() > dateutil.parser.parse(date).date()
+            #or (datetime.date.today() == dateutil.parser.parse(date).date() and datetime.datetime.now().hour >= 9)):
+        #index.write(f" [[Notes & Solutions]]({notes_filename})")
+        index.write("\n")
+        last_category = category
 
