@@ -8,7 +8,7 @@ import os
 last_category = None
 
 with open('index.md', 'w') as index:
-    index.write("# COSC 208, Introduction to Computer Systems, Spring 2024\n\n")
+    index.write("# COSC 208, Introduction to Computer Systems, Fall 2024\n\n")
     for filename in sorted(os.listdir(".")):
         if filename.endswith('.ipynb'):
             with open(filename, 'r') as notebook:

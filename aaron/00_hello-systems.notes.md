@@ -9,12 +9,11 @@ _COSC 208, Introduction to Computer Systems, Fall 2024_
 * First lab next week
 
 ## Getting to know Aaron
-* My name is...Aaron Gember-Jacobson
 * Please call me...Aaron _or_ Professor Aaron
 * My pronouns are...he/him
 * Two things I like to do for fun are...building with Legos, and doing house projects.
 * Besides my courses, I expect to spend significant time each week...handling administrative matters for the department in my role as department chair.
-* Something you (students) could do to make this a better teaching environment for me is...arriving at class on time.
+* Something you could do to make this a better teaching environment for me is...arriving to class on time.
 
 ## What is a computer system?
 * _What do you think of when you hear the term "computer systems"?_

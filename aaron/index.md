@@ -1,4 +1,4 @@
-# COSC 208, Introduction to Computer Systems, Spring 2024
+# COSC 208, Introduction to Computer Systems, Fall 2024
 
 
 ## Hello
