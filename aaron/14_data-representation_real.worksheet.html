@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>12_data-representation_signed</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>14_data-representation_real</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <link href="custom.css" rel="stylesheet"/>
 <style type="text/css">
     pre { line-height: 125%; }
@@ -7511,17 +7511,17 @@ a.anchor-link {
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7f1ef6ff-3d55-41d4-a087-f6ad0221f41a">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=40c5bff8-f0b9-4222-80cb-62efa3710886">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Data-representation:-signed-integers;-type-conversion">Data representation: signed integers; type conversion<a class="anchor-link" href="#Data-representation:-signed-integers;-type-conversion">¶</a></h1><p><em>COSC 208, Introduction to Computer Systems, Fall 2024</em></p>
+<h1 id="Data-representation:-binary-arithmetic;-overflow;-bitwise-operators">Data representation: binary arithmetic; overflow; bitwise operators<a class="anchor-link" href="#Data-representation:-binary-arithmetic;-overflow;-bitwise-operators">¶</a></h1><p><em>COSC 208, Introduction to Computer Systems, Fall 2024</em></p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b9701003-f0bb-44e7-95b6-8fa157e12e6b">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ff6e3e06-7a9a-4b93-abbd-97854e97df8f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7533,79 +7533,28 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c1666aff-36e0-4284-a40c-06e55f464cd4">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ba37f244-d781-4a25-9496-803617b63bb9">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Project-1-overview">Project 1 overview<a class="anchor-link" href="#Project-1-overview">¶</a></h2><ul>
-<li><strong>Projects must be completed with a partner.</strong> Contact Aaron if you would like help finding a partner or you want to complete a project on your own.</li>
-<li><strong>An opportunity to revise your project is contingent upon good time management.</strong> I expect your git history to demonstrate that you started each project shortly after it was released and you worked on the project over multiple sessions.</li>
-</ul>
+<h2 id="Binary-arithmetic">Binary arithmetic<a class="anchor-link" href="#Binary-arithmetic">¶</a></h2>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=503d39eb-ec87-4d93-b2a8-d44febcc9356">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=eeb72ee0-8d81-481a-b36f-d684e28e97ec">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<ul>
-<li><strong>Functionality</strong><ul>
-<li>Satisfactory: <strong>two or fewer minor bugs</strong></li>
-<li>Close to satisfactory: <strong>two or fewer major bugs</strong></li>
-<li>See examples of minor and major bugs in project instructions</li>
-</ul>
-</li>
-<li><strong>Design</strong><ul>
-<li>Satisfactory: must adhere to <strong>all</strong> design criteria in the project instructions</li>
-<li>Close to satisfactory: adheres to <strong>half to three-quarters</strong> of the design criteria</li>
-</ul>
-</li>
-</ul>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
+<p><em>Express the decimal numbers in <strong>8-bit two's complement</strong>, then use <strong>bitwise arithmetic</strong>:</em></p>
+<p>Q1: <code>10 + 0b00000101</code></p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=153af8ec-a312-43aa-859b-d44b2391f830">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<ul>
-<li><p><strong>Academic Integrity</strong></p>
-<p>“Set[ting] an example of ethical behavior in public and in private” is one of the 13 goals of a Colgate education. As part of this goal, Colgate has an <strong>academic honor code</strong> you are expected to follow. Additionally, “a computing professional should uphold, promote, and respect the principles of the <strong>Association for Computing Machinery (ACM) Code of Ethics and Professional Conduct”</strong>.</p>
-<p>In particular, you <strong>may not share or copy code/answers from other students.</strong> Violations of this policy will be considered facilitating academic misconduct and/or cheating according to Colgate’s academic honor code.</p>
-<p>Additionally, you <strong>must clearly indicate if any code is copied from or inspired by external sources</strong> (e.g., Stack Overflow, ChatGPT, GitHub Copilot) and adhere to the licensing requirements of such code. Violations of this policy will be considered cheating or plagiarism according to Colgate’s academic honor code. Note that question and answer forums (e.g., Stack Overflow) are often unreliable, and AI-based tools (e.g., ChatGPT) have significant limitations and legal complications.</p>
-<p><strong>If you are struggling to complete an activity—due to a lack of understanding, time pressure, personal matters, etc.—please contact me. I want you to succeed, and I will do everything I can to help you.</strong> Violating the academic honesty expectations for the course (almost) always leads to a bad experience for you and me. If you are unsure what constitutes academic misconduct, please contact me as soon as possible.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f30b5550-c32f-439c-aecd-b499e1ade180">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
-<div style="page-break-after:always;"></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9aa343c3-b5ac-4385-ae24-02ba1db51f89">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Signed-integers">Signed integers<a class="anchor-link" href="#Signed-integers">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=70a4f29a-e8ac-4b5f-82d5-dcb8aec879b8">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=57243856-cf8f-4f1e-b740-0a55c125353e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7615,18 +7564,17 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=afbaa29e-bd9b-47f7-9a36-263e7712fd1f">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b9e35913-0cbc-46aa-9ad5-c4af9c5a786c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
-<p><em>Express the following decimal numbers using <strong>8-bit two's complement</strong>:</em></p>
-<p>Q1: <code>13</code></p>
+<p>Q2: <code>0b00000111 + 15</code></p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a6a8a0e6-7e95-411b-90b4-573175b87b1c">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9a136931-4cb8-4e87-88f1-27ec21d6e46c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7636,37 +7584,17 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b6811fd7-9b03-4ad6-9f7f-92abcf401df9">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7979abae-579c-4fe4-a1ab-f7a0e76714bf">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
-<p>Q2: <code>-128</code></p>
+<p>Q3: <code>-10 + 0b00000101</code></p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b152b088-a724-4771-be83-8f455471a557">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
-<p style="height:12em;"></p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f19994b7-fbfc-46f5-a230-33896b7d202a">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
-<p>Q3: <code>-64</code></p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=935aa75f-6f5f-4ef7-945d-f723496b0547">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cb2d1967-58c3-4ea2-a843-1a19823f5844">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7676,17 +7604,17 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=340239c2-6c87-4485-aebb-be4a9a0a20c3">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4d7db5e3-61f0-461a-bbec-7ec9de74e60e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
-<p>Q4: <code>-1</code></p>
+<p>Q4: <code>0b00001010 - 5</code></p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=48defbc8-3dee-497e-839e-ae3b6a86f342">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c6a62574-7f4e-4f44-b739-ba4ba8c27470">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7696,17 +7624,108 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7114c1bf-c659-45a5-b86a-ade1df5997c9">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=79cb78ce-6036-4657-8e64-9da752faad4c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
-<p>Q5: Convert <code>0b11001100</code> to <strong>unsigned decimal</strong></p>
+<p>Q5: <code>0b00100000 + 0b01100000</code></p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3802d82c-cf1f-44d3-964e-ce26339ae9ea">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e6460fc5-b510-437b-b3bb-edd4766ba874">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
+<p style="height:9em;"></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e3d1dd91-88d8-4596-94c2-16de5444fcef">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
+<p>Q6: <code>64 + 64</code></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=574286a6-e19f-4724-bdd7-4c7733e102ee">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
+<p style="height:9em;"></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a2d03aa6-7f04-4e0b-81e8-4136d1d050ce">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
+<p>Q7: <code>0b10100011 + 7</code></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c96d1e70-98e8-4c60-81aa-41b1ea354a09">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
+<p style="height:10em;"></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b5386f6a-b795-4773-9e89-c54e6293f3ba">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
+<p>Q8: <code>48 - 0b01100001</code></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=99f8e4f4-4e03-4415-96fd-7ae6b44526f4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
+<p style="height:10em;"></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b4b4a64a-e262-4936-b143-f35e26669127">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Overflow">Overflow<a class="anchor-link" href="#Overflow">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=776edd02-4f6a-45c4-b7be-afb117b11f5c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
+<p><em>For each of the following computations, determine whether the computation <strong>overflows, underflows, or neither</strong>. Assume we are using <strong>8-bit signed integers</strong>.</em></p>
+<p>Q9: <code>0b10000000 + 0b01111111</code></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=36d17409-0934-4d94-a456-89ddeb3ab038">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7716,17 +7735,17 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f1d61373-0ef9-46f7-914b-bca5e9acce1e">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f0b4ac7f-1a0e-47e6-869e-f56d0980f5ee">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
-<p>Q6: Convert <code>0b11001100</code> to <strong>signed decimal</strong></p>
+<p>Q10: <code>0b10000001 + 0b01111111</code></p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8c09f933-9638-4302-9548-0c68345ed762">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9d0f9b9e-fe8c-486d-9c5b-b902fcb110ff">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7736,339 +7755,524 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=324e723d-7035-47db-ad49-e8e5a61e4a87">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f68655fd-0267-489e-8eb6-837e63118b1d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
-<p><em>Express the following decimal numbers using <strong>8-bit two's complement</strong>:</em></p>
-<p>Q7: <code>-49</code></p>
+<p>Q11: <code>0b10000000 + 0b10000001</code></p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=81874180-7fa6-4228-9f87-b59cb83f9d8b">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d88954fb-0fb5-42ce-92b9-2f9a05c696ad">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
-<p style="height:10em;"></p>
+<p style="height:5em;"></p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1903e817-1d8d-472d-9871-f306545c422f">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7403e290-6ccc-46fc-af42-13fefcb9a3ff">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
-<p>Q8: <code>-11</code></p>
+<p>Q12: <code>0b11000000 + 0b11000000</code></p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=025e1fdd-dd33-4a2c-b87b-85bd6825fc5c">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9b2e5038-7569-4d40-b33b-3278a99624cb">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
-<p style="height:10em;"></p>
+<p style="height:5em;"></p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9c8f43c0-f466-447f-8b1e-07ce4ee82750">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b7174f7d-050c-447c-a16b-e70f1caf6637">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
-<p>Q9: <code>-42</code></p>
+<p>Q13: <code>0b01111111 + 0b00000001</code></p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fc50b2bf-895b-4ace-80c9-9a303fff8c53">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5ae3ee46-fdd8-4af2-b67b-1db77ed010bd">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
-<p style="height:10em;"></p>
+<p style="height:5em;"></p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f19a6701-7c97-4ce9-8d5f-e6a09d35440b">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=df6035c7-d216-4035-aff3-13f46198f169">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
-<p>Q10: <code>97</code></p>
+<p><em>Perform the following calculations. Operands are encoded using <strong>two's complement encoding with 6 bits</strong>. For each calculation, express the <strong>result in binary and decimal</strong>, and indicate whether the result <strong>overflows, underflows, or neither</strong>.</em></p>
+<p>Q14: <code>0b110000 + 0b111111</code></p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a790d8c3-384e-4e83-9908-005f0c47a983">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=dc7f1717-b2b7-427c-a064-a0f13fbeec56">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
-<p style="height:10em;"></p>
+<p style="height:6em;"></p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6b2d45e2-72ce-4220-b235-8f48ff08d9b5">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=dcf0a21e-04f5-42ac-8e7f-1c4a83302705">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
+<p>Q15: <code>0b001111 + 0b000001</code></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=86f4bf87-4d77-4229-9a8a-33723bece221">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
+<p style="height:6em;"></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2b8b64f0-38fb-4b83-bb40-9b29a9f47117">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
+<p>Q16: <code>0b101010 + 0b100100</code></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=79b57df3-261b-44d9-badb-4c5bd8ecfcac">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
+<p style="height:6em;"></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5a094386-10d6-477f-98e3-0d756b14fb9f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
+<p>Q17: <code>0b001000 + 0b011000</code></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0a52d93c-7165-4f7f-ab8d-701371e0e69e">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
+<p style="height:6em;"></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f38a0b6a-c546-4541-8d5a-7d5431303b2e">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
+<p>Q18: <code>0b110000 + 0b010000</code></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=be67fc20-039f-4743-83f4-fc3b131ca1c9">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
+<p style="height:6em;"></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=23e53a12-adec-4f0f-8456-b3afc5c164ee">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Type-conversion">Type conversion<a class="anchor-link" href="#Type-conversion">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_worksheet-code-only" id="cell-id=fc8fe166-e15a-4a91-a9fe-58297baea8b0">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-c"><pre><span></span><span class="c1">// Example 1</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-123456</span><span class="p">;</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d %u</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
+<h2 id="Bitwise-operators">Bitwise operators<a class="anchor-link" href="#Bitwise-operators">¶</a></h2>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_worksheet-code-only" id="cell-id=26716799-46af-4ab5-aea0-92bb18654969">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-c"><pre><span></span><span class="c1">// Example 2</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">300</span><span class="p">;</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%u</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_worksheet-code-only" id="cell-id=5c6f2e65-c9cb-4a78-9775-bc96b65679f6">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-c"><pre><span></span><span class="c1">// Example 3</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">300</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%u</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=afc15b5b-8a3b-4d7c-88b1-74027168ec67">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
-<p style="height:11em;"></p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5efc7de3-b4ce-43ff-b150-742ba3855834">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ab42f1f3-b15e-4745-a265-67976dbade8c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
-<p>Q11: <em>What is the largest magnitude negative number that can be represented using 5-bit two's complement?</em></p>
+<p><em>Determine the resulting binary</em></p>
+<p>Q19: <code>0b1010 | 0b0101</code></p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=82d7dd24-4803-4194-a00d-533590fafd99">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2a4b703c-b020-4781-b662-225c284b78c1">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
-<p style="height:3em;"></p>
+<p style="height:4em;"></p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c2cfe8d1-83b6-4bad-9eb0-8f86b3d7864a">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=557d4418-40c3-456c-b532-0078d53e332e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
-<p>Q12: <em>What is the smallest magnitude negative number that can be represented using 5-bit two's complement?</em></p>
+<p>Q20: <code>0b1010 &amp; 0b0101</code></p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ac330875-6cc2-4307-99d4-c1ba924555d7">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6b20f76b-bec5-48bf-ad4d-07485a4821fe">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
-<p style="height:3em;"></p>
+<p style="height:4em;"></p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=582550a9-c4c9-4845-aec2-0e122ac1e041">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1212eb2c-8827-4169-9744-414d5d3709e3">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
-<p>Q13: <em>What is the largest magnitude positive number that can be represented using 5-bit two's complement?</em></p>
+<p>Q21: <code>~(0b1100 &amp; 0b0110)</code></p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3a725780-f4fd-4319-be19-092d52cfa852">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1e0d9724-60af-4174-8a1e-6cb1fd2b1194">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
-<p style="height:2em;"></p>
+<p style="height:4em;"></p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f6488311-26e5-4d2f-811c-dd1808ced2bb">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=331f0f4e-ea4a-45e3-8f99-65b1dedfb408">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
-<p><em>Express your answers to the following questions in terms of <code>n</code>: e.g., <code>n/2</code>.</em></p>
-<p>Q14: <em>What is the minimum number of bits required to express the unsigned decimal number <strong>2<sup>n</sup> - 1</strong>?</em></p>
+<p>Q22: <code>0b1000 &gt;&gt; 0b011</code></p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5d808773-c078-45d4-a768-b6a0d6b9730f">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=17b7ba45-52fa-4300-83e4-bf7c88a130b0">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
-<p style="height:2em;"></p>
+<p style="height:4em;"></p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=20997793-5af2-4f2c-9319-00af2bd6ac11">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5075a76f-8e00-44b9-b595-e236754102dc">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
-<p>Q15: <em>What is the minimum number of bits required to express the signed decimal number <strong>2<sup>n</sup> − 1</strong> using two’s complement?</em></p>
+<p>Q23: <code>0b0001 &lt;&lt; 0b0010</code></p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9d9eb5d4-a9e4-41e2-b4dc-61ba8565cb21">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8d75dc31-3463-4ff0-96e8-e767e0b38b0d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
-<p style="height:2em;"></p>
+<p style="height:4em;"></p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=193606e0-8ca4-4a9b-8342-021c5f01ed56">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f4f9c3f3-706c-434f-ab13-b4d053391d0e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
-<p>Q16: <em>What is the minimum number of bits required to express the signed decimal number <strong>−2<sup>n</sup>  + 1</strong> using two’s complement?</em></p>
+<p>Q24: <code>0b1111 &amp; (~0b0010)</code></p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=dd25a331-9258-454f-bcce-6d09203b4e16">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e6d877bb-3763-4d6f-8b5f-b237473a6293">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
-<p style="height:2em;"></p>
+<p style="height:4em;"></p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3c8a9c0a-e9d1-4f61-b98e-02d7f8084d24">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ac1da2db-5f82-4c52-a678-af83b5db2c99">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
-<h2 id="Extra-practice">Extra practice<a class="anchor-link" href="#Extra-practice">¶</a></h2><p>Q17: <em>Write a function called <code>sign</code> that takes a number expressed in binary using two's complement and returns <code>-1</code> if the number is negative, <code>0</code> if the number is zero, or <code>1</code> if the number is positive. The binary is stored as a character array that starts with <code>0b</code> and contains an arbitrary number of <code>'0'</code> and <code>'1'</code> characters.</em></p>
+<p>Q25: <code>0b0000 | 0b0010</code></p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=12e4634a-ac6f-4bc7-8885-c85a3c37b443">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b26e5260-07d1-4054-93c4-c223041fdccd">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
-<p style="height:20em;"></p>
+<p style="height:4em;"></p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c80639d0-8d2e-40a3-835c-62eef6d9f686">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ad230c3b-f13a-47e2-8d33-655430378c75">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
-<p>Q18: Convert <code>0x27</code> to unsigned decimal</p>
+<p>Q26: <code>0b0011 &amp; 0b0101</code></p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8df6bb9b-2d29-4fa9-8bf0-b9deabbbfd32">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ba351a05-c2a3-41f3-addd-27509861a3cd">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
-<p style="height:5em;"></p>
+<p style="height:4em;"></p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f8747052-04d9-4e95-be2f-d0dd684d57e3">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f7853f25-d34b-4be6-ab59-885bf38d4934">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
-<p>Q19: <code>0xDEAD</code> to 16-bit binary</p>
+<p>Q27: <code>0b0011 | 0b0101</code></p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=131df4bb-fe4e-48f7-9910-f4cfbd88a8e0">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fb4d871d-b629-461d-9b0e-1ca5cd282fcc">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
-<p style="height:5em;"></p>
+<p style="height:4em;"></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=17543ecf-eef3-49ea-8720-4dc84e5e51fb">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
+<p>Q28: <code>0b0011 ^ 0b0101</code></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f9af279b-819a-4e4b-bcff-9af52e0e92b1">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
+<p style="height:4em;"></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2f8aafe9-795a-42a1-a589-c7138a23c48a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
+<p><em>For each of the following expressions, select all operators that make the expression evaluate to true. Operands are encoded using two's complement.</em></p>
+<p>Q29: <code>0b110000 __ 0b111111</code></p>
+<pre><code>&amp;   &amp;&amp;   |   ||   ^   &lt;
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=61f6408d-9198-43cb-9333-8675c6190250">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
+<p style="height:4em;"></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4101e717-0415-45c7-9b85-279858b1815e">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
+<p>Q30: <code>0b011110 __ 0b000001</code></p>
+<pre><code>&amp;   &amp;&amp;   |   ||   ^   &lt;
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=85bfc0e6-f39f-4552-99d5-230822670f45">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
+<p style="height:4em;"></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7ec4fca9-49fa-4268-94b4-b57639893d21">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
+<p>Q31: <code>0b000000 __ 0b000000</code></p>
+<pre><code>&amp;   &amp;&amp;   |   ||   ^   &lt;
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c85a7ccf-19aa-4889-bd49-0bbeb7e14c7b">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
+<p style="height:4em;"></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=74c36cad-85b5-4377-a289-6d02619b18b0">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
+<p>Q32: <code>0b000111 __ 0b000111</code></p>
+<pre><code>&amp;   &amp;&amp;   |   ||   ^   &lt;
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=079f72ba-771c-4752-8af7-3fb7436589b2">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
+<p style="height:4em;"></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f422f904-846f-4d7d-b13c-7d5c8efd9d0a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
+<p><em>Express the following real numbers using 8-bit fixed point representation with 4 bits for the fractional part. If the number cannot be expressed exactly, express it as closely as you can and indicate which number is actually represented by the bits.</em></p>
+<p>Q33: <code>5.75</code></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=af013c2b-48e2-4f8f-b159-2d14cba563a7">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
+<p style="height:6em;"></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7ce21d1b-b80e-46c0-8c1c-8f685026a665">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
+<p>Q34: <code>16.125</code></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=108d87e4-9bed-4616-9c5a-87d727a85be3">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
+<p style="height:6em;"></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3a2de75a-0105-4e2a-aeda-b7be6a7343ce">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
+<p>Q35: <code>4.1875</code></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3c4f784d-1d5e-49b7-9eb9-51950982230c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
+<p style="height:6em;"></p>
 </div>
 </div>
 </div>
