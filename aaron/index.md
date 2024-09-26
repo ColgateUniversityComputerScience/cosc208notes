@@ -13,6 +13,6 @@
 * real numbers [[Worksheet]](14_data-representation_real.worksheet.html)[[Notes & Solutions]](14_data-representation_real.notes.html)
 
 ## Program memory
-* pointers [[Worksheet]](20_program-memory_pointers.worksheet.html)
+* pointers [[Worksheet]](20_program-memory_pointers.worksheet.html)[[Notes & Solutions]](20_program-memory_pointers.notes.html)
 * arrays & pointers; pointer arithmetic[[Worksheet]](21_program-memory_arrays.worksheet.html)
 
