@@ -16,3 +16,5 @@
 * pointers [[Worksheet]](20_program-memory_pointers.worksheet.html) [[Notes & Solutions]](20_program-memory_pointers.notes.html)
 * arrays & pointers; pointer arithmetic [[Worksheet]](21_program-memory_arrays.worksheet.html) [[Notes & Solutions]](21_program-memory_arrays.notes.html)
 * dynamic memory allocation [[Worksheet]](22_program-memory_malloc.worksheet.html)
+* structs [[Worksheet]](23_program-memory_structs.worksheet.html)
+
