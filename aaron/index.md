@@ -19,4 +19,5 @@
 * structs [[Worksheet]](23_program-memory_structs.worksheet.html)
 
 ## Architecture
-* von Neumann; logic gates [[Worksheet]](30_architecture_components.worksheet.html)
+* von Neumann; logic gates [[Worksheet]](30_architecture_components.worksheet.html) [[Notes & Solutions]](30_architecture_components.notes.html)
+* circuits [[Worksheet]](31_architecture_circuits.worksheet.html) <--[[Notes & Solutions]](31_architecture_circuits.notes.html)-->
