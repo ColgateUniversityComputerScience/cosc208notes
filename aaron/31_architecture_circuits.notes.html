@@ -7651,14 +7651,24 @@ a.anchor-link {
 </ul>
 </li>
 <li><p>Connect the output of all AND gates to a single OR gate</p>
-<p><img alt="" src="images/circuits/gate_xor5.png"/></p>
+<p><img alt="" src="images/circuits/1b_ne.png"/></p>
 </li>
-<li><p><em>Can we build a circuit that uses fewer gates?</em></p>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9a85d6ba-9ae8-437d-aa8e-811a625c1de5">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_notes-only" data-mime-type="text/markdown">
 <ul>
+<li><em>Can we build a circuit that uses fewer gates?</em><ul>
 <li><p><code>A XOR B</code></p>
 </li>
 <li><p><code>(A OR B) AND (NOT (A AND B))</code></p>
-<p><img alt="" src="images/circuits/gate_xor.png"/></p>
+<p><img alt="" src="images/circuits/1b_ne_opt.png"/></p>
 </li>
 </ul>
 </li>
@@ -7683,7 +7693,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_answer" data-mime-type="text/markdown">
 <p><code>A AND NOT(B)</code></p>
-<p><img alt="" src="images/circuits/a_gt_b.png"/></p>
+<p><img alt="" src="images/circuits/1b_gt.png"/></p>
 </div>
 </div>
 </div>
@@ -7703,7 +7713,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_answer" data-mime-type="text/markdown">
-<p><img alt="" src="images/circuits/a_ge_b.png"/></p>
+<p><img alt="" src="images/circuits/1b_ge.png"/></p>
 <ul>
 <li>Alternatives<ul>
 <li><code>(NOT(A OR B)) OR (A AND NOT(B)) OR (A AND B)</code></li>
@@ -8184,23 +8194,17 @@ a.anchor-link {
 <li>Are all previous bits equal?</li>
 </ul>
 </li>
-<li>N-bit greater-than circuit<ul>
-<li>Inputs<ul>
-<li><code>Ai</code></li>
-<li><code>Bi</code></li>
-<li><code>Gi</code></li>
-<li><code>Ei</code></li>
 </ul>
-</li>
-<li>Outputs — <em>What are the formulas for these?</em><ul>
-<li><code>Gi</code>: <code>G(i+1) OR (E(i+1) AND (Ai &gt; Bi))</code></li>
-<li><code>Ei</code>: <code>E(i+1) AND (Ai == Bi)</code></li>
-</ul>
-</li>
-<li>Circuit <br/> <img alt="" src="images/circuits/a_gt_b_n-bit.png"/> <br/> <img alt="" src="images/circuits/a_gt_b_n-bit_abstracted.png"/></li>
-</ul>
-</li>
-</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=19bfcbd8-5035-4ee0-a5da-1496d7cb6823">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_notes-only" data-mime-type="text/markdown">
+<p><img alt="" src="images/circuits/2-bit_a_gt_b.png"/></p>
 </div>
 </div>
 </div>
