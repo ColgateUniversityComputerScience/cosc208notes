@@ -7491,7 +7491,7 @@ main {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_question" id="cell-id=97026190-1907-4d70-a108-e465b94f9be1">
+</div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_question" id="cell-id=97026190-1907-4d70-a108-e465b94f9be1">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7570,7 +7570,7 @@ main {
 </div>
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=428b9384-1782-4c63-b82f-f701bb54cdcf">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -7615,7 +7615,7 @@ main {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_question" id="cell-id=1834f88f-5085-41da-9304-6cd475a77b98">
+</div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_question" id="cell-id=1834f88f-5085-41da-9304-6cd475a77b98">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7733,18 +7733,7 @@ main {
 </div>
 </div>
 </div>
-</div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=338233e3-6599-4399-8b26-dc02733d2916">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
-<p><em>The following C code was compiled into assembly (using <code>gcc</code>).</em></p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_question" id="cell-id=f755886e-28a1-44d2-876a-d0a6025a6018">
+</div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_question" id="cell-id=f755886e-28a1-44d2-876a-d0a6025a6018">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7765,7 +7754,7 @@ main {
 </div>
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2dd8fbee-61e5-45a0-a91e-dfd7a3385557">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -7812,7 +7801,7 @@ main {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_notes-only" data-mime-type="text/markdown">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="Various-forms-of-conditionals">Various forms of conditionals<a class="anchor-link" href="#Various-forms-of-conditionals">¶</a></h2>
 </div>
 </div>
@@ -8212,7 +8201,7 @@ main {
 </div>
 </div>
 </div>
-</div>
+</div></section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9052ecc5-e661-488d-957f-e333379a58c4">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -8240,39 +8229,6 @@ main {
 <span class="cm">/*7*/</span><span class="w">  </span><span class="p">}</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f4439125-47e3-4730-b967-3bacb7ed8e46">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_answer" data-mime-type="text/markdown">
-<pre><code>0000000000400544 &lt;powi&gt;:
-    400544:    d10043ff     sub    sp, sp, #0x10        // 1
-    400548:    b9000fe0     str    w0, [sp, #12]        // 1
-    40054c:    b9000be1     str    w1, [sp, #8]         // 1
-    400550:    52800028     mov    w8, #0x1             // 2
-    400554:    b90007e8     str    w8, [sp, #4]         // 2
-    400558:    b90003ff     str    wzr, [sp]            // 3
-    40055c:    b94003e8     ldr    w8, [sp]             // 3
-    400560:    b9400be9     ldr    w9, [sp, #8]         // 3
-    400564:    6b09011f     cmp    w8, w9               // 3
-    400568:    5400012a     b.ge    40058c &lt;powi+0x48&gt;  // 3
-    40056c:    b9400fe8     ldr    w8, [sp, #12]        // 4
-    400570:    b94007e9     ldr    w9, [sp, #4]         // 4
-    400574:    1b087d28     mul    w8, w9, w8           // 4
-    400578:    b90007e8     str    w8, [sp, #4]         // 4
-    40057c:    b94003e8     ldr    w8, [sp]             // 3
-    400580:    11000508     add    w8, w8, #0x1         // 3
-    400584:    b90003e8     str    w8, [sp]             // 3
-    400588:    17fffff5     b    40055c &lt;powi+0x18&gt;     // 5
-    40058c:    b94007e0     ldr    w0, [sp, #4]         // 6
-    400590:    910043ff     add    sp, sp, #0x10        // 6
-    400594:    d65f03c0     ret                         // 6
-</code></pre>
 </div>
 </div>
 </div>
@@ -8309,18 +8265,18 @@ main {
 </div>
 </div>
 </div>
-</div>
+</div></section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7680369e-4631-4ef8-ad85-a49b4272f162">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_notes-only" data-mime-type="text/markdown">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
 <p>Q11: <em>How would the correspondence between assembly code and C code be different if <code>powi</code> used a while loop?</em></p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_notes-only" id="cell-id=9749afe3-93d1-41eb-9f2f-f4a4a49e25be">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_question" id="cell-id=9749afe3-93d1-41eb-9f2f-f4a4a49e25be">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8339,39 +8295,6 @@ main {
 <span class="cm">/*9*/</span><span class="w">  </span><span class="p">}</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7dbcd601-5523-46e4-b642-83882586aee2">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_answer" data-mime-type="text/markdown">
-<pre><code>0000000000400544 &lt;powi&gt;:
-    400544:    d10043ff     sub    sp, sp, #0x10        // 1
-    40054c:    b9000fe0     str    w0, [sp, #12]        // 1
-    400550:    b9000be1     str    w1, [sp, #8]         // 1
-    400548:    52800028     mov    w8, #0x1             // 2
-    400554:    b90007e8     str    w8, [sp, #4]         // 2
-    400558:    b90003ff     str    wzr, [sp]            // 3
-    40055c:    b94003e8     ldr    w8, [sp]             // 4
-    400560:    b9400be9     ldr    w9, [sp, #8]         // 4
-    400564:    6b09011f     cmp    w8, w9               // 4
-    400568:    5400012a     b.ge    40058c &lt;powi+0x48&gt;  // 4
-    40056c:    b9400fe8     ldr    w8, [sp, #12]        // 5
-    400570:    b94007e9     ldr    w9, [sp, #4]         // 5
-    400574:    1b087d28     mul    w8, w9, w8           // 5
-    400578:    b90007e8     str    w8, [sp, #4]         // 5
-    40057c:    b94003e8     ldr    w8, [sp]             // 6
-    400580:    11000508     add    w8, w8, #0x1         // 6
-    400584:    b90003e8     str    w8, [sp]             // 6
-    400588:    17fffff5     b    40055c &lt;powi+0x18&gt;     // 7
-    40058c:    b94007e0     ldr    w0, [sp, #4]         // 8
-    400590:    910043ff     add    sp, sp, #0x10        // 8
-    400594:    d65f03c0     ret                         // 8
-</code></pre>
 </div>
 </div>
 </div>
