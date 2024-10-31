@@ -1,6 +1,5 @@
 # COSC 208, Introduction to Computer Systems, Fall 2024
 
-
 ## Hello
 * Computer Systems [[Worksheet]](00_hello-systems.worksheet.html) [[Notes]](00_hello-systems.notes.html)
 * C [[Worksheet]](01_hello-C.worksheet.html) [[Notes & Solutions]](01_hello-C.notes.html)
@@ -26,3 +25,4 @@
 ## Assembly
 * arithmetic and ldr/str operations [[Worksheet]](40_assembly_operations.worksheet.html) [[Notes & Solutions]](40_assembly_operations.notes.html)
 * conditionals and loops [[Worksheet]](41_assembly_branching.worksheet.html) <!--[[Notes & Solutions]](41_assembly_branching.notes.html)-->
+* functions [[Worksheet]](42_assembly_functions.worksheet.html) <!--[[Notes & Solutions]](42_assembly_functions.notes.html)-->
