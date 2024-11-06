@@ -26,3 +26,6 @@
 * arithmetic and ldr/str operations [[Worksheet]](40_assembly_operations.worksheet.html) [[Notes & Solutions]](40_assembly_operations.notes.html)
 * conditionals and loops [[Worksheet]](41_assembly_branching.worksheet.html) [[Notes & Solutions]](41_assembly_branching.notes.html)
 * functions [[Worksheet]](42_assembly_functions.worksheet.html) [[Notes & Solutions]](42_assembly_functions.notes.html)
+
+## Storage
+* memory hierarchy; locality [[Worksheet]](50_storage_hierarchy.worksheet.html) <!--[[Notes & Solutions]](50_storage_hierarchy.notes.html)-->
