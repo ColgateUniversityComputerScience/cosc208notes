@@ -33,3 +33,4 @@
 
 ## Operating systems
 * limited direct execution; system calls [[Worksheet]](60_os_lde.worksheet.html) <!--[[Notes & Solutions]](60_os_lde.notes.html)-->
+* processes [[Worksheet]](61_os_processes.worksheet.html) <!--[[Notes & Solutions]](61_os_processes.notes.html)-->
