@@ -36,7 +36,7 @@
 * processes [[Worksheet]](61_os_processes.worksheet.html) [[Notes & Solutions]](61_os_processes.notes.html)
 
 ## Concurrency
-* shared memory; POSIX threads [[Worksheet]](70_concurrency_threads.worksheet.html) <!--[[Notes & Solutions]](70_concurrency_threads.notes.html)-->
+* shared memory; POSIX threads [[Worksheet]](70_concurrency_threads.worksheet.html) [[Notes & Solutions]](70_concurrency_threads.notes.html)
 * creating multi-threaded programs [[Worksheet]](71_concurrency_transforming.worksheet.html) <!--[[Notes & Solutions]](71_concurrency_transforming.notes.html)-->
 
 ## Virtualization
