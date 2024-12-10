@@ -37,7 +37,7 @@
 
 ## Concurrency
 * shared memory; POSIX threads [[Worksheet]](70_concurrency_threads.worksheet.html) [[Notes & Solutions]](70_concurrency_threads.notes.html)
-* creating multi-threaded programs [[Worksheet]](71_concurrency_transforming.worksheet.html) <!--[[Notes & Solutions]](71_concurrency_transforming.notes.html)-->
+* creating multi-threaded programs [[Worksheet]](71_concurrency_transforming.worksheet.html) [[Notes & Solutions]](71_concurrency_transforming.notes.html)
 
 ## Virtualization
 * hypervisors; containers [[Worksheet]](80_virtualization_hypervisors.worksheet.html) <!--[[Notes & Solutions]](80_virtualization_hypervisors.notes.html)-->
