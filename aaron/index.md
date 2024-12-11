@@ -40,5 +40,5 @@
 * creating multi-threaded programs [[Worksheet]](71_concurrency_transforming.worksheet.html) [[Notes & Solutions]](71_concurrency_transforming.notes.html)
 
 ## Virtualization
-* hypervisors; containers [[Worksheet]](80_virtualization_hypervisors.worksheet.html) <!--[[Notes & Solutions]](80_virtualization_hypervisors.notes.html)-->
+* hypervisors; containers [[Worksheet]](80_virtualization_hypervisors.worksheet.html) [[Notes & Solutions]](80_virtualization_hypervisors.notes.html)
 * data centers; cloud computing [[Worksheet]](81_virtualization_cloud.worksheet.html) <!--[[Notes & Solutions]](81_virtualization_cloud.notes.html)-->
