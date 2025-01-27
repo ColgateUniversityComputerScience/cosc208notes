@@ -8852,7 +8852,18 @@ The closest 3-multiple of 9 is 9
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_notes-only" data-mime-type="text/markdown">
-<h2 id="Using-libraries">Using libraries<a class="anchor-link" href="#Using-libraries">¶</a></h2><ul>
+<h2 id="Libraries">Libraries<a class="anchor-link" href="#Libraries">¶</a></h2><p>Libraries provide a wonderful abstraction.  You include the right header file and link to the right library, and you don't have to worry (much) about the code you're calling.</p>
+<p>Since you read that tome about libraries and compiling and linking, let's also talk about linking and the magic of shared libraries.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a23ee993-35bc-407f-be1f-476c4362dbcd">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_notes-only" data-mime-type="text/markdown">
+<h3 id="Using-libraries">Using libraries<a class="anchor-link" href="#Using-libraries">¶</a></h3><ul>
 <li>Could use exponent to compute number of cells and logarithm to compute number of rounds</li>
 <li>Provided by math library — <code>#include &lt;math.h&gt;</code><ul>
 <li><code>double pow(double x, double y);</code></li>
@@ -8868,7 +8879,7 @@ The closest 3-multiple of 9 is 9
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_notes-only" id="cell-id=65d004dc-5d08-4438-855d-1688cf2a43cb">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_slides-notes-only" id="cell-id=65d004dc-5d08-4438-855d-1688cf2a43cb">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8920,6 +8931,21 @@ collect2:<span class="w"> </span>error:<span class="w"> </span>ld<span class="w"
 <li>Library contains pre-compiled code</li>
 <li>Recall: header file contains function prototypes, which allows compiler to know what functions are available in the library</li>
 <li>At runtime, executable and referenced libraries are loaded into memory</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f576a51b-875f-4e5f-831c-85bcb00f77d7">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_notes-only" data-mime-type="text/markdown">
+<h3 id="Fix">Fix<a class="anchor-link" href="#Fix">¶</a></h3><div class="highlight"><pre><span></span>$<span class="w"> </span>gcc<span class="w"> </span>-Wall<span class="w"> </span>-o<span class="w"> </span>cell_division<span class="w"> </span>cell_division.c<span class="w"> </span>-lm
+</pre></div>
+<ul>
+<li>Remember to put the library argument at the end of the link command, so that gcc compiles the C and then links the library.</li>
+<li>Do it the other way around, and you get the previous error message.</li>
 </ul>
 </div>
 </div>
