@@ -2,8 +2,8 @@
 
 
 ## Hello
-* Computer Systems [[Worksheet]](00_hello-systems.worksheet.html) [[Notes & Solutions]](00_hello-systems.notes.html)
-* C [[Worksheet]](01_hello-C.worksheet.html) [[Notes & Solutions]](01_hello-C.notes.html)
+* Computer Systems [[Worksheet]](00_hello-systems.worksheet.html) [[Slides]](00_hello-systems.slides.html) [[Notes & Solutions]](00_hello-systems.notes.html)
+* C [[Worksheet]](01_hello-C.worksheet.html) [[Slides]](01_hello-C.slides.html) [[Notes & Solutions]](01_hello-C.notes.html)
 
 ## Data representation
-* arrays; strings; input [[Worksheet]](10_data-representation_arrays.worksheet.html)
+* arrays; strings; input [[Worksheet]](10_data-representation_arrays.worksheet.html) [[Slides]](10_data-representation_arrays.slides.html)
