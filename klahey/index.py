@@ -33,8 +33,8 @@ with open('index.md', 'w') as index:
         index.write(f"* {title}")
         index.write(f" [[Worksheet]]({worksheet_filename})")
         #if (datetime.date.today() > dateutil.parser.parse(date).date()
-            #or (datetime.date.today() == dateutil.parser.parse(date).date() and datetime.datetime.now().hour >= 9)):
-        #index.write(f" [[Notes & Solutions]]({notes_filename})")
+        #    or (datetime.date.today() == dateutil.parser.parse(date).date() and datetime.datetime.now().hour >= 9)):
+        index.write(f" [[Notes & Solutions]]({notes_filename})")
         index.write("\n")
         last_category = category
 
