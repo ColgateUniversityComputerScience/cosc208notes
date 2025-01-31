@@ -6,4 +6,5 @@
 * C [[Worksheet]](01_hello-C.worksheet.html) [[Slides]](01_hello-C.slides.html) [[Notes & Solutions]](01_hello-C.notes.html)
 
 ## Data representation
-* arrays; strings; input [[Worksheet]](10_data-representation_arrays.worksheet.html) [[Slides]](10_data-representation_arrays.slides.html)
+* arrays; strings; input [[Worksheet]](10_data-representation_arrays.worksheet.html) [[Slides]](10_data-representation_arrays.slides.html) [[Notes & Solutions]](10_data-representation_arrays.notes.html)
+* number bases; base conversion [[Worksheet]](11_data-representation_number-bases.worksheet.html) [[Slides]](11_data-representation_number-bases.slides.html)
