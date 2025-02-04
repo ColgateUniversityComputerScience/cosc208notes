@@ -7,4 +7,6 @@
 
 ## Data representation
 * arrays; strings; input [[Worksheet]](10_data-representation_arrays.worksheet.html) [[Slides]](10_data-representation_arrays.slides.html) [[Notes & Solutions]](10_data-representation_arrays.notes.html)
-* number bases; base conversion [[Worksheet]](11_data-representation_number-bases.worksheet.html) [[Slides]](11_data-representation_number-bases.slides.html)
+
+## Data representation
+* number bases; base conversion [[Worksheet]](11_data-representation_number-bases.worksheet.html) [[Slides]](11_data-representation_number-bases.slides.html) [[Notes & Solutions]](11_data-representation_number-bases.notes.html)
