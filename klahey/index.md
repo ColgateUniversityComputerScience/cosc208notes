@@ -11,3 +11,7 @@
 * number bases; base conversion [[Worksheet]](11_data-representation_number-bases.worksheet.html) [[Slides]](11_data-representation_number-bases.slides.html) [[Notes & Solutions]](11_data-representation_number-bases.notes.html)
 * signed integers; type conversion [[Worksheet]](12_data-representation_signed.worksheet.html) [[Slides]](12_data-representation_signed.slides.html) [[Notes & Solutions]](12_data-representation_signed.notes.html)
 * binary arithmetic; overflow; bitwise operators [[Worksheet]](13_data-representation_bitwise.worksheet.html) [[Slides]](13_data-representation_bitwise.slides.html) [[Notes & Solutions]](13_data-representation_bitwise.notes.html)
+* real numbers [[Worksheet]](14_data-representation_real.worksheet.html) [[Slides]](14_data-representation_real.slides.html) [[Notes & Solutions]](14_data-representation_real.notes.html)
+
+## Program memory
+* pointers [[Worksheet]](20_program-memory_pointers.worksheet.html) [[Slides]](20_program-memory_pointers.slides.html) [[Notes & Solutions]](20_program-memory_pointers.notes.html)
