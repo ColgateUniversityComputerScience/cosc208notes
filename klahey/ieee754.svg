@@ -1,0 +1,115 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="482.60736" height="49.18224" xml:space="preserve" color-interpolation-filters="sRGB" class="st6" version="1.1">  
+ <style type="text/css">
+	<![CDATA[
+		.st1 {fill:none;stroke:none;stroke-linecap:butt;stroke-width:0.75}
+		.st2 {fill:#000000;font-family:Arial,Helvetica,sans-serif;font-size:0.666664em}
+		.st3 {fill:none;stroke:#000000;stroke-linecap:butt;stroke-width:0.328125}
+		.st4 {fill:none;stroke:#000000;stroke-linecap:butt;stroke-width:0.2625}
+		.st5 {fill:none;stroke:#000000;stroke-linecap:butt;stroke-width:0.65625}
+		.st6 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]>
+	</style> 
+ <g> 
+  <title>fp1</title>  
+  <g id="group14-1" transform="translate(0.65625,-0.65625)"> 
+   <title>Sheet.14</title> 
+   <g id="shape2-2" transform="translate(3.72056,-28.8054)"> 
+    <title>Sheet.2</title> 
+    <desc>
+     31
+    </desc>   
+    <rect x="0" y="31.6367" width="21" height="5.25" class="st1"/> 
+    <text x="0" y="36.66" class="st2">
+     31
+    </text> 
+   </g> 
+   <g id="shape3-5" transform="translate(76.2283,-28.8054)"> 
+    <title>Sheet.3</title> 
+    <desc>
+     23
+    </desc>   
+    <rect x="0" y="31.6367" width="21" height="5.25" class="st1"/> 
+    <text x="0" y="36.66" class="st2">
+     23
+    </text> 
+   </g> 
+   <g id="shape4-8" transform="translate(94.8303,-28.8054)"> 
+    <title>Sheet.4</title> 
+    <desc>
+     22
+    </desc>   
+    <rect x="0" y="31.6367" width="21" height="5.25" class="st1"/> 
+    <text x="0" y="36.66" class="st2">
+     22
+    </text> 
+   </g> 
+   <g id="shape5-11" transform="translate(18.6022,-28.8054)"> 
+    <title>Sheet.5</title> 
+    <desc>
+     30
+    </desc>   
+    <rect x="0" y="31.6367" width="21" height="5.25" class="st1"/> 
+    <text x="0" y="36.66" class="st2">
+     30
+    </text> 
+   </g> 
+   <g id="shape6-14" transform="translate(350.049,-28.8054)"> 
+    <title>Sheet.6</title> 
+    <desc>
+     0
+    </desc>   
+    <rect x="0" y="31.6367" width="4.79448" height="5.25" class="st1"/> 
+    <text x="-0" y="36.66" class="st2">
+     0
+    </text> 
+   </g> 
+   <g id="shape7-17" transform="translate(4.84497,-10.5289)"> 
+    <title>Sheet.7</title> 
+    <desc>
+     S
+    </desc>   
+    <rect x="0" y="31.6367" width="10.5" height="5.25" class="st1"/> 
+    <text x="0" y="36.66" class="st2">
+     S
+    </text> 
+   </g> 
+   <g id="shape8-20"> 
+    <title>Sheet.8</title> 
+    <rect x="0" y="10.8428" width="16.742" height="26.0439" class="st3"/> 
+   </g> 
+   <g id="shape9-22" transform="translate(41.7993,-10.5289)"> 
+    <title>Sheet.9</title> 
+    <desc>
+     Exp
+    </desc>   
+    <rect x="0" y="31.6367" width="31.5" height="5.25" class="st1"/> 
+    <text x="0" y="36.66" class="st2">
+     Exp
+    </text> 
+   </g> 
+   <g id="shape10-25" transform="translate(16.742,0)"> 
+    <title>Sheet.10</title> 
+    <rect x="0" y="10.8428" width="72.3072" height="26.0439" class="st4"/> 
+   </g> 
+   <g id="shape11-27" transform="translate(234.549,-10.5289)"> 
+    <title>Sheet.11</title> 
+    <desc>
+     Frac
+    </desc>   
+    <rect x="0" y="31.6367" width="42" height="5.25" class="st1"/> 
+    <text x="0" y="36.66" class="st2">
+     Frac
+    </text> 
+   </g> 
+   <g id="shape12-30" transform="translate(89.0493,0)"> 
+    <title>Sheet.12</title> 
+    <rect x="0" y="10.8428" width="270" height="26.0439" class="st4"/> 
+   </g> 
+   <g id="shape13-32"> 
+    <title>Sheet.13</title> 
+    <rect x="0" y="10.8428" width="359.049" height="26.0439" class="st5"/> 
+   </g> 
+  </g> 
+ </g> 
+</svg>
