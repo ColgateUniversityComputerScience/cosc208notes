@@ -21,3 +21,7 @@
 
 ## More cli
 * advanced [[Worksheet]](24_more-cli_advanced.worksheet.html) [[Slides]](24_more-cli_advanced.slides.html) [[Notes & Solutions]](24_more-cli_advanced.notes.html)
+
+## Architecture
+* von Neumann; logic gates [[Worksheet]](30_architecture_components.worksheet.html) [[Slides]](30_architecture_components.slides.html) [[Notes & Solutions]](30_architecture_components.notes.html)
+* circuits [[Worksheet]](31_architecture_circuits.worksheet.html) [[Slides]](31_architecture_circuits.slides.html) [[Notes & Solutions]](31_architecture_circuits.notes.html)
