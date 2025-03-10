@@ -25,3 +25,4 @@
 ## Architecture
 * von Neumann; logic gates [[Worksheet]](30_architecture_components.worksheet.html) [[Slides]](30_architecture_components.slides.html) [[Notes & Solutions]](30_architecture_components.notes.html)
 * circuits [[Worksheet]](31_architecture_circuits.worksheet.html) [[Slides]](31_architecture_circuits.slides.html) [[Notes & Solutions]](31_architecture_circuits.notes.html)
+* processing unit [[Worksheet]](32_architecture_processor.worksheet.html) [[Slides]](32_architecture_processor.slides.html) [[Notes & Solutions]](32_architecture_processor.notes.html)
