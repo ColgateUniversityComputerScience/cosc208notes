@@ -29,3 +29,4 @@
 
 ## Assembly
 * arithmetic and ldr/str operations [[Worksheet]](40_assembly_operations.worksheet.html) [[Slides]](40_assembly_operations.slides.html) [[Notes & Solutions]](40_assembly_operations.notes.html)
+* conditionals and loops [[Worksheet]](41_assembly_branching.worksheet.html) [[Slides]](41_assembly_branching.slides.html) [[Notes & Solutions]](41_assembly_branching.notes.html)
