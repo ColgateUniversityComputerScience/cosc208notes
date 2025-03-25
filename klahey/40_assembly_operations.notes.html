@@ -8448,7 +8448,7 @@ w/x1 = 100
 </code></pre>
 <p><em>Assume the registers initially hold the following values:</em></p>
 <pre><code>pc = 0x76C
-sp = 0x780
+sp = 0xf80
 w/x0 = 9
 </code></pre>
 <p><em>Draw the contents of the stack and registers after executing the assembly instruction at 0x78C.</em></p>
@@ -8463,16 +8463,16 @@ w/x0 = 9
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_answer" data-mime-type="text/markdown">
 <pre><code>        0  1  2  3  4  5  6  7  8          
  sp -&gt;  +--+--+--+--+--+--+--+--+
- 0x760  |                       |
+ 0xf60  |                       |
         +--+--+--+--+--+--+--+--+
- 0x768  |           |     9     |
+ 0xf68  |           |     9     |
         +--+--+--+--+--+--+--+--+
- 0x770  |                       |
+ 0xf70  |                       |
         +--+--+--+--+--+--+--+--+
- 0x778  |    72     |     8     |
+ 0xf78  |    72     |     8     |
         +--+--+--+--+--+--+--+--+
 pc = 0x790
-sp = 0x760
+sp = 0xf60
 w/x0 = 8
 w/x1 = 72
 </code></pre>
