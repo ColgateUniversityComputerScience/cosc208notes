@@ -34,3 +34,4 @@
 
 ## Storage
 * memory hierarchy; locality [[Worksheet]](50_storage_hierarchy.worksheet.html) [[Slides]](50_storage_hierarchy.slides.html) [[Notes & Solutions]](50_storage_hierarchy.notes.html)
+* caching; loop optimization [[Worksheet]](51_storage_caching.worksheet.html) [[Slides]](51_storage_caching.slides.html) [[Notes & Solutions]](51_storage_caching.notes.html)
