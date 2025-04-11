@@ -26,6 +26,7 @@
 * von Neumann; logic gates [[Worksheet]](30_architecture_components.worksheet.html) [[Slides]](30_architecture_components.slides.html) [[Notes & Solutions]](30_architecture_components.notes.html)
 * circuits [[Worksheet]](31_architecture_circuits.worksheet.html) [[Slides]](31_architecture_circuits.slides.html) [[Notes & Solutions]](31_architecture_circuits.notes.html)
 * processing unit [[Worksheet]](32_architecture_processor.worksheet.html) [[Slides]](32_architecture_processor.slides.html) [[Notes & Solutions]](32_architecture_processor.notes.html)
+*  peeling away more layers of abstraction [[Worksheet]](32a_architecture_processor.worksheet.html) [[Slides]](32a_architecture_processor.slides.html) [[Notes & Solutions]](32a_architecture_processor.notes.html)
 
 ## Assembly
 * arithmetic and ldr/str operations [[Worksheet]](40_assembly_operations.worksheet.html) [[Slides]](40_assembly_operations.slides.html) [[Notes & Solutions]](40_assembly_operations.notes.html)
@@ -35,3 +36,6 @@
 ## Storage
 * memory hierarchy; locality [[Worksheet]](50_storage_hierarchy.worksheet.html) [[Slides]](50_storage_hierarchy.slides.html) [[Notes & Solutions]](50_storage_hierarchy.notes.html)
 * caching; loop optimization [[Worksheet]](51_storage_caching.worksheet.html) [[Slides]](51_storage_caching.slides.html) [[Notes & Solutions]](51_storage_caching.notes.html)
+
+## Operating Systems
+* limited direct execution; system calls [[Worksheet]](60_os_lde.worksheet.html) [[Slides]](60_os_lde.slides.html) [[Notes & Solutions]](60_os_lde.notes.html)
