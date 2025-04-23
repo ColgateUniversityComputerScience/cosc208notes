@@ -1,0 +1,87 @@
+body {
+    font-size: 11pt !important;
+    padding: 0px !important;
+    margin: 0px !important;
+    line-height: normal !important;
+}
+
+div.text_cell_render {
+    padding: 0px 0px 0px 0px !important;
+}
+
+h1 {
+    font-size: 15pt !important;
+    margin-top: 1em !important;
+    margin-bottom: 0em !important;
+}
+
+h2 {
+    font-size: 13pt !important;
+    margin-top: 1em !important;
+    margin-bottom: 0em !important;
+    page-break-after:avoid;
+}
+
+h3 {
+    font-size: 11pt !important;
+    margin-top: 1em !important;
+    margin-bottom: 0em !important;
+}
+
+ul {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+p {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+div.slide {
+    font-size: 18pt !important;
+}
+
+div.input_prompt div.jp-InputPrompt div.jp-InputArea-prompt{
+    font-size: 0pt !important;
+}
+
+div.output_prompt div.jp-OutputPrompt {
+    font-size: 0pt !important;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+div.highlight {
+    margin-left: 2.5em !important;
+}
+
+div {
+    break-inside: avoid;
+}
+
+.celltag_question div {
+    break-after: avoid;
+}
+
+.celltag_answer div {
+    break-before: avoid;
+}
+
+.celltag_blank div {
+    break-before: avoid;
+}
+
+.celltag_example div {
+    break-before: avoid;
+}
+
+.jp-RenderedHTMLCommon {
+    line-height: normal !important;
+}
