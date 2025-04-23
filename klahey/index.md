@@ -43,3 +43,4 @@
 
 ## Concurrency
 * shared memory; POSIX threads [[Worksheet]](70_concurrency_threads.worksheet.html) [[Slides]](70_concurrency_threads.slides.html) [[Notes & Solutions]](70_concurrency_threads.notes.html)
+* creating multi-threaded programs [[Worksheet]](71_concurrency_transforming.worksheet.html) [[Slides]](71_concurrency_transforming.slides.html) [[Notes & Solutions]](71_concurrency_transforming.notes.html)
