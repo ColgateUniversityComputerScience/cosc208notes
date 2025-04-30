@@ -48,3 +48,4 @@
 
 ## Virtualization
 * hypervisors; containers [[Worksheet]](80_virtualization_hypervisors.worksheet.html) [[Slides]](80_virtualization_hypervisors.slides.html) [[Notes & Solutions]](80_virtualization_hypervisors.notes.html)
+* data centers; cloud computing [[Worksheet]](81_virtualization_cloud.worksheet.html) [[Slides]](81_virtualization_cloud.slides.html) [[Notes & Solutions]](81_virtualization_cloud.notes.html)
