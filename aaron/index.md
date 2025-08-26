@@ -1,5 +1,6 @@
-# COSC 208, Introduction to Computer Systems, Fall 2024
+# COSC 208, Introduction to Computer Systems, Fall 2025
 
+<!--
 ## Hello
 * Computer Systems [[Worksheet]](00_hello-systems.worksheet.html) [[Notes]](00_hello-systems.notes.html)
 * C [[Worksheet]](01_hello-C.worksheet.html) [[Notes & Solutions]](01_hello-C.notes.html)
@@ -41,4 +42,4 @@
 
 ## Virtualization
 * hypervisors; containers [[Worksheet]](80_virtualization_hypervisors.worksheet.html) [[Notes & Solutions]](80_virtualization_hypervisors.notes.html)
-* data centers; cloud computing [[Worksheet]](81_virtualization_cloud.worksheet.html) <!--[[Notes & Solutions]](81_virtualization_cloud.notes.html)-->
+* data centers; cloud computing [[Worksheet]](81_virtualization_cloud.worksheet.html) [[Notes & Solutions]](81_virtualization_cloud.notes.html)-->
