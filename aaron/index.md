@@ -1,10 +1,10 @@
 # COSC 208, Introduction to Computer Systems, Fall 2025
 
-<!--
-## Hello
-* Computer Systems [[Worksheet]](00_hello-systems.worksheet.html) [[Notes]](00_hello-systems.notes.html)
-* C [[Worksheet]](01_hello-C.worksheet.html) [[Notes & Solutions]](01_hello-C.notes.html)
+## Hello C
+* compilation; variables; output; control structures [[Worksheet]](01_hello-C_compilation-variables-output-control.worksheet.html) <!--[[Notes]](01_hello-C_compilation-variables-output-control.notes.html)-->
+* functions; libraries; arrays [[Worksheet]](02_hello-C_functions-libraries-arrays.worksheet.html) <!--[[Notes & Solutions]](02_hello-C_functions-libraries-arrays.notes.html)-->
 
+<!--
 ## Data representation
 * arrays; strings; input [[Worksheet]](10_data-representation_arrays.worksheet.html) [[Notes & Solutions]](10_data-representation_arrays.notes.html)
 * number bases; base conversion [[Worksheet]](11_data-representation_number-bases.worksheet.html) [[Notes & Solutions]](11_data-representation_number-bases.notes.html)
