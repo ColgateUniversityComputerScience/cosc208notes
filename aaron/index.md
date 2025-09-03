@@ -1,7 +1,7 @@
 # COSC 208, Introduction to Computer Systems, Fall 2025
 
 ## Hello C
-* compilation; variables; output; control structures [[Worksheet]](01_hello-C_compilation-variables-output-control.worksheet.html) <!--[[Notes]](01_hello-C_compilation-variables-output-control.notes.html)-->
+* compilation; variables; output; control structures [[Worksheet]](01_hello-C_compilation-variables-output-control.worksheet.html) [[Notes]](01_hello-C_compilation-variables-output-control.notes.html)
 * functions; libraries; arrays [[Worksheet]](02_hello-C_functions-libraries-arrays.worksheet.html) <!--[[Notes & Solutions]](02_hello-C_functions-libraries-arrays.notes.html)-->
 
 <!--
