@@ -5,10 +5,11 @@
 * functions; libraries; arrays [[Worksheet]](02_hello-C_functions-libraries-arrays.worksheet.html) <!--[[Notes & Solutions]](02_hello-C_functions-libraries-arrays.notes.html)-->
 * strings; command line arguments [[Worksheet]](03_hello-C_strings-arguments.worksheet.html) <!--[[Notes & Solutions]](03_hello-C_strings-arguments.notes.html)-->
 
-<!--
+
 ## Data representation
-* arrays; strings; input [[Worksheet]](10_data-representation_arrays.worksheet.html) [[Notes & Solutions]](10_data-representation_arrays.notes.html)
-* number bases; base conversion [[Worksheet]](11_data-representation_number-bases.worksheet.html) [[Notes & Solutions]](11_data-representation_number-bases.notes.html)
+* number bases; base conversion [[Worksheet]](11_data-representation_number-bases.worksheet.html) <!--[[Notes & Solutions]](11_data-representation_number-bases.notes.html)-->
+
+<!--
 * signed integers; type conversion [[Worksheet]](12_data-representation_signed.worksheet.html) [[Notes & Solutions]](12_data-representation_signed.notes.html)
 * binary arithmetic; overflow; bitwise operators [[Worksheet]](13_data-representation_bitwise.worksheet.html) [[Notes & Solutions]](13_data-representation_bitwise.notes.html)
 * real numbers [[Worksheet]](14_data-representation_real.worksheet.html) [[Notes & Solutions]](14_data-representation_real.notes.html)

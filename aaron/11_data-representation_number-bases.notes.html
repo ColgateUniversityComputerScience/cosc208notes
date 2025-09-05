@@ -7516,7 +7516,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Data-representation:-number-bases;-base-conversion">Data representation: number bases; base conversion<a class="anchor-link" href="#Data-representation:-number-bases;-base-conversion">¶</a></h1><p><em>COSC 208, Introduction to Computer Systems, Fall 2024</em></p>
+<h1 id="Data-representation:-number-bases;-base-conversion">Data representation: number bases; base conversion<a class="anchor-link" href="#Data-representation:-number-bases;-base-conversion">¶</a></h1><p><em>COSC 208, Introduction to Computer Systems, Fall 2025</em></p>
 </div>
 </div>
 </div>
@@ -7970,7 +7970,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
-<p>Q17: <em>Convert <code>0b11001100</code> to hexadecimal</em></p>
+<p>Q17: <code>0b11001100</code></p>
 </div>
 </div>
 </div>
@@ -8082,11 +8082,6 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_notes-only" data-mime-type="text/markdown">
 <ul>
-<li>Why do we care about converting between binary and decimal?<ul>
-<li>We are used to working with decimal numbers, but computers represent numbers in binary</li>
-<li>Computers allocate a fixed number of bits for different types of variables; mathematical operations whose result exceeds the number of available bits will return unexpected results — we'll talk about overflow (and underflow) on Monday</li>
-</ul>
-</li>
 <li>Repeated division method<ul>
 <li>Check if number is even or odd: even =&gt; 0, odd =&gt; 1</li>
 <li>Build binary number from right to left</li>
@@ -8231,60 +8226,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Extra-practice">Extra practice<a class="anchor-link" href="#Extra-practice">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=84851cef-f227-473e-bb58-55e03d0472ff">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Q28: <em>Write a function called <code>check_password</code> that takes a string and returns 1 if a password is at least 8 characters long and contains at least one uppercase letter, at least one lowercase letter, and at least one digit. Otherwise, the function returns 0. You may want to use the functions <code>isupper</code>, <code>islower</code>, and <code>isdigit</code>. They take a character as a parameter and return 1 if the character is an uppercase letter, lowercase letter, or digit, respectively; otherwise, they return 0.</em></p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_notes-only" id="cell-id=aa634f78-584d-4024-97c3-201531febbf6">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-c"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;ctype.h&gt;</span>
-<span class="kt">int</span><span class="w"> </span><span class="nf">check_password</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">passwd</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">strlen</span><span class="p">(</span><span class="n">passwd</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">lower</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">upper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">digit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">strlen</span><span class="p">(</span><span class="n">passwd</span><span class="p">);</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">islower</span><span class="p">(</span><span class="n">passwd</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">lower</span><span class="o">++</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isupper</span><span class="p">(</span><span class="n">passwd</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">upper</span><span class="o">++</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isdigit</span><span class="p">(</span><span class="n">passwd</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">digit</span><span class="o">++</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lower</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">upper</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">digit</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="c1">// Testing</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;assert.h&gt;</span>
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">check_password</span><span class="p">(</span><span class="s">"abc123DEF"</span><span class="p">));</span>
-<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">check_password</span><span class="p">(</span><span class="s">"abc123def"</span><span class="p">));</span>
-<span class="p">}</span>
-</pre></div>
-</div>
+<h2 id="Extra-programming-practice">Extra programming practice<a class="anchor-link" href="#Extra-programming-practice">¶</a></h2>
 </div>
 </div>
 </div>
@@ -8294,7 +8236,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
-<p>Q29: <em>Write a function called <code>valid_hex</code> that takes a string and returns 1 if it is a valid hexadecimal number; otherwise return 0. A valid hexadecimal number must start with <code>0x</code> and only contain the digits <code>0</code>-<code>9</code> and letters <code>A</code>-<code>F</code> (in upper or lower case).</em></p>
+<p>Q28: <em>Write a function called <code>valid_hex</code> that takes a string and returns 1 if it is a valid hexadecimal number; otherwise return 0. A valid hexadecimal number must start with <code>0x</code> and only contain the digits <code>0</code>-<code>9</code> and letters <code>A</code>-<code>F</code> (in upper or lower case).</em></p>
 </div>
 </div>
 </div>
@@ -8337,7 +8279,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
-<p>Q30: <em>Write a function called <code>bits_required</code> that takes an <code>unsigned long</code> decimal (i.e., base 10) number and returns the minimum number of bits required to represent the number.</em></p>
+<p>Q29: <em>Write a function called <code>bits_required</code> that takes an <code>unsigned long</code> decimal (i.e., base 10) number and returns the minimum number of bits required to represent the number.</em></p>
 </div>
 </div>
 </div>
