@@ -9,9 +9,9 @@
 ## Data representation
 * number bases; base conversion [[Worksheet]](11_data-representation_number-bases.worksheet.html) <!--[[Notes & Solutions]](11_data-representation_number-bases.notes.html)-->
 * signed integers; type conversion [[Worksheet]](12_data-representation_signed.worksheet.html) <!--[[Notes & Solutions]](12_data-representation_signed.notes.html)-->
+* binary arithmetic; overflow; bitwise operators [[Worksheet]](13_data-representation_bitwise.worksheet.html) <!--[[Notes & Solutions]](13_data-representation_bitwise.notes.html)-->
 
 <!--
-* binary arithmetic; overflow; bitwise operators [[Worksheet]](13_data-representation_bitwise.worksheet.html) [[Notes & Solutions]](13_data-representation_bitwise.notes.html)
 * real numbers [[Worksheet]](14_data-representation_real.worksheet.html) [[Notes & Solutions]](14_data-representation_real.notes.html)
 
 ## Program memory
