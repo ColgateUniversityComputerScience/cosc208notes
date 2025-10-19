@@ -7516,7 +7516,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Assembly:-arithmetic-and-ldr/str-operations">Assembly: arithmetic and ldr/str operations<a class="anchor-link" href="#Assembly:-arithmetic-and-ldr/str-operations">¶</a></h1><p><em>COSC 208, Introduction to Computer Systems, Fall 2024</em></p>
+<h1 id="Assembly:-arithmetic-and-ldr/str-operations">Assembly: arithmetic and ldr/str operations<a class="anchor-link" href="#Assembly:-arithmetic-and-ldr/str-operations">¶</a></h1><p><em>COSC 208, Introduction to Computer Systems, Fall 2025</em></p>
 </div>
 </div>
 </div>
@@ -7540,7 +7540,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_worksheet-code-only" id="cell-id=ba449c04-69ed-4130-82e9-a41c25515742">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell celltag_worksheet-code-only" id="cell-id=ba449c04-69ed-4130-82e9-a41c25515742">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7550,7 +7550,7 @@ a.anchor-link {
 <div class="highlight hl-c"><pre><span></span><span class="cm">/* 1*/</span><span class="w">   </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 <span class="cm">/* 2*/</span><span class="w">   </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
 <span class="cm">/* 3*/</span><span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="nf">dog_years</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">birth</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/* 4*/</span><span class="w">       </span><span class="kt">int</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2023</span><span class="p">;</span>
+<span class="cm">/* 4*/</span><span class="w">       </span><span class="kt">int</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2025</span><span class="p">;</span>
 <span class="cm">/* 5*/</span><span class="w">       </span><span class="kt">int</span><span class="w"> </span><span class="n">years</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">birth</span><span class="p">;</span>
 <span class="cm">/* 6*/</span><span class="w">       </span><span class="n">years</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">years</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span>
 <span class="cm">/* 7*/</span><span class="w">       </span><span class="k">return</span><span class="w"> </span><span class="n">years</span><span class="p">;</span>
@@ -7563,6 +7563,19 @@ a.anchor-link {
 <span class="cm">/*14*/</span><span class="w">       </span><span class="n">printf</span><span class="p">(</span><span class="s">"You are %d dog years old</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">dog_age</span><span class="p">);</span>
 <span class="cm">/*15*/</span><span class="w">   </span><span class="p">}</span>
 </pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>What year were you born? You are 14175 dog years old
+</pre>
 </div>
 </div>
 </div>
@@ -7593,7 +7606,7 @@ a.anchor-link {
 <pre><code>0000000000000914 &lt;dog_years&gt;:
  914:   d10083ff        sub     sp, sp, #0x20
  918:   b9000fe0        str     w0, [sp, #12]
- 91c:   5280fce0        mov     w0, #0x7e7
+ 91c:   5280fce0        mov     w0, #0x7e9
  920:   b9001be0        str     w0, [sp, #24]
  924:   b9401be1        ldr     w1, [sp, #24]
  928:   b9400fe0        ldr     w0, [sp, #12]

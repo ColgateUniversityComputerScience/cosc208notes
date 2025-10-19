@@ -24,9 +24,11 @@
 * circuits [[Worksheet]](31_architecture_circuits.worksheet.html) [[Notes & Solutions]](31_architecture_circuits.notes.html)
 * processing unit [[Worksheet]](32_architecture_processor.worksheet.html) <!--[[Notes & Solutions]](32_architecture_processor.notes.html)-->
 
-<!--
+
 ## Assembly
-* arithmetic and ldr/str operations [[Worksheet]](40_assembly_operations.worksheet.html) [[Notes & Solutions]](40_assembly_operations.notes.html)
+* arithmetic and ldr/str operations [[Worksheet]](40_assembly_operations.worksheet.html) <!--[[Notes & Solutions]](40_assembly_operations.notes.html)-->
+
+<!--
 * conditionals and loops [[Worksheet]](41_assembly_branching.worksheet.html) [[Notes & Solutions]](41_assembly_branching.notes.html)
 * functions [[Worksheet]](42_assembly_functions.worksheet.html) [[Notes & Solutions]](42_assembly_functions.notes.html)
 
