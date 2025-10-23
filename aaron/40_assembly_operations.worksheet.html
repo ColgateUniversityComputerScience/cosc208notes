@@ -8358,6 +8358,31 @@ w/x1 = 0xFC8
 </div>
 </div>
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9f2f0073-f0d5-4c6e-b2f0-aaa59b10e3b5">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
+<p>Q16: <em>Assume the registers currently hold the following values:</em></p>
+<pre><code>sp = 0xA980
+w/x10 = 10
+w/x11 = 11
+w/x12 = 12
+w/x13 = 13
+</code></pre>
+<p><em>Draw the contents of the stack and registers after the following instructions have been executed:</em></p>
+<pre><code>sub sp, sp, #0x30
+str w10, [sp, #16]
+str x11, [sp]
+str w12, [sp, #28]
+str x13, [sp, #32]
+ldr x10, [sp]
+ldr w13, [sp, #28]
+</code></pre>
+</div>
+</div>
+</div>
+</div>
 </main>
 </body>
 </html>

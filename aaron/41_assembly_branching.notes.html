@@ -7516,7 +7516,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Assembly:-conditionals-and-loops">Assembly: conditionals and loops<a class="anchor-link" href="#Assembly:-conditionals-and-loops">¶</a></h1><p><em>COSC 208, Introduction to Computer Systems, Fall 2024</em></p>
+<h1 id="Assembly:-conditionals-and-loops">Assembly: conditionals and loops<a class="anchor-link" href="#Assembly:-conditionals-and-loops">¶</a></h1><p><em>COSC 208, Introduction to Computer Systems, Fall 2025</em></p>
 </div>
 </div>
 </div>
@@ -8119,330 +8119,46 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c378df2e-f0cd-4a5f-960d-a82b64c96bb6">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6f2207e7-a91f-4da2-9751-fe2e251a19be">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Various-forms-of-conditionals">Various forms of conditionals<a class="anchor-link" href="#Various-forms-of-conditionals">¶</a></h2>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
+<p>Q10: <em>Write a function called <code>adjust2_goto</code> that behaves the same as <code>adjust2</code> but matches the structure of the assembly code that is generated for <code>adjust2</code>.</em></p>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5bb05b6d-f7a4-448b-b81b-3ec15493534f">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_notes-only" data-mime-type="text/markdown">
-<ul>
-<li>Complex conditional expressions</li>
-</ul>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_notes-only" id="cell-id=532433b4-ea63-44ad-8c3c-0684ed27aa03">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_notes-only" id="cell-id=16c6c75b-d523-4da7-818d-351ccbe1466e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-c"><pre><span></span><span class="cm">/* 1*/</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="nf">bitwise_and</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">bitA</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">bitB</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/* 2*/</span><span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
-<span class="cm">/* 3*/</span><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bitA</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">bitB</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/* 4*/</span><span class="w">          </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="cm">/* 5*/</span><span class="w">      </span><span class="p">}</span><span class="w"> </span>
-<span class="cm">/* 6*/</span><span class="w">      </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/* 7*/</span><span class="w">          </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="cm">/* 8*/</span><span class="w">      </span><span class="p">}</span>
-<span class="cm">/* 9*/</span><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
-<span class="cm">/*10*/</span><span class="w">  </span><span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fc4a807d-8c68-45a5-bda3-6043e53f57b0">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_notes-only" data-mime-type="text/markdown">
-<pre><code>0000000000000764 &lt;bitwise_and&gt;:
-    764:    d10083ff     sub    sp, sp, #0x20           // 1
-    768:    b9000fe0     str    w0, [sp, #12]           // 1
-    76c:    b9000be1     str    w1, [sp, #8]            // 1
-    770:    12800000     mov    w0, #0xffffffff         // 2
-    774:    b9001fe0     str    w0, [sp, #28]           // 2
-    778:    b9400fe0     ldr    w0, [sp, #12]           // 3
-    77c:    7100041f     cmp    w0, #0x1                // 3
-    780:    540000e1     b.ne   79c &lt;bitwise_and+0x38&gt;  // 3
-    784:    b9400be0     ldr    w0, [sp, #8]            // 3
-    788:    7100041f     cmp    w0, #0x1                // 3
-    78c:    54000081     b.ne   79c &lt;bitwise_and+0x38&gt;  // 3
-    790:    52800020     mov    w0, #0x1                // 4
-    794:    b9001fe0     str    w0, [sp, #28]           // 4
-    798:    14000002     b      7a0 &lt;bitwise_and+0x3c&gt;  // 5
-    79c:    b9001fff     str    wzr, [sp, #28]          // 7
-    7a0:    b9401fe0     ldr    w0, [sp, #28]           // 9
-    7a4:    910083ff     add    sp, sp, #0x20           // 9
-    7a8:    d65f03c0     ret                            // 9
-</code></pre>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_notes-only" id="cell-id=4d0c3a2b-505e-45ed-9003-531f4a132911">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-c"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">bitwise_and_goto</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">bitA</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">bitB</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bitA</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
-<span class="w">        </span><span class="k">goto</span><span class="w"> </span><span class="n">ELS</span><span class="p">;</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bitB</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
-<span class="w">        </span><span class="k">goto</span><span class="w"> </span><span class="n">ELS</span><span class="p">;</span>
-<span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">    </span><span class="k">goto</span><span class="w"> </span><span class="n">END</span><span class="p">;</span>
-<span class="nl">ELS</span><span class="p">:</span>
-<span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="nl">END</span><span class="p">:</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<div class="highlight hl-c"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">adjust2_goto</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="k">goto</span><span class="w"> </span><span class="n">if_body</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">9</span><span class="p">)</span>
+<span class="w">        </span><span class="k">goto</span><span class="w"> </span><span class="n">else_body</span><span class="p">;</span>
+<span class="nl">if_body</span><span class="p">:</span>
+<span class="w">    </span><span class="n">value</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="w">    </span><span class="k">goto</span><span class="w"> </span><span class="n">after_if</span><span class="p">;</span>
+<span class="nl">else_body</span><span class="p">:</span>
+<span class="w">    </span><span class="n">value</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="nl">after_if</span><span class="p">:</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="c1">// Testing</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;assert.h&gt;</span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">bitwise_and_goto</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
-<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">bitwise_and_goto</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
-<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">bitwise_and_goto</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
-<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">bitwise_and_goto</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">adjust2_goto</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">-8</span><span class="p">);</span>
+<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">adjust2_goto</span><span class="p">(</span><span class="mi">-2</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">-12</span><span class="p">);</span>
+<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">adjust2_goto</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">-10</span><span class="p">);</span>
+<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">adjust2_goto</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">adjust2_goto</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e8b8d917-fbce-4623-9c19-41f31fb0787e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_notes-only" data-mime-type="text/markdown">
-<ul>
-<li>Nested conditionals</li>
-</ul>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_notes-only" id="cell-id=c80329cd-c906-497f-8ede-a039132a79fa">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-c"><pre><span></span><span class="cm">/* 1*/</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="nf">bitwise_and_nested</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">bitA</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">bitB</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/* 2*/</span><span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
-<span class="cm">/* 3*/</span><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bitA</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/* 4*/</span><span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bitB</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/* 5*/</span><span class="w">              </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="cm">/* 6*/</span><span class="w">          </span><span class="p">}</span>
-<span class="cm">/* 7*/</span><span class="w">          </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/* 8*/</span><span class="w">              </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="cm">/* 9*/</span><span class="w">          </span><span class="p">}</span>
-<span class="cm">/*10*/</span><span class="w">      </span><span class="p">}</span>
-<span class="cm">/*11*/</span><span class="w">      </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/*12*/</span><span class="w">          </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="cm">/*13*/</span><span class="w">      </span><span class="p">}</span>
-<span class="cm">/*14*/</span><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
-<span class="cm">/*15*/</span><span class="w">  </span><span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=12c84e19-7ea4-40ef-9f3a-2bc6424caeed">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_notes-only" data-mime-type="text/markdown">
-<pre><code>00000000000007ac &lt;bitwise_and_nested&gt;:
-    7ac:    d10083ff     sub    sp, sp, #0x20       // 1
-    7b0:    b9000fe0     str    w0, [sp, #12]       // 1
-    7b4:    b9000be1     str    w1, [sp, #8]        // 1
-    7b8:    12800000     mov    w0, #0xffffffff     // 2
-    7bc:    b9001fe0     str    w0, [sp, #28]       // 2
-    7c0:    b9400fe0     ldr    w0, [sp, #12]       // 3
-    7c4:    7100041f     cmp    w0, #0x1            // 3
-    7c8:    54000121     b.ne   7ec &lt;bitwise_and_nested+0x40&gt;   // 3
-    7cc:    b9400be0     ldr    w0, [sp, #8]        // 4
-    7d0:    7100041f     cmp    w0, #0x1            // 4
-    7d4:    54000081     b.ne   7e4 &lt;bitwise_and_nested+0x38&gt;   // 4
-    7d8:    52800020     mov    w0, #0x1            // 5
-    7dc:    b9001fe0     str    w0, [sp, #28]       // 5
-    7e0:    14000004     b      7f0 &lt;bitwise_and_nested+0x44&gt;   // 6
-    7e4:    b9001fff     str    wzr, [sp, #28]      // 8
-    7e8:    14000002     b      7f0 &lt;bitwise_and_nested+0x44&gt;   // 10
-    7ec:    b9001fff     str    wzr, [sp, #28]      // 12
-    7f0:    b9401fe0     ldr    w0, [sp, #28]       // 14
-    7f4:    910083ff     add    sp, sp, #0x20       // 14
-    7f8:    d65f03c0     ret                        // 14
-</code></pre>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_notes-only" id="cell-id=ffdc9eb9-c365-41ff-8ae2-4b82c61c6bde">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-c"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">bitwise_and_nested_goto</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">bitA</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">bitB</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bitA</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
-<span class="w">        </span><span class="k">goto</span><span class="w"> </span><span class="n">OUTER_ELS</span><span class="p">;</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bitB</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
-<span class="w">        </span><span class="k">goto</span><span class="w"> </span><span class="n">INNER_ELS</span><span class="p">;</span>
-<span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">    </span><span class="k">goto</span><span class="w"> </span><span class="n">OUTER_END</span><span class="p">;</span>
-<span class="nl">INNER_ELS</span><span class="p">:</span>
-<span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="k">goto</span><span class="w"> </span><span class="n">OUTER_END</span><span class="p">;</span>
-<span class="nl">OUTER_ELS</span><span class="p">:</span>
-<span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="nl">OUTER_END</span><span class="p">:</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="c1">// Testing</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;assert.h&gt;</span>
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">bitwise_and_nested_goto</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
-<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">bitwise_and_nested_goto</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
-<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">bitwise_and_nested_goto</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
-<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">bitwise_and_nested_goto</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ce6eb703-18fe-468c-a038-d1e070193f0e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_notes-only" data-mime-type="text/markdown">
-<ul>
-<li>Ternary expressions</li>
-</ul>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_notes-only" id="cell-id=0a35b822-6bd1-4615-b9ec-e36962f3dc47">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-c"><pre><span></span><span class="cm">/*1*/</span><span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="nf">bitwise_and_ternary</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">bitA</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">bitB</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/*2*/</span><span class="w">       </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">bitA</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">bitB</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
-<span class="cm">/*3*/</span><span class="w">   </span><span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3cc3ed28-bf2c-4948-9123-2f47c62be852">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_notes-only" data-mime-type="text/markdown">
-<pre><code>00000000000007fc &lt;bitwise_and_ternary&gt;:
-    7fc:    d10043ff     sub    sp, sp, #0x10   // 1
-    800:    b9000fe0     str    w0, [sp, #12]   // 1
-    804:    b9000be1     str    w1, [sp, #8]    // 1
-    808:    b9400fe0     ldr    w0, [sp, #12]   // 2
-    80c:    7100041f     cmp    w0, #0x1        // 2
-    810:    540000c1     b.ne   828 &lt;bitwise_and_ternary+0x2c&gt;  // 2
-    814:    b9400be0     ldr    w0, [sp, #8]    // 2
-    818:    7100041f     cmp    w0, #0x1        // 2
-    81c:    54000061     b.ne   828 &lt;bitwise_and_ternary+0x2c&gt;  // 2
-    820:    52800020     mov    w0, #0x1        // 2
-    824:    14000002     b      82c &lt;bitwise_and_ternary+0x30&gt;  // 2
-    828:    52800000     mov    w0, #0x0        // 2
-    82c:    910043ff     add    sp, sp, #0x10   // 2
-    830:    d65f03c0     ret                    // 2
-</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=46ccedf8-84c2-4e1b-aff8-5a3bbdfa8035">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_notes-only" data-mime-type="text/markdown">
-<ul>
-<li>Boolean expressions</li>
-</ul>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_notes-only" id="cell-id=7b616aef-4480-402b-9054-88ccbba063da">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-c"><pre><span></span><span class="cm">/*1*/</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">bitwise_and_single</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">bitA</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">bitB</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/*2*/</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">bitA</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">bitB</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="cm">/*3*/</span><span class="w"> </span><span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c10582a1-52db-47c5-80d4-1dcc9a2100f7">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_notes-only" data-mime-type="text/markdown">
-<pre><code>Exact same assembly code as bitwise_and_ternary</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ead61026-5aad-48a6-8001-a827cb9987f3">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_notes-only" data-mime-type="text/markdown">
-<ul>
-<li>With compiler optimizations all four <code>bitwise_and</code> functions result in the exact same assembly code</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0aac9005-9f90-4a0a-9f42-9d9e6969328a">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_notes-only" data-mime-type="text/markdown">
-<pre><code>0000000000000734 &lt;bitwise_and&gt;:
-    734:    7100041f     cmp    w0, #0x1
-    738:    7a410820     ccmp    w1, #0x1, #0x0, eq
-    73c:    1a9f17e0     cset    w0, eq
-    740:    d65f03c0     ret
-</code></pre>
 </div>
 </div>
 </div>
@@ -8546,8 +8262,7 @@ a.anchor-link {
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-c"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
-<span class="kt">int</span><span class="w"> </span><span class="nf">pow2_goto</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight hl-c"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">pow2_goto</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="w">    </span><span class="k">goto</span><span class="w"> </span><span class="n">loop_check</span><span class="p">;</span>
 <span class="nl">loop_top</span><span class="p">:</span>
@@ -8558,6 +8273,7 @@ a.anchor-link {
 <span class="w">        </span><span class="k">goto</span><span class="w"> </span><span class="n">loop_top</span><span class="p">;</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
 <span class="p">}</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"2^10 = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">pow2_goto</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span>
 <span class="p">}</span>
@@ -8600,7 +8316,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
-<p>Q10: <em>The following C code was compiled into assembly (using <code>clang</code>). Label each line of assembly code with the line number of the line of C code from which the assembly instruction was derived.</em></p>
+<p>Q11: <em>The following C code was compiled into assembly (using <code>clang</code>). Label each line of assembly code with the line number of the line of C code from which the assembly instruction was derived.</em></p>
 </div>
 </div>
 </div>
@@ -8661,7 +8377,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
-<p>Q11: <em>How would the correspondence between assembly code and C code be different if <code>powi</code> used a while loop?</em></p>
+<p>Q12: <em>How would the correspondence between assembly code and C code be different if <code>powi</code> used a while loop? (Notice the assembly code is exactly the same as the version that used a for loop.)</em></p>
 </div>
 </div>
 </div>
@@ -8719,69 +8435,46 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a82d425b-2220-4a29-9e28-64dbb110b731">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Extra-practice">Extra practice<a class="anchor-link" href="#Extra-practice">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d5358bfd-652e-4c68-9ece-3263651ea34e">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5b675908-e962-40f9-b0e5-08b7e2f8c5e1">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
-<p>Q12: <em>Assume the registers currently hold the following values:</em></p>
-<pre><code>sp = 0xA980
-w/x10 = 10
-w/x11 = 11
-w/x12 = 12
-w/x13 = 13
-</code></pre>
-<p><em>Draw the contents of the stack and registers after the following instructions have been executed:</em></p>
-<pre><code>sub sp, sp, #0x30
-str w10, [sp, #16]
-str x11, [sp]
-str w12, [sp, #28]
-str x13, [sp, #32]
-ldr x10, [sp]
-ldr w13, [sp, #28]
-</code></pre>
+<p>Q13: <em>Write a function called <code>powi_goto</code> that behaves the same as <code>powi</code> but matches the structure of the assembly code that is generated for <code>powi</code>.</em></p>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=86f16093-48e9-4455-9ce3-0b2003778ab1">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_notes-only" id="cell-id=083982a2-968a-42fd-82bc-74eccac6c91d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_answer" data-mime-type="text/markdown">
-<pre><code>sp = 0xA950
-w/x10 = 11
-w/x11 = 11
-w/x12 = 12
-w/x13 = 12
-</code></pre>
-<pre><code>        0  1  2  3  4  5  6  7  8          
- sp -&gt;  +--+--+--+--+--+--+--+--+
-0xA950  |          11           |
-        +--+--+--+--+--+--+--+--+
-0xA958  |           |           |
-        +--+--+--+--+--+--+--+--+
-0xA960  |    10     |           |
-        +--+--+--+--+--+--+--+--+
-0xA968  |           |     12    |
-        +--+--+--+--+--+--+--+--+
-0xA970  |          13           |
-        +--+--+--+--+--+--+--+--+
-0xA978  |                       |
-        +--+--+--+--+--+--+--+--+
-0xA980  |                       |
-        +--+--+--+--+--+--+--+--+
-</code></pre>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-c"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">powi_goto</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="nl">loop_check</span><span class="p">:</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+<span class="w">        </span><span class="k">goto</span><span class="w"> </span><span class="n">after_loop</span><span class="p">;</span>
+<span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="n">m</span><span class="p">;</span>
+<span class="w">    </span><span class="n">i</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="k">goto</span><span class="w"> </span><span class="n">loop_check</span><span class="p">;</span>
+<span class="nl">after_loop</span><span class="p">:</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// Testing</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;assert.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">powi_goto</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">powi_goto</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">8</span><span class="p">);</span>
+<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">powi_goto</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">256</span><span class="p">);</span>
+<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">powi_goto</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">powi_goto</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">9</span><span class="p">);</span>
+<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">powi_goto</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">125</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
