@@ -7934,6 +7934,55 @@ ldr w0, [sp,#4] // Can eliminiate
 </div>
 </div>
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=64452423-0323-4a31-9e64-336617bc24cd">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
+<p>Q7: <em>Consider the following code:</em></p>
+<div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="nf">range</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">){</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">arr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">n</span><span class="o">--</span><span class="p">;</span>
+<span class="w">        </span><span class="n">arr</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">arr</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+<p><em>For each of the statements below, indicate whether the statement is <strong>true or false</strong> and briefly (in 1-2 sentences) <strong>explain why</strong>.</em></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=17473580-8ea5-47ed-8de9-6d8fbf0bf47e">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_answer" data-mime-type="text/markdown">
+<p>The value located in <code>arr</code> has temporal locality.</p>
+<blockquote>
+<p>True – <code>arr</code> is a pointer variable, so it holds a memory address, and this memory address is needed every loop iteration to determine the memory location where the nth element is stored</p>
+</blockquote>
+<p>The value located in <code>arr[1]</code> has temporal locality.</p>
+<blockquote>
+<p>False – <code>arr[1]</code> is a specific element within the array which is only accessed on one iteration of the loop</p>
+</blockquote>
+<p>The values located in <code>arr</code> and <code>arr[0]</code> have spatial locality (to each other).</p>
+<blockquote>
+<p>False – <code>arr</code> is a local variable stored in the stack frame for <code>range</code>, whereas <code>arr[0]</code> is a value within the array on the heap</p>
+</blockquote>
+<p>The values located in <code>arr</code> and <code>n</code> have spatial locality (to each other).</p>
+<blockquote>
+<p>True – <code>arr</code> and <code>n</code> are both local variables and hence stored in the same stack frame</p>
+</blockquote>
+<p>The values located in <code>arr[2]</code> and <code>arr[3]</code> have spatial locality (to each other).</p>
+<blockquote>
+<p>True – <code>arr[2]</code> and <code>arr[3]</code> are adjacenet values within the array on the heap</p>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
 </main>
 </body>
 </html>
