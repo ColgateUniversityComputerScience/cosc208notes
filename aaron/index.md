@@ -35,6 +35,9 @@
 * memory hierarchy; locality [[Worksheet]](50_storage_hierarchy.worksheet.html) [[Notes & Solutions]](50_storage_hierarchy.notes.html)
 * caching; loop optimization [[Worksheet]](51_storage_caching.worksheet.html) [[Notes & Solutions]](51_storage_caching.notes.html)
 
+## Concurrency
+* parallel execution; POSIX threads [[Worksheet]](61_concurrency_threads.worksheet.html) <!--[[Notes & Solutions]](61_concurrency_threads.notes.html)-->
+
 <!--
 ## Operating systems
 * limited direct execution; system calls [[Worksheet]](60_os_lde.worksheet.html) [[Notes & Solutions]](60_os_lde.notes.html)
