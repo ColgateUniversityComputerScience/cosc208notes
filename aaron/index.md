@@ -37,6 +37,7 @@
 
 ## Concurrency
 * parallel execution; POSIX threads [[Worksheet]](61_concurrency_threads.worksheet.html) <!--[[Notes & Solutions]](61_concurrency_threads.notes.html)-->
+* creating multi-threaded programs [[Worksheet]](62_concurrency_writing.worksheet.html) <!--[[Notes & Solutions]](62_concurrency_writing.notes.html)-->
 
 <!--
 ## Operating systems
