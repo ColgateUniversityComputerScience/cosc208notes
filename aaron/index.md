@@ -37,7 +37,7 @@
 
 ## Concurrency
 * parallel execution; POSIX threads [[Worksheet]](61_concurrency_threads.worksheet.html) [[Notes & Solutions]](61_concurrency_threads.notes.html)
-* creating multi-threaded programs [[Worksheet]](62_concurrency_writing.worksheet.html) <!--[[Notes & Solutions]](62_concurrency_writing.notes.html)-->
+* creating multi-threaded programs [[Worksheet]](62_concurrency_writing.worksheet.html) [[Notes & Solutions]](62_concurrency_writing.notes.html)
 * race conditions; mutual exclusion [[Worksheet]](63_concurrency_mutual-exclusion.worksheet.html) <!--[[Notes & Solutions]](63_concurrency_mutual-exclusion.notes.html)-->
 
 <!--
