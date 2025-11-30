@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>61_os_processes</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>71_os_lde</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <link href="custom.css" rel="stylesheet"/>
 <style type="text/css">
     pre { line-height: 125%; }
@@ -7516,79 +7516,74 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Operating-Systems:-processes">Operating Systems: processes<a class="anchor-link" href="#Operating-Systems:-processes">¶</a></h1><p><em>COSC 208, Introduction to Computer Systems, Fall 2024</em></p>
+<h1 id="Operating-Systems:-limited-direct-execution;-system-calls">Operating Systems: limited direct execution; system calls<a class="anchor-link" href="#Operating-Systems:-limited-direct-execution;-system-calls">¶</a></h1><p><em>COSC 208, Introduction to Computer Systems, Fall 2025</em></p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a310254f-36a4-4544-8e8e-8bdc64bf00e6">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=177d7b56-26ce-4023-8010-92c448961bbf">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Announcements">Announcements<a class="anchor-link" href="#Announcements">¶</a></h2><ul>
-<li>Project 3 beta due Tuesday, November 19 @ 11pm</li>
-</ul>
+<h2 id="Operating-systems-(OS)">Operating systems (OS)<a class="anchor-link" href="#Operating-systems-(OS)">¶</a></h2>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e433407a-25b7-43ac-9872-6c5891db02d3">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=14ab688a-b402-42ca-b066-edfbfd1ef0b4">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Process-abstraction">Process abstraction<a class="anchor-link" href="#Process-abstraction">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7f557c79-c528-49dd-a307-c45251ee24ce">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
-<div style="height:18em;"></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6ff8ac25-4497-4623-8d8e-4290d38316a2">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
-<p>Q1: <em>Consider building a Lego kit as an analogy for operating systems' process abstraction. Match each component of the analogy with the corresponding component of a real computer system.</em></p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f1525748-c48d-47f7-9d71-07a6f5a637be">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_notes-only" data-mime-type="text/markdown">
 <ul>
-<li>Analogy<ol>
-<li>Cabinet/drawers for storing Legos</li>
-<li>Lego bricks</li>
-<li>Building area (e.g., tabletop)</li>
-<li>Instruction booklet</li>
-<li>Following the assembly instructions</li>
-<li>Current step for the instruction booklet</li>
-<li>Completed kit</li>
-<li>You</li>
-</ol>
+<li>Purpose of an OS<ul>
+<li>Make computer hardware easy to use—e.g., an OS knows how to load an application's executable code from persistent storage (e.g., solid state drive (SSD)) into main memory, initialize the process's address space (code, heap, stack), and make the CPU execute the application's instructions</li>
+<li>Support multiprocessing—i.e., running multiple applications concurrently<ul>
+<li>Concurrently == switch between multiple tasks during a window of time—e.g., alternate between cooking and setting the table</li>
+<li>Simultaneously == complete two tasks at the same time—e.g., listen to a podcast while cooking</li>
+</ul>
 </li>
-<li>Real system<ul>
-<li>CPU</li>
-<li>persistent storage</li>
-<li>process</li>
-<li>program</li>
-<li>program counter</li>
-<li>program inputs</li>
-<li>program outputs</li>
-<li>registers and main memory</li>
+<li>Allocate and manage hardware resources—e.g., decide when/which applications can use the CPU, decide when/which memory applications can use, prevent applications from stealing/accessing another application's CPU time or memory</li>
+<li>Many OSes also provide a user interface (UI)</li>
+</ul>
+</li>
+<li>How does the OS fulfill its duties?<ul>
+<li>Mechanisms — fundamental approaches for managing/providing access to hardware resources<ul>
+<li>E.g., system calls, process abstraction</li>
+</ul>
+</li>
+<li>Policy — specific ways of employing an approach; different policies make different trade-offs (in terms of efficiency, performance, etc.)<ul>
+<li>E.g., process scheduler</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8d807688-da78-40a3-a6ba-33996b0e3916">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Allocating/managing-hardware">Allocating/managing hardware<a class="anchor-link" href="#Allocating/managing-hardware">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=304e20c3-b23e-48cd-87c3-083e05018007">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_notes-only" data-mime-type="text/markdown">
+<ul>
+<li>OS is responsible for allocating/managing the hardware</li>
+<li>Analogy – sharing a calculator<ul>
+<li>Two students – program 1, program 2</li>
+<li>Professor – OS decides how programs will share the calculator</li>
 </ul>
 </li>
 </ul>
@@ -7596,583 +7591,194 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4c187212-e296-46ad-b1e9-bf189a178ee9">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3d5075fe-7b2d-432b-85c4-8eefdd21e057">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_notes-only" data-mime-type="text/markdown">
+<ul>
+<li>First attempt – no preemption<ul>
+<li>Instructions for Program 1:<pre><code>8642 + 9753 = _____
+M+ (add to memory)
+1819 + 1920 + 2021 = _____
+153 + 264 + MRC (recall from memory) = _____
+</code></pre>
+</li>
+<li>Instructions for Program 2:<pre><code>1234 + 5678 = _____
+1470 + 2342 + 2341 = _____
+34238 + 32482 = _____
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5938e2e6-29fc-4ed7-8f00-aaf004aa8f84">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_notes-only" data-mime-type="text/markdown">
+<ul>
+<li>Second attempt – preemption, but no protection<ul>
+<li>Instructions for Program 1:<pre><code>8642 + 9753 = _____
+M+ (add to memory)
+1819 + 1920 + 2021 = _____
+153 + 264 + MRC (recall from memory) = _____
+</code></pre>
+</li>
+<li>Instructions for Program 2:<pre><code>8395 + 8395 = _____
+M- (subtract from memory)
+1470 + 2342 + 2341 = _____
+34238 + 32482 = _____
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0c6c3229-2737-4b1c-b9b4-08fcb7b74ad8">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_notes-only" data-mime-type="text/markdown">
+<ul>
+<li>Third attempt – dictate instructions<ul>
+<li>Instructions for Program 1:<pre><code>8642 + 9753 = _____
+1 + 2 + 3 + 4 + 5 + 6 + ... + 100 = _____
+</code></pre>
+</li>
+<li>Instructions for Program 2:<pre><code>8395 + 8395 = _____
+1470 + 2342 + 2341 = _____
+34238 + 32482 = _____
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cbe3fc7e-2d67-495c-a15d-e62beb87eef6">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_notes-only" data-mime-type="text/markdown">
+<ul>
+<li>OS is responsible for allocating/managing the hardware<ul>
+<li>⇒ applications should <strong>not have unfettered access to hardware</strong></li>
+</ul>
+</li>
+<li><em>How should applications access the hardware?</em><ul>
+<li>Ask the OS for access to the hardware<ul>
+<li>How do we ensure the OS does not "lose control" of the hardware?</li>
+</ul>
+</li>
+<li>Asks the OS to perform an action on the application's behalf<ul>
+<li>How do we ensure this doesn't substantially degrade performance?</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Example: execute an instruction on the CPU<ul>
+<li>Asking the OS to do this on behalf of an application is impractical—OS would need to execute multiple assembly instructions for each assembly instruction the application wants to execute</li>
+<li>Alternative: allow the application to execute its own instructions on the CPU<ul>
+<li>This is risky—an application may execute an instruction that controls the hardware, e.g., <code>hlt</code> (halt) instruction pauses the CPU</li>
+</ul>
+</li>
+<li>Alternative: allow the application to execute "safe" instructions on its own on the CPU</li>
+</ul>
+</li>
+<li>Example: accessing the solid state drive (SSD)<ul>
+<li>Allowing the application to access the SSD directly<ul>
+<li>This is risky—an application may read/write data it should not be able to access</li>
+</ul>
+</li>
+<li>Alternative: asking the OS to access the SSD on the application's behalf<ul>
+<li>Latency of accessing SSD (~1 million CPU cycles) far outweighs the extra instructions required for OS to perform the access on the application's behalf</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Mechanisms<ul>
+<li>Limited Direct Execution (LDE)</li>
+<li>System calls (syscalls)</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=68f1db42-2d36-4bab-9a98-14ca5c981d41">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Creating-processes">Creating processes<a class="anchor-link" href="#Creating-processes">¶</a></h2>
+<h2 id="Limited-Direct-Execution-(LDE)">Limited Direct Execution (LDE)<a class="anchor-link" href="#Limited-Direct-Execution-(LDE)">¶</a></h2>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=643c4666-88f4-470a-9ee3-a2e0f7aa9aa7">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9050aa25-6a69-4178-abe2-82c0a93b69eb">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
-<div style="height:5em;"></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fe352157-0cec-4cee-b13d-d9a74feabd9f">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
-<p>Q2: <em>What does the following code output?</em></p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_worksheet-code-only" id="cell-id=0dc6f4fa-6212-471b-82af-e33a4ab20b96">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-c"><pre><span></span><span class="cm">/* 1*/</span><span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
-<span class="cm">/* 2*/</span><span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span>
-<span class="cm">/* 3*/</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/* 4*/</span><span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">13</span><span class="p">;</span>
-<span class="cm">/* 5*/</span><span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">"Before fork %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span>
-<span class="cm">/* 6*/</span><span class="w">      </span><span class="n">fork</span><span class="p">();</span>
-<span class="cm">/* 7*/</span><span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">"After fork %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span>
-<span class="cm">/* 8*/</span><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="cm">/* 9*/</span><span class="w">  </span><span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e57c70ff-c7cb-4123-b63c-4580ee6e6086">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
-<div style="height:14em;"></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=48c21979-4a22-4b56-8f1b-50252c134bc2">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
-<p>Q3: <em>What does the following code output (assuming the new process has PID 1819)?</em></p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_question" id="cell-id=414aae8a-59d9-4de9-810b-db7c2a18150a">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-c"><pre><span></span><span class="cm">/* 1*/</span><span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
-<span class="cm">/* 2*/</span><span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span><span class="c1">    </span>
-<span class="cm">/* 3*/</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/* 4*/</span><span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">"Before fork</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="cm">/* 5*/</span><span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">pid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fork</span><span class="p">();</span>
-<span class="cm">/* 6*/</span><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pid</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/* 7*/</span><span class="w">          </span><span class="n">printf</span><span class="p">(</span><span class="s">"Fork failed</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="cm">/* 8*/</span><span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="cm">/* 9*/</span><span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pid</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/*10*/</span><span class="w">          </span><span class="n">printf</span><span class="p">(</span><span class="s">"Child gets %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">pid</span><span class="p">);</span>
-<span class="cm">/*11*/</span><span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/*12*/</span><span class="w">          </span><span class="n">printf</span><span class="p">(</span><span class="s">"Parent gets %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">pid</span><span class="p">);</span>
-<span class="cm">/*13*/</span><span class="w">      </span><span class="p">}</span>
-<span class="cm">/*14*/</span><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="cm">/*15*/</span><span class="w">  </span><span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c4103de4-b417-4b0f-bb37-bac74de9a772">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
-<div style="height:15em;"></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bfb66dd4-ade4-4eb6-af04-29c988807bcb">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
-<p>Q4: <em>What are all possible outputs of this program, assuming the process identifier (PID) of the parent process is 50 and the PID of the child process is 60?</em></p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_question" id="cell-id=dbd89b3e-9153-4206-a13d-bbacbf4354de">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-c"><pre><span></span><span class="cm">/* 1*/</span><span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
-<span class="cm">/* 2*/</span><span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span><span class="c1">    </span>
-<span class="cm">/* 3*/</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/* 4*/</span><span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
-<span class="cm">/* 5*/</span><span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fork</span><span class="p">();</span>
-<span class="cm">/* 6*/</span><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/* 7*/</span><span class="w">          </span><span class="n">printf</span><span class="p">(</span><span class="s">"Fork failed</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="cm">/* 8*/</span><span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="cm">/* 9*/</span><span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/*10*/</span><span class="w">          </span><span class="n">n</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
-<span class="cm">/*11*/</span><span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/*12*/</span><span class="w">          </span><span class="n">n</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
-<span class="cm">/*13*/</span><span class="w">      </span><span class="p">}</span>
-<span class="cm">/*14*/</span><span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">"x=%d n=%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
-<span class="cm">/*15*/</span><span class="w">  </span><span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c093468d-c5fe-4eb0-9278-97d73984142e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
-<div style="height:9em;"></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=165e4f3c-ac6d-4221-9e99-3a3b4918d6f2">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
-<p>Q5: <em>What does the following code output?</em></p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_question" id="cell-id=ffd1fd64-903c-4729-bc8d-292cad550f4d">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-c"><pre><span></span><span class="cm">/* 1*/</span><span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
-<span class="cm">/* 2*/</span><span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span>
-<span class="cm">/* 3*/</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/* 4*/</span><span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
-<span class="cm">/* 5*/</span><span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
-<span class="cm">/* 6*/</span><span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">retval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fork</span><span class="p">();</span>
-<span class="cm">/* 7*/</span><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">retval</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/* 8*/</span><span class="w">          </span><span class="n">printf</span><span class="p">(</span><span class="s">"Fork failed</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="cm">/* 9*/</span><span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="cm">/*10*/</span><span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">retval</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/*11*/</span><span class="w">          </span><span class="n">y</span><span class="o">+=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
-<span class="cm">/*12*/</span><span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/*13*/</span><span class="w">          </span><span class="n">y</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
-<span class="cm">/*14*/</span><span class="w">      </span><span class="p">}</span>
-<span class="cm">/*15*/</span><span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">"x=%d y=%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
-<span class="cm">/*16*/</span><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="cm">/*17*/</span><span class="w">  </span><span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b5253557-4458-44d3-9987-b29e7835acfb">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
-<div style="height:9em;"></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2d5d71af-39c9-48bd-a97f-f418cfea8aa0">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
-<p>Q6: <em>What does the following code output?</em></p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_question" id="cell-id=d911e1f2-a487-4950-a6a5-ad00aa825c0d">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-c"><pre><span></span><span class="cm">/* 1*/</span><span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
-<span class="cm">/* 2*/</span><span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span>
-<span class="cm">/* 3*/</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/* 4*/</span><span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
-<span class="cm">/* 5*/</span><span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">pid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fork</span><span class="p">();</span>
-<span class="cm">/* 6*/</span><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pid</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/* 7*/</span><span class="w">          </span><span class="n">printf</span><span class="p">(</span><span class="s">"Fork failed</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="cm">/* 8*/</span><span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="cm">/* 9*/</span><span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pid</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/*10*/</span><span class="w">          </span><span class="n">value</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mi">50</span><span class="p">;</span>
-<span class="cm">/*11*/</span><span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/*12*/</span><span class="w">          </span><span class="n">value</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">50</span><span class="p">;</span>
-<span class="cm">/*13*/</span><span class="w">      </span><span class="p">}</span>
-<span class="cm">/*14*/</span><span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">"My value is %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">);</span>
-<span class="cm">/*15*/</span><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="cm">/*16*/</span><span class="w">  </span><span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f643b302-4748-4a9a-8ceb-89a41d6f20a3">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
-<p style="height:10em;"></p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=57caec74-b1d0-41f3-bd86-6dc729fa5d6f">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_notes-only" data-mime-type="text/markdown">
+<ul>
+<li>CPU has two modes of execution: user mode &amp; kernel mode</li>
+<li><em>When does a CPU run in user mode?</em> — when executing application code</li>
+<li><em>When does a CPU run in kernel mode?</em> — when executing OS code</li>
+<li>Allowable operations in user mode are restricted<ul>
+<li>Applications can...<ul>
+<li>Perform arithmetic/logic operations</li>
+<li>Load/store values in its stack/heap</li>
+</ul>
+</li>
+<li>Applications must ask the OS to...<ul>
+<li>Start/terminate applications</li>
+<li>Create/delete files</li>
+<li>Display output on screen</li>
+<li>Read input from user</li>
+</ul>
+</li>
+<li>Must transfer control to the OS to perform these operations — How?</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ab388cc0-87e1-4a65-b66c-708b8aed26b0">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Waiting-for-processes">Waiting for processes<a class="anchor-link" href="#Waiting-for-processes">¶</a></h2>
+<h2 id="System-calls-(syscalls)">System calls (syscalls)<a class="anchor-link" href="#System-calls-(syscalls)">¶</a></h2>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5db52de5-b607-47e9-8a12-67701e9b7d39">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3d614971-b3fa-49e3-bb5e-c745d4d1f398">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
-<p>Q7: <em>What are all possible outputs of this program?</em></p>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_notes-only" data-mime-type="text/markdown">
+<ul>
+<li>Invoked via a special assembly instruction: trap (generic) or <code>svc</code> (on ARM)</li>
+</ul>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_worksheet-code-only" id="cell-id=7535307b-5941-469b-985a-af01d7216d08">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-c"><pre><span></span><span class="cm">/* 1*/</span><span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
-<span class="cm">/* 2*/</span><span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span>
-<span class="cm">/* 3*/</span><span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sys/wait.h&gt;</span>
-<span class="cm">/* 4*/</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/* 5*/</span><span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">pid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fork</span><span class="p">();</span>
-<span class="cm">/* 6*/</span><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pid</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/* 7*/</span><span class="w">          </span><span class="n">printf</span><span class="p">(</span><span class="s">"Fork failed</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="cm">/* 8*/</span><span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="cm">/* 9*/</span><span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pid</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/*10*/</span><span class="w">          </span><span class="n">wait</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
-<span class="cm">/*11*/</span><span class="w">          </span><span class="n">printf</span><span class="p">(</span><span class="s">"Parent</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="cm">/*12*/</span><span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/*13*/</span><span class="w">          </span><span class="n">printf</span><span class="p">(</span><span class="s">"Child</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="cm">/*14*/</span><span class="w">      </span><span class="p">}</span>
-<span class="cm">/*15*/</span><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="cm">/*16*/</span><span class="w">  </span><span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=642661f3-be50-4e4e-8280-5f589307baa4">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
-<div style="height:6em;"></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=05ba0a22-3549-4d02-bc9f-4ce8754f2ff8">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
-<p>Q8: <em>How would you modify the program below such that <code>Chicken</code> always prints before <code>Egg</code>?</em></p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_question" id="cell-id=c9658dc7-2a2e-4043-a7c7-bed02622f8fd">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-c"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span>
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Begin</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">pid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fork</span><span class="p">();</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pid</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"Fork failed</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pid</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"Egg</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"Chicken</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=dd75ab18-b5cb-47da-8148-03b4bc518da5">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
-<div style="height:6em;"></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=74430a65-c82e-40b5-9930-dd3945c33278">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
-<p>Q9: <em>What are all possible outputs of this program (assuming the new process has PID 13346)?</em></p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_question" id="cell-id=4ede3e4f-c728-47df-b86c-ba34ad975c22">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-c"><pre><span></span><span class="cm">/* 1*/</span><span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
-<span class="cm">/* 2*/</span><span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span>
-<span class="cm">/* 3*/</span><span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sys/wait.h&gt;</span>
-<span class="cm">/* 4*/</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/* 5*/</span><span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">pid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fork</span><span class="p">();</span>
-<span class="cm">/* 6*/</span><span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">"A %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">pid</span><span class="p">);</span>
-<span class="cm">/* 7*/</span><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pid</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/* 8*/</span><span class="w">          </span><span class="n">printf</span><span class="p">(</span><span class="s">"B</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="cm">/* 9*/</span><span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pid</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/*10*/</span><span class="w">          </span><span class="n">wait</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
-<span class="cm">/*11*/</span><span class="w">          </span><span class="n">printf</span><span class="p">(</span><span class="s">"C</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="cm">/*12*/</span><span class="w">      </span><span class="p">}</span>
-<span class="cm">/*13*/</span><span class="w">  </span><span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c2d78445-901d-41ff-81fd-b1d0a9342b5d">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
-<div style="height:17em;"></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=97c04b1d-14fa-42e8-b5f4-4886b5632ca3">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
-<p>Q10: <em>What are all possible outputs of this program</em>?</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_worksheet-code-only" id="cell-id=77994ca9-68f8-43bd-9002-b9bbcbf2888e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-c"><pre><span></span><span class="cm">/* 1*/</span><span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
-<span class="cm">/* 2*/</span><span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
-<span class="cm">/* 3*/</span><span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span>
-<span class="cm">/* 4*/</span><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="nf">proc1_main</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">arg</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/* 5*/</span><span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">arg</span><span class="p">;</span>
-<span class="cm">/* 6*/</span><span class="w">      </span><span class="o">*</span><span class="n">x</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="cm">/* 7*/</span><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
-<span class="cm">/* 8*/</span><span class="w">  </span><span class="p">}</span>
-<span class="cm">/* 9*/</span><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="nf">proc2_main</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">arg</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/*10*/</span><span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">arg</span><span class="p">;</span>
-<span class="cm">/*11*/</span><span class="w">      </span><span class="o">*</span><span class="n">y</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="cm">/*12*/</span><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
-<span class="cm">/*13*/</span><span class="w">  </span><span class="p">}</span>
-<span class="cm">/*14*/</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/*15*/</span><span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
-<span class="cm">/*16*/</span><span class="w">      </span><span class="o">*</span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="cm">/*17*/</span><span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">pid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fork</span><span class="p">();</span>
-<span class="cm">/*18*/</span><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pid</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/*19*/</span><span class="w">          </span><span class="n">proc1_main</span><span class="p">(</span><span class="n">z</span><span class="p">);</span>
-<span class="cm">/*20*/</span><span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/*21*/</span><span class="w">          </span><span class="n">wait</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
-<span class="cm">/*22*/</span><span class="w">          </span><span class="n">proc2_main</span><span class="p">(</span><span class="n">z</span><span class="p">);</span>
-<span class="cm">/*23*/</span><span class="w">      </span><span class="p">}</span>
-<span class="cm">/*24*/</span><span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">"z is %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">z</span><span class="p">);</span>
-<span class="cm">/*25*/</span><span class="w">  </span><span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d9ed31de-35df-44eb-a74f-c5c92137c011">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
-<div style="height:1em;"></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a7b2bee5-ebcf-4f8d-bd2c-0fc604f5eac4">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
-<p>Q11: <em>What output is produced by the following program? (Note: there is only one possible ordering.)</em></p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_worksheet-code-only" id="cell-id=23d62dfc-ec88-4823-97b8-8f89c80a421e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-c"><pre><span></span><span class="cm">/*1*/</span><span class="w">   </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
-<span class="cm">/*2*/</span><span class="w">   </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
-<span class="cm">/*3*/</span><span class="w">   </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sys/wait.h&gt;</span>
-<span class="cm">/*4*/</span><span class="w">   </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span>
-<span class="cm">/*5*/</span><span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/*6*/</span><span class="w">       </span><span class="n">printf</span><span class="p">(</span><span class="s">"A</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="cm">/*7*/</span><span class="w">       </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fork</span><span class="p">();</span>
-<span class="cm">/*8*/</span><span class="w">       </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/*9*/</span><span class="w">           </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fork</span><span class="p">();</span>
-<span class="cm">/*10*/</span><span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/*11*/</span><span class="w">              </span><span class="n">printf</span><span class="p">(</span><span class="s">"B</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="cm">/*12*/</span><span class="w">          </span><span class="p">}</span>
-<span class="cm">/*13*/</span><span class="w">          </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/*14*/</span><span class="w">              </span><span class="n">wait</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
-<span class="cm">/*15*/</span><span class="w">              </span><span class="n">printf</span><span class="p">(</span><span class="s">"C</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="cm">/*16*/</span><span class="w">          </span><span class="p">}</span>
-<span class="cm">/*17*/</span><span class="w">      </span><span class="p">}</span>
-<span class="cm">/*18*/</span><span class="w">      </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/*19*/</span><span class="w">          </span><span class="n">wait</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
-<span class="cm">/*20*/</span><span class="w">          </span><span class="n">printf</span><span class="p">(</span><span class="s">"D</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="cm">/*21*/</span><span class="w">      </span><span class="p">}</span>
-<span class="cm">/*22*/</span><span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">"E</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="cm">/*23*/</span><span class="w">  </span><span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=703e0c2f-02e1-4bf6-8938-014f46971f29">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
-<p style="height:1em;"></p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=80a2dcbe-0529-4f96-aac6-4e9bc038056e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
-<p>Q12: <em>What output is produced by this program, assuming the starting process's PID is 7034 and PIDs are sequentially assigned to new processes. (Note: there is only one possible ordering.)</em></p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_question" id="cell-id=6d134e21-6419-4b72-9801-e50526d39a05">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-c"><pre><span></span><span class="cm">/* 1*/</span><span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
-<span class="cm">/* 2*/</span><span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span>
-<span class="cm">/* 3*/</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/* 4*/</span><span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">"Begin</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="cm">/* 5*/</span><span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fork</span><span class="p">();</span>
-<span class="cm">/* 6*/</span><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/* 7*/</span><span class="w">          </span><span class="n">printf</span><span class="p">(</span><span class="s">"A %d %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">,</span><span class="w"> </span><span class="n">getpid</span><span class="p">());</span>
-<span class="cm">/* 8*/</span><span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/* 9*/</span><span class="w">          </span><span class="n">wait</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
-<span class="cm">/*10*/</span><span class="w">          </span><span class="n">printf</span><span class="p">(</span><span class="s">"B %d %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">,</span><span class="w"> </span><span class="n">getpid</span><span class="p">());</span>
-<span class="cm">/*11*/</span><span class="w">      </span><span class="p">}</span>
-<span class="cm">/*12*/</span><span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">result2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fork</span><span class="p">();</span>
-<span class="cm">/*13*/</span><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/*14*/</span><span class="w">          </span><span class="n">printf</span><span class="p">(</span><span class="s">"C %d %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">result2</span><span class="p">,</span><span class="w"> </span><span class="n">getpid</span><span class="p">());</span>
-<span class="cm">/*15*/</span><span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result2</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/*16*/</span><span class="w">          </span><span class="n">wait</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
-<span class="cm">/*17*/</span><span class="w">          </span><span class="n">printf</span><span class="p">(</span><span class="s">"D %d %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">result2</span><span class="p">,</span><span class="w"> </span><span class="n">getpid</span><span class="p">());</span>
-<span class="cm">/*18*/</span><span class="w">      </span><span class="p">}</span>
-<span class="cm">/*19*/</span><span class="w">  </span><span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cd97b899-bc3a-4f62-8087-4d59e2028e16">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
-<p style="height:7em;"></p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=47662e72-d82a-40f4-a89d-3f965ed47f4a">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Running-a-different-program">Running a different program<a class="anchor-link" href="#Running-a-different-program">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9e08d5c0-9035-4e48-9011-7b47f5dcf625">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9738a3ac-062c-43ee-b784-6127387df917">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8181,7 +7787,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_worksheet-code-only" id="cell-id=5df6dc89-b800-4730-a1a8-038c7ce35a0a">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell celltag_worksheet-code-only" id="cell-id=340386a9-633a-4e0e-a852-256a9e26d7b8">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8190,102 +7796,175 @@ a.anchor-link {
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-c"><pre><span></span><span class="cm">/* 1*/</span><span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 <span class="cm">/* 2*/</span><span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span>
-<span class="cm">/* 3*/</span><span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sys/wait.h&gt;</span>
-<span class="cm">/* 4*/</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/* 5*/</span><span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">"Begin</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="cm">/* 6*/</span><span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">pid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fork</span><span class="p">();</span>
-<span class="cm">/* 7*/</span><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pid</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/* 8*/</span><span class="w">          </span><span class="n">printf</span><span class="p">(</span><span class="s">"Fork failed</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="cm">/* 9*/</span><span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="cm">/*10*/</span><span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pid</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/*11*/</span><span class="w">          </span><span class="n">printf</span><span class="p">(</span><span class="s">"Child</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="cm">/*12*/</span><span class="w">          </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">cmd</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"/bin/date"</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="w"> </span><span class="p">};</span>
-<span class="cm">/*13*/</span><span class="w">          </span><span class="n">execv</span><span class="p">(</span><span class="n">cmd</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">cmd</span><span class="p">);</span>
-<span class="cm">/*14*/</span><span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/*15*/</span><span class="w">          </span><span class="n">wait</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
-<span class="cm">/*16*/</span><span class="w">          </span><span class="n">printf</span><span class="p">(</span><span class="s">"Parent</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="cm">/*17*/</span><span class="w">      </span><span class="p">}</span>
-<span class="cm">/*18*/</span><span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">"End</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="cm">/*19*/</span><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="cm">/*20*/</span><span class="w">  </span><span class="p">}</span>
+<span class="cm">/* 3*/</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="nf">name</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="cm">/* 4*/</span><span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">pid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getpid</span><span class="p">();</span>
+<span class="cm">/* 5*/</span><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">pid</span><span class="p">;</span>
+<span class="cm">/* 6*/</span><span class="w">  </span><span class="p">}</span>
+<span class="cm">/* 7*/</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="cm">/* 8*/</span><span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">();</span>
+<span class="cm">/* 9*/</span><span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">"I am a process. My name is %d.</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">);</span>
+<span class="cm">/*10*/</span><span class="w">  </span><span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8cac87ca-45e9-49aa-9fd6-c5dc18f59ac1">
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>I am a process. My name is 1335.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=407533ff-7f8b-4402-8726-a3ec8366b48e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Q13: <em>What is the output produced by running <code>./progA</code>, assuming no errors occur?</em></p>
+<pre><code>00000000004006ac &lt;name&gt;:
+    4006ac:    d10083ff     sub    sp, sp, #0x20
+    4006b0:    f9000bfe     str    x30, [sp, #16]
+    4006b4:    94007713     bl    41e300 &lt;__getpid&gt;
+    4006b8:    b9000fe0     str    w0, [sp, #12]
+    4006bc:    b9400fe0     ldr    w0, [sp, #12]
+    4006c0:    f9400bfe     ldr    x30, [sp, #16]
+    4006c4:    910083ff     add    sp, sp, #0x20
+    4006c8:    d65f03c0     ret
+000000000041e300 &lt;__getpid&gt;:
+    41e300:    d28015c8     mov    x8, #0xac
+    41e304:    d4000001     svc    #0x0
+    41e308:    d65f03c0     ret
+</code></pre>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=38a6705f-d3f5-4f1d-90de-19272a2d9a61">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e2867c91-58e3-41e2-a42b-f3dec40d36b9">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-c"><pre><span></span><span class="cm">/** progA **/</span>
-<span class="cm">/* 1*/</span><span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
-<span class="cm">/* 2*/</span><span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span>
-<span class="cm">/* 3*/</span><span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sys/wait.h&gt;</span>
-<span class="cm">/* 4*/</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/* 5*/</span><span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fork</span><span class="p">();</span>
-<span class="cm">/* 6*/</span><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/* 7*/</span><span class="w">          </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">cmd</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"./progB"</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="w"> </span><span class="p">};</span>
-<span class="cm">/* 8*/</span><span class="w">          </span><span class="n">execv</span><span class="p">(</span><span class="n">cmd</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">cmd</span><span class="p">);</span>
-<span class="cm">/* 9*/</span><span class="w">          </span><span class="n">printf</span><span class="p">(</span><span class="s">"A 2nd gen</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="cm">/*10*/</span><span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="cm">/*11*/</span><span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/*12*/</span><span class="w">          </span><span class="n">wait</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
-<span class="cm">/*13*/</span><span class="w">          </span><span class="n">printf</span><span class="p">(</span><span class="s">"A 1st gen</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="cm">/*14*/</span><span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="cm">/*15*/</span><span class="w">      </span><span class="p">}</span>
-<span class="cm">/*16*/</span><span class="w">  </span><span class="p">}</span>
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_notes-only" data-mime-type="text/markdown">
+<ul>
+<li>Functions in the C standard library that involve a privileged operation (e.g., <code>printf</code>) put the system call number in a register and invoke a trap instruction — programmer doesn’t have to worry about these details; they can just call the appropriate function in the C standard library</li>
+<li>When <code>svc</code> is executed<ol>
+<li>CPU switches to kernel mode</li>
+<li>CPU saves registers to the kernel stack — kernel stack is at a fixed location in memory<ul>
+<li><em>Why do we need to save the registers?</em> — so we can return to <code>user</code> when <code>__getuid</code> is done</li>
+</ul>
+</li>
+<li>CPU uses system call number to index into table of trap handlers<ul>
+<li>At boot, initialize table of trap handlers with pointers into OS code for handling each type of syscall</li>
+</ul>
+</li>
+<li>Branch and link to trap handler code</li>
+<li>CPU restores registers from the kernel stack</li>
+<li>CPU switches to user mode</li>
+<li>Resume execution after <code>svc</code></li>
+</ol>
+</li>
+<li><em>What should we do if an application tries to perform a privileged operation without making a system call?</em><ul>
+<li>Let the code keep running — code may assume privileged operation was successful</li>
+<li>Terminate the application</li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=5a15aded-f0ed-4685-a42a-1c054c2e9b06">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5b2466dc-d610-4bcf-af6d-2f938593cbc2">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-c"><pre><span></span><span class="cm">/** progB **/</span>
-<span class="cm">/* 1*/</span><span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
-<span class="cm">/* 2*/</span><span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span>
-<span class="cm">/* 3*/</span><span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sys/wait.h&gt;</span>
-<span class="cm">/* 4*/</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/* 5*/</span><span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fork</span><span class="p">();</span>
-<span class="cm">/* 6*/</span><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/* 7*/</span><span class="w">          </span><span class="n">printf</span><span class="p">(</span><span class="s">"B 2nd gen</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="cm">/* 8*/</span><span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="cm">/* 9*/</span><span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="cm">/*10*/</span><span class="w">          </span><span class="n">wait</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
-<span class="cm">/*11*/</span><span class="w">          </span><span class="n">printf</span><span class="p">(</span><span class="s">"B 1st gen</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="cm">/*12*/</span><span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="cm">/*13*/</span><span class="w">      </span><span class="p">}</span>
-<span class="cm">/*14*/</span><span class="w">  </span><span class="p">}</span>
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Recap">Recap<a class="anchor-link" href="#Recap">¶</a></h2>
 </div>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8693899f-0377-4345-aa5d-b4c7a5352d3e">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=934fbea9-b4e9-4120-bc7f-6be601aef218">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_worksheet-only" data-mime-type="text/markdown">
-<p style="height:5em;"></p>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
+<p>Q1: <em>One alternative to Limited Direct Execution (LDE) is <strong>indirect execution</strong>—i.e., for each assembly instruction an application wants to execute, the application must ask the OS to execute the instruction on the processor on the application’s behalf. Why is indirect execution a <strong>poor design choice</strong>?</em></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c3ffd1ad-d1d7-4d29-9ab4-476054a3d7dd">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_answer" data-mime-type="text/markdown">
+<pre><code>Significant overhead</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=28814c6a-92f4-45d4-972a-048b9fcc855c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
+<p>Q2: <em>Another alternative to LDE is <strong>direct execution</strong>–i.e., an application can execute its assembly instructions directly on the processor and access any location in main memory. Why is direct execution a <strong>poor design choice</strong>?</em></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b2891003-cf24-479f-b41b-bd424eabf06e">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_answer" data-mime-type="text/markdown">
+<pre><code>An application can interfere with another application's memory; an application can use the processor indefinitely</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c73be53e-fafb-40db-ab0e-e57ec85b5d61">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
+<p>Q3: <em>What <strong>processor feature(s)</strong> make(s) LDE possible?</em></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e85273b7-4747-4a05-b9d5-ffdf62988838">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_answer" data-mime-type="text/markdown">
+<pre><code>Two modes: kernel mode (processor is in this mode when the OS is running) and user mode (processor is in this mode when the application is running); `svc` instruction to make a system call; time interrupts </code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1e4b4a29-760c-46b7-8363-2010ef1b0b07">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
+<p>Q4: <em>What work (if any) must be done by an application, the operating system (OS), and the processor when an application wants to perform a privileged operation—e.g., start another application?</em></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a2543bd7-c1ae-4ce5-bce5-9db4fc43c311">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_answer" data-mime-type="text/markdown">
+<pre><code>Application puts the system call number in a register and executes the `svc` instruction; Processor switches to kernel mode, saves the values in the registers on the OS's stack, and branches to the appropriate system call handling code based on the system call number; OS executes the system call; Processor restores the application's register values from the OS's stack, switches to user mode, and resumes execution of the application by executing the next instruction after the `svc` instruction</code></pre>
 </div>
 </div>
 </div>

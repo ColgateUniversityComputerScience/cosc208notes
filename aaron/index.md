@@ -5,7 +5,6 @@
 * functions; libraries; arrays [[Worksheet]](02_hello-C_functions-libraries-arrays.worksheet.html) [[Notes & Solutions]](02_hello-C_functions-libraries-arrays.notes.html)
 * strings; command line arguments [[Worksheet]](03_hello-C_strings-arguments.worksheet.html) [[Notes & Solutions]](03_hello-C_strings-arguments.notes.html)
 
-
 ## Data representation
 * number bases; base conversion [[Worksheet]](11_data-representation_number-bases.worksheet.html) [[Notes & Solutions]](11_data-representation_number-bases.notes.html)
 * signed integers; type conversion [[Worksheet]](12_data-representation_signed.worksheet.html) [[Notes & Solutions]](12_data-representation_signed.notes.html)
@@ -18,18 +17,15 @@
 * dynamic memory allocation [[Worksheet]](24_program-memory_malloc.worksheet.html) [[Notes & Solutions]](24_program-memory_malloc.notes.html)
 * structs [[Worksheet]](25_program-memory_structs.worksheet.html) [[Notes & Solutions]](25_program-memory_structs.notes.html)
 
-
 ## Architecture
 * von Neumann; logic gates [[Worksheet]](30_architecture_components.worksheet.html) [[Notes & Solutions]](30_architecture_components.notes.html)
 * circuits [[Worksheet]](31_architecture_circuits.worksheet.html) [[Notes & Solutions]](31_architecture_circuits.notes.html)
 * processing unit [[Worksheet]](32_architecture_processor.worksheet.html) [[Notes & Solutions]](32_architecture_processor.notes.html)
 
-
 ## Assembly
 * arithmetic and ldr/str operations [[Worksheet]](40_assembly_operations.worksheet.html) [[Notes & Solutions]](40_assembly_operations.notes.html)
 * conditionals and loops [[Worksheet]](41_assembly_branching.worksheet.html) [[Notes & Solutions]](41_assembly_branching.notes.html)
 * functions [[Worksheet]](42_assembly_functions.worksheet.html) [[Notes & Solutions]](42_assembly_functions.notes.html)
-
 
 ## Storage
 * memory hierarchy; locality [[Worksheet]](50_storage_hierarchy.worksheet.html) [[Notes & Solutions]](50_storage_hierarchy.notes.html)
@@ -40,9 +36,10 @@
 * creating multi-threaded programs [[Worksheet]](62_concurrency_writing.worksheet.html) [[Notes & Solutions]](62_concurrency_writing.notes.html)
 * race conditions; mutual exclusion [[Worksheet]](63_concurrency_mutual-exclusion.worksheet.html) <!--[[Notes & Solutions]](63_concurrency_mutual-exclusion.notes.html)-->
 
-<!--
 ## Operating systems
-* limited direct execution; system calls [[Worksheet]](60_os_lde.worksheet.html) [[Notes & Solutions]](60_os_lde.notes.html)
+* limited direct execution; system calls [[Worksheet]](71_os_lde.worksheet.html) <!--[[Notes & Solutions]](71_os_lde.notes.html)-->
+
+<!--
 * processes [[Worksheet]](61_os_processes.worksheet.html) [[Notes & Solutions]](61_os_processes.notes.html)
 
 ## Concurrency
