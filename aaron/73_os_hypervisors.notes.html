@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>80_virtualization_hypervisors</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>73_os_hypervisors</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <link href="custom.css" rel="stylesheet"/>
 <style type="text/css">
     pre { line-height: 125%; }
@@ -7516,7 +7516,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Virtualization:-hypervisors;-containers">Virtualization: hypervisors; containers<a class="anchor-link" href="#Virtualization:-hypervisors;-containers">¶</a></h1><p><em>COSC 208, Introduction to Computer Systems, Fall 2024</em></p>
+<h1 id="Operating-Systems:-virutal-machines;-containers">Operating Systems: virutal machines; containers<a class="anchor-link" href="#Operating-Systems:-virutal-machines;-containers">¶</a></h1><p><em>COSC 208, Introduction to Computer Systems, Fall 2025</em></p>
 </div>
 </div>
 </div>
@@ -7531,12 +7531,36 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f47871d5-e3e2-49b0-a803-f149ac6bb5c8">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=81c480af-07ad-4cb4-a331-d07200fb2d2e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
-<p style="height:15em;"></p>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_notes-only" data-mime-type="text/markdown">
+<ul>
+<li>Recall: <em>what is the purpose of an OS?</em><ul>
+<li>Make computer hardware easy to use—e.g., an OS knows how to load an application's executable code from persistent storage (e.g., solid state drive (SSD)) into main memory, initialize the process's memory (code, heap, stack), and make the CPU execute the application's instructions</li>
+<li>Support multiprocessing—i.e., running multiple applications simultaneously or concurrently</li>
+<li>Allocate and manage hardware resources—e.g., decide when/which applications can use the CPU, decide when/which memory applications can use, prevent applications from stealing/accessing another application's CPU time or memory</li>
+</ul>
+</li>
+<li>What is the purpose of a virtual machine?<ul>
+<li>Make computer hardware flexible to use</li>
+<li>Support multiple OSes running concurrently</li>
+<li>Allocate and manage hardware resources—e.g., decide when/which VMs can use the CPU, decide/when which memory VMs can use, prevent VMS from stealing/accessing another VM's CPU time or memory</li>
+</ul>
+</li>
+<li>What is the motivation for using a virtual machine?<ul>
+<li>Run multiple OSes concurrently — <em>why would someone one to do this?</em><ul>
+<li>Run software only supported by a specific OS</li>
+<li>Software testing</li>
+<li>Server consolidation</li>
+<li>Security sandboxing</li>
+</ul>
+</li>
+<li>Flexibly use hardware resources</li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -7551,12 +7575,149 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b7f0fb7b-4f9d-4f52-9ff6-c5223463b154">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d19f1fc3-cce6-4b76-ac1e-68215b36206c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
-<p style="height:25em;"></p>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_notes-only" data-mime-type="text/markdown">
+<ul>
+<li>Hypervisor – an additional software layer a computer system needs to support virutal machines</li>
+<li>Where does a hypervisor reside?<ul>
+<li>System that does <strong>not</strong> use a hypervisor<pre><code>+----+ +----+
+|Proc| |Proc|
++----+ +----+
++-----------+
+|    OS     |
++-----------+
++-----------+
+|  Hardware |
++-----------+
+</code></pre>
+</li>
+<li>Type 1: on top of hardware — e.g., KVM, Xen, Hyper-V, VMware vSphere<pre><code>+-------------+ +-------------+
+|     VM      | |     VM      |
+|+----+ +----+| |+----+ +----+|
+||Proc| |Proc|| ||Proc| |Proc||
+|+----+ +----+| |+----+ +----+|
+|+-----------+| |+-----------+|
+||    OS     || ||    OS     ||
+|+-----------+| |+-----------+|
++-------------+ +-------------+
++-----------------------------+
+|          Hypervisor         |
++-----------------------------+
++-----------------------------+
+|           Hardware          |
++-----------------------------+
+</code></pre>
+</li>
+<li>Type 2: on top of host OS — e.g., VirtualBox, VMware Workstation/Fusion<pre><code>              +-------------+ +-------------+
+              |     VM      | |     VM      |
+              |+----+ +----+| |+----+ +----+|
+              ||Proc| |Proc|| ||Proc| |Proc||
+              |+----+ +----+| |+----+ +----+|
+              |+-----------+| |+-----------+|
+              || Guest OS  || || Guest OS  ||
+              |+-----------+| |+-----------+|
+              +-------------+ +-------------+
++----+ +----+ +-----------------------------+
+|Proc| |Proc| |          Hypervisor         |
++----+ +----+ +-----------------------------+
++-------------------------------------------+
+|                 Host OS                   |
++-------------------------------------------+
++-------------------------------------------+
+|                Hardware                   |
++-------------------------------------------+
+</code></pre>
+</li>
+</ul>
+</li>
+<li>Why is a type 1 hypervisor better than a type 2 hypervisor?<ul>
+<li>Better performance – no overhead from host OS</li>
+</ul>
+</li>
+<li>Why is a type 2 hypervisor better than a type 1 hypervisor?<ul>
+<li>Easier to use – runs alongside other applications on an existing computer system</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6e02df06-551e-4a94-8a01-6eb7090e7215">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_notes-only" data-mime-type="text/markdown">
+<h2 id="CPU-sharing">CPU sharing<a class="anchor-link" href="#CPU-sharing">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6fd9a441-0402-4d30-b304-c7c2d282ba93">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_notes-only" data-mime-type="text/markdown">
+<ul>
+<li>Use same approach OS uses for sharing CPU between processes — Limited Direct Execution (LDE)</li>
+<li><em>Recall: How does LDE work in OS?</em><ul>
+<li>Put CPU in user mode</li>
+<li>Give process exclusive access to CPU</li>
+<li>Process issues a syscall to perform privileged operation</li>
+<li>Timer interrupt allows OS to regain control</li>
+</ul>
+</li>
+<li>To use LDE with a VM<ul>
+<li>Put CPU in user mode</li>
+<li>Give VM exclusive access to CPU</li>
+<li>Process issues a syscall -OR- OS attempts to perform privileged operation</li>
+<li>Timer interrupt allows hypervisor to regain control</li>
+</ul>
+</li>
+<li>Recall: <em>How does a process make a syscall?</em> — load syscall number into register <code>x8</code> and execute <code>svc</code> instruction</li>
+<li><em>What happens when a process makes a syscall?</em><ol>
+<li>CPU switches to kernel mode</li>
+<li>CPU saves registers to the OS stack</li>
+<li>CPU uses system call number to index into OS's table of syscall handlers</li>
+<li>Branch and link to syscall handler code</li>
+<li>Restore registers from the OS stack</li>
+<li>Switch CPU to user mode</li>
+<li>Resume execution after <code>svc</code></li>
+</ol>
+</li>
+<li>Syscalls with a type 1 hypervisor<ul>
+<li>Processes in virtualized OS do the same as before</li>
+<li>Hypervisor’s syscall handler is invoked by hardware instead of OS’s syscall handler</li>
+<li>Actually want to invoke OS's syscall handler — the hypervisor does this</li>
+<li>Hypervisor knows where OS trap table is located, because populating syscall table is a privileged instruction, so hypervisor interposed on these operations when OS booted</li>
+</ul>
+</li>
+<li>Steps when process in virtualized OS makes a syscall<ol>
+<li>CPU switches to supervisor mode</li>
+<li>CPU saves registers to the hypervisor stack</li>
+<li>CPU uses system call number to index into VM's table of syscall handlers</li>
+<li><strong>Switch CPU from supervisor to kernel mode</strong></li>
+<li>Branch and link to syscall handler code</li>
+<li><strong>Switch CPU from kernel to supervisor mode</strong></li>
+<li>Restore registers from the hypervisor stack</li>
+<li>Switch CPU to user mode</li>
+<li>Resume execution after <code>svc</code></li>
+</ol>
+</li>
+<li>Extra work to always trap to hypervisor, which then invokes OS code</li>
+<li>Possible solutions<ul>
+<li>Hardware support — e.g., supervisor mode that is between user and kernel mode</li>
+<li>Para-virtualization — modify the OS so it's aware there is a hypervisor and the two can interact directly</li>
+<li>Containers — use a single OS, but create groups of processes that are isolated from other processes<ul>
+<li>OS's process abstraction already isolates each process's CPU time, memory, and registers, but processes can still use syscalls to pass messages to each other, wait for each other, access a common set of files, etc.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -7571,12 +7732,25 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=68262853-4d00-4769-a2ba-1575eccb6367">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fdb8f42b-ac2b-4988-ac8a-0e3705795385">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
-<p style="height:10em;"></p>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_notes-only" data-mime-type="text/markdown">
+<ul>
+<li>Containers — use a single OS, but create groups of processes that are isolated from other processes<ul>
+<li>OS's process abstraction already isolates each process's CPU time, memory, and registers, but processes can still use syscalls to pass messages to each other, wait for each other, access a common set of files, etc.</li>
+</ul>
+</li>
+<li>Containers share the kernel — i.e., core OS functionality like syscalls, scheduler, I/O interface<ul>
+<li>VMs do <strong>not</strong> share the kernel</li>
+</ul>
+</li>
+<li>Containers and VMs do <strong>not</strong> share the file system ==&gt; containers and virtual machines do <strong>not</strong> share libraries, executables, etc.</li>
+<li>Containers and VMs do <strong>not</strong> share user accounts</li>
+<li>Containers and VMs do <strong>not</strong> share network stacks ==&gt; e.g., each container or VM has its own Internet Protocol (IP) address</li>
+<li>Containers and VMs share the hardware</li>
+</ul>
 </div>
 </div>
 </div>
@@ -7601,12 +7775,12 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1ecf7a0e-a1be-4415-8fa0-4ed0e8ef5d1b">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=62eb96df-0f92-45d2-a526-1b49f8bce1b7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
-<p style="height:8em;"></p>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_answer" data-mime-type="text/markdown">
+<p>With a type 1 hypervisor, system calls issued by processes only need to be handled by the hypervisor and guest operating system, whereas with a type 2 hypervisor, system calls issued by processes need to be handled by the host operating system, hypervisor, and guest operating system. Thus, a type 1 hypervisor adds less overhead and results in better performance.</p>
 </div>
 </div>
 </div>
@@ -7621,12 +7795,12 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9466c70b-3653-4e5a-902f-d80f977ddf74">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e2118898-5846-4c84-8f6b-b9f88a2a0f42">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
-<p style="height:8em;"></p>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_answer" data-mime-type="text/markdown">
+<p>A type 2 hypervisor can be installed atop an existing (host) operating system just like any other application, whereas a type 1 hypervisor needs to be installed directly atop the hardware before any operating systems are installed. Thus, a type 2 hypervisor is easier to set up.</p>
 </div>
 </div>
 </div>
@@ -7641,12 +7815,13 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ddd93b24-fcba-41d2-b224-8afca2e6c81c">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c9af97ce-1883-4b42-809a-8bc921711e16">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_blank" data-mime-type="text/markdown">
-<p style="height:8em;"></p>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_answer" data-mime-type="text/markdown">
+<p>With containers, all processes run atop a single operating system instances, whereas with a type 1 hypervisor, each group of processes requires a separate operating system. Thus, containers avoid the need to maintain multiple copies of the same operating system.</p>
+<p>With containers, systems calls issued by processes only need to be handled by the operating system, just like a system without containers or virtual machines, whereas with a type 1 hypervisor, system calls issued by processes need to be handled by the hypervisor and the operating system running inside the virtual machine. Thus, containers add less overhead and result in better performance.</p>
 </div>
 </div>
 </div>
@@ -7657,6 +7832,16 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_question" data-mime-type="text/markdown">
 <p>Q4: <em>What is an advantage of using <strong>virtual machines with a type 1 hypervisor</strong> instead of <strong>containers</strong>?</em></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=528d527a-e802-4f0e-9054-667dd588ad17">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput celltag_answer" data-mime-type="text/markdown">
+<p>With a type 1 hypervisor, multiple flavors (e.g., Windows, Linux, Mac OS) and/or versions (e.g., Windows 8, Windows 10) of operating systems can run atop the same physical hardware, whereas with containers only a single operating system can run atop the hardware. Thus, type 1 hypervisors allow multiple OSes to be run on the same computer system.</p>
 </div>
 </div>
 </div>
