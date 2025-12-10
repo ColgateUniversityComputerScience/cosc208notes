@@ -38,7 +38,7 @@
 
 ## Operating systems
 * limited direct execution; system calls [[Worksheet]](71_os_lde.worksheet.html) [[Notes & Solutions]](71_os_lde.notes.html)
-* processes [[Worksheet]](72_os_processes.worksheet.html) <!--[[Notes & Solutions]](72_os_processes.notes.html)-->
+* processes [[Worksheet]](72_os_processes.worksheet.html) [[Notes & Solutions]](72_os_processes.notes.html)
 * hypervisors; containers [[Worksheet]](73_os_hypervisors.worksheet.html) <!--[[Notes & Solutions]](73_os_hypervisors.notes.html)-->
 
 
